@@ -15,36 +15,35 @@ import threading
 import queue
 import shutil
 from collections import defaultdict
-
 def log(*args):
     print("[DEBUG]", *args)
-
 def ensure_7z_exe():
     """Extract 7z.exe alongside the app if not present."""
     # Get the directory where the EXE is running
     if getattr(sys, 'frozen', False):
         app_dir = Path(sys.executable).parent
+        bundled_dir = sys._MEIPASS
     else:
         app_dir = Path(__file__).parent
-    
+        bundled_dir = app_dir
+   
     seven_zip = app_dir / '7z.exe'
-    
+   
     if seven_zip.exists():
         log("7z.exe already available alongside app")
         return
-    
+   
     log("Extracting 7z.exe from bundle...")
     try:
-        # Extract from PyInstaller bundle
-        import importlib.resources
-        bundled_7z = importlib.resources.files('__main__').joinpath('7z.exe')
+        bundled_7z = Path(bundled_dir) / '7z.exe'
+        if not bundled_7z.exists():
+            raise FileNotFoundError("7z.exe not found in bundle")
         shutil.copy2(bundled_7z, seven_zip)
         log(f"7z.exe extracted to {seven_zip}")
     except Exception as e:
         log(f"Failed to extract 7z.exe: {e}")
         messagebox.showwarning("Missing 7z.exe", "7z.exe not found. Download from https://www.7-zip.org and place in the app folder.")
         sys.exit(1)
-
 def get_steam_path():
     log("Finding Steam...")
     try:
@@ -60,7 +59,6 @@ def get_steam_path():
             log(f"Steam fallback: {p}")
             return p
     return None
-
 def get_installed_games(steam_path):
     installed = {}
     vdf_path = steam_path / "steamapps" / "libraryfolders.vdf"
@@ -95,26 +93,21 @@ def get_installed_games(steam_path):
                 pass
     log(f"Installed: {len(installed)}")
     return installed
-
 def load_box_art(steam_path, appid):
     """ULTIMATE 2025 Steam box art loader — works with deleted games, custom .jpg grid, deep hash folders"""
     appid = str(appid)
     log(f"\n=== BOX ART SEARCH FOR APPID: {appid} ===")
     log(f"Steam path: {steam_path}")
-
     cache_dir = steam_path / "appcache" / "librarycache"
     userdata_dir = steam_path / "userdata"
-
     candidates = []
     custom_grid = []
-
     # 1. Modern flat files
     for ext in ["jpg", "jpeg", "png"]:
         p = cache_dir / f"{appid}_library_600x900.{ext}"
         if p.exists():
             candidates.append(p)
             log(f"FOUND flat 600x900: {p.name}")
-
     # 2. Legacy: deep scan ALL subfolders (handles hash-in-hash)
     legacy_root = cache_dir / appid
     if legacy_root.exists() and legacy_root.is_dir():
@@ -127,7 +120,6 @@ def load_box_art(steam_path, appid):
                     if any(k in name for k in ["library_600x900", "capsule", "header", "hero"]):
                         candidates.append(filepath)
                         log(f"FOUND in subfolder: {filepath.relative_to(cache_dir)}")
-
     # 3. CUSTOM GRID — NOW SUPPORTS .JPG TOO!
     if userdata_dir.exists():
         for user in userdata_dir.iterdir():
@@ -140,14 +132,12 @@ def load_box_art(steam_path, appid):
                         custom_grid.append(grid_file)
                         log(f"FOUND CUSTOM GRID: {grid_file.name} (user: {user.name})")
                         break
-
     # === PICK BEST ===
     all_images = candidates + custom_grid
     if not all_images:
         log("NO BOX ART FOUND ANYWHERE")
         log("=== END SEARCH ===\n")
         return None
-
     # CUSTOM GRID ALWAYS WINS
     if custom_grid:
         best = max(custom_grid, key=lambda x: x.stat().st_mtime)
@@ -170,7 +160,6 @@ def load_box_art(steam_path, appid):
         if not best:
             best = max(candidates, key=lambda x: x.stat().st_mtime)
             log(f"FALLBACK -> {best.name}")
-
     # Load
     try:
         img = Image.open(best).convert("RGB")
@@ -186,7 +175,6 @@ def load_box_art(steam_path, appid):
     except Exception as e:
         log(f"FAILED: {e}")
         return None
-
 class PatchSelectionDialog(tk.Toplevel):
     def __init__(self, parent, files):
         super().__init__(parent)
@@ -209,7 +197,6 @@ class PatchSelectionDialog(tk.Toplevel):
         tk.Button(btn_frame, text="Apply Selected", command=self.apply).pack(side=tk.LEFT, padx=5)
         tk.Button(btn_frame, text="Cancel", command=self.destroy).pack(side=tk.LEFT, padx=5)
         self.listbox.bind('<Double-Button-1>', self.apply)
-
     def apply(self, event=None):
         indices = self.listbox.curselection()
         if not indices:
@@ -217,7 +204,6 @@ class PatchSelectionDialog(tk.Toplevel):
             return
         self.result = indices
         self.destroy()
-
 # Main App
 class App(tk.Tk):
     def __init__(self):
@@ -225,9 +211,8 @@ class App(tk.Tk):
         self.title("Steam Game Patcher")
         self.geometry("960x640")
         # Auto-download database
-        DB_URL = "https://raw.githubusercontent.com/d4rksp4rt4n/SteamGamePatcher/main/data/patches_database.json"
+        DB_URL = "https://raw.githubusercontent.com/d4rksp4rt4n/SteamGamePatcher/refs/heads/main/database/data/patches_database.json"
         DB_PATH = Path('data/patches_database.json')
-
         def download_database():
             try:
                 DB_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -240,44 +225,36 @@ class App(tk.Tk):
             except Exception as e:
                 log(f"Auto-update failed (using local): {e}")
                 return False
-
         # Download if needed
         updated = download_database() if not DB_PATH.exists() or (time.time() - DB_PATH.stat().st_mtime > 3600) else False
-
         if not DB_PATH.exists():
             messagebox.showerror("No Database", "Download failed. Check internet.")
             sys.exit(1)
-
         with open(DB_PATH, 'r', encoding='utf-8') as f:
             self.folder_db = json.load(f)
-        
-        # Check for meta and set status
-        meta = self.folder_db.get('meta', {})
-        last_updated = meta.get('last_updated', 'Unknown')
-        is_incremental = meta.get('incremental', False)
-        is_unified = meta.get('unified', False)
-        
+       
+        # Check for metadata and set status
+        metadata = self.folder_db.get('metadata', {})
+        version = metadata.get('version', 'Unknown')
+        last_updated = metadata.get('last_updated', 'Unknown')
+        recent_changes = metadata.get('recent_changes', [])
+       
         db_status = "Updated" if updated else "Up to date"
-        db_note = ""
-        if is_incremental and is_unified:
-            db_note = " (incremental + unified)"
-        elif is_incremental:
-            db_note = " (incremental)"
-        elif is_unified:
-            db_note = " (unified)"
-        
-        self.db_status = f"DB: {db_status} - {last_updated}{db_note}"
-        
+        self.db_status = f"DB Version: {version} | Last Updated: {last_updated} | Status: {db_status}"
+       
+        # Group recent changes by game
+        self.grouped_changes = self.group_recent_changes(recent_changes)
+       
         self.folder_map = self.folder_db.get('developers', {})
         steam = get_steam_path()
         if not steam:
             messagebox.showerror("Error", "Steam not found")
             sys.exit(1)
         self.installed = get_installed_games(steam)
-        self.steam_path = steam  # For box art
+        self.steam_path = steam # For box art
         # Build matches from unified folder_db using appid
         self.matches = []
-        self.by_id = {}  # appid -> {"dev_name": , "game_name": , "data": game_data}
+        self.by_id = {} # appid -> {"dev_name": , "game_name": , "data": game_data}
         for dev_name, dev_data in self.folder_map.items():
             for game_name, game_data in dev_data.get("games", {}).items():
                 appid_raw = game_data.get("appid")
@@ -302,7 +279,41 @@ class App(tk.Tk):
         self.progress_frame = None
         self.ui_queue = queue.Queue()
         self.after(100, self.process_ui_queue)
-
+        # Start the recent changes ticker
+        self.changes_index = 0
+        self.changes_subindex = 0
+        self.after(5000, self.update_recent_changes_display)  # Update every 5 seconds
+    def group_recent_changes(self, changes):
+        """Group recent changes by game name."""
+        grouped = defaultdict(list)
+        for change in changes:
+            # Extract game name (assuming it starts with the game name)
+            parts = change.split(" - ", 1)
+            if len(parts) >= 2:
+                game = parts[0]
+                details = parts[1]
+                grouped[game].append(details)
+            else:
+                # Fallback if format doesn't match
+                grouped["Miscellaneous"].append(change)
+        return dict(grouped)  # Convert back to regular dict
+    def update_recent_changes_display(self):
+        """Cycle through grouped recent changes, displaying one group at a time."""
+        if not self.grouped_changes:
+            return
+        groups = list(self.grouped_changes.keys())
+        if self.changes_index >= len(groups):
+            self.changes_index = 0
+            self.changes_subindex = 0
+        current_group = groups[self.changes_index]
+        details = self.grouped_changes[current_group]
+        # Join details with " - "
+        full_text = f"Recent Changes: {current_group}: {' - '.join(details)}"
+        # Update the label text
+        self.recent_label.config(text=full_text)
+        # Increment subindex if needed, but since we show whole group, just cycle groups
+        self.changes_index += 1
+        self.after(5000, self.update_recent_changes_display)
     def process_ui_queue(self):
         try:
             while not self.ui_queue.empty():
@@ -321,23 +332,22 @@ class App(tk.Tk):
         except queue.Empty:
             pass
         self.after(100, self.process_ui_queue)
-
     def build_gui(self):
         # Main container
         main_frame = tk.Frame(self)
         main_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=5)
-        
-        # Left: Box art + details
+       
+        # Left: Box art + details + Patch Button
         left_frame = tk.Frame(main_frame, width=250)
         left_frame.pack(side=tk.LEFT, fill=tk.Y, padx=(0, 10))
         left_frame.pack_propagate(False)
-        
+       
         self.img_label = tk.Label(left_frame, bg="#222", text="No Image")
         self.img_label.pack(pady=10)
-        
+       
         details_frame = tk.Frame(left_frame)
         details_frame.pack(fill=tk.BOTH, expand=True)
-        
+       
         self.dev_label = tk.Label(details_frame, text="", font=("Arial", 10, "bold"))
         self.dev_label.pack(anchor="w")
         self.pub_label = tk.Label(details_frame, text="")
@@ -346,18 +356,26 @@ class App(tk.Tk):
         self.notes_label.pack(anchor="w")
         self.status_label = tk.Label(details_frame, text="", fg="green")
         self.status_label.pack(anchor="w")
-        
+       
+        # Patch button moved here, below details
+        self.patch_btn = tk.Button(details_frame, text="Patch Selected Game", command=self.patch)
+        self.patch_btn.pack(anchor="w", pady=(10, 0))
+       
+        # Recent changes label (will be updated dynamically)
+        self.recent_label = tk.Label(details_frame, text="Recent Changes: Loading...", fg="orange", wraplength=220, justify="left")
+        self.recent_label.pack(anchor="w", pady=(5, 0))
+       
         # Right: Game list
         right_frame = tk.Frame(main_frame)
         right_frame.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
-        
+       
         # Treeview for games (only name)
         cols = ("Game",)
         self.tree = ttk.Treeview(right_frame, columns=cols, show="headings")
         self.tree.heading("Game", text="Game")
         self.tree.column("Game", width=400)
         self.tree.pack(fill=tk.BOTH, expand=True)
-        
+       
         for match in self.matches:
             appid = str(match["data"]["appid"]).strip()
             self.tree.insert("", "end",
@@ -366,17 +384,13 @@ class App(tk.Tk):
             )
             log(f"TAG: {appid}")
         self.tree.bind("<<TreeviewSelect>>", self.on_select)
-        
-        # Bottom status and button
+       
+        # Bottom status (now only DB status, no button)
         bottom_frame = tk.Frame(self)
         bottom_frame.pack(fill=tk.X, pady=5)
-        
-        self.status = tk.Label(bottom_frame, text=f"{self.db_status} | FOUND {len(self.matches)} game(s)", anchor="w", fg="green")
+       
+        self.status = tk.Label(bottom_frame, text=self.db_status, anchor="w", fg="green")
         self.status.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=10)
-        
-        self.patch_btn = tk.Button(bottom_frame, text="Patch Selected Game", command=self.patch)
-        self.patch_btn.pack(side=tk.RIGHT, padx=10)
-
     def on_select(self, _):
         selected = self.tree.selection()
         if not selected:
@@ -409,14 +423,12 @@ class App(tk.Tk):
         self.pub_label.config(text=f"Publisher: {match['data'].get('publisher', 'N/A')}")
         self.notes_label.config(text=f"Notes: {match['data'].get('notes', 'N/A')}")
         self.status_label.config(text=f"Status: {match['data'].get('store_status', 'N/A')}")
-
     def reset_ui(self):
         self.patch_btn.config(state="normal", text="Patch Selected Game")
-        self.status.config(text=f"{self.db_status} | FOUND {len(self.matches)} game(s)", fg="green")
+        self.status.config(text=self.db_status, fg="green")
         if self.progress_frame:
             self.progress_frame.destroy()
             self.progress_frame = None
-
     def parse_size_bytes(self, size_str):
         """Parse size string like '199.7 MB' to bytes."""
         if not size_str or size_str == 'Unknown':
@@ -431,33 +443,30 @@ class App(tk.Tk):
             return None
         except:
             return None
-
     def download_with_gdown(self, file_id, output_path, expected_bytes, progress_var, status_label, speed_label):
         """Download using gdown with console progress."""
         try:
             import gdown
             self.ui_queue.put(("update_status", (status_label, f"Downloading with gdown: {output_path.name}")))
-            gdown.download(id=file_id, output=str(output_path), quiet=False, resume=True)  # quiet=False for console tqdm
+            gdown.download(id=file_id, output=str(output_path), quiet=False, resume=True) # quiet=False for console tqdm
             actual_size = os.path.getsize(output_path)
             log(f"gdown downloaded {actual_size} bytes")
             return actual_size
         except Exception as e:
             log(f"gdown failed: {e}")
             raise e
-
     def extract_with_7z(self, archive_path, extract_dir):
         """Extract archive using local 7z.exe via subprocess."""
         script_dir = Path(sys.executable).parent if getattr(sys, 'frozen', False) else Path(__file__).parent
         local_7z = script_dir / '7z.exe'
         if not local_7z.exists():
             raise FileNotFoundError("7z.exe not found in script directory.")
-        cmd = [str(local_7z), 'x', str(archive_path), f'-o{extract_dir}', '-y']  # -y to auto-yes
+        cmd = [str(local_7z), 'x', str(archive_path), f'-o{extract_dir}', '-y'] # -y to auto-yes
         result = subprocess.run(cmd, capture_output=True, text=True)
         if result.returncode != 0:
             log(f"7z extraction failed: {result.stderr}")
             raise subprocess.CalledProcessError(result.returncode, cmd, result.stdout, result.stderr)
         log(f"Extracted with 7z: {archive_path} to {extract_dir}")
-
     def smart_apply_patch(self, extract_dir, install_dir, status_label):
         """Scan and match files from extracted patch to game dir, with hybrid overwrite/add logic."""
         # Build map of game files: filename.lower() -> list of full_paths
@@ -465,7 +474,7 @@ class App(tk.Tk):
         for root, dirs, files in os.walk(install_dir):
             for file in files:
                 game_files[file.lower()].append(os.path.join(root, file))
-        
+       
         overwritten = 0
         added = 0
         skipped = 0
@@ -492,7 +501,6 @@ class App(tk.Tk):
                     added += 1
                     self.ui_queue.put(("update_status", (status_label, f"ADDED: {file}")))
         return overwritten, added, skipped
-
     def process_patch(self, files, selected_indices, install_dir, game_name, progress_var, status_label, speed_label):
         """Thread worker for download/extract/smart apply."""
         try:
@@ -502,7 +510,6 @@ class App(tk.Tk):
             if not local_7z.exists():
                 raise FileNotFoundError("7z.exe not found. Please download from https://www.7-zip.org/ and place in script directory.")
             log(f"Using local 7z.exe: {local_7z}")
-
             for idx in selected_indices:
                 f = files[idx]
                 file_id = f['id']
@@ -516,7 +523,7 @@ class App(tk.Tk):
                     output = Path(tempfile.gettempdir()) / file_name
                     self.ui_queue.put(("update_status", (status_label, f"Downloading: {file_name}")))
                     # Set indeterminate progress during gdown
-                    self.ui_queue.put(("update_progress", (progress_var, -1)))  # Indeterminate mode
+                    self.ui_queue.put(("update_progress", (progress_var, -1))) # Indeterminate mode
                     downloaded_bytes = self.download_with_gdown(file_id, output, expected_bytes or 0, progress_var, status_label, speed_label)
                     actual_size = os.path.getsize(output)
                     # Relaxed check: for small files (<2KB), accept if >0 bytes; else 5% tolerance
@@ -530,8 +537,8 @@ class App(tk.Tk):
                         output.unlink()
                 if retries >= max_retries:
                     raise ValueError(f"Download size mismatch after {max_retries} retries.")
-                
-                self.ui_queue.put(("update_progress", (progress_var, 0)))  # Reset for next
+               
+                self.ui_queue.put(("update_progress", (progress_var, 0))) # Reset for next
                 self.ui_queue.put(("update_status", (status_label, f"Extracting: {file_name}")))
                 # Extract to UNIQUE temp dir OUTSIDE install_dir
                 temp_extract_dir = Path(tempfile.mkdtemp())
@@ -539,7 +546,7 @@ class App(tk.Tk):
                 try:
                     if output.suffix.lower() == ".exe":
                         # For self-extracting EXE, try silent mode if possible
-                        cmd = [str(output), '/S']  # Try /S for silent
+                        cmd = [str(output), '/S'] # Try /S for silent
                         result = subprocess.run(cmd, cwd=str(temp_extract_dir), capture_output=True, text=True)
                         if result.returncode != 0:
                             # Fallback to no args
@@ -557,8 +564,8 @@ class App(tk.Tk):
                         self.extract_with_7z(output, temp_extract_dir)
                 finally:
                     if output and output.exists():
-                        output.unlink()  # Clean up archive
-                
+                        output.unlink() # Clean up archive
+               
                 # Smart apply
                 self.ui_queue.put(("update_status", (status_label, f"Applying: {file_name}")))
                 overwritten, added, skipped = self.smart_apply_patch(temp_extract_dir, install_dir, status_label)
@@ -581,7 +588,6 @@ class App(tk.Tk):
             self.after(100, lambda msg=error_msg: messagebox.showerror("PATCH FAILED", msg))
         finally:
             self.ui_queue.put(("reset_ui", None))
-
     def patch(self):
         selected = self.tree.selection()
         if not selected:
@@ -627,16 +633,15 @@ class App(tk.Tk):
         progress_var = tk.DoubleVar()
         progress_bar = ttk.Progressbar(self.progress_frame, variable=progress_var, maximum=100, mode='indeterminate')
         progress_bar.pack(fill=tk.X, pady=2)
-        progress_bar.start()  # Start indeterminate
+        progress_bar.start() # Start indeterminate
         status_label = tk.Label(self.progress_frame, text="Starting download...")
         status_label.pack()
         speed_label = tk.Label(self.progress_frame, text="See console for progress")
         speed_label.pack()
         # Start thread
         threading.Thread(target=self.process_patch, args=(files, selected_indices, install_dir, game_name, progress_var, status_label, speed_label), daemon=True).start()
-
 if __name__ == "__main__":
-    ensure_7z_exe()  # Run this first for standalone
+    ensure_7z_exe() # Run this first for standalone
     try:
         import vdf
     except:
