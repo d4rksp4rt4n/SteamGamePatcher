@@ -158,13 +158,17 @@ def load_change_token():
         if os.path.exists(CHANGE_TOKEN_FILE):
             with open(CHANGE_TOKEN_FILE, 'r') as f:
                 token = f.read().strip()
-            logger.debug(f"Loaded change token: {token}")
-            return token
+            if token:
+                logger.info(f"Loaded change token: {token[:10]}...")  # ADD THIS (partial for privacy)
+                return token
+            else:
+                logger.warning(f"Empty {CHANGE_TOKEN_FILE}")
         logger.debug(f"No {CHANGE_TOKEN_FILE}, will fetch initial token")
         return None
     except Exception as e:
         logger.error(f"Loading {CHANGE_TOKEN_FILE} failed: {e}")
         return None
+        
 def save_change_token(token):
     try:
         os.makedirs(os.path.dirname(CHANGE_TOKEN_FILE), exist_ok=True)
@@ -181,11 +185,13 @@ def load_last_folders():
     try:
         with open(OUTPUT_JSON, 'r', encoding='utf-8') as f:
             data = json.load(f)
-        logger.debug(f"Loaded {len(data.get('developers', {}))} developers from {OUTPUT_JSON}")
+        devs = data.get('developers', {})
+        logger.info(f"Loaded {len(devs)} developers from {OUTPUT_JSON}")  # ADD THIS
         return data
     except Exception as e:
         logger.error(f"Loading {OUTPUT_JSON} failed: {e}")
         return {"developers": {}, "metadata": {}}
+        
 def save_database(folder_structure):
     try:
         os.makedirs(os.path.dirname(OUTPUT_JSON), exist_ok=True)
@@ -435,6 +441,7 @@ def main():
     last_folders = load_last_folders()
     change_token = load_change_token()
     use_changes = bool(change_token and last_folders.get("developers"))
+    logger.info(f"Incremental mode: {use_changes} (token: {bool(change_token)}, devs: {len(last_folders.get('developers', {}))} )")  # ADD THIS
     folder_structure, new_change_token, change_count = index_game_folders(
         ROOT_FOLDER_ID, drive_service, last_folders, use_changes, change_token)
     save_database(folder_structure)
