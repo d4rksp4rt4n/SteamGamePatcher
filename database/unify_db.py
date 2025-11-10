@@ -20,17 +20,37 @@ import unicodedata
 import re
 from pathlib import Path
 import logging
-# === FORCE FRESH patches_data.json FROM GITHUB ===
-import urllib.request
-import shutil
+import os
+import requests
+# === FORCE FRESH patches_data.json FROM PRIVATE GITHUB ===
 from pathlib import Path
-PATCHES_DATA_URL = "https://raw.githubusercontent.com/d4rksp4rt4n/nukige-site/refs/heads/main/cache/patches_data.json?token=GHSAT0AAAAAADCLBRKMMHW2DEBFGTJ2SNTQ2IRA22A"
+PATCHES_DATA_API_URL = "https://api.github.com/repos/d4rksp4rt4n/nukige-site/contents/cache/patches_data.json"
 LOCAL_PATCHES_DATA = Path("data/patches_data.json")
 def ensure_patches_data():
-    logging.info("Downloading latest patches_data.json from GitHub...")
+    if LOCAL_PATCHES_DATA.exists() and LOCAL_PATCHES_DATA.stat().st_size > 1000 * 1024:  # Skip if ~1MB+ exists
+        logging.info(f"Using existing patches_data.json ({LOCAL_PATCHES_DATA.stat().st_size / 1024:.1f} KB)")
+        return
+    # Fallback download logic (only if missing/small)
+    token = os.getenv('NUKIGE_TOKEN')
+    if not token:
+        logging.error("NUKIGE_TOKEN not set; cannot download from private repo.")
+        exit(1)
+    logging.info("Downloading latest patches_data.json from private GitHub repo...")
     try:
-        with urllib.request.urlopen(PATCHES_DATA_URL, timeout=30) as r, open(LOCAL_PATCHES_DATA, 'wb') as f:
-            shutil.copyfileobj(r, f)
+        headers = {
+            "Authorization": f"token {token}",
+            "Accept": "application/vnd.github.v3+json"
+        }
+        response = requests.get(PATCHES_DATA_API_URL, headers=headers, timeout=30)
+        response.raise_for_status()
+        data = response.json()
+        download_url = data.get('download_url')
+        if not download_url:
+            raise ValueError("No download_url in API response.")
+        download_response = requests.get(download_url, headers=headers, timeout=30)
+        download_response.raise_for_status()
+        with open(LOCAL_PATCHES_DATA, 'wb') as f:
+            f.write(download_response.content)
         logging.info(f"Downloaded: {LOCAL_PATCHES_DATA.stat().st_size / 1024:.1f} KB")
     except Exception as e:
         logging.error(f"Download failed: {e}")
@@ -41,6 +61,7 @@ ensure_patches_data()
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logging.getLogger().setLevel(logging.INFO)
 logger = logging.getLogger(__name__)
+
 def normalize_string(s, strip_suffixes=False):
     """Normalize a string for matching, optionally stripping suffixes."""
     if not s:
@@ -168,6 +189,7 @@ def load_folder_db():
 def unify_databases():
     entries = load_patches_data()
     folder_db = load_folder_db()
+   
     developers = folder_db.get('developers', {})
    
     if not entries:
