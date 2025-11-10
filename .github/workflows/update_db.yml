@@ -47,22 +47,24 @@ jobs:
               -H "Accept: application/vnd.github.v3+json" \
               "$API_URL")
             DOWNLOAD_URL=$(echo "$RESPONSE" | jq -r '.download_url')
-            curl -L -H "Authorization: token $TOKEN" \
+            if curl -L -H "Authorization: token $TOKEN" \
                  "$DOWNLOAD_URL" \
-                 -o database/data/patches_data.json && break
+                 -o database/data/patches_data.json; then
+              break
+            fi
             echo "Fetch attempt $attempt failed. Retrying in 5s..."
             sleep 5
           done
           if [ ! -f database/data/patches_data.json ]; then
             echo "Fetch failed after 3 attempts."
-            exit 1  # Fail workflow if critical
+            exit 1
           fi
           echo "Downloaded: $(du -h database/data/patches_data.json | cut -f1)"
 
           - name: Debug patches_data.json
           run: |
-            ls -la database/data/patches_data.json
-            head -n 5 database/data/patches_data.json || echo "File empty/invalid"
+          ls -la database/data/patches_data.json
+          head -n 5 database/data/patches_data.json || echo "File empty/invalid"
             
       - name: Run GDrive DB Builder
         run: python database/gdrive_db.py
