@@ -26,9 +26,9 @@ except ImportError:
     win32file = None
 SERVICE_ACCOUNT_FILE = 'service-account.json'
 SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
-CHANGE_TOKEN_FILE = 'data/change_token.txt'
+CHANGE_TOKEN_FILE = 'database/data/change_token.txt'
 ROOT_FOLDER_ID = '1a7jIAJoELzB3HpXNcuF0tGmDq1jqHs9-'
-OUTPUT_JSON = 'data/patches_database.json'
+OUTPUT_JSON = 'database/data/patches_database.json'
 MAX_RETRIES = 3
 RETRY_DELAY_BASE = 1
 BATCH_SIZE = 100
