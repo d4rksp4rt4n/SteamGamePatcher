@@ -22,21 +22,27 @@ from pathlib import Path
 import logging
 import os
 import requests
-# === FORCE FRESH patches_data.json FROM PRIVATE GITHUB ===
-from pathlib import Path
-PATCHES_DATA_API_URL = "https://api.github.com/repos/d4rksp4rt4n/nukige-site/contents/cache/patches_data.json"
-LOCAL_PATCHES_DATA = Path("data/patches_data.json")
+# === USE EXISTING patches_data.json IF AVAILABLE ===
+LOCAL_PATCHES_DATA = Path("database/data/patches_data.json")
+LOCAL_DB_PATH = Path("database/data/patches_database.json")
 def ensure_patches_data():
-    if LOCAL_PATCHES_DATA.exists() and LOCAL_PATCHES_DATA.stat().st_size > 1000 * 1024:  # Skip if ~1MB+ exists
-        logging.info(f"Using existing patches_data.json ({LOCAL_PATCHES_DATA.stat().st_size / 1024:.1f} KB)")
-        return
-    # Fallback download logic (only if missing/small)
+    if LOCAL_PATCHES_DATA.exists():
+        try:
+            with open(LOCAL_PATCHES_DATA, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            if data.get('entries') and len(data['entries']) > 0:
+                logging.info(f"Using existing patches_data.json ({len(data['entries'])} entries)")
+                return
+        except Exception as e:
+            logging.warning(f"Existing patches_data.json invalid ({e}), will attempt download.")
+    # Fallback: Download if missing/invalid
     token = os.getenv('NUKIGE_TOKEN')
     if not token:
-        logging.error("NUKIGE_TOKEN not set; cannot download from private repo.")
+        logging.error("NUKIGE_TOKEN not set; cannot download from private repo. Please run in workflow or set token locally.")
         exit(1)
     logging.info("Downloading latest patches_data.json from private GitHub repo...")
     try:
+        PATCHES_DATA_API_URL = "https://api.github.com/repos/d4rksp4rt4n/nukige-site/contents/cache/patches_data.json"
         headers = {
             "Authorization": f"token {token}",
             "Accept": "application/vnd.github.v3+json"
@@ -49,6 +55,7 @@ def ensure_patches_data():
             raise ValueError("No download_url in API response.")
         download_response = requests.get(download_url, headers=headers, timeout=30)
         download_response.raise_for_status()
+        LOCAL_PATCHES_DATA.parent.mkdir(parents=True, exist_ok=True)
         with open(LOCAL_PATCHES_DATA, 'wb') as f:
             f.write(download_response.content)
         logging.info(f"Downloaded: {LOCAL_PATCHES_DATA.stat().st_size / 1024:.1f} KB")
@@ -254,3 +261,4 @@ def unify_databases():
     logger.info(f"Unified database saved to {output_path}")
 if __name__ == '__main__':
     unify_databases()
+
