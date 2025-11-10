@@ -1,52 +1,42 @@
 name: Update Patches Database
-
 on:
-#  schedule:
-#    - cron: '0 */6 * * *'
+  schedule:
+    - cron: '0 */6 * * *'
   workflow_dispatch:
   push:
     branches: [ main ]
     paths:
       - '.github/workflows/update-db.yml'
-      - 'gdrive_db.py'
-      - 'unify_db.py'
-
+      - 'database/gdrive_db.py'
+      - 'database/unify_db.py'
 jobs:
   build-and-update:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Restore cache
-        uses: actions/cache@v4
-        id: cache-drive
+        uses: actions/cache/restore@v4
         with:
-          path: data/
-          key: drive-state-v6-${{ hashFiles('gdrive_db.py') }}-${{ github.run_id }}
+          path: database/data/
+          key: drive-state-v6-${{ hashFiles('database/gdrive_db.py') }}
           restore-keys: |
-            drive-state-v6-${{ hashFiles('gdrive_db.py') }}-
-
+            drive-state-v6-
       - name: Ensure data folder
-        run: mkdir -p data
-
+        run: mkdir -p database/data
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-
       - name: Install dependencies
         run: |
           pip install google-api-python-client google-auth vdf gdown fuzzywuzzy python-levenshtein jq
-
       - name: Save Service Account JSON
         env:
           SERVICE_ACCOUNT_JSON: ${{ secrets.SERVICE_ACCOUNT_JSON }}
         run: echo "$SERVICE_ACCOUNT_JSON" > service-account.json
-
       - name: Fetch patches_data.json from PRIVATE nukige-site
         env:
           TOKEN: ${{ secrets.NUKIGE_TOKEN }}
@@ -68,49 +58,46 @@ jobs:
             exit 1  # Fail workflow if critical
           fi
           echo "Downloaded: $(du -h database/data/patches_data.json | cut -f1)"
+
+          - name: Debug patches_data.json
+          run: |
+            ls -la database/data/patches_data.json
+            head -n 5 database/data/patches_data.json || echo "File empty/invalid"
             
-      - name: Debug patches_data.json
-        run: |
-          ls -la database/data/patches_data.json
-          head -n 5 database/data/patches_data.json || echo "File empty/invalid"
-
       - name: Run GDrive DB Builder
-        run: python gdrive_db.py
-
+        run: python database/gdrive_db.py
       - name: Run Unify Databases
-        run: python unify_db.py
-
+        run: python database/unify_db.py
       - name: Add meta info
         run: |
           python -c "
-          import json, time
-          with open('data/patches_database.json', 'r+', encoding='utf-8') as f:
+          import json
+          import datetime
+          with open('database/data/patches_database.json', 'r+', encoding='utf-8') as f:
             data = json.load(f)
-            data['meta'] = {'last_updated': time.strftime('%Y-%m-%d %H:%M:%S UTC')}
+            data.setdefault('metadata', {})
+            data['metadata']['last_updated'] = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')
             f.seek(0)
             json.dump(data, f, indent=4)
             f.truncate()
           "
-
       - name: Commit & Push if changed
         run: |
           git config user.email "action@github.com"
           git config user.name "GitHub Action"
-          git add data/
+          git add database/data/
           if git diff --staged --quiet; then
             echo "No changes"
             exit 0
           fi
           git commit -m "Auto-update database [$(date +'%Y-%m-%d %H:%M')]"
-
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
-
       - name: Save cache
-        uses: actions/cache@v4
+        uses: actions/cache/save@v4
         with:
-          path: data/
-          key: drive-state-v6-${{ hashFiles('gdrive_db.py') }}-${{ github.run_id }}
+          path: database/data/
+          key: drive-state-v6-${{ hashFiles('database/gdrive_db.py') }}
