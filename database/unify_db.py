@@ -1,11 +1,11 @@
 """
 Unify Databases Script
-Version: 1.0.3
-Purpose: Merge metadata from patches_data.json into data/patches_database.json
+Version: 1.0.4
+Purpose: Merge metadata from patches_data.json into database/data/patches_database.json
 by fuzzy matching game names primarily (ratio >80), with developer as secondary check (>60).
 Handles mismatches where folder devs are publishers/folder names vs Steam devs.
 Adds appid, header_image, publisher, notes, store_status to game entries.
-Saves unified data back to data/patches_database.json.
+Saves unified data back to database/data/patches_database.json.
 Logs matches, unmatched, low-scores for review.
 Optimizations:
 - Primary: Fuzzy on game_name across all entries (unique enough).
@@ -176,19 +176,19 @@ def get_entry_match(folder_dev, folder_game, entries, entry_devs):
     match_status = "matched" if best_entry else "unmatched"
     return best_entry, match_status, best_reason, low_score_fuzzy_matches
 def load_patches_data():
-    """Load entries from data/patches_data.json"""
-    path = Path('data/patches_data.json')
+    """Load entries from database/data/patches_data.json"""
+    path = Path('database/data/patches_data.json')
     if not path.exists():
-        logger.error("data/patches_data.json not found.")
+        logger.error("database/data/patches_data.json not found.")
         return []
     with open(path, 'r', encoding='utf-8') as f:
         data = json.load(f)
     return data.get('entries', [])
 def load_folder_db():
-    """Load developers from data/patches_database.json"""
-    db_path = Path('data/patches_database.json')
+    """Load developers from database/data/patches_database.json"""
+    db_path = Path('database/data/patches_database.json')
     if not db_path.exists():
-        logger.error("data/patches_database.json not found.")
+        logger.error("database/data/patches_database.json not found.")
         return {}
     with open(db_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
@@ -254,11 +254,12 @@ def unify_databases():
             logger.info(f" ... and {len(low_score_fuzzy_matches) - 10} more")
    
     # Save unified folder_db
-    output_path = Path('data/patches_database.json')
+    output_path = Path('database/data/patches_database.json')
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(folder_db, f, indent=4, ensure_ascii=False)
     logger.info(f"Unified database saved to {output_path}")
 if __name__ == '__main__':
     unify_databases()
+
 
