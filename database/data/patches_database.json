@@ -23635,6 +23635,34 @@
                     "publisher": "Sekai Project",
                     "notes": "English, Chinese Simplified and Traditional patches",
                     "store_status": "available"
+                },
+                "Amairo Chocolate 3": {
+                    "id": "1m0lDsss1XeATila1As_C-p0cGMTN1H3W",
+                    "files": [
+                        {
+                            "name": "Amairo Chocolate 3 English R18 Patch v2025.11.10.exe",
+                            "id": "1qDDTkOK0h59L3YLsBdbFl0A9QvNhL6go",
+                            "size": "1302.9 MB",
+                            "type": ".exe"
+                        },
+                        {
+                            "name": "Amairo Chocolate 3 Simplified Chinese R18 Patch v2025.11.10.exe",
+                            "id": "13oQ0ZCZSXH6BkwmpB_z7Cq_Ua6XWKFu7",
+                            "size": "1302.9 MB",
+                            "type": ".exe"
+                        },
+                        {
+                            "name": "Amairo Chocolate 3 Traditional Chinese R18 Patch v2025.11.10.exe",
+                            "id": "13jbJH1iJR-v0i0fHkfNXgF1BjskPN2GN",
+                            "size": "1302.9 MB",
+                            "type": ".exe"
+                        }
+                    ],
+                    "appid": "2022290",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2022290/header.jpg?t=1720811538",
+                    "publisher": "Sekai Project",
+                    "notes": "English, Chinese Simplified and Traditional patches v2023.06.28",
+                    "store_status": "available"
                 }
             }
         },
@@ -33436,8 +33464,13 @@
         }
     },
     "metadata": {
-        "recent_changes": [],
-        "version": "2025-11-10 16:32:49",
-        "last_updated": "2025-11-10 22:24:16 UTC"
+        "recent_changes": [
+            "Amairo Chocolate 3 - Added game to Cabbage Soft",
+            "Amairo Chocolate 3 - Update to Amairo Chocolate 3 English R18 Patch v2025.11.10.exe",
+            "Amairo Chocolate 3 - Update to Amairo Chocolate 3 Simplified Chinese R18 Patch v2025.11.10.exe",
+            "Amairo Chocolate 3 - Update to Amairo Chocolate 3 Traditional Chinese R18 Patch v2025.11.10.exe"
+        ],
+        "version": "2025-11-10 23:13:26",
+        "last_updated": "2025-11-10 23:13:27 UTC"
     }
 }
