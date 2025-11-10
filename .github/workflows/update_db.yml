@@ -60,12 +60,10 @@ jobs:
             exit 1
           fi
           echo "Downloaded: $(du -h database/data/patches_data.json | cut -f1)"
-
-          - name: Debug patches_data.json
-          run: |
+      - name: Debug patches_data.json
+        run: |
           ls -la database/data/patches_data.json
-          head -n 5 database/data/patches_data.json || echo "File empty/invalid"
-            
+          head -n 5 database/data/patches_data.json 2>/dev/null || echo "File empty/invalid"
       - name: Run GDrive DB Builder
         run: python database/gdrive_db.py
       - name: Run Unify Databases
