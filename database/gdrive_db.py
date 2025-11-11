@@ -1,13 +1,15 @@
 """
 Patch folder indexing script to sync Google Drive folders with local JSON, including file lists in each game folder.
-Version: 1.1.7
+Version: 1.1.9
 Changes:
 - Implemented proper incremental updates using changes API.
 - Only process changed items in incremental mode.
 - Fallback to full scan if changes API fails or no token.
 - Handle additions, deletions, renames, and moves.
 - Ignore irrelevant changes outside the root folder structure.
-- Maintain ID maps for efficient lookups and updates.
+- Added recursive scanning of subfolders within game folders, excluding folders named "Old".
+- Enhanced incremental updates to handle files in subfolders by traversing the parent chain and excluding paths containing "Old" folders.
+- Added 'path' field to each file entry to preserve relative folder structure information within the game, avoiding flat list confusion.
 """
 import os
 import json
@@ -129,6 +131,55 @@ def list_files(drive_service, folder_id, folders_only=False):
     except HttpError as e:
         logger.error(f"Listing files failed: {e}")
         raise
+def recursive_list_files_with_path(drive_service, folder_id, current_path='', ignore_folder_names=['Old']):
+    results = []
+    items = list_files(drive_service, folder_id, folders_only=False)
+    for item in items:
+        if item['mimeType'] == 'application/vnd.google-apps.folder':
+            if item['name'] in ignore_folder_names:
+                continue
+            sub_path = f"{current_path}{item['name']}/" if current_path else f"{item['name']}/"
+            sub_files = recursive_list_files_with_path(drive_service, item['id'], sub_path, ignore_folder_names)
+            results.extend(sub_files)
+        else:
+            ext = Path(item['name']).suffix.lower()
+            if ext in ['.zip', '.7z', '.rar', '.exe']:
+                size_str = item.get('size', 'Unknown')
+                if isinstance(size_str, str) and size_str.isdigit():
+                    size = int(size_str)
+                    size_str = f"{size / 1024 / 1024:.1f} MB" if size > 1024 * 1024 else f"{size / 1024:.1f} KB"
+                file_path = f"{current_path}{item['name']}" if current_path else item['name']
+                results.append({
+                    'name': item['name'],
+                    'id': item['id'],
+                    'size': size_str,
+                    'type': ext,
+                    'path': file_path
+                })
+    return results
+def find_game_and_path(drive_service, start_parent_id, game_id_to_path):
+    path_parts = []
+    current_id = start_parent_id
+    while current_id and current_id not in game_id_to_path:
+        try:
+            folder_info = execute_with_retries(
+                drive_service.files().get(fileId=current_id, fields='name,parents'),
+                f"get folder info for {current_id}"
+            )
+            name = folder_info['name']
+            if name == 'Old':
+                return None
+            parents = folder_info.get('parents', [])
+            if not parents:
+                return None
+            path_parts.append(name)
+            current_id = parents[0]
+        except HttpError as e:
+            logger.warning(f"Error getting folder {current_id}: {e}")
+            return None
+    if current_id not in game_id_to_path:
+        return None
+    return path_parts[::-1], current_id
 def get_changes(drive_service, change_token):
     try:
         logger.debug(f"Fetching changes since token {change_token}")
@@ -159,7 +210,7 @@ def load_change_token():
             with open(CHANGE_TOKEN_FILE, 'r') as f:
                 token = f.read().strip()
             if token:
-                logger.info(f"Loaded change token: {token[:10]}...")  # ADD THIS (partial for privacy)
+                logger.info(f"Loaded change token: {token[:10]}...")
                 return token
             else:
                 logger.warning(f"Empty {CHANGE_TOKEN_FILE}")
@@ -186,7 +237,7 @@ def load_last_folders():
         with open(OUTPUT_JSON, 'r', encoding='utf-8') as f:
             data = json.load(f)
         devs = data.get('developers', {})
-        logger.info(f"Loaded {len(devs)} developers from {OUTPUT_JSON}")  # ADD THIS
+        logger.info(f"Loaded {len(devs)} developers from {OUTPUT_JSON}")
         return data
     except Exception as e:
         logger.error(f"Loading {OUTPUT_JSON} failed: {e}")
@@ -309,9 +360,6 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                             logger.info(f"Added game: {name} to {dev_name}")
                             new_changes.append(f"{name} - Added game to {dev_name}")
                             folder_structure['developers'][dev_name]['games'][name] = {'id': id_, 'files': []}
-                        elif parent in game_id_to_path:
-                            logger.debug(f"Ignoring new subfolder in game: {name}")
-                            continue
                         else:
                             logger.debug(f"Ignoring new folder {name} with parent {parent}")
                             continue
@@ -328,11 +376,17 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                         removed = True
                         logger.info(f"Removed file {name} from old location {old_game} / {old_dev}")
                         new_changes.append(f"{old_game} - Removed file {name} from {old_dev}")
-                    if parent not in game_id_to_path:
-                        logger.debug(f"Ignoring file {name} not in game folder")
+                    if not parents:
                         if removed:
                             change_count += 1
                         continue
+                    parent = parents[0]
+                    res = find_game_and_path(drive_service, parent, game_id_to_path)
+                    if res is None:
+                        if removed:
+                            change_count += 1
+                        continue
+                    path_parts, game_parent_id = res
                     ext = Path(name).suffix.lower()
                     if ext not in ['.zip', '.7z', '.rar', '.exe']:
                         if removed:
@@ -342,13 +396,16 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                     if isinstance(size_str, str) and size_str.isdigit():
                         size = int(size_str)
                         size_str = f"{size / 1024 / 1024:.1f} MB" if size > 1024 * 1024 else f"{size / 1024:.1f} KB"
+                    rel_folder_path = '/'.join(path_parts)
+                    file_path = f"{rel_folder_path}/{name}" if path_parts else name
                     new_file = {
                         'name': name,
                         'id': id_,
                         'size': size_str,
-                        'type': ext
+                        'type': ext,
+                        'path': file_path
                     }
-                    dev_name, game_name = game_id_to_path[parent]
+                    dev_name, game_name = game_id_to_path[game_parent_id]
                     files = folder_structure['developers'][dev_name]['games'][game_name]['files']
                     files.append(new_file)
                     logger.info(f"Added/updated file {name} in {game_name} / {dev_name}")
@@ -383,24 +440,9 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                 game_name = game_folder['name']
                 game_id = game_folder['id']
                 logger.info(f" [{j}/{len(game_folders)}] Processing game: {game_name} (ID: {game_id})")
-                game_files = list_files(drive_service, game_id, folders_only=False)
+                game_files = recursive_list_files_with_path(drive_service, game_id, '', ['Old'])
                 logger.info(f" Found {len(game_files)} files in {game_name}")
-                files_list = []
-                for f in game_files:
-                    if f['mimeType'] == 'application/vnd.google-apps.folder':
-                        continue # Skip subfolders
-                    ext = Path(f['name']).suffix.lower()
-                    if ext in ['.zip', '.7z', '.rar', '.exe']:
-                        size_str = f.get('size', 'Unknown')
-                        if size_str and size_str.isdigit():
-                            size = int(size_str)
-                            size_str = f"{size/1024/1024:.1f} MB" if size > 1024*1024 else f"{size/1024:.1f} KB"
-                        files_list.append({
-                            'name': f['name'],
-                            'id': f['id'],
-                            'size': size_str,
-                            'type': ext
-                        })
+                files_list = game_files
                 folder_structure["developers"][dev_name]["games"][game_name] = {
                     "id": game_id,
                     "files": files_list
@@ -441,7 +483,7 @@ def main():
     last_folders = load_last_folders()
     change_token = load_change_token()
     use_changes = bool(change_token and last_folders.get("developers"))
-    logger.info(f"Incremental mode: {use_changes} (token: {bool(change_token)}, devs: {len(last_folders.get('developers', {}))} )")  # ADD THIS
+    logger.info(f"Incremental mode: {use_changes} (token: {bool(change_token)}, devs: {len(last_folders.get('developers', {}))} )")
     folder_structure, new_change_token, change_count = index_game_folders(
         ROOT_FOLDER_ID, drive_service, last_folders, use_changes, change_token)
     save_database(folder_structure)
