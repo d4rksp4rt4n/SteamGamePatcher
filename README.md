@@ -37,7 +37,6 @@ No admin rights needed, but auto-patchers executable run through the app might r
 
    pip install -r requirements.txt
 
-*(Create `requirements.txt` with: `requests pillow gdown vdf`)*
 3. Run:
   python main.py
 
