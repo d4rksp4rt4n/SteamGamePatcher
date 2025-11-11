@@ -1,10 +1,25 @@
 {
     "data": {
-        "total_games": 1467,
+        "total_games": 1468,
         "unique_developers": 757,
-        "generated_at": "2025-11-10 15:17:42 UTC"
+        "generated_at": "2025-11-11 03:39:12 UTC"
     },
     "entries": [
+        {
+            "game": "Amairo Chocolate 3",
+            "developer": "Cabbage Soft",
+            "publisher": "Sekai Project",
+            "notes": "English, Chinese Simplified and Traditional patches v2025.11.10",
+            "steam_url": "https://store.steampowered.com/app/3143300/",
+            "patch_link": "https://drive.google.com/drive/folders/1m0lDsss1XeATila1As_C-p0cGMTN1H3W",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3143300/3a132f4958f2fbdb04b442433e480fbbab6ef12b/header.jpg?t=1762809553",
+            "row_num": "55",
+            "appid": "3143300",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: cabbage soft|amairo chocolate 3",
+            "store_status": "available",
+            "manual_edit": false
+        },
         {
             "game": "The Reason for Your Smile",
             "developer": "Jinsei Tsukoudome",
