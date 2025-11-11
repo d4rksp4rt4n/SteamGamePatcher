@@ -42,12 +42,12 @@ No admin rights needed, but auto-patchers executables might require OS admin rig
 
 4. Run:
 
-  python "Steam Game Patcher.py"
+  python SteamGamePatcher.py
 
 - On first run, it auto-downloads the patch database and installs missing deps.
 
 ## Usage
-1. **Launch the App**: Run `Steam Game Patcher.py` or the EXE.
+1. **Launch the App**: Run `SteamGamePatcher.py` or the EXE.
 2. **Browse Games**: The list auto-populates with patchable installed games (sorted alphabetically). Use the search bar to filter.
 3. **Select a Game**: Click to load details, box art, and patch info.
 4. **Apply Patches**:
