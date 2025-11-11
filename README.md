@@ -33,11 +33,11 @@ No admin rights needed, but auto-patchers executable run through the app might r
    git clone https://github.com/d4rksp4rt4n/SteamGamePatcher.git
    cd SteamGamePatcher
 
-2. Install dependencies:
+3. Install dependencies:
 
    pip install -r requirements.txt
 
-3. Run:
+4. Run:
   python main.py
 
 - On first run, it auto-downloads the patch database and installs missing deps.
