@@ -23658,10 +23658,10 @@
                             "type": ".exe"
                         }
                     ],
-                    "appid": "2022290",
-                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2022290/header.jpg?t=1720811538",
+                    "appid": "3143300",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3143300/3a132f4958f2fbdb04b442433e480fbbab6ef12b/header.jpg?t=1762809553",
                     "publisher": "Sekai Project",
-                    "notes": "English, Chinese Simplified and Traditional patches v2023.06.28",
+                    "notes": "English, Chinese Simplified and Traditional patches v2025.11.10",
                     "store_status": "available"
                 }
             }
@@ -33470,7 +33470,7 @@
             "Amairo Chocolate 3 - Update to Amairo Chocolate 3 Simplified Chinese R18 Patch v2025.11.10.exe",
             "Amairo Chocolate 3 - Update to Amairo Chocolate 3 Traditional Chinese R18 Patch v2025.11.10.exe"
         ],
-        "version": "2025-11-11 06:01:25",
-        "last_updated": "2025-11-11 06:01:26 UTC"
+        "version": "2025-11-11 06:08:26",
+        "last_updated": "2025-11-11 06:08:28 UTC"
     }
 }
