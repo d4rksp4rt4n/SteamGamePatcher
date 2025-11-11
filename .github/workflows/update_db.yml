@@ -82,21 +82,26 @@ jobs:
             f.truncate()
           "
       - name: Commit & Push if changed
+        id: commit
         run: |
           git config user.email "action@github.com"
           git config user.name "GitHub Action"
           git add database/data/
           if git diff --staged --quiet; then
+            echo "changes=false" >> $GITHUB_OUTPUT
             echo "No changes"
             exit 0
           fi
+          echo "changes=true" >> $GITHUB_OUTPUT
           git commit -m "Auto-update database [$(date +'%Y-%m-%d %H:%M')]"
       - name: Push changes
+        if: steps.commit.outputs.changes == 'true'
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
       - name: Save cache
+        if: steps.commit.outputs.changes == 'true'
         uses: actions/cache/save@v4
         with:
           path: database/data/
