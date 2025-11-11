@@ -3,7 +3,7 @@ import os
 import subprocess
 import sys
 import tkinter as tk
-from tkinter import ttk, messagebox
+from tkinter import ttk, messagebox, scrolledtext
 from pathlib import Path
 from io import BytesIO
 import requests
@@ -14,9 +14,12 @@ import time
 import threading
 import queue
 import shutil
+import webbrowser
 from collections import defaultdict
+
 def log(*args):
     print("[DEBUG]", *args)
+
 def ensure_7z_exe():
     """Extract 7z.exe alongside the app if not present."""
     # Get the directory where the EXE is running
@@ -44,6 +47,7 @@ def ensure_7z_exe():
         log(f"Failed to extract 7z.exe: {e}")
         messagebox.showwarning("Missing 7z.exe", "7z.exe not found. Download from https://www.7-zip.org and place in the app folder.")
         sys.exit(1)
+
 def get_steam_path():
     log("Finding Steam...")
     try:
@@ -59,6 +63,7 @@ def get_steam_path():
             log(f"Steam fallback: {p}")
             return p
     return None
+
 def get_installed_games(steam_path):
     installed = {}
     vdf_path = steam_path / "steamapps" / "libraryfolders.vdf"
@@ -93,6 +98,7 @@ def get_installed_games(steam_path):
                 pass
     log(f"Installed: {len(installed)}")
     return installed
+
 def load_box_art(steam_path, appid):
     """ULTIMATE 2025 Steam box art loader — works with deleted games, custom .jpg grid, deep hash folders"""
     appid = str(appid)
@@ -175,6 +181,7 @@ def load_box_art(steam_path, appid):
     except Exception as e:
         log(f"FAILED: {e}")
         return None
+
 class PatchSelectionDialog(tk.Toplevel):
     def __init__(self, parent, files):
         super().__init__(parent)
@@ -197,6 +204,7 @@ class PatchSelectionDialog(tk.Toplevel):
         tk.Button(btn_frame, text="Apply Selected", command=self.apply).pack(side=tk.LEFT, padx=5)
         tk.Button(btn_frame, text="Cancel", command=self.destroy).pack(side=tk.LEFT, padx=5)
         self.listbox.bind('<Double-Button-1>', self.apply)
+
     def apply(self, event=None):
         indices = self.listbox.curselection()
         if not indices:
@@ -204,12 +212,57 @@ class PatchSelectionDialog(tk.Toplevel):
             return
         self.result = indices
         self.destroy()
+
+class ChangesDialog(tk.Toplevel):
+    def __init__(self, parent, grouped_changes):
+        super().__init__(parent)
+        self.title("Latest Patch Changes")
+        self.geometry("600x500")
+        self.transient(parent)
+        self.grab_set()
+        text_widget = scrolledtext.ScrolledText(self, wrap=tk.WORD, width=70, height=25, font=("Arial", 10))
+        text_widget.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+        for game, details in grouped_changes.items():
+            if game == "Miscellaneous":
+                text_widget.insert(tk.END, f"{game}:\n")
+            else:
+                text_widget.insert(tk.END, f"{game}:\n")
+            for detail in details:
+                text_widget.insert(tk.END, f"  - {detail}\n")
+            text_widget.insert(tk.END, "\n")
+        text_widget.config(state=tk.DISABLED)
+        tk.Button(self, text="Close", command=self.destroy).pack(pady=10)
+
+class AboutDialog(tk.Toplevel):
+    def __init__(self, parent, version):
+        super().__init__(parent)
+        self.title("About Steam Game Patcher")
+        self.geometry("400x200")
+        self.transient(parent)
+        self.grab_set()
+        about_text = f"Steam Game Patcher\n\nDatabase Version: {version}"
+        tk.Label(self, text=about_text, justify=tk.LEFT, font=("Arial", 10)).pack(pady=20)
+        tk.Button(self, text="Open GitHub", command=lambda: webbrowser.open("https://github.com/d4rksp4rt4n/SteamGamePatcher")).pack(pady=5)
+        tk.Button(self, text="Close", command=self.destroy).pack(pady=10)
+
 # Main App
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Steam Game Patcher")
         self.geometry("960x640")
+        self.current_appid = None
+        self.current_install_dir = None
+        # Menu bar
+        menubar = tk.Menu(self)
+        self.option_add('*tearOff', False)
+        view_menu = tk.Menu(menubar, tearoff=0)
+        view_menu.add_command(label="Latest Patch Changes...", command=lambda: ChangesDialog(self, self.grouped_changes))
+        menubar.add_cascade(label="View", menu=view_menu)
+        help_menu = tk.Menu(menubar, tearoff=0)
+        help_menu.add_command(label="About...", command=lambda: AboutDialog(self, self.version))
+        menubar.add_cascade(label="Help", menu=help_menu)
+        self.config(menu=menubar)
         # Auto-download database
         DB_URL = "https://raw.githubusercontent.com/d4rksp4rt4n/SteamGamePatcher/refs/heads/main/database/data/patches_database.json"
         DB_PATH = Path('data/patches_database.json')
@@ -235,12 +288,12 @@ class App(tk.Tk):
        
         # Check for metadata and set status
         metadata = self.folder_db.get('metadata', {})
-        version = metadata.get('version', 'Unknown')
+        self.version = metadata.get('version', 'Unknown')
         last_updated = metadata.get('last_updated', 'Unknown')
         recent_changes = metadata.get('recent_changes', [])
        
         db_status = "Updated" if updated else "Up to date"
-        self.db_status = f"DB Version: {version} | Last Updated: {last_updated} | Status: {db_status}"
+        self.db_status = f"DB Version: {self.version} | Last Updated: {last_updated} | Status: {db_status}"
        
         # Group recent changes by game
         self.grouped_changes = self.group_recent_changes(recent_changes)
@@ -269,6 +322,8 @@ class App(tk.Tk):
                         self.matches.append(match_info)
                         self.by_id[appid] = match_info
                         log(f"MATCH: {appid} -> {game_name} by {dev_name}")
+        # Sort matches alphabetically by game name
+        self.matches = sorted(self.matches, key=lambda x: x['game_name'].lower())
         log(f"FOUND {len(self.matches)} matched games with patches")
         self.build_gui()
         if self.matches:
@@ -279,10 +334,7 @@ class App(tk.Tk):
         self.progress_frame = None
         self.ui_queue = queue.Queue()
         self.after(100, self.process_ui_queue)
-        # Start the recent changes ticker
-        self.changes_index = 0
-        self.changes_subindex = 0
-        self.after(5000, self.update_recent_changes_display)  # Update every 5 seconds
+
     def group_recent_changes(self, changes):
         """Group recent changes by game name."""
         grouped = defaultdict(list)
@@ -297,23 +349,18 @@ class App(tk.Tk):
                 # Fallback if format doesn't match
                 grouped["Miscellaneous"].append(change)
         return dict(grouped)  # Convert back to regular dict
-    def update_recent_changes_display(self):
-        """Cycle through grouped recent changes, displaying one group at a time."""
-        if not self.grouped_changes:
-            return
-        groups = list(self.grouped_changes.keys())
-        if self.changes_index >= len(groups):
-            self.changes_index = 0
-            self.changes_subindex = 0
-        current_group = groups[self.changes_index]
-        details = self.grouped_changes[current_group]
-        # Join details with " - "
-        full_text = f"Recent Changes: {current_group}: {' - '.join(details)}"
-        # Update the label text
-        self.recent_label.config(text=full_text)
-        # Increment subindex if needed, but since we show whole group, just cycle groups
-        self.changes_index += 1
-        self.after(5000, self.update_recent_changes_display)
+
+    def clear_details(self):
+        self.img_label.configure(image="", text="No Image")
+        self.dev_label.config(text="")
+        self.pub_label.config(text="")
+        self.notes_label.config(text="")
+        self.status_label.config(text="")
+        self.open_folder_btn.config(state=tk.DISABLED)
+        self.launch_btn.config(state=tk.DISABLED)
+        self.current_appid = None
+        self.current_install_dir = None
+
     def process_ui_queue(self):
         try:
             while not self.ui_queue.empty():
@@ -332,6 +379,7 @@ class App(tk.Tk):
         except queue.Empty:
             pass
         self.after(100, self.process_ui_queue)
+
     def build_gui(self):
         # Main container
         main_frame = tk.Frame(self)
@@ -361,13 +409,24 @@ class App(tk.Tk):
         self.patch_btn = tk.Button(details_frame, text="Patch Selected Game", command=self.patch)
         self.patch_btn.pack(anchor="w", pady=(10, 0))
        
-        # Recent changes label (will be updated dynamically)
-        self.recent_label = tk.Label(details_frame, text="Recent Changes: Loading...", fg="orange", wraplength=220, justify="left")
-        self.recent_label.pack(anchor="w", pady=(5, 0))
+        self.open_folder_btn = tk.Button(details_frame, text="Open Game Folder", command=self.open_folder, state=tk.DISABLED)
+        self.open_folder_btn.pack(anchor="w", pady=(5, 0))
+       
+        self.launch_btn = tk.Button(details_frame, text="Launch Game", command=self.launch_game, state=tk.DISABLED)
+        self.launch_btn.pack(anchor="w", pady=(5, 0))
        
         # Right: Game list
         right_frame = tk.Frame(main_frame)
         right_frame.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
+       
+        # Search bar
+        search_frame = tk.Frame(right_frame)
+        search_frame.pack(fill=tk.X, padx=0, pady=(0, 5))
+        tk.Label(search_frame, text="Search:").pack(side=tk.LEFT, padx=(0, 5))
+        self.search_var = tk.StringVar()
+        self.search_entry = tk.Entry(search_frame, textvariable=self.search_var)
+        self.search_entry.pack(side=tk.LEFT, fill=tk.X, expand=True)
+        self.search_entry.bind('<KeyRelease>', self.filter_games)
        
         # Treeview for games (only name)
         cols = ("Game",)
@@ -376,6 +435,7 @@ class App(tk.Tk):
         self.tree.column("Game", width=400)
         self.tree.pack(fill=tk.BOTH, expand=True)
        
+        # Initially populate sorted list
         for match in self.matches:
             appid = str(match["data"]["appid"]).strip()
             self.tree.insert("", "end",
@@ -391,23 +451,39 @@ class App(tk.Tk):
        
         self.status = tk.Label(bottom_frame, text=self.db_status, anchor="w", fg="green")
         self.status.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=10)
+
+    def filter_games(self, event=None):
+        search_term = self.search_var.get().lower().strip()
+        # Clear tree
+        for item in self.tree.get_children():
+            self.tree.delete(item)
+        # Filter and insert matching games (sorted)
+        filtered_matches = [m for m in self.matches if search_term in m['game_name'].lower()]
+        for match in filtered_matches:
+            appid = str(match["data"]["appid"]).strip()
+            self.tree.insert("", "end",
+                values=(match["game_name"],),
+                tags=(appid,)
+            )
+        # Clear selection if no matches
+        if not self.tree.get_children():
+            self.clear_details()
+
     def on_select(self, _):
         selected = self.tree.selection()
         if not selected:
+            self.clear_details()
             return
         tags = self.tree.item(selected[0])["tags"]
         if not tags:
+            self.clear_details()
             return
         appid = str(tags[0])
         log(f"SELECTED: '{appid}'")
         match = self.by_id.get(appid)
         if not match:
             log(f"NOT FOUND: {appid}")
-            self.img_label.configure(image="", text="No data")
-            self.dev_label.config(text="")
-            self.pub_label.config(text="")
-            self.notes_label.config(text="")
-            self.status_label.config(text="")
+            self.clear_details()
             return
         log(f"FOUND: {match['game_name']}")
         # Load box art
@@ -423,12 +499,32 @@ class App(tk.Tk):
         self.pub_label.config(text=f"Publisher: {match['data'].get('publisher', 'N/A')}")
         self.notes_label.config(text=f"Notes: {match['data'].get('notes', 'N/A')}")
         self.status_label.config(text=f"Status: {match['data'].get('store_status', 'N/A')}")
+        # Enable buttons
+        self.current_appid = appid
+        self.current_install_dir = self.installed[appid]
+        self.open_folder_btn.config(state=tk.NORMAL)
+        self.launch_btn.config(state=tk.NORMAL)
+
+    def open_folder(self):
+        if self.current_install_dir and self.current_install_dir.exists():
+            os.startfile(str(self.current_install_dir))
+        else:
+            messagebox.showerror("Error", "Game folder not found")
+
+    def launch_game(self):
+        if self.current_appid:
+            url = f"steam://run/{self.current_appid}"
+            os.startfile(url)
+        else:
+            messagebox.showerror("Error", "No game selected")
+
     def reset_ui(self):
         self.patch_btn.config(state="normal", text="Patch Selected Game")
         self.status.config(text=self.db_status, fg="green")
         if self.progress_frame:
             self.progress_frame.destroy()
             self.progress_frame = None
+
     def parse_size_bytes(self, size_str):
         """Parse size string like '199.7 MB' to bytes."""
         if not size_str or size_str == 'Unknown':
@@ -443,6 +539,7 @@ class App(tk.Tk):
             return None
         except:
             return None
+
     def download_with_gdown(self, file_id, output_path, expected_bytes, progress_var, status_label, speed_label):
         """Download using gdown with console progress."""
         try:
@@ -455,6 +552,7 @@ class App(tk.Tk):
         except Exception as e:
             log(f"gdown failed: {e}")
             raise e
+
     def extract_with_7z(self, archive_path, extract_dir):
         """Extract archive using local 7z.exe via subprocess."""
         script_dir = Path(sys.executable).parent if getattr(sys, 'frozen', False) else Path(__file__).parent
@@ -467,6 +565,7 @@ class App(tk.Tk):
             log(f"7z extraction failed: {result.stderr}")
             raise subprocess.CalledProcessError(result.returncode, cmd, result.stdout, result.stderr)
         log(f"Extracted with 7z: {archive_path} to {extract_dir}")
+
     def smart_apply_patch(self, extract_dir, install_dir, status_label):
         """Scan and match files from extracted patch to game dir, with hybrid overwrite/add logic."""
         # Build map of game files: filename.lower() -> list of full_paths
@@ -501,6 +600,7 @@ class App(tk.Tk):
                     added += 1
                     self.ui_queue.put(("update_status", (status_label, f"ADDED: {file}")))
         return overwritten, added, skipped
+
     def process_patch(self, files, selected_indices, install_dir, game_name, progress_var, status_label, speed_label):
         """Thread worker for download/extract/smart apply."""
         try:
@@ -588,6 +688,7 @@ class App(tk.Tk):
             self.after(100, lambda msg=error_msg: messagebox.showerror("PATCH FAILED", msg))
         finally:
             self.ui_queue.put(("reset_ui", None))
+
     def patch(self):
         selected = self.tree.selection()
         if not selected:
@@ -640,6 +741,7 @@ class App(tk.Tk):
         speed_label.pack()
         # Start thread
         threading.Thread(target=self.process_patch, args=(files, selected_indices, install_dir, game_name, progress_var, status_label, speed_label), daemon=True).start()
+
 if __name__ == "__main__":
     ensure_7z_exe() # Run this first for standalone
     try:
