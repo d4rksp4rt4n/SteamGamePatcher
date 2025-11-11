@@ -1,5 +1,4 @@
 name: Update Patches Database
-
 on:
   schedule:
     - cron: '0 4 * * *'  # Runs daily at 04:00 UTC (1 hour after Script Automation's 03:00)
@@ -9,9 +8,8 @@ on:
     branches: [ main ]
     paths:
       - '.github/workflows/update-db.yml'
-      - 'scripts/patch_indexer.py'  # Updated paths to match suggested folder structure
-      - 'scripts/unify_databases.py'
-
+      - 'database/gdrive_db.py'
+      - 'database/unify_db.py'
 jobs:
   build-and-update:
     runs-on: ubuntu-latest
@@ -20,37 +18,31 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Restore cache
         uses: actions/cache/restore@v4
         with:
           path: database/data/
-          key: drive-state-v7-${{ hashFiles('scripts/patch_indexer.py', 'scripts/unify_databases.py') }}  # Updated key + paths
+          key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }}
           restore-keys: |
-            drive-state-v7-
-
+            drive-state-v6-
       - name: Ensure data folder
         run: mkdir -p database/data
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12'  # Align with app
-
+          python-version: '3.11'
       - name: Install dependencies
         run: |
-          pip install google-api-python-client google-auth vdf gdown fuzzywuzzy python-levenshtein jq
-
+          pip install google-api-python-client google-auth jq
       - name: Save Service Account JSON
         env:
           SERVICE_ACCOUNT_JSON: ${{ secrets.SERVICE_ACCOUNT_JSON }}
         run: echo "$SERVICE_ACCOUNT_JSON" > service-account.json
-
       - name: Fetch patches_data.json from PRIVATE nukige-site
         env:
           TOKEN: ${{ secrets.NUKIGE_TOKEN }}
         run: |
-          echo "::add-mask::$TOKEN"  # Explicitly mask token
+          echo "::add-mask::$TOKEN"
           for attempt in {1..3}; do
             API_URL="https://api.github.com/repos/d4rksp4rt4n/nukige-site/contents/cache/patches_data.json"
             RESPONSE=$(curl -s -H "Authorization: token $TOKEN" \
@@ -76,20 +68,15 @@ jobs:
             exit 1
           fi
           echo "Downloaded: $(du -h database/data/patches_data.json | cut -f1)"
-
       - name: Debug patches_data.json
         run: |
           ls -la database/data/patches_data.json
           head -n 5 database/data/patches_data.json 2>/dev/null || echo "File empty/invalid"
-          # Quick validation
           jq empty database/data/patches_data.json && echo "JSON is valid" || echo "JSON invalid"
-
       - name: Run GDrive DB Builder
-        run: python scripts/patch_indexer.py  # Updated path
-
+        run: python database/gdrive_db.py
       - name: Run Unify Databases
-        run: python scripts/unify_databases.py  # Updated path
-
+        run: python database/unify_db.py
       - name: Add meta info
         run: |
           python -c "
@@ -104,7 +91,6 @@ jobs:
             f.truncate()
           "
           echo "Metadata added: $(jq -r '.metadata.last_updated' database/data/patches_database.json)"
-
       - name: Commit & Push if changed
         id: commit
         run: |
@@ -113,22 +99,20 @@ jobs:
           git add database/data/
           if git diff --staged --quiet; then
             echo "changes=false" >> $GITHUB_OUTPUT
-            echo "No changes detected"
+            echo "No changes"
             exit 0
           fi
           echo "changes=true" >> $GITHUB_OUTPUT
           git commit -m "Auto-update database [$(date +'%Y-%m-%d %H:%M')]"
-
       - name: Push changes
         if: steps.commit.outputs.changes == 'true'
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
-
       - name: Save cache
-        if: steps.commit.outputs.changes == 'true'  # Only cache if updated
+        if: steps.commit.outputs.changes == 'true'
         uses: actions/cache/save@v4
         with:
           path: database/data/
-          key: drive-state-v7-${{ hashFiles('scripts/patch_indexer.py', 'scripts/unify_databases.py') }}
+          key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }}
