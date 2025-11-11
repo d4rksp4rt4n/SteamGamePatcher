@@ -1,7 +1,8 @@
 name: Update Patches Database
 on:
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '0 4 * * *'  # Runs daily at 04:00 UTC (1 hour after Script Automation's 03:00)
+    - cron: '0 16 * * *' # Runs daily at 16:00 UTC (1 hour after Script Automation's 15:00)
   workflow_dispatch:
   push:
     branches: [ main ]
