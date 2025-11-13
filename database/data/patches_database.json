@@ -1960,11 +1960,18 @@
                             "path": "NudeWithJacket.rar"
                         },
                         {
-                            "name": "TS2nudeV1.rar",
-                            "id": "1w_zr8uNjm6Wyosn9v0pi9zXnopTW5fHe",
-                            "size": "10.9 MB",
-                            "type": ".rar",
-                            "path": "TS2nudeV1.rar"
+                            "name": "NudeNoNecklace.7z",
+                            "id": "1b_cq9t99WfficqAhH6h-NPDyEMlkZ-mI",
+                            "size": "8.3 MB",
+                            "type": ".7z",
+                            "path": "NudeNoNecklace.7z"
+                        },
+                        {
+                            "name": "NudeWithNecklace.7z",
+                            "id": "1sNbH3m9peWEi7NKv6h-oUFrLG8EpbA7k",
+                            "size": "8.3 MB",
+                            "type": ".7z",
+                            "path": "NudeWithNecklace.7z"
                         }
                     ],
                     "appid": "2464280",
@@ -37140,9 +37147,12 @@
             "Knights of Messiah IF∶ Castle in an Alternate Dimension - Update to Messiah_IF_SC_r18patch_v2025.11.14.zip",
             "Knights of Messiah IF∶ Castle in an Alternate Dimension - Update to Messiah_IF_TC_r18patch_v2025.11.14.zip",
             "咸鱼殿下 / My journey - Added game to 大聪明工作室 (BigSmart Studio)",
-            "咸鱼殿下 / My journey - Update to MyJourneyStory - Decensor Patch.7z"
+            "咸鱼殿下 / My journey - Update to MyJourneyStory - Decensor Patch.7z",
+            "Tormented Souls 2 - Deleted file TS2nudeV1.rar",
+            "Tormented Souls 2 - Update to NudeNoNecklace.7z",
+            "Tormented Souls 2 - Update to NudeWithNecklace.7z"
         ],
-        "version": "2025-11-13 19:54:47",
+        "version": "2025-11-13 21:14:18",
         "last_updated": "2025-11-13 16:27:21 UTC"
     }
 }
