@@ -18569,6 +18569,46 @@
                     "publisher": "Kagura Games",
                     "notes": "Chinese patch v1.02. English patch v1.04. Japanese patch v1.00",
                     "store_status": "available"
+                },
+                "Knights of Messiah IF∶ Castle in an Alternate Dimension": {
+                    "id": "1d1Hf8JjKOsuplUEHQgHbua3KGUZFLa9M",
+                    "files": [
+                        {
+                            "name": "Messiah_IF_EN_r18patch_v2025.11.14.zip",
+                            "id": "14FDPMkyS2LdVD1owAF7ul4ohFHJIFmVM",
+                            "size": "667.1 MB",
+                            "type": ".zip",
+                            "path": "Messiah_IF_EN_r18patch_v2025.11.14.zip"
+                        },
+                        {
+                            "name": "Messiah_IF_FR_r18patch_v2025.11.14.zip",
+                            "id": "1gXK-Z9KnT8eEUZRfnS1CEv8hMO5Sy58_",
+                            "size": "667.1 MB",
+                            "type": ".zip",
+                            "path": "Messiah_IF_FR_r18patch_v2025.11.14.zip"
+                        },
+                        {
+                            "name": "Messiah_IF_JP_r18patch_v2025.11.14.zip",
+                            "id": "1GTco3MJL8UDjhSeyacEa3ktP5hiPeh6n",
+                            "size": "667.1 MB",
+                            "type": ".zip",
+                            "path": "Messiah_IF_JP_r18patch_v2025.11.14.zip"
+                        },
+                        {
+                            "name": "Messiah_IF_SC_r18patch_v2025.11.14.zip",
+                            "id": "1R4pYzdtm6w43EaVmEAREAvwYPhyO01ky",
+                            "size": "667.1 MB",
+                            "type": ".zip",
+                            "path": "Messiah_IF_SC_r18patch_v2025.11.14.zip"
+                        },
+                        {
+                            "name": "Messiah_IF_TC_r18patch_v2025.11.14.zip",
+                            "id": "1UapKwz8JPtOz6LOimC5-NiIEV8eMQQrF",
+                            "size": "667.1 MB",
+                            "type": ".zip",
+                            "path": "Messiah_IF_TC_r18patch_v2025.11.14.zip"
+                        }
+                    ]
                 }
             }
         },
@@ -37068,15 +37108,41 @@
         },
         "大聪明工作室 (BigSmart Studio)": {
             "id": "1JriJyRLIJpXAG8nptnP1xOOiFRrw6uIl",
-            "games": {}
+            "games": {
+                "咸鱼殿下 / My journey": {
+                    "id": "1fGMh-SQPxx13xiI-z1VYWp15fGUeFK8Z",
+                    "files": [
+                        {
+                            "name": "MyJourneyStory - Decensor Patch.7z",
+                            "id": "1ekQ7Yigf0XF1s6AMs-r9QbcIUZkzfWO0",
+                            "size": "0.2 KB",
+                            "type": ".7z",
+                            "path": "MyJourneyStory - Decensor Patch.7z"
+                        }
+                    ],
+                    "appid": "3433810",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3433810/e04060f6a35341098304a2ac72f4e7f758c3db6b/header.jpg?t=1749807689",
+                    "publisher": "恭迎皇子驾到工作室",
+                    "notes": "Decensor Patch (\"Holy Light\")",
+                    "store_status": "available"
+                }
+            }
         }
     },
     "metadata": {
         "recent_changes": [
             "Full database scan performed",
-            "大聪明工作室 (BigSmart Studio) - Added developer"
+            "大聪明工作室 (BigSmart Studio) - Added developer",
+            "Knights of Messiah IF∶ Castle in an Alternate Dimension - Added game to Circle Gyu",
+            "Knights of Messiah IF∶ Castle in an Alternate Dimension - Update to Messiah_IF_EN_r18patch_v2025.11.14.zip",
+            "Knights of Messiah IF∶ Castle in an Alternate Dimension - Update to Messiah_IF_FR_r18patch_v2025.11.14.zip",
+            "Knights of Messiah IF∶ Castle in an Alternate Dimension - Update to Messiah_IF_JP_r18patch_v2025.11.14.zip",
+            "Knights of Messiah IF∶ Castle in an Alternate Dimension - Update to Messiah_IF_SC_r18patch_v2025.11.14.zip",
+            "Knights of Messiah IF∶ Castle in an Alternate Dimension - Update to Messiah_IF_TC_r18patch_v2025.11.14.zip",
+            "咸鱼殿下 / My journey - Added game to 大聪明工作室 (BigSmart Studio)",
+            "咸鱼殿下 / My journey - Update to MyJourneyStory - Decensor Patch.7z"
         ],
-        "version": "2025-11-13 19:33:22",
+        "version": "2025-11-13 19:54:47",
         "last_updated": "2025-11-13 16:27:21 UTC"
     }
 }
