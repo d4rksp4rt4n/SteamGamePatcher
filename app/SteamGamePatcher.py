@@ -1,3 +1,4 @@
+# -*- mode: python ; coding: utf-8 -*-
 import json
 import os
 import subprocess
@@ -16,6 +17,8 @@ import queue
 import shutil
 import webbrowser
 from collections import defaultdict
+
+APP_VERSION = '1.21beta' 
 
 def log(*args):
     print("[DEBUG]", *args)
@@ -240,7 +243,7 @@ class AboutDialog(tk.Toplevel):
         self.geometry("400x200")
         self.transient(parent)
         self.grab_set()
-        about_text = f"Steam Game Patcher\n\nDatabase Version: {version}"
+        about_text = f"Steam Game Patcher {APP_VERSION}\n\nDatabase Version: {version}"
         tk.Label(self, text=about_text, justify=tk.LEFT, font=("Arial", 10)).pack(pady=20)
         tk.Button(self, text="Open GitHub", command=lambda: webbrowser.open("https://github.com/d4rksp4rt4n/SteamGamePatcher")).pack(pady=5)
         tk.Button(self, text="Close", command=self.destroy).pack(pady=10)
@@ -249,8 +252,16 @@ class AboutDialog(tk.Toplevel):
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("Steam Game Patcher")
+        self.title(f"Steam Game Patcher {APP_VERSION}")
         self.geometry("960x640")
+        
+        # Add window icon (handles frozen/bundled apps)
+        icon_path = self.get_resource_path('icon.ico')
+        if icon_path and os.path.exists(icon_path):
+            self.iconbitmap(icon_path)  # For ICO files (Windows/macOS/Linux)
+        else:
+            log("Icon file not found; using default")
+        
         self.current_appid = None
         self.current_install_dir = None
         # Menu bar
@@ -289,11 +300,10 @@ class App(tk.Tk):
         # Check for metadata and set status
         metadata = self.folder_db.get('metadata', {})
         self.version = metadata.get('version', 'Unknown')
-        last_updated = metadata.get('last_updated', 'Unknown')
         recent_changes = metadata.get('recent_changes', [])
        
         db_status = "Updated" if updated else "Up to date"
-        self.db_status = f"DB Version: {self.version} | Last Updated: {last_updated} | Status: {db_status}"
+        self.db_status = f"Database Version: {self.version} | Status: {db_status}"
        
         # Group recent changes by game
         self.grouped_changes = self.group_recent_changes(recent_changes)
@@ -334,6 +344,15 @@ class App(tk.Tk):
         self.progress_frame = None
         self.ui_queue = queue.Queue()
         self.after(100, self.process_ui_queue)
+
+    def get_resource_path(self, relative_path):
+        """Get absolute path to resource, works for dev and PyInstaller."""
+        try:
+            # PyInstaller creates a temp folder and stores path in _MEIPASS
+            base_path = sys._MEIPASS
+        except Exception:
+            base_path = os.path.abspath(".")
+        return os.path.join(base_path, relative_path)
 
     def group_recent_changes(self, changes):
         """Group recent changes by game name."""
