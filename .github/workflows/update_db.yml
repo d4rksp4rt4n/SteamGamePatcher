@@ -1,7 +1,7 @@
 name: Update Patches Database
 on:
   schedule:
-    - cron: '0 4 * * *'  # Runs daily at 04:00 UTC (1 hour after Script Automation's 03:00)
+    - cron: '0 4 * * *' # Runs daily at 04:00 UTC (1 hour after Script Automation's 03:00)
     - cron: '0 16 * * *' # Runs daily at 16:00 UTC (1 hour after Script Automation's 15:00)
   workflow_dispatch:
   push:
@@ -77,20 +77,6 @@ jobs:
         run: python database/gdrive_db.py
       - name: Run Unify Databases
         run: python database/unify_db.py
-      - name: Add meta info
-        run: |
-          python -c "
-          import json
-          import datetime
-          with open('database/data/patches_database.json', 'r+', encoding='utf-8') as f:
-            data = json.load(f)
-            data.setdefault('metadata', {})
-            data['metadata']['last_updated'] = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')
-            f.seek(0)
-            json.dump(data, f, indent=4, ensure_ascii=False)
-            f.truncate()
-          "
-          echo "Metadata added: $(jq -r '.metadata.last_updated' database/data/patches_database.json)"
       - name: Commit & Push if changed
         id: commit
         run: |
