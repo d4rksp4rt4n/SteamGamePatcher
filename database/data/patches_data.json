@@ -1,10 +1,25 @@
 {
     "data": {
-        "total_games": 1468,
-        "unique_developers": 757,
-        "generated_at": "2025-11-11 03:39:12 UTC"
+        "total_games": 1469,
+        "unique_developers": 758,
+        "generated_at": "2025-11-13 19:32:31 UTC"
     },
     "entries": [
+        {
+            "game": "咸鱼殿下 / My journey",
+            "developer": "大聪明工作室 (BigSmart Studio)",
+            "publisher": "恭迎皇子驾到工作室",
+            "notes": "Decensor Patch (\"Holy Light\")",
+            "steam_url": "https://store.steampowered.com/app/3433810/",
+            "patch_link": "https://drive.google.com/drive/folders/1fGMh-SQPxx13xiI-z1VYWp15fGUeFK8Z",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3433810/e04060f6a35341098304a2ac72f4e7f758c3db6b/header.jpg?t=1749807689",
+            "row_num": "1415",
+            "appid": "3433810",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: 大聪明工作室 (bigsmart studio)|咸鱼殿下 / my journey",
+            "store_status": "available",
+            "manual_edit": false
+        },
         {
             "game": "Amairo Chocolate 3",
             "developer": "Cabbage Soft",
