@@ -29,7 +29,8 @@ jobs:
           key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }}  # Stable key: Changes only if scripts update
           restore-keys: |
             drive-state-v6-  # Fallback to latest if exact key misses
-        # Log cache hit/miss for debugging
+
+      - name: Log cache restore  # Separate step for logging (can't mix with uses:)
         run: |
           if [ "${{ steps.cache-restore.outputs.cache-hit }}" == 'true' ]; then
             echo "Cache restored successfully (hit on key: ${{ steps.cache-restore.outputs.cache-primary-key }})"
@@ -37,6 +38,7 @@ jobs:
           else
             echo "Cache miss—starting fresh (last key: ${{ steps.cache-restore.outputs.cache-matched-key }})"
           fi
+        shell: bash
 
       - name: Ensure data folder
         run: mkdir -p database/data
@@ -111,8 +113,8 @@ jobs:
           fi
           echo "changes=true" >> $GITHUB_OUTPUT
           git commit -m "Auto-update database [$(date +'%Y-%m-%d %H:%M')]"
-        # Log for visibility
-        run: echo "Git changes detected: ${{ steps.commit.outputs.changes }}"
+          echo "Git changes detected: changes"
+        shell: bash
 
       - name: Push changes
         if: steps.commit.outputs.changes == 'true'
@@ -127,7 +129,10 @@ jobs:
         with:
           path: database/data/
           key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }}
-        # Log save details
+
+      - name: Log cache save  # Separate step for logging (can't mix with uses:)
+        if: always()
         run: |
           echo "Cache saved (key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }})"
           echo "Saved files: $(ls -la database/data/ || true)"
+        shell: bash
