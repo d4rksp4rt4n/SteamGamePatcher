@@ -18614,6 +18614,41 @@
                             "size": "667.1 MB",
                             "type": ".zip",
                             "path": "Messiah_IF_TC_r18patch_v2025.11.14.zip"
+                        },
+                        {
+                            "name": "Steam_R18_Knights_of_Messiah_IF_EN_v2025.11.14.zip",
+                            "id": "1c4hxf6efM19z2xM17MEmdlEKuts4ZNo1",
+                            "size": "667.1 MB",
+                            "type": ".zip",
+                            "path": "Steam_R18_Knights_of_Messiah_IF_EN_v2025.11.14.zip"
+                        },
+                        {
+                            "name": "Steam_R18_Knights_of_Messiah_IF_FR_v2025.11.14.zip",
+                            "id": "1rC1Kxc40AK8EE7M44X377bzLitr0LWyx",
+                            "size": "667.1 MB",
+                            "type": ".zip",
+                            "path": "Steam_R18_Knights_of_Messiah_IF_FR_v2025.11.14.zip"
+                        },
+                        {
+                            "name": "Steam_R18_Knights_of_Messiah_IF_JP_v2025.11.14.zip",
+                            "id": "1JVMyO8fkW52El22_7MUrAgX0zRk65Suq",
+                            "size": "667.1 MB",
+                            "type": ".zip",
+                            "path": "Steam_R18_Knights_of_Messiah_IF_JP_v2025.11.14.zip"
+                        },
+                        {
+                            "name": "Steam_R18_Knights_of_Messiah_IF_SC_v2025.11.14.zip",
+                            "id": "1XPDbgECHOKfnO58-N7YcpxovcTimPGfR",
+                            "size": "667.1 MB",
+                            "type": ".zip",
+                            "path": "Steam_R18_Knights_of_Messiah_IF_SC_v2025.11.14.zip"
+                        },
+                        {
+                            "name": "Steam_R18_Knights_of_Messiah_IF_TC_v2025.11.14.zip",
+                            "id": "1KGuu6gcLIjS5emyGalQJKnCWc_8brEAG",
+                            "size": "667.1 MB",
+                            "type": ".zip",
+                            "path": "Steam_R18_Knights_of_Messiah_IF_TC_v2025.11.14.zip"
                         }
                     ],
                     "appid": "3364870",
@@ -27526,6 +27561,15 @@
                     "publisher": "Kagura Games",
                     "notes": "English patch v3. Chinese patch v3",
                     "store_status": "available"
+                },
+                "The Saint Wife's Newlywed Trials": {
+                    "id": "1zHTjshCQ-6qINKjtwxP1VlRDo8Y-b5ZO",
+                    "files": [],
+                    "appid": "3655890",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3655890/17facc4ec2eff0c5611e02b39b2f745e57f8c6ad/header.jpg?t=1763051490",
+                    "publisher": "Kagura Games",
+                    "notes": "Chinese patch v1.0x. English patch v1.0x. Japanese patch v1.0x",
+                    "store_status": "unreleased"
                 }
             }
         },
@@ -37153,8 +37197,14 @@
             "咸鱼殿下 / My journey - Added game to 大聪明工作室 (BigSmart Studio)",
             "咸鱼殿下 / My journey - Update to MyJourneyStory - Decensor Patch.7z",
             "Tormented Souls 2 - Update to NudeNoNecklace.7z",
-            "Tormented Souls 2 - Update to NudeWithNecklace.7z"
+            "Tormented Souls 2 - Update to NudeWithNecklace.7z",
+            "Knights of Messiah IF∶ Castle in an Alternate Dimension - Update to Steam_R18_Knights_of_Messiah_IF_EN_v2025.11.14.zip",
+            "Knights of Messiah IF∶ Castle in an Alternate Dimension - Update to Steam_R18_Knights_of_Messiah_IF_FR_v2025.11.14.zip",
+            "Knights of Messiah IF∶ Castle in an Alternate Dimension - Update to Steam_R18_Knights_of_Messiah_IF_JP_v2025.11.14.zip",
+            "Knights of Messiah IF∶ Castle in an Alternate Dimension - Update to Steam_R18_Knights_of_Messiah_IF_SC_v2025.11.14.zip",
+            "Knights of Messiah IF∶ Castle in an Alternate Dimension - Update to Steam_R18_Knights_of_Messiah_IF_TC_v2025.11.14.zip",
+            "The Saint Wife's Newlywed Trials - Added game to Mousou Endemic"
         ],
-        "version": "2025-11-14 02:36:07"
+        "version": "2025-11-14 15:58:14"
     }
 }
