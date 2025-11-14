@@ -20,26 +20,41 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Restore cache
+
+      - name: Restore cache  # Always restore for incremental start
+        id: cache-restore
         uses: actions/cache/restore@v4
         with:
           path: database/data/
-          key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }}
+          key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }}  # Stable key: Changes only if scripts update
           restore-keys: |
-            drive-state-v6-
+            drive-state-v6-  # Fallback to latest if exact key misses
+        # Log cache hit/miss for debugging
+        run: |
+          if [ "${{ steps.cache-restore.outputs.cache-hit }}" == 'true' ]; then
+            echo "Cache restored successfully (hit on key: ${{ steps.cache-restore.outputs.cache-primary-key }})"
+            ls -la database/data/ || true
+          else
+            echo "Cache miss—starting fresh (last key: ${{ steps.cache-restore.outputs.cache-matched-key }})"
+          fi
+
       - name: Ensure data folder
         run: mkdir -p database/data
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
+
       - name: Install dependencies
         run: |
           pip install google-api-python-client google-auth jq
+
       - name: Save Service Account JSON
         env:
           SERVICE_ACCOUNT_JSON: ${{ secrets.SERVICE_ACCOUNT_JSON }}
         run: echo "$SERVICE_ACCOUNT_JSON" > service-account.json
+
       - name: Fetch patches_data.json from PRIVATE nukige-site
         env:
           TOKEN: ${{ secrets.NUKIGE_TOKEN }}
@@ -70,16 +85,20 @@ jobs:
             exit 1
           fi
           echo "Downloaded: $(du -h database/data/patches_data.json | cut -f1)"
+
       - name: Debug patches_data.json
         run: |
           ls -la database/data/patches_data.json
           head -n 5 database/data/patches_data.json 2>/dev/null || echo "File empty/invalid"
           jq empty database/data/patches_data.json && echo "JSON is valid" || echo "JSON invalid"
+
       - name: Run GDrive DB Builder
         run: python database/gdrive_db.py
+
       - name: Run Unify Databases
-        run: python unify_db.py
-      - name: Commit & Push if changed
+        run: python database/unify_db.py
+
+      - name: Commit & Push if changed  # Conditional: Only commit on diffs
         id: commit
         run: |
           git config user.email "action@github.com"
@@ -87,20 +106,28 @@ jobs:
           git add database/data/
           if git diff --staged --quiet; then
             echo "changes=false" >> $GITHUB_OUTPUT
-            echo "No changes"
+            echo "No changes to commit"
             exit 0
           fi
           echo "changes=true" >> $GITHUB_OUTPUT
           git commit -m "Auto-update database [$(date +'%Y-%m-%d %H:%M')]"
+        # Log for visibility
+        run: echo "Git changes detected: ${{ steps.commit.outputs.changes }}"
+
       - name: Push changes
         if: steps.commit.outputs.changes == 'true'
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
-      - name: Save cache
-        if: steps.commit.outputs.changes == 'true'
+
+      - name: Save cache  # UNCONDITIONAL: Always save post-scripts for next incremental run
+        if: always()  # Runs even on failure (but you can change to success() if preferred)
         uses: actions/cache/save@v4
         with:
           path: database/data/
           key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }}
+        # Log save details
+        run: |
+          echo "Cache saved (key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }})"
+          echo "Saved files: $(ls -la database/data/ || true)"
