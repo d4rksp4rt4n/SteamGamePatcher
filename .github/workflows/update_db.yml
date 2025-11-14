@@ -3,6 +3,7 @@ on:
 #  schedule:
 #   - cron: '0 4 * * *' # Runs daily at 04:00 UTC (1 hour after Script Automation's 03:00)
 #   - cron: '0 16 * * *' # Runs daily at 16:00 UTC (1 hour after Script Automation's 15:00)
+#   - cron: '0 0 * * 0'  # Weekly: Purge old caches (uncomment if needed)
   workflow_dispatch:
   repository_dispatch:
     types: [patches-updated]  # Triggered from nukige-site changes
@@ -17,6 +18,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    concurrency:  # Prevent overlaps
+      group: update-patches-db-${{ github.ref }}
+      cancel-in-progress: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,17 +30,17 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: database/data/
-          key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }}  # Stable key: Changes only if scripts update
+          key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }}  # Base key
           restore-keys: |
-            drive-state-v6-  # Fallback to latest if exact key misses
+            drive-state-v6-  # Fallback: Any prior unique save
 
-      - name: Log cache restore  # Separate step for logging (can't mix with uses:)
+      - name: Log cache restore
         run: |
           if [ "${{ steps.cache-restore.outputs.cache-hit }}" == 'true' ]; then
-            echo "Cache restored successfully (hit on key: ${{ steps.cache-restore.outputs.cache-primary-key }})"
+            echo "Cache restored (hit: ${{ steps.cache-restore.outputs.cache-primary-key }})"
             ls -la database/data/ || true
           else
-            echo "Cache miss—starting fresh (last key: ${{ steps.cache-restore.outputs.cache-matched-key }})"
+            echo "Cache miss (fallback: ${{ steps.cache-restore.outputs.cache-matched-key }})"
           fi
         shell: bash
 
@@ -113,7 +117,7 @@ jobs:
           fi
           echo "changes=true" >> $GITHUB_OUTPUT
           git commit -m "Auto-update database [$(date +'%Y-%m-%d %H:%M')]"
-          echo "Git changes detected: changes"
+          echo "Git changes detected: ${{ steps.commit.outputs.changes }}"
         shell: bash
 
       - name: Push changes
@@ -123,16 +127,33 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
 
-      - name: Save cache  # UNCONDITIONAL: Always save post-scripts for next incremental run
-        if: always()  # Runs even on failure (but you can change to success() if preferred)
+      - name: Save cache  # UNCONDITIONAL: Always save post-scripts
+        if: always()
+        continue-on-error: true  # Safety: Log failure but don't break run
         uses: actions/cache/save@v4
         with:
           path: database/data/
-          key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }}
+          key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }}-${{ github.run_id }}  # Unique: No more locks
 
-      - name: Log cache save  # Separate step for logging (can't mix with uses:)
+      - name: Log cache save
         if: always()
         run: |
-          echo "Cache saved (key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }})"
+          echo "Cache save attempted (key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }}-${{ github.run_id }})"
           echo "Saved files: $(ls -la database/data/ || true)"
         shell: bash
+
+  # Optional: Weekly purge job (uncomment in 'on: schedule' above)
+  purge-caches:
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '0 0 * * 0'  # Only on weekly cron
+    steps:
+      - name: Purge old caches
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Delete caches older than 7 days (adjust as needed)
+          gh api -H "Accept: application/vnd.github.v3+json" \
+            /repos/${{ github.repository }}/actions/caches?per_page=100 | \
+            jq -r '.actions_caches[] | select(.created_at < "'$(date -d '7 days ago' -Iseconds)'") | .id' | \
+            xargs -I {} gh api --method DELETE /repos/${{ github.repository }}/actions/caches/{}
+          echo "Purged old caches"
