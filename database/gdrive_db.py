@@ -201,7 +201,15 @@ def get_changes(drive_service, change_token):
             if not response.get('nextPageToken'):
                 break
         logger.info(f"Found {len(changes)} changes since token {change_token}")
-        return changes, change_token
+        # -----------------------------------------------------------------
+        # NEW: Return the **new** startPageToken that the API gave us.
+        # -----------------------------------------------------------------
+        new_token = response.get('newStartPageToken')
+        if not new_token:
+            # Fallback – ask the API for the current token (very cheap)
+            new_token = drive_service.changes().getStartPageToken().execute().get('startPageToken')
+        return changes, new_token
+        # -----------------------------------------------------------------
     except HttpError as e:
         logger.error(f"Fetching changes failed: {e}")
         raise
@@ -493,3 +501,4 @@ def main():
     logger.info(f"Database updated in {OUTPUT_JSON} with {change_count} changes")
 if __name__ == '__main__':
     main()
+
