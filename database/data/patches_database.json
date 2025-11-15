@@ -27564,12 +27564,34 @@
                 },
                 "The Saint Wife's Newlywed Trials": {
                     "id": "1zHTjshCQ-6qINKjtwxP1VlRDo8Y-b5ZO",
-                    "files": [],
+                    "files": [
+                        {
+                            "name": "The Saint Wife's Newlywed Trials JP Patch v1.00.exe",
+                            "id": "12SD7XwIRrXPLwE7A0Yf_wGsgb-sRo3Ht",
+                            "size": "151.3 MB",
+                            "type": ".exe",
+                            "path": "The Saint Wife's Newlywed Trials JP Patch v1.00.exe"
+                        },
+                        {
+                            "name": "The Saint Wife's Newlywed Trials CN Patch v1.01.exe",
+                            "id": "1RYVdWghIhhjaOX2Eqm2Y_UgOm8TE8vz3",
+                            "size": "137.7 MB",
+                            "type": ".exe",
+                            "path": "The Saint Wife's Newlywed Trials CN Patch v1.01.exe"
+                        },
+                        {
+                            "name": "The Saint Wife's Newlywed Trials EN Patch v1.01.exe",
+                            "id": "1vMh1VmWCeuxsSGBquuKz3UFaiW85pmQ0",
+                            "size": "135.8 MB",
+                            "type": ".exe",
+                            "path": "The Saint Wife's Newlywed Trials EN Patch v1.01.exe"
+                        }
+                    ],
                     "appid": "3655890",
-                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3655890/17facc4ec2eff0c5611e02b39b2f745e57f8c6ad/header.jpg?t=1763139308",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3655890/17facc4ec2eff0c5611e02b39b2f745e57f8c6ad/header.jpg?t=1763182812",
                     "publisher": "Kagura Games",
-                    "notes": "Chinese patch v1.0x. English patch v1.0x. Japanese patch v1.0x",
-                    "store_status": "unreleased"
+                    "notes": "Chinese patch v1.01. English patch v1.01. Japanese patch v1.00",
+                    "store_status": "available"
                 }
             }
         },
@@ -37203,8 +37225,11 @@
             "Knights of Messiah IF∶ Castle in an Alternate Dimension - Update to Steam_R18_Knights_of_Messiah_IF_JP_v2025.11.14.zip",
             "Knights of Messiah IF∶ Castle in an Alternate Dimension - Update to Steam_R18_Knights_of_Messiah_IF_SC_v2025.11.14.zip",
             "Knights of Messiah IF∶ Castle in an Alternate Dimension - Update to Steam_R18_Knights_of_Messiah_IF_TC_v2025.11.14.zip",
-            "The Saint Wife's Newlywed Trials - Added game to Mousou Endemic"
+            "The Saint Wife's Newlywed Trials - Added game to Mousou Endemic",
+            "The Saint Wife's Newlywed Trials - Update to The Saint Wife's Newlywed Trials JP Patch v1.00.exe",
+            "The Saint Wife's Newlywed Trials - Update to The Saint Wife's Newlywed Trials CN Patch v1.01.exe",
+            "The Saint Wife's Newlywed Trials - Update to The Saint Wife's Newlywed Trials EN Patch v1.01.exe"
         ],
-        "version": "2025-11-14 15:58:14"
+        "version": "2025-11-15 05:31:08"
     }
 }
