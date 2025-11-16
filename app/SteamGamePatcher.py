@@ -17,10 +17,12 @@ import queue
 import shutil
 import webbrowser
 from collections import defaultdict
-import uuid  # For safe temp dirs if needed
-import platform  # For OS checks if needed
+import uuid # For safe temp dirs if needed
+import platform # For OS checks if needed
+import rarfile # For RAR extraction (bundled DLL)
+import zipfile # Built-in for ZIP
 
-APP_VERSION = '1.23beta'
+APP_VERSION = '1.3beta'
 
 # Setup logging to file in data/
 def setup_logging():
@@ -32,7 +34,7 @@ def setup_logging():
         format='%(asctime)s [%(levelname)s] %(message)s',
         handlers=[
             logging.FileHandler(log_file, encoding='utf-8'),
-            logging.StreamHandler(sys.stdout)  # Also to console
+            logging.StreamHandler(sys.stdout) # Also to console
         ]
     )
     logging.info(f"Steam Game Patcher {APP_VERSION} started. Logs in: {log_file}")
@@ -51,13 +53,13 @@ def ensure_7z_exe():
     else:
         app_dir = Path(__file__).parent
         bundled_dir = app_dir
-  
+ 
     seven_zip = app_dir / '7z.exe'
-  
+ 
     if seven_zip.exists():
         logging.info("7z.exe already available alongside app")
         return
-  
+ 
     logging.info("Extracting 7z.exe from bundle...")
     try:
         bundled_7z = Path(bundled_dir) / '7z.exe'
@@ -69,6 +71,33 @@ def ensure_7z_exe():
         logging.error(f"Failed to extract 7z.exe: {e}")
         messagebox.showwarning("Missing 7z.exe", "7z.exe not found. Download from https://www.7-zip.org and place in the app folder.")
         sys.exit(1)
+
+def ensure_unrar_dll():
+    """Extract unrar.dll alongside the app if not present."""
+    # Get the directory where the EXE is running
+    if getattr(sys, 'frozen', False):
+        app_dir = Path(sys.executable).parent
+        bundled_dir = sys._MEIPASS
+    else:
+        app_dir = Path(__file__).parent
+        bundled_dir = app_dir
+    
+    unrar_dll = app_dir / 'unrar.dll'
+    
+    if unrar_dll.exists():
+        logging.info("unrar.dll already available alongside app")
+        return
+    
+    logging.info("Extracting unrar.dll from bundle...")
+    try:
+        bundled_unrar = Path(bundled_dir) / 'unrar.dll'
+        if not bundled_unrar.exists():
+            raise FileNotFoundError("unrar.dll not found in bundle")
+        shutil.copy2(bundled_unrar, unrar_dll)
+        logging.info(f"unrar.dll extracted to {unrar_dll}")
+    except Exception as e:
+        logging.error(f"Failed to extract unrar.dll: {e}")
+        messagebox.showwarning("Missing unrar.dll", "unrar.dll not found. RAR support disabled. Download UnRAR from https://www.rarlab.com/rar_add.htm and place in the app folder.")
 
 def get_steam_path():
     logging.info("Finding Steam...")
@@ -373,7 +402,7 @@ class App(tk.Tk):
         self.progress_frame = None
         self.ui_queue = queue.Queue()
         self.after(100, self.process_ui_queue)
-    
+   
     def clear_cache(self):
         """Clear the cache directory."""
         if messagebox.askyesno("Clear Cache", "Delete all cached patches? (Frees space)"):
@@ -385,7 +414,7 @@ class App(tk.Tk):
             except Exception as e:
                 logging.error(f"Failed to clear cache: {e}")
                 messagebox.showerror("Error", f"Failed to clear cache: {e}")
-    
+   
     def get_resource_path(self, relative_path):
         """Get absolute path to resource, works for dev and PyInstaller."""
         try:
@@ -394,6 +423,7 @@ class App(tk.Tk):
         except Exception:
             base_path = os.path.abspath(".")
         return os.path.join(base_path, relative_path)
+   
     def group_recent_changes(self, changes):
         """Group recent changes by game name."""
         grouped = defaultdict(list)
@@ -408,6 +438,7 @@ class App(tk.Tk):
                 # Fallback if format doesn't match
                 grouped["Miscellaneous"].append(change)
         return dict(grouped) # Convert back to regular dict
+   
     def clear_details(self):
         self.img_label.configure(image="", text="No Image")
         self.dev_label.config(text="")
@@ -418,6 +449,7 @@ class App(tk.Tk):
         self.launch_btn.config(state=tk.DISABLED)
         self.current_appid = None
         self.current_install_dir = None
+   
     def process_ui_queue(self):
         try:
             while not self.ui_queue.empty():
@@ -436,6 +468,7 @@ class App(tk.Tk):
         except queue.Empty:
             pass
         self.after(100, self.process_ui_queue)
+   
     def build_gui(self):
         # Main container
         main_frame = tk.Frame(self)
@@ -507,6 +540,7 @@ class App(tk.Tk):
       
         self.status = tk.Label(bottom_frame, text=self.db_status, anchor="w", fg="green")
         self.status.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=10)
+   
     def filter_games(self, event=None):
         search_term = self.search_var.get().lower().strip()
         # Clear tree
@@ -523,6 +557,7 @@ class App(tk.Tk):
         # Clear selection if no matches
         if not self.tree.get_children():
             self.clear_details()
+   
     def on_select(self, _):
         selected = self.tree.selection()
         if not selected:
@@ -558,23 +593,27 @@ class App(tk.Tk):
         self.current_install_dir = self.installed[appid]
         self.open_folder_btn.config(state=tk.NORMAL)
         self.launch_btn.config(state=tk.NORMAL)
+   
     def open_folder(self):
         if self.current_install_dir and self.current_install_dir.exists():
             os.startfile(str(self.current_install_dir))
         else:
             messagebox.showerror("Error", "Game folder not found")
+   
     def launch_game(self):
         if self.current_appid:
             url = f"steam://run/{self.current_appid}"
             os.startfile(url)
         else:
             messagebox.showerror("Error", "No game selected")
+   
     def reset_ui(self):
         self.patch_btn.config(state="normal", text="Patch Selected Game")
         self.status.config(text=self.db_status, fg="green")
         if self.progress_frame:
             self.progress_frame.destroy()
             self.progress_frame = None
+   
     def parse_size_bytes(self, size_str):
         """Parse size string like '199.7 MB' to bytes."""
         if not size_str or size_str == 'Unknown':
@@ -589,6 +628,7 @@ class App(tk.Tk):
             return None
         except:
             return None
+   
     def download_with_gdown(self, file_id, output_path, expected_bytes, progress_var, status_label, speed_label):
         """Download using gdown with console progress."""
         try:
@@ -601,6 +641,7 @@ class App(tk.Tk):
         except Exception as e:
             logging.error(f"gdown failed: {e}")
             raise e
+   
     def extract_with_7z(self, archive_path, extract_dir):
         """Extract archive using local 7z.exe via subprocess."""
         script_dir = Path(sys.executable).parent if getattr(sys, 'frozen', False) else Path(__file__).parent
@@ -629,6 +670,78 @@ class App(tk.Tk):
             logging.error(f"7z extraction failed: {result.stderr}")
             raise subprocess.CalledProcessError(result.returncode, cmd, result.stdout, result.stderr)
         logging.info(f"Extracted with 7z: {archive_path} to {extract_dir}")
+    
+    def extract_archive(self, archive_path, extract_dir):
+        """Independent extraction: Pure Python for ZIP, bundled DLL for RAR, 7z.exe for 7Z (due to BCJ2 support)."""
+        script_dir = Path(sys.executable).parent if getattr(sys, 'frozen', False) else Path(__file__).parent
+        
+        # Ensure unrar.dll is in PATH for frozen EXE
+        if getattr(sys, 'frozen', False):
+            unrar_dll = script_dir / 'unrar.dll'
+            if unrar_dll.exists():
+                os.add_dll_directory(str(script_dir)) # Makes DLL available
+                logging.info(f"Bundled unrar.dll loaded from {unrar_dll}")
+            else:
+                logging.warning("unrar.dll not bundled—RAR support disabled.")
+        
+        logging.debug(f"DEBUG: Archive path: {archive_path} (exists: {archive_path.exists()})")
+        logging.debug(f"DEBUG: Extract dir: {extract_dir} (exists: {extract_dir.exists()}, is_dir: {extract_dir.is_dir()})")
+        if not extract_dir.is_dir():
+            extract_dir.mkdir(parents=True, exist_ok=True)
+            logging.debug(f"DEBUG: Created extract dir manually.")
+        
+        # Win11 Safety: Strip anomalous suffix
+        if extract_dir.suffix == '.exe':
+            extract_dir = extract_dir.with_suffix('')
+            extract_dir.mkdir(exist_ok=True)
+            logging.debug(f"DEBUG: Stripped .exe suffix to: {extract_dir}")
+        
+        ext = archive_path.suffix.lower()
+        extracted_files = []
+        
+        try:
+            if ext == '.zip':
+                # Built-in pure Python
+                with zipfile.ZipFile(archive_path, 'r') as zf:
+                    zf.extractall(extract_dir)
+                    extracted_files = zf.namelist()
+                    logging.info(f"Extracted ZIP: {len(extracted_files)} files")
+            
+            elif ext == '.7z':
+                # Fall back to 7z.exe for full filter support (e.g., BCJ2)
+                self.extract_with_7z(archive_path, extract_dir)
+                extracted_files = os.listdir(extract_dir)
+                logging.info(f"Extracted 7Z with 7z.exe: {len(extracted_files)} files")
+            
+            elif ext == '.rar':
+                # Bundled DLL + rarfile
+                try:
+                    with rarfile.RarFile(archive_path, 'r') as rf:
+                        rf.extractall(extract_dir)
+                        extracted_files = rf.namelist()
+                        logging.info(f"Extracted RAR: {len(extracted_files)} files")
+                except rarfile.BadRarFile as e:
+                    # Handle picky RARs (e.g., password or format quirk)
+                    logging.error(f"RAR extraction failed with rarfile: {e}. Falling back to manual prompt.")
+                    raise RuntimeError(f"RAR format issue: {e}. File kept—extract manually with Windows or WinRAR.")
+                except Exception as e:
+                    logging.error(f"RAR extraction error: {e}")
+                    raise
+            
+            else:
+                raise ValueError(f"Unsupported archive: {ext}. Only ZIP/7Z/RAR supported.")
+            
+            # Verify extraction
+            actual_extracted = os.listdir(extract_dir)
+            if not actual_extracted:
+                logging.warning("Extraction produced no files—check archive.")
+            
+            logging.info(f"Extraction complete: {len(actual_extracted)} items in {extract_dir}")
+        
+        except Exception as e:
+            logging.error(f"Extraction failed: {e}")
+            raise
+    
     def smart_apply_patch(self, extract_dir, install_dir, status_label):
         """Scan and match files from extracted patch to game dir, with hybrid overwrite/add logic."""
         # Build map of game files: filename.lower() -> list of full_paths
@@ -659,99 +772,109 @@ class App(tk.Tk):
                 else:
                     # Add new file, preserving relative structure from patch
                     default_dst.parent.mkdir(parents=True, exist_ok=True)
-                    shutil.copy2(src, default_dst)
+                    shutil.copy2(src, dst)
                     added += 1
                     self.ui_queue.put(("update_status", (status_label, f"ADDED: {file}")))
         return overwritten, added, skipped
+    
     def process_patch(self, files, selected_indices, install_dir, game_name, progress_var, status_label, speed_label):
         """Thread worker for download/extract/smart apply."""
         try:
-            # Find local 7z.exe
+            # Find local 7z.exe (for fallback if needed)
             script_dir = Path(sys.executable).parent if getattr(sys, 'frozen', False) else Path(__file__).parent
             local_7z = script_dir / '7z.exe'
             if not local_7z.exists():
                 raise FileNotFoundError("7z.exe not found. Please download from https://www.7-zip.org/ and place in script directory.")
             logging.info(f"Using local 7z.exe: {local_7z}")
-            
+           
             for idx in selected_indices:
                 f = files[idx]
                 file_id = f['id']
                 file_path = f.get('path', f['name'])
                 file_name = f['name']
                 expected_bytes = self.parse_size_bytes(f.get('size'))
-                
+               
                 # Cache logic: Build cache path (handles subdirs)
                 cache_file = self.cache_dir / file_name
-                cache_file.parent.mkdir(parents=True, exist_ok=True)  # Create nested dirs if needed
-                
+                cache_file.parent.mkdir(parents=True, exist_ok=True) # Create nested dirs if needed
+               
                 use_cache = False
                 if cache_file.exists():
                     actual_size = os.path.getsize(cache_file)
                     # Size verify: exact match or tolerance for small/unknown
                     small_file_check = expected_bytes and expected_bytes < 2048 and actual_size > 0
                     tolerance_check = expected_bytes is None or (abs(actual_size - expected_bytes) <= expected_bytes * 0.05)
-                    
-                    # Integrity test for cached file
-                    test_cmd = [str(local_7z), 't', str(cache_file)]
-                    logging.info(f"Testing cached file integrity: {cache_file}")
-                    test_result = subprocess.run(test_cmd, capture_output=True, text=True)
-                    if test_result.returncode != 0:
-                        logging.warning(f"Cached file failed integrity: {test_result.stderr}. Deleting and forcing redownload.")
-                        cache_file.unlink()
-                        use_cache = False
-                    else:
-                        if tolerance_check or small_file_check:
-                            use_cache = True
-                            logging.info(f"Using cached: {file_name} ({actual_size} bytes) - integrity OK")
-                        else:
-                            logging.warning(f"Cached file size mismatch despite integrity pass - forcing redownload.")
+                   
+                    # Integrity test for cached file (SKIP for RARs - Windows/7z mismatch)
+                    if cache_file.suffix.lower() not in ['.rar']: # Skip RAR - attempt extract instead
+                        test_cmd = [str(local_7z), 't', str(cache_file)]
+                        logging.info(f"Testing cached file integrity: {cache_file}")
+                        test_result = subprocess.run(test_cmd, capture_output=True, text=True)
+                        if test_result.returncode != 0:
+                            logging.warning(f"Cached file failed integrity: {test_result.stderr}. Deleting and forcing redownload.")
                             cache_file.unlink()
                             use_cache = False
-                
+                        else:
+                            if tolerance_check or small_file_check:
+                                use_cache = True
+                                logging.info(f"Using cached: {file_name} ({actual_size} bytes) - integrity OK")
+                            else:
+                                logging.warning(f"Cached file size mismatch despite integrity pass - forcing redownload.")
+                                cache_file.unlink()
+                                use_cache = False
+                    else:
+                        # For RAR: Assume OK if size matches (test via extract)
+                        if tolerance_check or small_file_check:
+                            use_cache = True
+                            logging.info(f"Using cached RAR (skipped strict test): {file_name} ({actual_size} bytes)")
+                        else:
+                            cache_file.unlink()
+                            use_cache = False
+               
                 retries = 0
                 max_retries = 3
-                output = cache_file  # Download/extract from/to cache
-                
+                output = cache_file # Download/extract from/to cache
+               
                 if not use_cache:
                     while retries < max_retries:
                         logging.info(f"Downloading {file_path} (attempt {retries+1}/{max_retries})")
                         self.ui_queue.put(("update_status", (status_label, f"Downloading: {file_path}")))
-                        self.ui_queue.put(("update_progress", (progress_var, -1)))  # Indeterminate
+                        self.ui_queue.put(("update_progress", (progress_var, -1))) # Indeterminate
                         downloaded_bytes = self.download_with_gdown(file_id, output, expected_bytes or 0, progress_var, status_label, speed_label)
                         actual_size = os.path.getsize(output)
                         logging.info(f"gdown downloaded {actual_size} bytes")
-                        
+                       
                         # Size verify (relaxed check)
                         small_file_check = expected_bytes and expected_bytes < 2048 and actual_size > 0
                         tolerance_check = expected_bytes is None or (abs(actual_size - expected_bytes) <= expected_bytes * 0.05)
                         if tolerance_check or small_file_check:
                             logging.info(f"Download size verified: {file_path} ({actual_size} bytes)")
-                            
-                            # Integrity test post-download (for RAR/7z/ZIP)
-                            if output.suffix.lower() in ['.rar', '.7z', '.zip']:
+                           
+                            # Integrity test post-download (SKIP for RARs)
+                            if output.suffix.lower() not in ['.rar']:
                                 test_cmd = [str(local_7z), 't', str(output)]
                                 logging.info(f"Testing downloaded archive integrity: {output}")
                                 test_result = subprocess.run(test_cmd, capture_output=True, text=True)
                                 if test_result.returncode != 0:
-                                    logging.error(f"Downloaded archive failed integrity test: {test_result.stderr}. Keeping file for manual repair (no auto-delete).")
-                                    # Don't raise here—let user decide (file stays)
-                                    # But for now, raise to trigger error UI
-                                    raise RuntimeError(f"Downloaded archive failed integrity (7z t): {test_result.stderr}. File kept in cache—try manual repair with WinRAR or re-download.")
-                            
-                            logging.info(f"Download and integrity verified: {file_path}")
+                                    logging.error(f"Downloaded archive failed integrity test: {test_result.stderr}. Keeping file for manual repair.")
+                                    raise RuntimeError(f"Downloaded archive failed integrity (7z t): {test_result.stderr}. File kept in cache—try manual repair with WinRAR.")
+                                logging.info(f"Download and integrity verified: {file_path}")
+                            else:
+                                logging.info(f"Download verified for RAR (skipped strict test): {file_path}")
+                           
                             break
-                        
+                       
                         retries += 1
                         logging.warning(f"Size mismatch: expected {expected_bytes or 'Unknown'}, got {actual_size}. Retrying...")
                         if output.exists():
-                            output.unlink()  # Clean partial download
-                            
+                            output.unlink() # Clean partial download
+                           
                     if retries >= max_retries:
                         raise ValueError(f"Download size mismatch after {max_retries} retries for {file_path}.")
                 else:
                     self.ui_queue.put(("update_status", (status_label, f"Using cached patch: {file_path}")))
-                    self.ui_queue.put(("update_progress", (progress_var, 0)))  # No progress needed
-                
+                    self.ui_queue.put(("update_progress", (progress_var, 0))) # No progress needed
+               
                 # Extract to UNIQUE temp dir
                 self.ui_queue.put(("update_status", (status_label, f"Extracting: {file_path}")))
                 temp_extract_dir = Path(tempfile.mkdtemp())
@@ -759,7 +882,7 @@ class App(tk.Tk):
                 try:
                     if output.suffix.lower() == ".exe":
                         # Enhanced flags for stubborn self-extractors
-                        cmd = [str(output), '/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART']  # Common Inno/NSIS flags
+                        cmd = [str(output), '/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART'] # Common Inno/NSIS flags
                         result = subprocess.run(cmd, cwd=str(temp_extract_dir), capture_output=True, text=True)
                         if result.returncode != 0:
                             # Fallback to /S
@@ -771,19 +894,19 @@ class App(tk.Tk):
                         if result.returncode != 0:
                             logging.error(f"All EXE extraction attempts failed: {result.stderr}. File kept in cache—run manually by double-clicking {output}.")
                             raise RuntimeError(f"Self-extracting EXE failed all modes: {result.stderr}. File kept in cache—run manually.")
-                        
+                       
                         files_extracted = os.listdir(temp_extract_dir)
                         logging.info(f"Files after EXE run: {files_extracted}")
                         if not files_extracted:
                             logging.warning("No files extracted by EXE—may need manual run. File kept in cache.")
                             # Don't raise—allow apply (0 files OK), but warn in UI later
                     else:
-                        # Use 7z for ZIP, 7Z, RAR (integrity already checked above)
-                        self.extract_with_7z(output, temp_extract_dir)
+                        # Use hybrid extract for ZIP/7Z/RAR
+                        self.extract_archive(output, temp_extract_dir)
                 finally:
                     # Do NOT unlink output—keep in cache for future use / manual repair!
                     pass
-                
+               
                 # Smart apply
                 self.ui_queue.put(("update_status", (status_label, f"Applying: {file_path}")))
                 overwritten, added, skipped = self.smart_apply_patch(temp_extract_dir, install_dir, status_label)
@@ -791,7 +914,7 @@ class App(tk.Tk):
                 # Clean up temp extract dir only
                 shutil.rmtree(temp_extract_dir)
                 logging.info(f"Completed {file_path}")
-            
+           
             self.ui_queue.put(("update_status", (status_label, "SUCCESS")))
             self.after(100, lambda: messagebox.showinfo("SUCCESS", f"Patched:\n{game_name}\n\nApplied: {len(selected_indices)} files"))
         except Exception as e:
@@ -806,17 +929,18 @@ class App(tk.Tk):
                 error_msg += "\n\nFile kept in cache for manual repair. Use WinRAR or re-download via browser."
             elif "EXE failed" in error_msg:
                 error_msg += "\n\nFile kept in cache—try running the EXE manually by double-clicking it."
-            
+           
             # NO auto-cleanup on failure—keep file for debugging/manual use!
             # if 'output' in locals() and output.exists() and not use_cache:
-            #     output.unlink()  # Commented out to prevent "vanish"
-            #     logging.info(f"Cleaned partial cache: {output}")
-            
+            # output.unlink() # Commented out to prevent "vanish"
+            # logging.info(f"Cleaned partial cache: {output}")
+           
             self.ui_queue.put(("update_status", (status_label, "FAILED")))
             logging.error(f"PATCH FAILED: {error_msg}")
             self.after(100, lambda msg=error_msg: messagebox.showerror("PATCH FAILED", msg))
         finally:
             self.ui_queue.put(("reset_ui", None))
+   
     def patch(self):
         selected = self.tree.selection()
         if not selected:
@@ -872,8 +996,9 @@ class App(tk.Tk):
         threading.Thread(target=self.process_patch, args=(files, selected_indices, install_dir, game_name, progress_var, status_label, speed_label), daemon=True).start()
 
 if __name__ == "__main__":
-    setup_logging()  # Initialize logging to file and console
+    setup_logging() # Initialize logging to file and console
     ensure_7z_exe() # Run this first for standalone
+    ensure_unrar_dll()  # New: Extract unrar.dll if needed
     try:
         import vdf
     except:
@@ -884,4 +1009,9 @@ if __name__ == "__main__":
     except:
         subprocess.call([sys.executable, "-m", "pip", "install", "gdown"])
         import gdown
+    try:
+        import rarfile
+    except:
+        subprocess.call([sys.executable, "-m", "pip", "install", "rarfile"])
+        import rarfile
     App().mainloop()
