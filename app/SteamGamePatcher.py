@@ -19,10 +19,9 @@ import webbrowser
 from collections import defaultdict
 import uuid # For safe temp dirs if needed
 import platform # For OS checks if needed
-import rarfile # For RAR extraction (bundled DLL)
 import zipfile # Built-in for ZIP
 
-APP_VERSION = '1.3beta'
+APP_VERSION = '1.25beta'
 
 # Setup logging to file in data/
 def setup_logging():
@@ -45,7 +44,7 @@ def log(*args):
     logging.debug(message)
 
 def ensure_7z_exe():
-    """Extract 7z.exe alongside the app if not present."""
+    """Extract 7z.exe and 7z.dll alongside the app if not present."""
     # Get the directory where the EXE is running
     if getattr(sys, 'frozen', False):
         app_dir = Path(sys.executable).parent
@@ -55,49 +54,29 @@ def ensure_7z_exe():
         bundled_dir = app_dir
  
     seven_zip = app_dir / '7z.exe'
+    seven_dll = app_dir / '7z.dll'
  
-    if seven_zip.exists():
-        logging.info("7z.exe already available alongside app")
+    if seven_zip.exists() and seven_dll.exists():
+        logging.info("7z.exe and 7z.dll already available alongside app")
         return
  
-    logging.info("Extracting 7z.exe from bundle...")
+    logging.info("Extracting 7z.exe and 7z.dll from bundle...")
     try:
         bundled_7z = Path(bundled_dir) / '7z.exe'
         if not bundled_7z.exists():
             raise FileNotFoundError("7z.exe not found in bundle")
         shutil.copy2(bundled_7z, seven_zip)
         logging.info(f"7z.exe extracted to {seven_zip}")
+        
+        bundled_7z_dll = Path(bundled_dir) / '7z.dll'
+        if not bundled_7z_dll.exists():
+            raise FileNotFoundError("7z.dll not found in bundle")
+        shutil.copy2(bundled_7z_dll, seven_dll)
+        logging.info(f"7z.dll extracted to {seven_dll}")
     except Exception as e:
-        logging.error(f"Failed to extract 7z.exe: {e}")
-        messagebox.showwarning("Missing 7z.exe", "7z.exe not found. Download from https://www.7-zip.org and place in the app folder.")
+        logging.error(f"Failed to extract 7z.exe or 7z.dll: {e}")
+        messagebox.showwarning("Missing 7z files", "7z.exe or 7z.dll not found. Download from https://www.7-zip.org and place in the app folder.")
         sys.exit(1)
-
-def ensure_unrar_dll():
-    """Extract unrar.dll alongside the app if not present."""
-    # Get the directory where the EXE is running
-    if getattr(sys, 'frozen', False):
-        app_dir = Path(sys.executable).parent
-        bundled_dir = sys._MEIPASS
-    else:
-        app_dir = Path(__file__).parent
-        bundled_dir = app_dir
-    
-    unrar_dll = app_dir / 'unrar.dll'
-    
-    if unrar_dll.exists():
-        logging.info("unrar.dll already available alongside app")
-        return
-    
-    logging.info("Extracting unrar.dll from bundle...")
-    try:
-        bundled_unrar = Path(bundled_dir) / 'unrar.dll'
-        if not bundled_unrar.exists():
-            raise FileNotFoundError("unrar.dll not found in bundle")
-        shutil.copy2(bundled_unrar, unrar_dll)
-        logging.info(f"unrar.dll extracted to {unrar_dll}")
-    except Exception as e:
-        logging.error(f"Failed to extract unrar.dll: {e}")
-        messagebox.showwarning("Missing unrar.dll", "unrar.dll not found. RAR support disabled. Download UnRAR from https://www.rarlab.com/rar_add.htm and place in the app folder.")
 
 def get_steam_path():
     logging.info("Finding Steam...")
@@ -628,7 +607,7 @@ class App(tk.Tk):
             return None
         except:
             return None
-   
+    
     def download_with_gdown(self, file_id, output_path, expected_bytes, progress_var, status_label, speed_label):
         """Download using gdown with console progress."""
         try:
@@ -641,7 +620,7 @@ class App(tk.Tk):
         except Exception as e:
             logging.error(f"gdown failed: {e}")
             raise e
-   
+    
     def extract_with_7z(self, archive_path, extract_dir):
         """Extract archive using local 7z.exe via subprocess."""
         script_dir = Path(sys.executable).parent if getattr(sys, 'frozen', False) else Path(__file__).parent
@@ -672,17 +651,8 @@ class App(tk.Tk):
         logging.info(f"Extracted with 7z: {archive_path} to {extract_dir}")
     
     def extract_archive(self, archive_path, extract_dir):
-        """Independent extraction: Pure Python for ZIP, bundled DLL for RAR, 7z.exe for 7Z (due to BCJ2 support)."""
+        """Independent extraction: Pure Python for ZIP, 7z.exe for 7Z/RAR (due to BCJ2 support)."""
         script_dir = Path(sys.executable).parent if getattr(sys, 'frozen', False) else Path(__file__).parent
-        
-        # Ensure unrar.dll is in PATH for frozen EXE
-        if getattr(sys, 'frozen', False):
-            unrar_dll = script_dir / 'unrar.dll'
-            if unrar_dll.exists():
-                os.add_dll_directory(str(script_dir)) # Makes DLL available
-                logging.info(f"Bundled unrar.dll loaded from {unrar_dll}")
-            else:
-                logging.warning("unrar.dll not bundled—RAR support disabled.")
         
         logging.debug(f"DEBUG: Archive path: {archive_path} (exists: {archive_path.exists()})")
         logging.debug(f"DEBUG: Extract dir: {extract_dir} (exists: {extract_dir.exists()}, is_dir: {extract_dir.is_dir()})")
@@ -706,30 +676,11 @@ class App(tk.Tk):
                     zf.extractall(extract_dir)
                     extracted_files = zf.namelist()
                     logging.info(f"Extracted ZIP: {len(extracted_files)} files")
-            
-            elif ext == '.7z':
-                # Fall back to 7z.exe for full filter support (e.g., BCJ2)
+            else:
+                # Use 7z.exe for 7Z/RAR/others
                 self.extract_with_7z(archive_path, extract_dir)
                 extracted_files = os.listdir(extract_dir)
-                logging.info(f"Extracted 7Z with 7z.exe: {len(extracted_files)} files")
-            
-            elif ext == '.rar':
-                # Bundled DLL + rarfile
-                try:
-                    with rarfile.RarFile(archive_path, 'r') as rf:
-                        rf.extractall(extract_dir)
-                        extracted_files = rf.namelist()
-                        logging.info(f"Extracted RAR: {len(extracted_files)} files")
-                except rarfile.BadRarFile as e:
-                    # Handle picky RARs (e.g., password or format quirk)
-                    logging.error(f"RAR extraction failed with rarfile: {e}. Falling back to manual prompt.")
-                    raise RuntimeError(f"RAR format issue: {e}. File kept—extract manually with Windows or WinRAR.")
-                except Exception as e:
-                    logging.error(f"RAR extraction error: {e}")
-                    raise
-            
-            else:
-                raise ValueError(f"Unsupported archive: {ext}. Only ZIP/7Z/RAR supported.")
+                logging.info(f"Extracted with 7z.exe: {len(extracted_files)} files")
             
             # Verify extraction
             actual_extracted = os.listdir(extract_dir)
@@ -772,7 +723,7 @@ class App(tk.Tk):
                 else:
                     # Add new file, preserving relative structure from patch
                     default_dst.parent.mkdir(parents=True, exist_ok=True)
-                    shutil.copy2(src, dst)
+                    shutil.copy2(src, default_dst)
                     added += 1
                     self.ui_queue.put(("update_status", (status_label, f"ADDED: {file}")))
         return overwritten, added, skipped
@@ -805,29 +756,20 @@ class App(tk.Tk):
                     small_file_check = expected_bytes and expected_bytes < 2048 and actual_size > 0
                     tolerance_check = expected_bytes is None or (abs(actual_size - expected_bytes) <= expected_bytes * 0.05)
                    
-                    # Integrity test for cached file (SKIP for RARs - Windows/7z mismatch)
-                    if cache_file.suffix.lower() not in ['.rar']: # Skip RAR - attempt extract instead
-                        test_cmd = [str(local_7z), 't', str(cache_file)]
-                        logging.info(f"Testing cached file integrity: {cache_file}")
-                        test_result = subprocess.run(test_cmd, capture_output=True, text=True)
-                        if test_result.returncode != 0:
-                            logging.warning(f"Cached file failed integrity: {test_result.stderr}. Deleting and forcing redownload.")
-                            cache_file.unlink()
-                            use_cache = False
-                        else:
-                            if tolerance_check or small_file_check:
-                                use_cache = True
-                                logging.info(f"Using cached: {file_name} ({actual_size} bytes) - integrity OK")
-                            else:
-                                logging.warning(f"Cached file size mismatch despite integrity pass - forcing redownload.")
-                                cache_file.unlink()
-                                use_cache = False
+                    # Integrity test for cached file
+                    test_cmd = [str(local_7z), 't', str(cache_file)]
+                    logging.info(f"Testing cached file integrity: {cache_file}")
+                    test_result = subprocess.run(test_cmd, capture_output=True, text=True)
+                    if test_result.returncode != 0:
+                        logging.warning(f"Cached file failed integrity: {test_result.stderr}. Deleting and forcing redownload.")
+                        cache_file.unlink()
+                        use_cache = False
                     else:
-                        # For RAR: Assume OK if size matches (test via extract)
                         if tolerance_check or small_file_check:
                             use_cache = True
-                            logging.info(f"Using cached RAR (skipped strict test): {file_name} ({actual_size} bytes)")
+                            logging.info(f"Using cached: {file_name} ({actual_size} bytes) - integrity OK")
                         else:
+                            logging.warning(f"Cached file size mismatch despite integrity pass - forcing redownload.")
                             cache_file.unlink()
                             use_cache = False
                
@@ -848,19 +790,16 @@ class App(tk.Tk):
                         small_file_check = expected_bytes and expected_bytes < 2048 and actual_size > 0
                         tolerance_check = expected_bytes is None or (abs(actual_size - expected_bytes) <= expected_bytes * 0.05)
                         if tolerance_check or small_file_check:
-                            logging.info(f"Download size verified: {file_path} ({actual_size} bytes)")
+                            logging.info(f"Download size verified: {file_path} {actual_size} bytes")
                            
-                            # Integrity test post-download (SKIP for RARs)
-                            if output.suffix.lower() not in ['.rar']:
-                                test_cmd = [str(local_7z), 't', str(output)]
-                                logging.info(f"Testing downloaded archive integrity: {output}")
-                                test_result = subprocess.run(test_cmd, capture_output=True, text=True)
-                                if test_result.returncode != 0:
-                                    logging.error(f"Downloaded archive failed integrity test: {test_result.stderr}. Keeping file for manual repair.")
-                                    raise RuntimeError(f"Downloaded archive failed integrity (7z t): {test_result.stderr}. File kept in cache—try manual repair with WinRAR.")
-                                logging.info(f"Download and integrity verified: {file_path}")
-                            else:
-                                logging.info(f"Download verified for RAR (skipped strict test): {file_path}")
+                            # Integrity test post-download
+                            test_cmd = [str(local_7z), 't', str(output)]
+                            logging.info(f"Testing downloaded archive integrity: {output}")
+                            test_result = subprocess.run(test_cmd, capture_output=True, text=True)
+                            if test_result.returncode != 0:
+                                logging.error(f"Downloaded archive failed integrity test: {test_result.stderr}. Keeping file for manual repair.")
+                                raise RuntimeError(f"Downloaded archive failed integrity (7z t): {test_result.stderr}. File kept in cache—try manual repair with 7-Zip.")
+                            logging.info(f"Download and integrity verified: {file_path}")
                            
                             break
                        
@@ -926,14 +865,14 @@ class App(tk.Tk):
             elif "gdown failed" in error_msg:
                 error_msg += "\n\ngdown error. Ensure gdown is installed and try manual download."
             elif "integrity" in error_msg.lower():
-                error_msg += "\n\nFile kept in cache for manual repair. Use WinRAR or re-download via browser."
+                error_msg += "\n\nFile kept in cache for manual repair. Use 7-Zip or re-download via browser."
             elif "EXE failed" in error_msg:
                 error_msg += "\n\nFile kept in cache—try running the EXE manually by double-clicking it."
            
             # NO auto-cleanup on failure—keep file for debugging/manual use!
             # if 'output' in locals() and output.exists() and not use_cache:
-            # output.unlink() # Commented out to prevent "vanish"
-            # logging.info(f"Cleaned partial cache: {output}")
+            #     output.unlink() # Commented out to prevent "vanish"
+            #     logging.info(f"Cleaned partial cache: {output}")
            
             self.ui_queue.put(("update_status", (status_label, "FAILED")))
             logging.error(f"PATCH FAILED: {error_msg}")
@@ -998,7 +937,6 @@ class App(tk.Tk):
 if __name__ == "__main__":
     setup_logging() # Initialize logging to file and console
     ensure_7z_exe() # Run this first for standalone
-    ensure_unrar_dll()  # New: Extract unrar.dll if needed
     try:
         import vdf
     except:
@@ -1009,9 +947,4 @@ if __name__ == "__main__":
     except:
         subprocess.call([sys.executable, "-m", "pip", "install", "gdown"])
         import gdown
-    try:
-        import rarfile
-    except:
-        subprocess.call([sys.executable, "-m", "pip", "install", "rarfile"])
-        import rarfile
     App().mainloop()
