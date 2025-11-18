@@ -15019,12 +15019,19 @@
                             "size": "489.0 MB",
                             "type": ".exe",
                             "path": "Spiral Dystopia EN Patch v1.01.exe"
+                        },
+                        {
+                            "name": "Spiral Dystopia EN Patch v1.02.exe",
+                            "id": "11cQ6B5lEwJX63cq_1xFrxKVKzwiyqcXb",
+                            "size": "488.4 MB",
+                            "type": ".exe",
+                            "path": "Spiral Dystopia EN Patch v1.02.exe"
                         }
                     ],
                     "appid": "1933680",
-                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1933680/header.jpg?t=1729119245",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1933680/header.jpg?t=1749385154",
                     "publisher": "Kagura Games",
-                    "notes": "Chinese patch v1.02. English patch v1.01. Japanese patch v1.00",
+                    "notes": "Chinese patch v1.02. English patch v1.02. Japanese patch v1.00",
                     "store_status": "available"
                 }
             }
@@ -24659,6 +24666,15 @@
                     "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1340120/header.jpg?t=1670679576",
                     "publisher": "NekoNyan Ltd.",
                     "notes": "Version 1.04a + H scenes voice fix patch",
+                    "store_status": "available"
+                },
+                "Home Sweet Homecoming": {
+                    "id": "1_sm-a_AUXqOiZGIvN07bA1kj6h_-Jpsf",
+                    "files": [],
+                    "notes": "Multilanguage Patch v2025.11.18",
+                    "appid": "3742820",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3742820/0921f6dcde1d5e3a9ec73dff672dd224dd9bbd4b/header.jpg?t=1763427608",
+                    "publisher": "Shiravune",
                     "store_status": "available"
                 }
             }
@@ -37228,8 +37244,10 @@
             "The Saint Wife's Newlywed Trials - Added game to Mousou Endemic",
             "The Saint Wife's Newlywed Trials - Update to The Saint Wife's Newlywed Trials JP Patch v1.00.exe",
             "The Saint Wife's Newlywed Trials - Update to The Saint Wife's Newlywed Trials CN Patch v1.01.exe",
-            "The Saint Wife's Newlywed Trials - Update to The Saint Wife's Newlywed Trials EN Patch v1.01.exe"
+            "The Saint Wife's Newlywed Trials - Update to The Saint Wife's Newlywed Trials EN Patch v1.01.exe",
+            "Spiral Dystopia - Update to Spiral Dystopia EN Patch v1.02.exe",
+            "Home Sweet Homecoming - Added game to Hooksoft"
         ],
-        "version": "2025-11-15 05:31:08"
+        "version": "2025-11-18 07:40:43"
     }
 }
