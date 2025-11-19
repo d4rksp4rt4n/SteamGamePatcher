@@ -37235,7 +37235,15 @@
             "games": {
                 "狂想！夏日盛宴 (Fantasy! Summer Cook)": {
                     "id": "1EBYzuFPbywiJ-WshOnE6kRPM6b_aNGG6",
-                    "files": [],
+                    "files": [
+                        {
+                            "name": "Instructions.txt",
+                            "id": "17en3qtoiyHKeDQ4sx4LBwXxtTMvrnCWw",
+                            "size": "0.4 KB",
+                            "type": ".txt",
+                            "path": "Instructions.txt"
+                        }
+                    ],
                     "notes": "游戏补丁-内容修复 / Game Patch Instructions",
                     "appid": "3608510",
                     "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3608510/fa03cf0f40194288d7bb4ed586599348f4435de1/header.jpg?t=1763190959",
@@ -37271,8 +37279,9 @@
             "Home Sweet Homecoming - Added game to Hooksoft",
             "Home Sweet Homecoming - Update to HomeSweetHomecoming_R18PATCH_v2025.11.18.zip",
             "Tenth Art Studio - Added developer",
-            "狂想！夏日盛宴 (Fantasy! Summer Cook) - Added game to Tenth Art Studio"
+            "狂想！夏日盛宴 (Fantasy! Summer Cook) - Added game to Tenth Art Studio",
+            "狂想！夏日盛宴 (Fantasy! Summer Cook) - Update to Instructions.txt"
         ],
-        "version": "2025-11-19 17:03:30"
+        "version": "2025-11-19 17:19:22"
     }
 }
