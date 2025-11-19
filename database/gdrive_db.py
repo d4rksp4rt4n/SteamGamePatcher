@@ -144,7 +144,7 @@ def recursive_list_files_with_path(drive_service, folder_id, current_path='', ig
             results.extend(sub_files)
         else:
             ext = Path(item['name']).suffix.lower()
-            if ext in ['.zip', '.7z', '.rar', '.exe']:
+            if ext in ['.zip', '.7z', '.rar', '.exe', '.txt']:
                 size_str = item.get('size', 'Unknown')
                 if isinstance(size_str, str) and size_str.isdigit():
                     size = int(size_str)
@@ -397,7 +397,7 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                         continue
                     path_parts, game_parent_id = res
                     ext = Path(name).suffix.lower()
-                    if ext not in ['.zip', '.7z', '.rar', '.exe']:
+                    if ext not in ['.zip', '.7z', '.rar', '.exe', '.txt']:
                         if removed:
                             change_count += 1
                         continue
@@ -501,4 +501,5 @@ def main():
     logger.info(f"Database updated in {OUTPUT_JSON} with {change_count} changes")
 if __name__ == '__main__':
     main()
+
 
