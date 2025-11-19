@@ -24670,7 +24670,15 @@
                 },
                 "Home Sweet Homecoming": {
                     "id": "1_sm-a_AUXqOiZGIvN07bA1kj6h_-Jpsf",
-                    "files": [],
+                    "files": [
+                        {
+                            "name": "HomeSweetHomecoming_R18PATCH_v2025.11.18.zip",
+                            "id": "16aS2xajfJ0RpE4auihaHJbjgbcsoBdb1",
+                            "size": "3425.3 MB",
+                            "type": ".zip",
+                            "path": "HomeSweetHomecoming_R18PATCH_v2025.11.18.zip"
+                        }
+                    ],
                     "notes": "Multilanguage Patch v2025.11.18",
                     "appid": "3742820",
                     "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3742820/0921f6dcde1d5e3a9ec73dff672dd224dd9bbd4b/header.jpg?t=1763427608",
@@ -37221,6 +37229,20 @@
                     "store_status": "available"
                 }
             }
+        },
+        "Tenth Art Studio": {
+            "id": "15xCYw8EOJQ_BAsMHrLhfx9w_6y57_P8h",
+            "games": {
+                "狂想！夏日盛宴 (Fantasy! Summer Cook)": {
+                    "id": "1EBYzuFPbywiJ-WshOnE6kRPM6b_aNGG6",
+                    "files": [],
+                    "notes": "游戏补丁-内容修复 / Game Patch Instructions",
+                    "appid": "3608510",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3608510/fa03cf0f40194288d7bb4ed586599348f4435de1/header.jpg?t=1763190959",
+                    "publisher": "Tenth Art Studio",
+                    "store_status": "available"
+                }
+            }
         }
     },
     "metadata": {
@@ -37246,8 +37268,11 @@
             "The Saint Wife's Newlywed Trials - Update to The Saint Wife's Newlywed Trials CN Patch v1.01.exe",
             "The Saint Wife's Newlywed Trials - Update to The Saint Wife's Newlywed Trials EN Patch v1.01.exe",
             "Spiral Dystopia - Update to Spiral Dystopia EN Patch v1.02.exe",
-            "Home Sweet Homecoming - Added game to Hooksoft"
+            "Home Sweet Homecoming - Added game to Hooksoft",
+            "Home Sweet Homecoming - Update to HomeSweetHomecoming_R18PATCH_v2025.11.18.zip",
+            "Tenth Art Studio - Added developer",
+            "狂想！夏日盛宴 (Fantasy! Summer Cook) - Added game to Tenth Art Studio"
         ],
-        "version": "2025-11-18 07:40:43"
+        "version": "2025-11-19 17:03:30"
     }
 }

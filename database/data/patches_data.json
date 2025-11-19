@@ -1,10 +1,25 @@
 {
     "data": {
-        "total_games": 1472,
-        "unique_developers": 758,
-        "generated_at": "2025-11-18 07:40:21 UTC"
+        "total_games": 1473,
+        "unique_developers": 759,
+        "generated_at": "2025-11-19 17:03:04 UTC"
     },
     "entries": [
+        {
+            "game": "狂想!夏日盛宴 (Fantasy! Summer Cook)",
+            "developer": "Tenth Art Studio",
+            "publisher": "Tenth Art Studio",
+            "notes": "游戏补丁-内容修复 / Game Patch Instructions",
+            "steam_url": "https://store.steampowered.com/app/3608510/",
+            "patch_link": "https://drive.google.com/drive/folders/1EBYzuFPbywiJ-WshOnE6kRPM6b_aNGG6",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3608510/fa03cf0f40194288d7bb4ed586599348f4435de1/header.jpg?t=1763190959",
+            "row_num": "1458",
+            "appid": "3608510",
+            "match_status": "normalized",
+            "match_reason": "Normalized match on full: tenth art studio|狂想!夏日盛宴 (fantasy! summer cook) -> tenth art studio|狂想!夏日盛宴 fantasy! summer cook",
+            "store_status": "available",
+            "manual_edit": false
+        },
         {
             "game": "Home Sweet Homecoming",
             "developer": "Hooksoft",
