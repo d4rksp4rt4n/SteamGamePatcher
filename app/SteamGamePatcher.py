@@ -23,7 +23,7 @@ import platform # For OS checks if needed
 import zipfile # Built-in for ZIP
 import gdown
 
-APP_VERSION = '1.30-beta'
+APP_VERSION = '1.31-beta'
 
 def resource_path(relative_path):
     """Get absolute path to resource, works for dev and for PyInstaller onefile"""
@@ -286,17 +286,23 @@ class PatchSelectionDialog(tk.Toplevel):
         super().__init__(parent)
         self.title("Select Patches & View Instructions")
         self.geometry("700x600")
+
+        # Get the real main App instance (not the dialog itself)
+        main_app = parent.get_main_app() if hasattr(parent, "get_main_app") else parent
+        main_app.center_window(self, 700, 600)
+        self.main_app = main_app  # ← Critical: store correct reference
+
         self.result = None
-        self.file_entries = file_entries  # original file dicts
+        self.file_entries = file_entries
 
         tk.Label(self,
                  text="Select patches to apply\n.txt files = instructions (double-click/right-click to view)",
-                 font=get_app_font( 11, "bold")).pack(pady=12)
+                 font=get_app_font(11, "bold")).pack(pady=12)
 
         frame = tk.Frame(self)
         frame.pack(fill=tk.BOTH, expand=True, padx=15, pady=10)
 
-        self.listbox = tk.Listbox(frame, selectmode=tk.MULTIPLE, font=get_app_font( 10))
+        self.listbox = tk.Listbox(frame, selectmode=tk.MULTIPLE, font=get_app_font(10))
         scrollbar = tk.Scrollbar(frame, orient="vertical", command=self.listbox.yview)
         self.listbox.configure(yscrollcommand=scrollbar.set)
         self.listbox.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
@@ -305,7 +311,6 @@ class PatchSelectionDialog(tk.Toplevel):
         for line in display_files:
             self.listbox.insert(tk.END, line)
 
-        # Bind selection change → update button state
         self.listbox.bind("<<ListboxSelect>>", self.on_selection_change)
         self.listbox.bind('<Double-Button-1>', self.view_selected_txt)
         self.listbox.bind('<Button-3>', self.view_selected_txt)
@@ -315,12 +320,15 @@ class PatchSelectionDialog(tk.Toplevel):
 
         self.apply_btn = tk.Button(btn_frame, text="Apply Selected Patches",
                                    command=self.apply, bg="#b52f2f", fg="white",
-                                   font=get_app_font( 10, "bold"), state=tk.DISABLED)
+                                   font=get_app_font(10, "bold"), state=tk.DISABLED)
         self.apply_btn.pack(side=tk.LEFT, padx=10)
 
-        tk.Button(btn_frame, text="Cancel", command=self.destroy).pack(side=tk.LEFT, padx=10)
+        # Cancel button now properly resets UI
+        tk.Button(btn_frame, text="Cancel", command=self.on_closing).pack(side=tk.LEFT, padx=10)
 
-        # Initial state
+        # Crucial: reset UI when window is closed with X or Cancel
+        self.protocol("WM_DELETE_WINDOW", self.on_closing)
+
         self.on_selection_change()
 
     def on_selection_change(self, event=None):
@@ -328,13 +336,10 @@ class PatchSelectionDialog(tk.Toplevel):
         if not selected_indices:
             self.apply_btn.config(state=tk.DISABLED)
             return
-
-        # Check if ALL selected items are .txt
         all_txt = all(
             self.file_entries[i]['name'].lower().endswith('.txt')
             for i in selected_indices
         )
-
         if all_txt:
             self.apply_btn.config(state=tk.DISABLED, text="No patches to apply (only instructions)")
         else:
@@ -349,15 +354,21 @@ class PatchSelectionDialog(tk.Toplevel):
             return
         f = self.file_entries[idx]
         if f['name'].lower().endswith('.txt'):
-            InstructionsDialog(self, f)
+            InstructionsDialog(self, f)  # self.main_app passed via parent
         else:
             messagebox.showinfo("Not a text file", "This is a binary patch.\nIt will be applied when you click 'Apply'.")
 
     def apply(self):
         indices = self.listbox.curselection()
-        if not indices:
-            return
-        self.result = indices
+        self.result = list(indices) if indices else None
+        self.destroy()  # → on_closing() will reset UI
+
+    def on_closing(self):
+        try:
+            if self.main_app and self.main_app.winfo_exists():
+                self.main_app.reset_ui()
+        except:
+            pass
         self.destroy()
         
 class InstructionsDialog(tk.Toplevel):
@@ -365,28 +376,32 @@ class InstructionsDialog(tk.Toplevel):
         super().__init__(parent)
         self.title(f"Instructions: {file_data['name']}")
         self.geometry("800x600")
+
+        # parent is PatchSelectionDialog → get main_app from it
+        main_app = parent.main_app if hasattr(parent, "main_app") else parent
+        main_app.center_window(self, 800, 600)
+
         self.transient(parent)
         self.grab_set()
+        self.protocol("WM_DELETE_WINDOW", self.on_close)
 
-        # Header
-        header = tk.Label(self, text=file_data.get('path', file_data['name']), font=get_app_font( 12, "bold"), fg="#0066CC")
+        header = tk.Label(self, text=file_data.get('path', file_data['name']),
+                         font=get_app_font(12, "bold"), fg="#0066CC")
         header.pack(pady=10)
 
-        # Text area
         text_frame = tk.Frame(self)
         text_frame.pack(fill=tk.BOTH, expand=True, padx=15, pady=10)
 
         text_widget = scrolledtext.ScrolledText(
             text_frame,
             wrap=tk.WORD,
-            font=get_app_font( 11),
+            font=get_app_font(11),
             bg="#1e1e1e",
             fg="#d4d4d4",
             insertbackground="white"
         )
         text_widget.pack(fill=tk.BOTH, expand=True)
 
-        # Load content
         file_id = file_data['id']
         temp_txt = Path(tempfile.gettempdir()) / f"instruction_{uuid.uuid4().hex}.txt"
         try:
@@ -403,13 +418,27 @@ class InstructionsDialog(tk.Toplevel):
                 except: pass
 
         text_widget.config(state=tk.DISABLED)
-        tk.Button(self, text="Close", command=self.destroy, font=get_app_font( 10)).pack(pady=10)
+        tk.Button(self, text="Close", command=self.destroy, font=get_app_font(10)).pack(pady=10)
+
+    def on_close(self):
+        try:
+            if self.master and self.master.winfo_exists():
+                # Find main app and reset UI
+                main_app = self.master
+                while hasattr(main_app, "main_app"):
+                    main_app = main_app.main_app
+                if hasattr(main_app, "reset_ui"):
+                    main_app.reset_ui()
+        except:
+            pass
+        self.destroy()
         
 class ChangesDialog(tk.Toplevel):
     def __init__(self, parent, grouped_changes):
         super().__init__(parent)
         self.title("Latest Patch Changes")
         self.geometry("600x500")
+        parent.center_window(self, 600, 500)
         self.transient(parent)
         self.grab_set()
         text_widget = scrolledtext.ScrolledText(self, wrap=tk.WORD, width=70, height=25, font=get_app_font( 10))
@@ -430,6 +459,7 @@ class AboutDialog(tk.Toplevel):
         super().__init__(parent)
         self.title("About Steam Game Patcher")
         self.geometry("400x200")
+        parent.center_window(self, 400, 200)
         self.transient(parent)
         self.grab_set()
         about_text = f"Steam Game Patcher {APP_VERSION}\n\nDatabase Version: {version}"
@@ -465,6 +495,10 @@ class App(tk.Tk):
        
         self.current_appid = None
         self.current_install_dir = None
+        self.dev_var = tk.StringVar(value="")
+        self.pub_var = tk.StringVar(value="")
+        self.notes_var = tk.StringVar(value="")
+        self.status_var = tk.StringVar(value="")
         # Menu bar
         menubar = tk.Menu(self)
         self.option_add('*tearOff', False)
@@ -1179,53 +1213,57 @@ class App(tk.Tk):
         # Main container
         main_frame = tk.Frame(self)
         main_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=5)
-     
-        # Left: Box art + details + Patch Button
+
+        # LEFT SIDE
         left_frame = tk.Frame(main_frame, width=250)
         left_frame.pack(side=tk.LEFT, fill=tk.Y, padx=(0, 10))
         left_frame.pack_propagate(False)
-     
+
+        # Box art
         self.img_label = tk.Label(left_frame, bg="#222", text="No Image", font=get_app_font(9))
         self.img_label.pack(pady=10)
-     
-        details_frame = tk.Frame(left_frame)
-        details_frame.pack(fill=tk.BOTH, expand=True)
-     
-        # Labels with proper font
-        self.dev_label = tk.Label(details_frame, text="", font=get_app_font(10, "bold"), wraplength=250)
-        self.dev_label.pack(anchor="w", pady=(8, 2))
-        
-        self.pub_label = tk.Label(details_frame, text="", font=get_app_font(10), fg="#cccccc")
-        self.pub_label.pack(anchor="w", pady=2)
-        
-        self.notes_label = tk.Label(details_frame, text="", wraplength=220, font=get_app_font(9), fg="#aaaaaa")
-        self.notes_label.pack(anchor="w", pady=4)
-        
-        self.status_label = tk.Label(details_frame, text="", fg="#4CAF50", font=get_app_font(10, "bold"))
-        self.status_label.pack(anchor="w", pady=(10, 15))
 
-        # Buttons with beautiful modern font
-        self.patch_btn = tk.Button(details_frame, text="Patch Selected Game",
+        # Details area
+        details_frame = tk.Frame(left_frame)
+        details_frame.pack(fill=tk.BOTH, expand=True, pady=(0, 10))
+
+        # Helper to create bold label + value
+        def add_row(label_text, var, value_color="#ffffff"):
+            row = tk.Frame(details_frame)
+            row.pack(anchor="w", padx=12, pady=2)
+            tk.Label(row, text=label_text, font=get_app_font(10, "bold"), fg="black").pack(side=tk.LEFT)
+            tk.Label(row, textvariable=var, font=get_app_font(10), fg=value_color,
+                     anchor="w", justify="left", wraplength=140).pack(side=tk.LEFT, fill=tk.X)
+
+        add_row("Developer:  ", self.dev_var, "black")
+        add_row("Publisher:   ", self.pub_var, "black")
+        add_row("Notes:        ", self.notes_var, "black")
+        add_row("Status:       ", self.status_var, "#4CAF50")
+
+        # BUTTONS (fixed position)
+        buttons_frame = tk.Frame(left_frame)
+        buttons_frame.pack(fill=tk.X, pady=(0, 8))
+
+        self.patch_btn = tk.Button(buttons_frame, text="Patch Selected Game",
                                    command=self.patch,
                                    font=get_app_font(12, "bold"),
                                    bg="#b52f2f", fg="white", height=2, relief="flat", cursor="hand2")
-        self.patch_btn.pack(fill=tk.X, pady=(15, 10))
+        self.patch_btn.pack(fill=tk.X, padx=12, pady=(8, 6))
 
-        self.open_folder_btn = tk.Button(details_frame, text="Open Game Folder",
+        self.open_folder_btn = tk.Button(buttons_frame, text="Open Game Folder",
                                          command=self.open_folder, state=tk.DISABLED,
                                          font=get_app_font(10), bg="#333333", fg="#cccccc")
-        self.open_folder_btn.pack(fill=tk.X, pady=4)
+        self.open_folder_btn.pack(fill=tk.X, padx=12, pady=4)
 
-        self.launch_btn = tk.Button(details_frame, text="Launch Game",
+        self.launch_btn = tk.Button(buttons_frame, text="Launch Game",
                                     command=self.launch_game, state=tk.DISABLED,
                                     font=get_app_font(10), bg="#333333", fg="#cccccc")
-        self.launch_btn.pack(fill=tk.X, pady=4)
+        self.launch_btn.pack(fill=tk.X, padx=12, pady=(4, 8))
 
-        # Right: Game list
+        # RIGHT SIDE - Game list (unchanged)
         right_frame = tk.Frame(main_frame)
         right_frame.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
-     
-        # Search bar
+
         search_frame = tk.Frame(right_frame)
         search_frame.pack(fill=tk.X, padx=0, pady=(0, 8))
         tk.Label(search_frame, text="Search:", font=get_app_font(10)).pack(side=tk.LEFT, padx=(0, 5))
@@ -1234,28 +1272,24 @@ class App(tk.Tk):
         self.search_entry.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 5))
         self.search_entry.bind('<KeyRelease>', self.filter_games)
 
-        # Treeview for games
-        cols = ("Game",)
-        self.tree = ttk.Treeview(right_frame, columns=cols, show="headings", selectmode="browse")
+        self.tree = ttk.Treeview(right_frame, columns=("Game",), show="headings", selectmode="browse")
         self.tree.heading("Game", text="Game")
         self.tree.column("Game", width=400, anchor="w")
         self.tree.pack(fill=tk.BOTH, expand=True)
-        
-        # Better treeview font
+
         style = ttk.Style()
         style.configure("Treeview", font=get_app_font(10))
         style.configure("Treeview.Heading", font=get_app_font(10, "bold"))
 
-        # Populate games
         for match in self.matches:
             appid = str(match["data"]["appid"]).strip()
             self.tree.insert("", "end", values=(match["game_name"],), tags=(appid,))
+
         self.tree.bind("<<TreeviewSelect>>", self.on_select)
 
-        # Bottom status bar (must be created AFTER main_frame)
+        # Bottom status bar
         bottom_frame = tk.Frame(self, bg="#1e1e1e")
         bottom_frame.pack(fill=tk.X, side=tk.BOTTOM, pady=(8, 0))
-
         self.status = tk.Label(bottom_frame, text=self.db_status, anchor="w",
                                font=get_app_font(10), bg="#1e1e1e", fg="#00ff88", padx=12)
         self.status.pack(fill=tk.X, side=tk.LEFT, expand=True)
@@ -1287,26 +1321,25 @@ class App(tk.Tk):
             self.clear_details()
             return
         appid = str(tags[0])
-        logging.debug(f"SELECTED: '{appid}'")
         match = self.by_id.get(appid)
         if not match:
-            logging.warning(f"NOT FOUND: {appid}")
             self.clear_details()
             return
-        logging.debug(f"FOUND: {match['game_name']}")
+
         # Load box art
         img = load_box_art(self.steam_path, appid)
         if img:
             self.img_label.configure(image=img, text="")
-            self.img_label.image = img
-            logging.debug("BOX ART LOADED")
+            self.img_label.image = img  # Keep reference!
         else:
             self.img_label.configure(image="", text="No box art")
-        # Update details
-        self.dev_label.config(text=f"Developer: {match['dev_name']}")
-        self.pub_label.config(text=f"Publisher: {match['data'].get('publisher', 'N/A')}")
-        self.notes_label.config(text=f"Notes: {match['data'].get('notes', 'N/A')}")
-        self.status_label.config(text=f"Status: {match['data'].get('store_status', 'N/A')}")
+
+        # CORRECT WAY: Update StringVars (this updates the labels automatically)
+        self.dev_var.set(match['dev_name'])
+        self.pub_var.set(match['data'].get('publisher', 'N/A'))
+        self.notes_var.set(match['data'].get('notes', 'N/A'))
+        self.status_var.set(match['data'].get('store_status', 'N/A'))
+
         # Enable buttons
         self.current_appid = appid
         self.current_install_dir = self.installed[appid]
@@ -1327,11 +1360,40 @@ class App(tk.Tk):
             messagebox.showerror("Error", "No game selected")
    
     def reset_ui(self):
-        self.patch_btn.config(state="normal", text="Patch Selected Game")
-        self.status.config(text=self.db_status, fg="#00ff88")
-        if self.progress_frame:
-            self.progress_frame.destroy()
-            self.progress_frame = None
+        try:
+            # Only touch widgets if they still exist
+            if hasattr(self, 'patch_btn') and self.patch_btn.winfo_exists():
+                self.patch_btn.config(state="normal", text="Patch Selected Game")
+            if hasattr(self, 'status') and self.status.winfo_exists():
+                self.status.config(text=self.db_status, fg="#00ff88")
+            if hasattr(self, 'progress_frame') and self.progress_frame and self.progress_frame.winfo_exists():
+                self.progress_frame.destroy()
+                self.progress_frame = None
+        except:
+            pass  # App is closing or widgets gone → ignore silently
+                
+    def center_window(self, window, width=None, height=None):
+        """Center any Toplevel window over the main app window"""
+        window.update_idletasks()  # Ensure size is calculated
+        main_x = self.winfo_rootx()
+        main_y = self.winfo_rooty()
+        main_w = self.winfo_width()
+        main_h = self.winfo_height()
+
+        win_w = width or window.winfo_width()
+        win_h = height or window.winfo_height()
+
+        x = main_x + (main_w - win_w) // 2
+        y = main_y + (main_h - win_h) // 2
+
+        # Keep window on screen (safety)
+        x = max(0, x)
+        y = max(0, y)
+
+        window.geometry(f"{win_w}x{win_h}+{x}+{y}")
+        
+    def get_main_app(self):
+        return self
    
 
 if __name__ == "__main__":
