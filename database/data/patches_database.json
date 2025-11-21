@@ -13098,6 +13098,14 @@
                     "publisher": "Saikey Studios",
                     "notes": "English, Japanese, S.Chinese & T.Chinese patch v20240707",
                     "store_status": "available"
+                },
+                "Fallen Priestess∶ My Sister's Demonic Bloodline": {
+                    "id": "1lWlWAxuuX7RVFsRmimoH2m3fvrOVzP69",
+                    "files": [],
+                    "appid": "3111930",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3111930/768a884424f9586afcb9f180fc06e05baa5c6edb/header.jpg?t=1763563079",
+                    "publisher": "Saikey Studios",
+                    "store_status": "unreleased"
                 }
             }
         },
@@ -37280,8 +37288,9 @@
             "Home Sweet Homecoming - Update to HomeSweetHomecoming_R18PATCH_v2025.11.18.zip",
             "Tenth Art Studio - Added developer",
             "狂想！夏日盛宴 (Fantasy! Summer Cook) - Added game to Tenth Art Studio",
-            "狂想！夏日盛宴 (Fantasy! Summer Cook) - Update to Instructions.txt"
+            "狂想！夏日盛宴 (Fantasy! Summer Cook) - Update to Instructions.txt",
+            "Fallen Priestess∶ My Sister's Demonic Bloodline - Added game to BBQ大好き"
         ],
-        "version": "2025-11-19 17:19:22"
+        "version": "2025-11-21 12:57:54"
     }
 }
