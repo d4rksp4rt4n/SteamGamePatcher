@@ -2,22 +2,22 @@
     "data": {
         "total_games": 1474,
         "unique_developers": 759,
-        "generated_at": "2025-11-21 12:57:38 UTC"
+        "generated_at": "2025-11-21 17:19:23 UTC"
     },
     "entries": [
         {
             "game": "Fallen Priestess: My Sister's Demonic Bloodline",
             "developer": "BBQ大好き",
             "publisher": "Saikey Studios",
-            "notes": "",
+            "notes": "Multilanguage patch v1.0 (2025.11.21)",
             "steam_url": "https://store.steampowered.com/app/3111930/",
             "patch_link": "https://drive.google.com/drive/folders/1lWlWAxuuX7RVFsRmimoH2m3fvrOVzP69",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3111930/768a884424f9586afcb9f180fc06e05baa5c6edb/header.jpg?t=1763563079",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3111930/768a884424f9586afcb9f180fc06e05baa5c6edb/header.jpg?t=1763737988",
             "row_num": "327",
             "appid": "3111930",
             "match_status": "fuzzy",
             "match_reason": "Fuzzy match: bbq大好き|fallen priestess: my sister's demonic bloodline -> bbq大好き|fallen priestess∶ my sister's demonic bloodline (score: 98, dev: bbq大好き, cutoff: 0.8)",
-            "store_status": "unreleased",
+            "store_status": "available",
             "manual_edit": false
         },
         {
