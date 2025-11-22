@@ -1,10 +1,25 @@
 {
     "data": {
-        "total_games": 1474,
-        "unique_developers": 759,
-        "generated_at": "2025-11-21 17:19:23 UTC"
+        "total_games": 1475,
+        "unique_developers": 760,
+        "generated_at": "2025-11-22 05:56:29 UTC"
     },
     "entries": [
+        {
+            "game": "DYSTHANASIA",
+            "developer": "Madowaku Kobo",
+            "publisher": "Eroge Japan",
+            "notes": "Multilanguage R-18 Patch v1.0.4 (2025.11.22)",
+            "steam_url": "https://store.steampowered.com/app/3211490/",
+            "patch_link": "https://drive.google.com/drive/folders/1OAHxnIIuirvDueE-oIYb1dekntlAIyxt",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3211490/83a93eb72421a1a32d0457aa0483ba1df96f884f/header.jpg?t=1763772726",
+            "row_num": "276",
+            "appid": "3211490",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: madowaku kobo|dysthanasia",
+            "store_status": "available",
+            "manual_edit": false
+        },
         {
             "game": "Fallen Priestess: My Sister's Demonic Bloodline",
             "developer": "BBQ大好き",
@@ -227,7 +242,7 @@
             "appid": "1548510",
             "match_status": "alt",
             "match_reason": "Alt match: Chiro|Drawing (Love Meeting) -> Chiro|Love Meeting (Fuzzy match: chiro|love meeting -> chiro|drawing (love meeting) (score: 78, dev: chiro, cutoff: 0.7))",
-            "store_status": "available",
+            "store_status": "retired",
             "manual_edit": false
         },
         {
@@ -398,16 +413,16 @@
         {
             "game": "零之騎士樂章-卡農 (Zero Fantasy - Kanon)",
             "developer": "ZF製作組",
-            "publisher": null,
+            "publisher": "LLYGAME",
             "notes": "English and Chinese instructions",
             "steam_url": "https://steamcommunity.com/app/1131710/",
             "patch_link": "https://drive.google.com/drive/folders/1ZadkHYow5M6Hitbcy0hRH-fMxNYfztA1",
-            "header_image": null,
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1131710/header.jpg",
             "row_num": "1464",
             "appid": "1131710",
             "match_status": "alt",
             "match_reason": "Alt match: ZF製作組|零之騎士樂章-卡農 (Zero Fantasy - Kanon) -> ZF製作組|Zero Fantasy - Kanon (Fuzzy match: zf製作組|zero fantasy - kanon -> zf製作組|零之騎士樂章-卡農 (zero fantasy - kanon) (score: 81, dev: zf製作組, cutoff: 0.8))",
-            "store_status": null,
+            "store_status": "removed",
             "manual_edit": false
         },
         {
@@ -1482,7 +1497,7 @@
             "notes": "",
             "steam_url": "https://steamcommunity.com/app/590940/",
             "patch_link": "https://drive.google.com/drive/folders/1r2zl5Zx6P_AY04ECcuqaX9zr4MBQAJvv",
-            "header_image": null,
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/590940/header.jpg",
             "row_num": "1124",
             "appid": "590940",
             "match_status": "exact",
@@ -1647,7 +1662,7 @@
             "notes": "Version 2020.07.18",
             "steam_url": "https://store.steampowered.com/app/1138080/",
             "patch_link": "https://drive.google.com/drive/folders/1O71NxNId4A9Y1j34aRp10iKC6u0J0nBf",
-            "header_image": null,
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1138080/header.jpg",
             "row_num": "1415",
             "appid": "1138080",
             "match_status": "exact",
@@ -21953,7 +21968,7 @@
         {
             "game": "牛顿与苹果树",
             "developer": "Laplacian",
-            "publisher": null,
+            "publisher": "Syawase Works China",
             "notes": "Version 1.0",
             "steam_url": "https://store.steampowered.com/app/1237370/",
             "patch_link": "https://drive.google.com/drive/folders/1NPirsAEJKpXhFp3ws-ysm5xEIqZ2OiuE",

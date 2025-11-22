@@ -4218,7 +4218,7 @@
                         }
                     ],
                     "appid": "590940",
-                    "header_image": null,
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/590940/header.jpg",
                     "publisher": "H-GAME",
                     "notes": "",
                     "store_status": "removed"
@@ -21556,7 +21556,7 @@
                     "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1548510/header.jpg?t=1632657752",
                     "publisher": "Chihro",
                     "notes": "R18 Restoration Patch V2 (Dev disabled adult content with an update)",
-                    "store_status": "available"
+                    "store_status": "retired"
                 }
             }
         },
@@ -25420,7 +25420,7 @@
                         }
                     ],
                     "appid": "1138080",
-                    "header_image": null,
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1138080/header.jpg",
                     "publisher": "本游戏已经下架退市",
                     "notes": "Version 2020.07.18",
                     "store_status": "available"
@@ -28496,10 +28496,10 @@
                     "id": "1ZadkHYow5M6Hitbcy0hRH-fMxNYfztA1",
                     "files": [],
                     "appid": "1131710",
-                    "header_image": null,
-                    "publisher": null,
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1131710/header.jpg",
+                    "publisher": "LLYGAME",
                     "notes": "English and Chinese instructions",
-                    "store_status": null
+                    "store_status": "removed"
                 }
             }
         },
@@ -33622,7 +33622,7 @@
                     ],
                     "appid": "1237370",
                     "header_image": "https://steamcdn-a.akamaihd.net/steam/apps/1237370/header.jpg",
-                    "publisher": null,
+                    "publisher": "Syawase Works China",
                     "notes": "Version 1.0",
                     "store_status": "available - region locked"
                 },
@@ -37268,6 +37268,28 @@
                     "store_status": "available"
                 }
             }
+        },
+        "Madowaku Kobo": {
+            "id": "1jAE3xex2xEB7gEGsPXg_wyvN0n2ZZDXk",
+            "games": {
+                "DYSTHANASIA": {
+                    "id": "1OAHxnIIuirvDueE-oIYb1dekntlAIyxt",
+                    "files": [
+                        {
+                            "name": "DYSTHANASIA_Patch_1.0.4 (2025.11.22).zip",
+                            "id": "1PnMM4BFNMGQSxXwycQq1o1xTIl0k60uq",
+                            "size": "812.8 MB",
+                            "type": ".zip",
+                            "path": "DYSTHANASIA_Patch_1.0.4 (2025.11.22).zip"
+                        }
+                    ],
+                    "notes": "Multilanguage R-18 Patch v1.0.4 (2025.11.22)",
+                    "appid": "3211490",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3211490/83a93eb72421a1a32d0457aa0483ba1df96f884f/header.jpg?t=1763772726",
+                    "publisher": "Eroge Japan",
+                    "store_status": "available"
+                }
+            }
         }
     },
     "metadata": {
@@ -37299,8 +37321,11 @@
             "狂想！夏日盛宴 (Fantasy! Summer Cook) - Added game to Tenth Art Studio",
             "狂想！夏日盛宴 (Fantasy! Summer Cook) - Update to Instructions.txt",
             "Fallen Priestess∶ My Sister's Demonic Bloodline - Added game to BBQ大好き",
-            "Fallen Priestess∶ My Sister's Demonic Bloodline - Update to Fallen Priestess My Sister's Demonic Bloodline Reconstruction Patch v1.0  (2025.11.21).zip"
+            "Fallen Priestess∶ My Sister's Demonic Bloodline - Update to Fallen Priestess My Sister's Demonic Bloodline Reconstruction Patch v1.0  (2025.11.21).zip",
+            "Madowaku Kobo - Added developer",
+            "DYSTHANASIA - Added game to Madowaku Kobo",
+            "DYSTHANASIA - Update to DYSTHANASIA_Patch_1.0.4 (2025.11.22).zip"
         ],
-        "version": "2025-11-21 17:19:51"
+        "version": "2025-11-22 05:56:45"
     }
 }
