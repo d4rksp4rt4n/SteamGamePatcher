@@ -9990,17 +9990,17 @@
                     "id": "10fWxVA0EZSe76GsVdBPVNGe5V7fddbje",
                     "files": [
                         {
-                            "name": "CorruptionTown-RestorationPatch-0.7e.exe",
-                            "id": "18ll2yTDqbPwnCHtT5fgzR4nk2m6y8cIk",
-                            "size": "532.3 MB",
+                            "name": "CorruptionTown-RestorationPatch-0.9.4.exe",
+                            "id": "1Sc66ud9ZJRYNh_5xKvqd6_a2uJqApxa4",
+                            "size": "783.8 MB",
                             "type": ".exe",
-                            "path": "CorruptionTown-RestorationPatch-0.7e.exe"
+                            "path": "CorruptionTown-RestorationPatch-0.9.4.exe"
                         }
                     ],
                     "appid": "2708950",
-                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2708950/header.jpg?t=1745870033",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2708950/header.jpg?t=1754696040",
                     "publisher": "BoredBasmati",
-                    "notes": "Restoration Patch 0.7e",
+                    "notes": "Restoration Patch 0.94",
                     "store_status": "available"
                 }
             }
@@ -15837,7 +15837,7 @@
                     "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2091550/header.jpg?t=1711892808",
                     "publisher": "Buttergirl Studio",
                     "notes": "Patch Instructions",
-                    "store_status": "available"
+                    "store_status": "retired"
                 }
             }
         },
@@ -20869,7 +20869,7 @@
                     "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1743530/header.jpg?t=1733980326",
                     "publisher": "WASABI entertainment",
                     "notes": "Patch v1 (2021.11.27) (R18 DLC also available on Steam)",
-                    "store_status": "available"
+                    "store_status": "retired"
                 },
                 "Meria and The Island of Orcs": {
                     "id": "1fd-UmrROcOUYgWH6YtdMX2wszvzyrggM",
@@ -20886,7 +20886,7 @@
                     "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1720040/header.jpg?t=1733796267",
                     "publisher": "WASABI entertainment",
                     "notes": "Patch v1 (2021.12.02) (R18 DLC also available on Steam)",
-                    "store_status": "available"
+                    "store_status": "retired"
                 }
             }
         },
@@ -20974,7 +20974,7 @@
                     "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1724840/header.jpg?t=1725326877",
                     "publisher": "WASABI entertainment",
                     "notes": "Patch V4 (2023.01.12)",
-                    "store_status": "available"
+                    "store_status": "retired"
                 }
             }
         },
@@ -25430,7 +25430,7 @@
                     "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1138080/header.jpg",
                     "publisher": "本游戏已经下架退市",
                     "notes": "Version 2020.07.18",
-                    "store_status": "available"
+                    "store_status": "retired"
                 }
             }
         },
@@ -37332,8 +37332,10 @@
             "Madowaku Kobo - Added developer",
             "DYSTHANASIA - Added game to Madowaku Kobo",
             "DYSTHANASIA - Update to DYSTHANASIA_Patch_1.0.4 (2025.11.22).zip",
-            "Fallen Priestess∶ My Sister's Demonic Bloodline - Update to Fallen Priestess My Sister's Demonic Bloodline Reconstruction Patch v1.0.2 (2025.11.22).zip"
+            "Fallen Priestess∶ My Sister's Demonic Bloodline - Update to Fallen Priestess My Sister's Demonic Bloodline Reconstruction Patch v1.0.2 (2025.11.22).zip",
+            "Corruption Town - Removed file CorruptionTown-RestorationPatch-0.7e.exe from BoredBasmati",
+            "Corruption Town - Update to CorruptionTown-RestorationPatch-0.9.4.exe"
         ],
-        "version": "2025-11-22 16:28:06"
+        "version": "2025-11-23 04:55:58"
     }
 }

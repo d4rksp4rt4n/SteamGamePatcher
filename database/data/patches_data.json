@@ -2,9 +2,24 @@
     "data": {
         "total_games": 1475,
         "unique_developers": 760,
-        "generated_at": "2025-11-22 16:27:47 UTC"
+        "generated_at": "2025-11-23 04:55:40 UTC"
     },
     "entries": [
+        {
+            "game": "Corruption Town",
+            "developer": "BoredBasmati",
+            "publisher": "BoredBasmati",
+            "notes": "Restoration Patch 0.94",
+            "steam_url": "https://store.steampowered.com/app/2708950/",
+            "patch_link": "https://drive.google.com/drive/folders/10fWxVA0EZSe76GsVdBPVNGe5V7fddbje",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2708950/header.jpg?t=1754696040",
+            "row_num": "171",
+            "appid": "2708950",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: boredbasmati|corruption town",
+            "store_status": "available",
+            "manual_edit": false
+        },
         {
             "game": "Fallen Priestess: My Sister's Demonic Bloodline",
             "developer": "BBQ大好き",
@@ -1667,7 +1682,7 @@
             "appid": "1138080",
             "match_status": "exact",
             "match_reason": "Exact match found: 七彩绘色游戏|斗地主少女/ landlord girls",
-            "store_status": "available",
+            "store_status": "retired",
             "manual_edit": false
         },
         {
@@ -4712,21 +4727,6 @@
             "appid": "496260",
             "match_status": "fuzzy",
             "match_reason": "Fuzzy match: Corona Blossom Vol.1: Gift From the Galaxy ≈ corona blossom vol.1 gift from the galaxy (score: 900)",
-            "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "Corruption Town",
-            "developer": "BoredBasmati",
-            "publisher": "BoredBasmati",
-            "notes": "Restoration Patch 0.7e",
-            "steam_url": "https://store.steampowered.com/app/2708950/",
-            "patch_link": "https://drive.google.com/drive/folders/10fWxVA0EZSe76GsVdBPVNGe5V7fddbje",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2708950/header.jpg?t=1745870033",
-            "row_num": "167",
-            "appid": "2708950",
-            "match_status": "exact",
-            "match_reason": "Exact match: boredbasmati|corruption town",
             "store_status": "available",
             "manual_edit": false
         },
@@ -7817,7 +7817,7 @@
             "appid": "2091550",
             "match_status": "fuzzy",
             "match_reason": "Fuzzy match: buttergirl studio|god of gamblers -> buttergirl studio|god of gamblers (賭神模擬器：亞洲風雲) (score: 84, dev: buttergirl studio, cutoff: 0.8)",
-            "store_status": "available",
+            "store_status": "retired",
             "manual_edit": false
         },
         {
@@ -12077,7 +12077,7 @@
             "appid": "1724840",
             "match_status": "exact",
             "match_reason": "Exact match: くしもとハウス (kushimoto_house)|maken-shi sara",
-            "store_status": "available",
+            "store_status": "retired",
             "manual_edit": false
         },
         {
@@ -12482,7 +12482,7 @@
             "appid": "1720040",
             "match_status": "exact",
             "match_reason": "Exact match: 和菓子日和 (wagasi biyori)|meria and the island of orcs",
-            "store_status": "available",
+            "store_status": "retired",
             "manual_edit": false
         },
         {
@@ -12782,7 +12782,7 @@
             "appid": "1743530",
             "match_status": "exact",
             "match_reason": "Exact match: 和菓子日和 (wagasi biyori)|mireille and amurita, the forest of illusions",
-            "store_status": "available",
+            "store_status": "retired",
             "manual_edit": false
         },
         {
