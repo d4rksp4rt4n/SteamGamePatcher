@@ -37311,13 +37311,6 @@
                     "id": "1OAHxnIIuirvDueE-oIYb1dekntlAIyxt",
                     "files": [
                         {
-                            "name": "DYSTHANASIA_Patch_1.0.4 (2025.11.22).zip",
-                            "id": "1PnMM4BFNMGQSxXwycQq1o1xTIl0k60uq",
-                            "size": "812.8 MB",
-                            "type": ".zip",
-                            "path": "DYSTHANASIA_Patch_1.0.4 (2025.11.22).zip"
-                        },
-                        {
                             "name": "DYSTHANASIA - Uncensor+Restoration Mod v1.0.0.7z",
                             "id": "1R8TM8LVJQbaE7kt7A4QHWLNRTpHoeLjd",
                             "size": "4.7 MB",
@@ -37330,9 +37323,16 @@
                             "size": "1.0 KB",
                             "type": ".txt",
                             "path": "ReadMe - Uncensor + Restoration Mod.txt"
+                        },
+                        {
+                            "name": "DYSTHANASIA_Patch_1.0.5 (2025.11.24).zip",
+                            "id": "1N2It9EjRisCwZqN1gRO_J-dVaXvFaRsb",
+                            "size": "813.0 MB",
+                            "type": ".zip",
+                            "path": "DYSTHANASIA_Patch_1.0.5 (2025.11.24).zip"
                         }
                     ],
-                    "notes": "R-18 Patch v1.0.4 (2025.11.22) / Uncensor+Restoration MOD v1.0.0",
+                    "notes": "R-18 Patch v1.0.5 (2025.11.24) / Uncensor+Restoration MOD v1.0.0",
                     "appid": "3211490",
                     "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3211490/83a93eb72421a1a32d0457aa0483ba1df96f884f/header.jpg?t=1763772726",
                     "publisher": "Eroge Japan",
@@ -37384,8 +37384,10 @@
             "Furion Chronicles 3 - Update to 法利恩戰記3-patch Ver1.08b (2025.08.25).rar",
             "法利恩戰記 (Furion Chronicles) - Removed file 法利恩戰記（Furion Chronicles）-Ver1.17patch(steam) (2025.03.23).rar from Minstrel Studio",
             "法利恩戰記 (Furion Chronicles) - Update to 法利恩戰記（Furion Chronicles）-Ver1.17patch(steam) (2025.03.23).rar",
-            "Fallen Priestess∶ My Sister's Demonic Bloodline - Update to Fallen Priestess My Sister's Demonic Bloodline Reconstruction Patch v1.0.4 (2025.11.24).zip"
+            "Fallen Priestess∶ My Sister's Demonic Bloodline - Update to Fallen Priestess My Sister's Demonic Bloodline Reconstruction Patch v1.0.4 (2025.11.24).zip",
+            "DYSTHANASIA - Removed file DYSTHANASIA_Patch_1.0.4 (2025.11.22).zip from Madowaku Kobo",
+            "DYSTHANASIA - Update to DYSTHANASIA_Patch_1.0.5 (2025.11.24).zip"
         ],
-        "version": "2025-11-24 15:20:21"
+        "version": "2025-11-24 22:17:39"
     }
 }

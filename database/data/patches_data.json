@@ -2,9 +2,24 @@
     "data": {
         "total_games": 1475,
         "unique_developers": 760,
-        "generated_at": "2025-11-24 15:20:00 UTC"
+        "generated_at": "2025-11-24 22:17:17 UTC"
     },
     "entries": [
+        {
+            "game": "DYSTHANASIA",
+            "developer": "Madowaku Kobo",
+            "publisher": "Eroge Japan",
+            "notes": "R-18 Patch v1.0.5 (2025.11.24) / Uncensor+Restoration MOD v1.0.0",
+            "steam_url": "https://store.steampowered.com/app/3211490/",
+            "patch_link": "https://drive.google.com/drive/folders/1OAHxnIIuirvDueE-oIYb1dekntlAIyxt",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3211490/83a93eb72421a1a32d0457aa0483ba1df96f884f/header.jpg?t=1763772726",
+            "row_num": "276",
+            "appid": "3211490",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: madowaku kobo|dysthanasia",
+            "store_status": "available",
+            "manual_edit": false
+        },
         {
             "game": "Fallen Priestess: My Sister's Demonic Bloodline",
             "developer": "BBQ大好き",
@@ -47,21 +62,6 @@
             "appid": "1250060",
             "match_status": "exact",
             "match_reason": "Exact match on full: minstrel studio|法利恩戰記 (furion chronicles)",
-            "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "DYSTHANASIA",
-            "developer": "Madowaku Kobo",
-            "publisher": "Eroge Japan",
-            "notes": "R-18 Patch v1.0.4 (2025.11.22) / Uncensor+Restoration MOD v1.0.0",
-            "steam_url": "https://store.steampowered.com/app/3211490/",
-            "patch_link": "https://drive.google.com/drive/folders/1OAHxnIIuirvDueE-oIYb1dekntlAIyxt",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3211490/83a93eb72421a1a32d0457aa0483ba1df96f884f/header.jpg?t=1763772726",
-            "row_num": "276",
-            "appid": "3211490",
-            "match_status": "exact",
-            "match_reason": "Exact match on full: madowaku kobo|dysthanasia",
             "store_status": "available",
             "manual_edit": false
         },
