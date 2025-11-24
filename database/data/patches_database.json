@@ -37288,9 +37288,23 @@
                             "size": "812.8 MB",
                             "type": ".zip",
                             "path": "DYSTHANASIA_Patch_1.0.4 (2025.11.22).zip"
+                        },
+                        {
+                            "name": "DYSTHANASIA - Uncensor+Restoration Mod v1.0.0.7z",
+                            "id": "1R8TM8LVJQbaE7kt7A4QHWLNRTpHoeLjd",
+                            "size": "4.7 MB",
+                            "type": ".7z",
+                            "path": "DYSTHANASIA - Uncensor+Restoration Mod v1.0.0.7z"
+                        },
+                        {
+                            "name": "ReadMe - Uncensor + Restoration Mod.txt",
+                            "id": "1B2aMrQHnYX10lXvTZWtJ-ooLnmUF2-7H",
+                            "size": "1.0 KB",
+                            "type": ".txt",
+                            "path": "ReadMe - Uncensor + Restoration Mod.txt"
                         }
                     ],
-                    "notes": "Multilanguage R-18 Patch v1.0.4 (2025.11.22)",
+                    "notes": "R-18 Patch v1.0.4 (2025.11.22) / Uncensor+Restoration MOD v1.0.0",
                     "appid": "3211490",
                     "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3211490/83a93eb72421a1a32d0457aa0483ba1df96f884f/header.jpg?t=1763772726",
                     "publisher": "Eroge Japan",
@@ -37334,8 +37348,10 @@
             "DYSTHANASIA - Update to DYSTHANASIA_Patch_1.0.4 (2025.11.22).zip",
             "Fallen Priestess∶ My Sister's Demonic Bloodline - Update to Fallen Priestess My Sister's Demonic Bloodline Reconstruction Patch v1.0.2 (2025.11.22).zip",
             "Corruption Town - Removed file CorruptionTown-RestorationPatch-0.7e.exe from BoredBasmati",
-            "Corruption Town - Update to CorruptionTown-RestorationPatch-0.9.4.exe"
+            "Corruption Town - Update to CorruptionTown-RestorationPatch-0.9.4.exe",
+            "DYSTHANASIA - Update to DYSTHANASIA - Uncensor+Restoration Mod v1.0.0.7z",
+            "DYSTHANASIA - Update to ReadMe - Uncensor + Restoration Mod.txt"
         ],
-        "version": "2025-11-23 04:55:58"
+        "version": "2025-11-24 03:52:31"
     }
 }
