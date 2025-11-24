@@ -26643,7 +26643,7 @@
                     "appid": "3132440",
                     "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3132440/header.jpg?t=1736400775",
                     "publisher": "Minstrel Studio",
-                    "notes": "Full / Small patches v1.04b",
+                    "notes": "Full patch v1.07b, beta patch v1.08b",
                     "store_status": "available"
                 },
                 "法利恩戰記2 (Furion Chronicles 2)": {
@@ -26672,12 +26672,19 @@
                             "size": "808.5 MB",
                             "type": ".rar",
                             "path": "法利恩戰記（Furion Chronicles）R18 patch v1.15T (Mosaics Free).rar"
+                        },
+                        {
+                            "name": "法利恩戰記（Furion Chronicles）-Ver1.17patch(steam).rar",
+                            "id": "1KMEMV1boTfRYT-NNrlzIwIvLzRdtkq-L",
+                            "size": "832.0 MB",
+                            "type": ".rar",
+                            "path": "法利恩戰記（Furion Chronicles）-Ver1.17patch(steam).rar"
                         }
                     ],
                     "appid": "1250060",
                     "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1250060/header.jpg?t=1619532379",
                     "publisher": "Minstrel Studio",
-                    "notes": "Traditional Chinese & Japanese patch v1.15T. Mosaics free (2021.12.10)",
+                    "notes": "Traditional Chinese & Japanese patch v1.17 (2025.03.23)",
                     "store_status": "available"
                 }
             }
@@ -37350,8 +37357,9 @@
             "Corruption Town - Removed file CorruptionTown-RestorationPatch-0.7e.exe from BoredBasmati",
             "Corruption Town - Update to CorruptionTown-RestorationPatch-0.9.4.exe",
             "DYSTHANASIA - Update to DYSTHANASIA - Uncensor+Restoration Mod v1.0.0.7z",
-            "DYSTHANASIA - Update to ReadMe - Uncensor + Restoration Mod.txt"
+            "DYSTHANASIA - Update to ReadMe - Uncensor + Restoration Mod.txt",
+            "法利恩戰記 (Furion Chronicles) - Update to 法利恩戰記（Furion Chronicles）-Ver1.17patch(steam).rar"
         ],
-        "version": "2025-11-24 03:52:31"
+        "version": "2025-11-24 09:42:14"
     }
 }

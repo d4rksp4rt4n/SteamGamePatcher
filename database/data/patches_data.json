@@ -2,9 +2,39 @@
     "data": {
         "total_games": 1475,
         "unique_developers": 760,
-        "generated_at": "2025-11-24 03:52:14 UTC"
+        "generated_at": "2025-11-24 09:41:53 UTC"
     },
     "entries": [
+        {
+            "game": "Furion Chronicles 3",
+            "developer": "Minstrel Studio",
+            "publisher": "Minstrel Studio",
+            "notes": "Full patch v1.07b, beta patch v1.08b",
+            "steam_url": "https://store.steampowered.com/app/3132440/",
+            "patch_link": "https://drive.google.com/drive/folders/18gaM5Xd1mtrvqscE__g3EziWTUySN0lQ",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3132440/header.jpg?t=1736400775",
+            "row_num": "369",
+            "appid": "3132440",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: minstrel studio|furion chronicles 3",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
+            "game": "法利恩戰記 (Furion Chronicles)",
+            "developer": "Minstrel Studio",
+            "publisher": "Minstrel Studio",
+            "notes": "Traditional Chinese & Japanese patch v1.17 (2025.03.23)",
+            "steam_url": "https://store.steampowered.com/app/1250060/",
+            "patch_link": "https://drive.google.com/drive/folders/1pzltnylYnhDrqfo_qI4gUA22uj6c-KvL",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1250060/header.jpg?t=1619532379",
+            "row_num": "1446",
+            "appid": "1250060",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: minstrel studio|法利恩戰記 (furion chronicles)",
+            "store_status": "available",
+            "manual_edit": false
+        },
         {
             "game": "DYSTHANASIA",
             "developer": "Madowaku Kobo",
@@ -362,21 +392,6 @@
             "appid": "2172470",
             "match_status": "alt",
             "match_reason": "Alt match: Chained-lily|姬恋~缚羽的欠片 纯净中文版 (Ji Lian ~Fu Yu de Qianpian - Chinese Edition) -> Chained-lily|姬恋~缚羽的欠片 纯净中文版 (Ji Lian ~Fu Yu de Qianpian (Fuzzy match: chained-lily|姬恋~缚羽的欠片 纯净中文版 (ji lian ~fu yu de qianpian -> chained-lily|姬恋~缚羽的欠片 纯净中文版 (ji lian ~fu yu de qianpian - chinese edition) (score: 85, dev: chained-lily, cutoff: 0.8))",
-            "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "法利恩戰記 (Furion Chronicles)",
-            "developer": "Minstrel Studio",
-            "publisher": "Minstrel Studio",
-            "notes": "Traditional Chinese & Japanese patch v1.15T. Mosaics free (2021.12.10)",
-            "steam_url": "https://store.steampowered.com/app/1250060/",
-            "patch_link": "https://drive.google.com/drive/folders/18gaM5Xd1mtrvqscE__g3EziWTUySN0lQ",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1250060/header.jpg?t=1619532379",
-            "row_num": "1439",
-            "appid": "1250060",
-            "match_status": "alt",
-            "match_reason": "Alt match: Minstrel Studio|法利恩戰記 (Furion Chronicles) -> Minstrel Studio|Furion Chronicles (Fuzzy match: minstrel studio|furion chronicles -> minstrel studio|furion chronicles 3 (score: 97, dev: minstrel studio, cutoff: 0.8))",
             "store_status": "available",
             "manual_edit": false
         },
@@ -7412,21 +7427,6 @@
             "appid": "822760",
             "match_status": "exact",
             "match_reason": "Exact match: smee|fureraba ~friend to lover~",
-            "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "Furion Chronicles 3",
-            "developer": "Minstrel Studio",
-            "publisher": "Minstrel Studio",
-            "notes": "Full / Small patches v1.04b",
-            "steam_url": "https://store.steampowered.com/app/3132440/",
-            "patch_link": "https://drive.google.com/drive/folders/18gaM5Xd1mtrvqscE__g3EziWTUySN0lQ",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3132440/header.jpg?t=1736400775",
-            "row_num": "361",
-            "appid": "3132440",
-            "match_status": "exact",
-            "match_reason": "Exact match: minstrel studio|furion chronicles 3",
             "store_status": "available",
             "manual_edit": false
         },
