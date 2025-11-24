@@ -2,14 +2,14 @@
     "data": {
         "total_games": 1475,
         "unique_developers": 760,
-        "generated_at": "2025-11-24 09:41:53 UTC"
+        "generated_at": "2025-11-24 09:52:18 UTC"
     },
     "entries": [
         {
             "game": "Furion Chronicles 3",
             "developer": "Minstrel Studio",
             "publisher": "Minstrel Studio",
-            "notes": "Full patch v1.07b, beta patch v1.08b",
+            "notes": "Full patch v1.07b  (2025.03.13), beta patch v1.08b (2025.08.25)",
             "steam_url": "https://store.steampowered.com/app/3132440/",
             "patch_link": "https://drive.google.com/drive/folders/18gaM5Xd1mtrvqscE__g3EziWTUySN0lQ",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3132440/header.jpg?t=1736400775",

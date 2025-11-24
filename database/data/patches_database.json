@@ -26638,12 +26638,26 @@
                             "size": "673.7 MB",
                             "type": ".rar",
                             "path": "法利恩戰記3 -patch Ver1.04b.rar"
+                        },
+                        {
+                            "name": "法利恩戰記3-patch Ver1.07b  (2025.03.13).rar",
+                            "id": "1sDl2Xe0U7QJwPrFHO8AOIDR-CErkKYq2",
+                            "size": "1037.0 MB",
+                            "type": ".rar",
+                            "path": "法利恩戰記3-patch Ver1.07b  (2025.03.13).rar"
+                        },
+                        {
+                            "name": "法利恩戰記3-patch Ver1.08b (2025.08.25).rar",
+                            "id": "1cRqnKeWG6A1Dhn_QMcXqu2S8qfKjvQmd",
+                            "size": "1068.4 MB",
+                            "type": ".rar",
+                            "path": "法利恩戰記3-patch Ver1.08b (2025.08.25).rar"
                         }
                     ],
                     "appid": "3132440",
                     "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3132440/header.jpg?t=1736400775",
                     "publisher": "Minstrel Studio",
-                    "notes": "Full patch v1.07b, beta patch v1.08b",
+                    "notes": "Full patch v1.07b  (2025.03.13), beta patch v1.08b (2025.08.25)",
                     "store_status": "available"
                 },
                 "法利恩戰記2 (Furion Chronicles 2)": {
@@ -26674,11 +26688,11 @@
                             "path": "法利恩戰記（Furion Chronicles）R18 patch v1.15T (Mosaics Free).rar"
                         },
                         {
-                            "name": "法利恩戰記（Furion Chronicles）-Ver1.17patch(steam).rar",
+                            "name": "法利恩戰記（Furion Chronicles）-Ver1.17patch(steam) (2025.03.23).rar",
                             "id": "1KMEMV1boTfRYT-NNrlzIwIvLzRdtkq-L",
                             "size": "832.0 MB",
                             "type": ".rar",
-                            "path": "法利恩戰記（Furion Chronicles）-Ver1.17patch(steam).rar"
+                            "path": "法利恩戰記（Furion Chronicles）-Ver1.17patch(steam) (2025.03.23).rar"
                         }
                     ],
                     "appid": "1250060",
@@ -37358,8 +37372,12 @@
             "Corruption Town - Update to CorruptionTown-RestorationPatch-0.9.4.exe",
             "DYSTHANASIA - Update to DYSTHANASIA - Uncensor+Restoration Mod v1.0.0.7z",
             "DYSTHANASIA - Update to ReadMe - Uncensor + Restoration Mod.txt",
-            "法利恩戰記 (Furion Chronicles) - Update to 法利恩戰記（Furion Chronicles）-Ver1.17patch(steam).rar"
+            "法利恩戰記 (Furion Chronicles) - Update to 法利恩戰記（Furion Chronicles）-Ver1.17patch(steam).rar",
+            "Furion Chronicles 3 - Update to 法利恩戰記3-patch Ver1.07b  (2025.03.13).rar",
+            "Furion Chronicles 3 - Update to 法利恩戰記3-patch Ver1.08b (2025.08.25).rar",
+            "法利恩戰記 (Furion Chronicles) - Removed file 法利恩戰記（Furion Chronicles）-Ver1.17patch(steam) (2025.03.23).rar from Minstrel Studio",
+            "法利恩戰記 (Furion Chronicles) - Update to 法利恩戰記（Furion Chronicles）-Ver1.17patch(steam) (2025.03.23).rar"
         ],
-        "version": "2025-11-24 09:42:14"
+        "version": "2025-11-24 09:52:39"
     }
 }
