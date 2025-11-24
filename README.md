@@ -4,63 +4,77 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
 
-A user-friendly desktop application for applying R18 adult patches to Steam games. Automatically detects installed games, loads box art, and downloads/extracts patches from a centralized database (hosted on this repo). Supports ZIP, 7Z, RAR, and self-extracting EXE archives.
+A **fast, smart, and user-friendly** desktop tool for applying R18/adult patches to Steam games.
 
-**Warning**: This tool modifies game files. Always back up your Steam installs ou recheck files through Steam to revert changes. Use at your own risk.
+Automatically detects your installed games, shows beautiful box art, downloads patches from our Google Drive, extracts them safely, and applies them intelligently (not all patches might work with auto-apply function yet).
+
+**Warning**: This tool modifies game files. Always backup or use Steam's "Verify Integrity" to revert. Use at your own risk.
 
 ## Features
-- **Auto-Detection**: Scans your Steam libraries for installed games with available patches.
-- **Rich UI**: Tkinter-based interface with game box art, developer/publisher info, notes, and search/filtering.
-- **Patch Management**: Select and apply specific patches via Google Drive links (gdown). Handles multi-file archives.
-- **Smart Extraction**: Uses bundled 7z.exe for robust support (ZIP, 7Z, RAR, EXE).
-- **Game Actions**: Open game folder or launch via Steam directly from the app.
-- **Live Database**: Auto-updates patch info from GitHub JSON (with recent changes ticker).
-- **Cross-Platform**: Windows-focused (uses `os.startfile`), but Python core works on macOS/Linux with tweaks.
+
+- **Smart Auto-Detection** – Scans all Steam libraries instantly
+- **Beautiful UI** – Full box art, developer/publisher info, patch notes, search & filter
+- **Intelligent Patching** – Overwrites only changed files, adds new ones, skips duplicates
+- **Robust Extraction** – Bundled `7z.exe` supports ZIP, 7Z, RAR, and self-extracting EXEs
+- **Live Database** – Auto-updates from GitHub using **ETag caching**
+- **Real-time Progress** – Download, extraction %, clear status updates
+- **Game Actions** – Launch via Steam or open install folder directly
+- **Recent Changes Log** – See what’s new in the latest patches (Menu → View)
+- **Cache System** – Downloaded patches are cached locally (Tools → Clear Cache to free space)
+
+## Smart Database Updates
+
+The app now uses **conditional requests with ETag** to check for database updates:
+
+- Checks GitHub on every launch
+- If nothing changed → **304 Not Modified** (tiny request, 0 KB download)
+- Only downloads the full JSON when there’s an actual update
+- You’ll see it in the log: `Database up to date (304)`
 
 ## Requirements
-- **Python 3.8+** (tested on 3.12)
-- **Steam** installed (app detects path automatically).
-- **Dependencies** (auto-installed on first run):
-  - `requests`, `Pillow` (PIL), `gdown`, `vdf` (via pip).
-- **7z.exe**: Bundled in the release (LGPL-2.1 licensed; see below).
 
-No admin rights needed, but auto-patchers executables might require OS admin rights to run.
+- **Windows** (primary target; macOS/Linux possible with minor tweaks)
+- **Steam** installed (auto-detected)
+- **Python 3.8+** (for source) or just the standalone `.exe`
+- Internet connection (for database + patches)
+
+Dependencies auto-installed on first run:
+`requests`, `Pillow`, `gdown`, `vdf`
+
+Bundled: `7z.exe` + `7z.dll` (LGPL-2.1)
 
 ## Installation
-### From Source (Recommended for Dev)
-1. Clone the repo:
+
+### Option 1: Standalone EXE (Recommended for most users)
+Download the latest release from:
+https://github.com/d4rksp4rt4n/SteamGamePatcher/releases
+
+Just run `SteamGamePatcher.exe` — no Python needed!
+
+### Option 2: From Source (Developers / Latest Features)
 
   git clone https://github.com/d4rksp4rt4n/SteamGamePatcher.git
-
+  
   cd SteamGamePatcher
-
-
-3. Install dependencies:
-
+  
   pip install -r requirements.txt
-
-
-4. Run:
-
+  
   python SteamGamePatcher.py
 
-- On first run, it auto-downloads the patch database and installs missing deps.
+Usage
 
-## Usage
-1. **Launch the App**: Run `SteamGamePatcher.py` or the EXE.
-2. **Browse Games**: The list auto-populates with patchable installed games (sorted alphabetically). Use the search bar to filter.
-3. **Select a Game**: Click to load details, box art, and patch info.
-4. **Apply Patches**:
-- Click **Patch Selected Game**.
-- Confirm the target folder.
-- Choose files in the dialog (shows sizes).
-- Watch progress (indeterminate for downloads, console for speeds).
-5. **Other Actions**:
-- **Open Game Folder**: Explores the install dir.
-- **Launch Game**: Starts via Steam URL.
-6. **View Changes**: Menu > View > Latest Patch Changes (cycles recent updates).
+1. Launch the app
+2. Your patchable games appear instantly (with box art!)
+3. Search or browse → click a game
+4. Click Patch Selected Game
+5. Choose which patch files to apply
+6. Watch it download, extract, and patch automatically
+7. Done! Launch the game from the app or Steam
 
-**Pro Tip**: Patches are applied "smartly"—overwrites existing files, adds new ones, skips conflicts. Always verify after patching.
+Tip: 
+  Use Menu → Tools → Clear Cache to free up disk space (patches stay cached by default).
+      
+  No admin rights needed, but auto-patchers executables might require OS admin rights on Windows to run.
 
 ## Database
 - Patches defined in `database/data/patches_database.json` (JSON format: developers > games > appid/files).
@@ -72,23 +86,21 @@ No admin rights needed, but auto-patchers executables might require OS admin rig
 - **Compliance**: Full source available at 7-zip.org. This app dynamically calls it—no static linking.
 
 ## Building/Development
-- **Freeze to EXE**: Use PyInstaller (see above). Ensure `7z.exe` is in the bundle.
-- **Testing**: Mock Steam paths with env vars. Run with `DEBUG=1` for logs.
-- **Extending**: Add games to JSON. For new archive types, extend `process_patch()`.
+pip install pyinstaller
+pyinstaller --onefile --windowed --icon=icon.ico --add-data "7z.exe;." --add-data "7z.dll;." --add-data "no-box-art.png;." --add-data "Roboto-Regular.ttf;." SteamGamePatcher.py
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-**Bundled Components**:
-- 7z.exe: LGPL-2.1 (7-zip.org).
-- Dependencies: See `requirements.txt` (mostly MIT/Apache).
+Bundled 7-Zip (7z.exe/7z.dll): LGPL-2.1 (source: https://www.7-zip.org)
+Box art: Loaded from Steam (non-commercial fair use)
+Patches: Provided by community — use responsibly
 
 ## Issues & Support
 - Report bugs/feature requests: [Issues](https://github.com/d4rksp4rt4n/SteamGamePatcher/issues).
 
 ## Acknowledgments
 - Thanks to 7-Zip team for the extractor.
-- Icons/Box Art: Steam API (non-commercial use).
+- Steam – for box art and library detection.
 
 ---
 
