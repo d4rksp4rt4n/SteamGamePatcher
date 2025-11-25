@@ -2,9 +2,24 @@
     "data": {
         "total_games": 1475,
         "unique_developers": 760,
-        "generated_at": "2025-11-24 22:17:17 UTC"
+        "generated_at": "2025-11-25 07:47:05 UTC"
     },
     "entries": [
+        {
+            "game": "法利恩戰記2 (Furion Chronicles 2)",
+            "developer": "Minstrel Studio",
+            "publisher": "Minstrel Studio",
+            "notes": "Traditional Chinese patch v1.25 (2025.11.25)",
+            "steam_url": "https://store.steampowered.com/app/1461060/",
+            "patch_link": "https://drive.google.com/drive/folders/10-MLxJpKUHzW_w-2_4iWSu-8hr0la8SF",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1461060/header.jpg?t=1608293065",
+            "row_num": "1447",
+            "appid": "1461060",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: minstrel studio|法利恩戰記2 (furion chronicles 2)",
+            "store_status": "available",
+            "manual_edit": false
+        },
         {
             "game": "DYSTHANASIA",
             "developer": "Madowaku Kobo",
@@ -392,21 +407,6 @@
             "appid": "2172470",
             "match_status": "alt",
             "match_reason": "Alt match: Chained-lily|姬恋~缚羽的欠片 纯净中文版 (Ji Lian ~Fu Yu de Qianpian - Chinese Edition) -> Chained-lily|姬恋~缚羽的欠片 纯净中文版 (Ji Lian ~Fu Yu de Qianpian (Fuzzy match: chained-lily|姬恋~缚羽的欠片 纯净中文版 (ji lian ~fu yu de qianpian -> chained-lily|姬恋~缚羽的欠片 纯净中文版 (ji lian ~fu yu de qianpian - chinese edition) (score: 85, dev: chained-lily, cutoff: 0.8))",
-            "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "法利恩戰記2 (Furion Chronicles 2)",
-            "developer": "Minstrel Studio",
-            "publisher": "Minstrel Studio",
-            "notes": "Traditional Chinese patch v1.22  (2024.04.12)",
-            "steam_url": "https://store.steampowered.com/app/1461060/",
-            "patch_link": "https://drive.google.com/drive/folders/18gaM5Xd1mtrvqscE__g3EziWTUySN0lQ",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1461060/header.jpg?t=1608293065",
-            "row_num": "1440",
-            "appid": "1461060",
-            "match_status": "alt",
-            "match_reason": "Alt match: Minstrel Studio|法利恩戰記2 (Furion Chronicles 2) -> Minstrel Studio|Furion Chronicles 2 (Fuzzy match: minstrel studio|furion chronicles 2 -> minstrel studio|furion chronicles 3 (score: 97, dev: minstrel studio, cutoff: 0.8))",
             "store_status": "available",
             "manual_edit": false
         },

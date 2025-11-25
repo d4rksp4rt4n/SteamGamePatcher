@@ -26676,12 +26676,19 @@
                             "size": "899.9 MB",
                             "type": ".rar",
                             "path": "法利恩戰記2 patch Ver1.22.rar"
+                        },
+                        {
+                            "name": "法利恩戰記2  patch Ver1.25(Steam) (2025.11.25).rar",
+                            "id": "1PNNNtgjyn6H7M4i7jK0DLGdwWL4971Un",
+                            "size": "900.3 MB",
+                            "type": ".rar",
+                            "path": "法利恩戰記2  patch Ver1.25(Steam) (2025.11.25).rar"
                         }
                     ],
                     "appid": "1461060",
                     "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1461060/header.jpg?t=1608293065",
                     "publisher": "Minstrel Studio",
-                    "notes": "Traditional Chinese patch v1.22  (2024.04.12)",
+                    "notes": "Traditional Chinese patch v1.25 (2025.11.25)",
                     "store_status": "available"
                 },
                 "法利恩戰記 (Furion Chronicles)": {
@@ -37386,8 +37393,9 @@
             "法利恩戰記 (Furion Chronicles) - Update to 法利恩戰記（Furion Chronicles）-Ver1.17patch(steam) (2025.03.23).rar",
             "Fallen Priestess∶ My Sister's Demonic Bloodline - Update to Fallen Priestess My Sister's Demonic Bloodline Reconstruction Patch v1.0.4 (2025.11.24).zip",
             "DYSTHANASIA - Removed file DYSTHANASIA_Patch_1.0.4 (2025.11.22).zip from Madowaku Kobo",
-            "DYSTHANASIA - Update to DYSTHANASIA_Patch_1.0.5 (2025.11.24).zip"
+            "DYSTHANASIA - Update to DYSTHANASIA_Patch_1.0.5 (2025.11.24).zip",
+            "法利恩戰記2 (Furion Chronicles 2) - Update to 法利恩戰記2  patch Ver1.25(Steam) (2025.11.25).rar"
         ],
-        "version": "2025-11-24 22:17:39"
+        "version": "2025-11-25 07:47:20"
     }
 }
