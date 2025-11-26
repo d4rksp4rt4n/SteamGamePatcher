@@ -37346,6 +37346,10 @@
                     "store_status": "available"
                 }
             }
+        },
+        "Lusterise": {
+            "id": "16e1IgIrkOfIJ1Haov09_19mkW3Um3lXH",
+            "games": {}
         }
     },
     "metadata": {
@@ -37394,8 +37398,9 @@
             "Fallen Priestess∶ My Sister's Demonic Bloodline - Update to Fallen Priestess My Sister's Demonic Bloodline Reconstruction Patch v1.0.4 (2025.11.24).zip",
             "DYSTHANASIA - Removed file DYSTHANASIA_Patch_1.0.4 (2025.11.22).zip from Madowaku Kobo",
             "DYSTHANASIA - Update to DYSTHANASIA_Patch_1.0.5 (2025.11.24).zip",
-            "法利恩戰記2 (Furion Chronicles 2) - Update to 法利恩戰記2  patch Ver1.25(Steam) (2025.11.25).rar"
+            "法利恩戰記2 (Furion Chronicles 2) - Update to 法利恩戰記2  patch Ver1.25(Steam) (2025.11.25).rar",
+            "Lusterise - Added developer"
         ],
-        "version": "2025-11-25 07:47:20"
+        "version": "2025-11-26 10:38:22"
     }
 }
