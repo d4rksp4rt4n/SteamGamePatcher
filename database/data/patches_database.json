@@ -37349,7 +37349,42 @@
         },
         "Lusterise": {
             "id": "16e1IgIrkOfIJ1Haov09_19mkW3Um3lXH",
-            "games": {}
+            "games": {
+                "Holy Valkyrie EXS-TiA∶ Concerto 2": {
+                    "id": "1EZGEnUI9DJvyBGK0XQc2XrcpvNxZ0HiV",
+                    "files": [
+                        {
+                            "name": "EXS-TiA_Concerto_2_Patch_v2025.11.26.zip",
+                            "id": "1h7xP3W6ckRIcJ1tzpYNMOpEzDKX8j4Ye",
+                            "size": "1765.4 MB",
+                            "type": ".zip",
+                            "path": "EXS-TiA_Concerto_2_Patch_v2025.11.26.zip"
+                        }
+                    ],
+                    "notes": "Multilanguage Patch v2025.11.26",
+                    "appid": "3143580",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3143580/header.jpg?t=1764118850",
+                    "publisher": "Shiravune",
+                    "store_status": "available"
+                },
+                "Holy Valkyrie EXS-TiA∶ Concerto 1": {
+                    "id": "1aLtrz7N9NmJ0m36pLmX8VIdwXO_e60g5",
+                    "files": [
+                        {
+                            "name": "EXS-TiA_Concerto_1_Patch_v2025.11.26.zip",
+                            "id": "1KyjsTauNCNwUasmeC_063mFLMzQBD2dJ",
+                            "size": "1846.6 MB",
+                            "type": ".zip",
+                            "path": "EXS-TiA_Concerto_1_Patch_v2025.11.26.zip"
+                        }
+                    ],
+                    "notes": "Multilanguage Patch v2025.11.26",
+                    "appid": "3143570",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3143570/header.jpg?t=1764118830",
+                    "publisher": "Shiravune",
+                    "store_status": "available"
+                }
+            }
         }
     },
     "metadata": {
@@ -37399,8 +37434,12 @@
             "DYSTHANASIA - Removed file DYSTHANASIA_Patch_1.0.4 (2025.11.22).zip from Madowaku Kobo",
             "DYSTHANASIA - Update to DYSTHANASIA_Patch_1.0.5 (2025.11.24).zip",
             "法利恩戰記2 (Furion Chronicles 2) - Update to 法利恩戰記2  patch Ver1.25(Steam) (2025.11.25).rar",
-            "Lusterise - Added developer"
+            "Lusterise - Added developer",
+            "Holy Valkyrie EXS-TiA∶ Concerto 2 - Added game to Lusterise",
+            "Holy Valkyrie EXS-TiA∶ Concerto 1 - Added game to Lusterise",
+            "Holy Valkyrie EXS-TiA∶ Concerto 1 - Update to EXS-TiA_Concerto_1_Patch_v2025.11.26.zip",
+            "Holy Valkyrie EXS-TiA∶ Concerto 2 - Update to EXS-TiA_Concerto_2_Patch_v2025.11.26.zip"
         ],
-        "version": "2025-11-26 10:38:22"
+        "version": "2025-11-26 11:01:38"
     }
 }
