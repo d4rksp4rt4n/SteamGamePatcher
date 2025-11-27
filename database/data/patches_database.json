@@ -6272,6 +6272,14 @@
                     "publisher": "OTAKU Plan",
                     "notes": "English, Japanese, S. Chinese patch v2025.08.15",
                     "store_status": "available"
+                },
+                "Black Souls II": {
+                    "id": "19vTJGMjqp_Q4yfWSJ7lEkK0wqdlTkCrR",
+                    "files": [],
+                    "appid": "3855540",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3855540/b1a169268bb89754248da4fded96ebda8f2f283a/header.jpg?t=1764224259",
+                    "publisher": "OTAKU Plan",
+                    "store_status": "unreleased"
                 }
             }
         },
@@ -27940,23 +27948,6 @@
         "Ason": {
             "id": "1dNmKwxLafS-ZGqKjGJNioWXVrn2ve4sU",
             "games": {
-                "The Shimmering Horizon and Cursed Blacksmith (DEMO)": {
-                    "id": "1xf9bTn82gqoX7ZKPtpjYLW0HGCllGEDx",
-                    "files": [
-                        {
-                            "name": "steam_trial_r_patch.zip",
-                            "id": "1vek7Ip7323OVqYmHFIUtctSMM28U90NR",
-                            "size": "235.4 MB",
-                            "type": ".zip",
-                            "path": "steam_trial_r_patch.zip"
-                        }
-                    ],
-                    "appid": "1414910",
-                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1414910/header.jpg?t=1744598191",
-                    "publisher": "Ason",
-                    "notes": "R18 Demo Patch",
-                    "store_status": "available"
-                },
                 "Cage of the Succubi": {
                     "id": "19pm_8jmCssS40BAFW5wzhw0WqwUs7v4E",
                     "files": [
@@ -27986,6 +27977,23 @@
                     "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1065950/header.jpg?t=1729090025",
                     "publisher": "Kagura Games",
                     "notes": "English patch v2.   S.CHN patch v3.   T.CHN patch v3.",
+                    "store_status": "available"
+                },
+                "The Shimmering Horizon and Cursed Blacksmith": {
+                    "id": "1xf9bTn82gqoX7ZKPtpjYLW0HGCllGEDx",
+                    "files": [
+                        {
+                            "name": "steam_trial_r_patch.zip",
+                            "id": "1vek7Ip7323OVqYmHFIUtctSMM28U90NR",
+                            "size": "235.4 MB",
+                            "type": ".zip",
+                            "path": "Demo/steam_trial_r_patch.zip"
+                        }
+                    ],
+                    "appid": "1414910",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1414910/header.jpg?t=1744598191",
+                    "publisher": "Ason",
+                    "notes": "R18 Demo Patch",
                     "store_status": "available"
                 }
             }
@@ -37446,8 +37454,12 @@
             "Holy Valkyrie EXS-TiA∶ Concerto 1 - Added game to Lusterise",
             "Holy Valkyrie EXS-TiA∶ Concerto 1 - Update to EXS-TiA_Concerto_1_Patch_v2025.11.26.zip",
             "Holy Valkyrie EXS-TiA∶ Concerto 2 - Update to EXS-TiA_Concerto_2_Patch_v2025.11.26.zip",
-            "Fallen Priestess∶ My Sister's Demonic Bloodline - Update to Fallen Priestess My Sister's Demonic Bloodline Reconstruction Patch v1.0.5 (v2025.11.26).zip"
+            "Fallen Priestess∶ My Sister's Demonic Bloodline - Update to Fallen Priestess My Sister's Demonic Bloodline Reconstruction Patch v1.0.5 (v2025.11.26).zip",
+            "The Shimmering Horizon and Cursed Blacksmith (DEMO) - Moved/renamed game to The Shimmering Horizon and Cursed Blacksmith in Ason",
+            "The Shimmering Horizon and Cursed Blacksmith - Removed file steam_trial_r_patch.zip from Ason",
+            "The Shimmering Horizon and Cursed Blacksmith - Update to steam_trial_r_patch.zip",
+            "Black Souls II - Added game to Eeny, meeny, miny, moe?"
         ],
-        "version": "2025-11-26 19:57:26"
+        "version": "2025-11-27 18:46:02"
     }
 }
