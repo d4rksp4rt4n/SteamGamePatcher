@@ -6275,11 +6275,34 @@
                 },
                 "Black Souls II": {
                     "id": "19vTJGMjqp_Q4yfWSJ7lEkK0wqdlTkCrR",
-                    "files": [],
+                    "files": [
+                        {
+                            "name": "BLACK SOULS II EN patch v2025.11.29.exe",
+                            "id": "1HdvUYnRtX2l6LwrB5G59pAj8ZcTGkcHQ",
+                            "size": "807.9 MB",
+                            "type": ".exe",
+                            "path": "BLACK SOULS II EN patch v2025.11.29.exe"
+                        },
+                        {
+                            "name": "BLACK SOULS II JP patch v2025.11.29.exe",
+                            "id": "1zmQlmVSIyiOMmY34iwRWIQG7H7nqFXsq",
+                            "size": "783.7 MB",
+                            "type": ".exe",
+                            "path": "BLACK SOULS II JP patch v2025.11.29.exe"
+                        },
+                        {
+                            "name": "BLACK SOULS II CN patch v2025.11.29.exe",
+                            "id": "12kFc3dodTyRulretRwfft2fbROgEETPi",
+                            "size": "808.4 MB",
+                            "type": ".exe",
+                            "path": "BLACK SOULS II CN patch v2025.11.29.exe"
+                        }
+                    ],
                     "appid": "3855540",
                     "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3855540/b1a169268bb89754248da4fded96ebda8f2f283a/header.jpg?t=1764224259",
                     "publisher": "OTAKU Plan",
-                    "store_status": "unreleased"
+                    "store_status": "unreleased",
+                    "notes": "English, Japanese, S. Chinese patch v2025.11.29"
                 }
             }
         },
@@ -37458,8 +37481,11 @@
             "The Shimmering Horizon and Cursed Blacksmith (DEMO) - Moved/renamed game to The Shimmering Horizon and Cursed Blacksmith in Ason",
             "The Shimmering Horizon and Cursed Blacksmith - Removed file steam_trial_r_patch.zip from Ason",
             "The Shimmering Horizon and Cursed Blacksmith - Update to steam_trial_r_patch.zip",
-            "Black Souls II - Added game to Eeny, meeny, miny, moe?"
+            "Black Souls II - Added game to Eeny, meeny, miny, moe?",
+            "Black Souls II - Update to BLACK SOULS II EN patch v2025.11.29.exe",
+            "Black Souls II - Update to BLACK SOULS II JP patch v2025.11.29.exe",
+            "Black Souls II - Update to BLACK SOULS II CN patch v2025.11.29.exe"
         ],
-        "version": "2025-11-27 18:46:02"
+        "version": "2025-11-27 19:07:49"
     }
 }

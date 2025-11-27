@@ -2,14 +2,14 @@
     "data": {
         "total_games": 1478,
         "unique_developers": 761,
-        "generated_at": "2025-11-27 18:45:42 UTC"
+        "generated_at": "2025-11-27 19:07:32 UTC"
     },
     "entries": [
         {
             "game": "Black Souls II",
             "developer": "Eeny, meeny, miny, moe?",
             "publisher": "OTAKU Plan",
-            "notes": "",
+            "notes": "English, Japanese, S. Chinese patch v2025.11.29",
             "steam_url": "https://store.steampowered.com/app/3855540/",
             "patch_link": "https://drive.google.com/drive/folders/19vTJGMjqp_Q4yfWSJ7lEkK0wqdlTkCrR",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3855540/b1a169268bb89754248da4fded96ebda8f2f283a/header.jpg?t=1764224259",
