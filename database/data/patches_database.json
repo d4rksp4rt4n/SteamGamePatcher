@@ -28011,12 +28011,19 @@
                             "size": "235.4 MB",
                             "type": ".zip",
                             "path": "Demo/steam_trial_r_patch.zip"
+                        },
+                        {
+                            "name": "RP25116875_MULTI_1_v2025.11.28.zip",
+                            "id": "1hnbLUonLmX260tCmPjw2M7K3cYzVULud",
+                            "size": "586.9 MB",
+                            "type": ".zip",
+                            "path": "RP25116875_MULTI_1_v2025.11.28.zip"
                         }
                     ],
                     "appid": "1414910",
-                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1414910/header.jpg?t=1744598191",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1414910/52d4e1bbe6acba418580749cb1334e8e2ce4b7fa/header.jpg?t=1764316921",
                     "publisher": "Ason",
-                    "notes": "R18 Demo Patch",
+                    "notes": "Multilanguage patch v2025.11.28",
                     "store_status": "available"
                 }
             }
@@ -37541,8 +37548,9 @@
             "Love, Peace, and Roseleaf - Update to 1112_Patch_JP(v2025.11.27).zip",
             "Love, Peace, and Roseleaf - Update to 1112_Patch_EN(v2025.11.27).zip",
             "Love, Peace, and Roseleaf - Update to 1112_Patch_KR(v2025.11.27).zip",
-            "Love, Peace, and Roseleaf - Update to 1124_Patch_CN(v2025.11.27).zip"
+            "Love, Peace, and Roseleaf - Update to 1124_Patch_CN(v2025.11.27).zip",
+            "The Shimmering Horizon and Cursed Blacksmith - Update to RP25116875_MULTI_1_v2025.11.28.zip"
         ],
-        "version": "2025-11-28 06:18:30"
+        "version": "2025-11-28 10:21:31"
     }
 }

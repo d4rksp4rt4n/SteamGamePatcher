@@ -2,7 +2,7 @@
     "data": {
         "total_games": 1479,
         "unique_developers": 762,
-        "generated_at": "2025-11-28 06:18:11 UTC"
+        "generated_at": "2025-11-28 10:21:16 UTC"
     },
     "entries": [
         {
@@ -18,6 +18,21 @@
             "match_status": "exact",
             "match_reason": "Exact match on full: eeny, meeny, miny, moe?|black souls ii",
             "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
+            "game": "The Shimmering Horizon and Cursed Blacksmith",
+            "developer": "Ason",
+            "publisher": "Ason",
+            "notes": "Multilanguage patch v2025.11.28",
+            "steam_url": "https://store.steampowered.com/app/1414910/",
+            "patch_link": "https://drive.google.com/drive/folders/1xf9bTn82gqoX7ZKPtpjYLW0HGCllGEDx",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1414910/52d4e1bbe6acba418580749cb1334e8e2ce4b7fa/header.jpg?t=1764316921",
+            "row_num": "1292",
+            "appid": "1414910",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: ason|the shimmering horizon and cursed blacksmith",
+            "store_status": "available",
             "manual_edit": false
         },
         {
@@ -19892,21 +19907,6 @@
             "appid": "3296790",
             "match_status": "exact",
             "match_reason": "Exact match: innocent grey|the shell part iii: paradiso",
-            "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "The Shimmering Horizon and Cursed Blacksmith (DEMO)",
-            "developer": "Ason",
-            "publisher": "Ason",
-            "notes": "R18 Demo Patch",
-            "steam_url": "https://store.steampowered.com/app/1414910/",
-            "patch_link": "https://drive.google.com/drive/folders/1xf9bTn82gqoX7ZKPtpjYLW0HGCllGEDx",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1414910/header.jpg?t=1744598191",
-            "row_num": "1274",
-            "appid": "1414910",
-            "match_status": "exact",
-            "match_reason": "Exact match: ason|the shimmering horizon and cursed blacksmith (demo)",
             "store_status": "available",
             "manual_edit": false
         },
