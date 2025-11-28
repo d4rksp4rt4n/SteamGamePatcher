@@ -1,8 +1,8 @@
 {
     "data": {
-        "total_games": 1478,
-        "unique_developers": 761,
-        "generated_at": "2025-11-27 19:07:32 UTC"
+        "total_games": 1479,
+        "unique_developers": 762,
+        "generated_at": "2025-11-28 06:18:11 UTC"
     },
     "entries": [
         {
@@ -12,12 +12,27 @@
             "notes": "English, Japanese, S. Chinese patch v2025.11.29",
             "steam_url": "https://store.steampowered.com/app/3855540/",
             "patch_link": "https://drive.google.com/drive/folders/19vTJGMjqp_Q4yfWSJ7lEkK0wqdlTkCrR",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3855540/b1a169268bb89754248da4fded96ebda8f2f283a/header.jpg?t=1764224259",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3855540/b1a169268bb89754248da4fded96ebda8f2f283a/header.jpg?t=1764305276",
             "row_num": "117",
             "appid": "3855540",
             "match_status": "exact",
             "match_reason": "Exact match on full: eeny, meeny, miny, moe?|black souls ii",
             "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
+            "game": "Love, Peace, and Roseleaf",
+            "developer": "ひど作 (Onichiku-ya!)",
+            "publisher": "akaeroCore",
+            "notes": "CN, EN, JP, KR and TW patches v2025.11.27",
+            "steam_url": "https://store.steampowered.com/app/3991640/",
+            "patch_link": "https://drive.google.com/drive/folders/1kwBNjtGOQVjhMfLcQIY-TbSGA6VRXMex",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3991640/4b891f532d7f96e5c67eb4a164eead3b4607d683/header.jpg?t=1764216325",
+            "row_num": "682",
+            "appid": "3991640",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: ひど作 (onichiku-ya!)|love, peace, and roseleaf",
+            "store_status": "available",
             "manual_edit": false
         },
         {

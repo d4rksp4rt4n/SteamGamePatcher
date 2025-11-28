@@ -6299,7 +6299,7 @@
                         }
                     ],
                     "appid": "3855540",
-                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3855540/b1a169268bb89754248da4fded96ebda8f2f283a/header.jpg?t=1764224259",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3855540/b1a169268bb89754248da4fded96ebda8f2f283a/header.jpg?t=1764305276",
                     "publisher": "OTAKU Plan",
                     "store_status": "unreleased",
                     "notes": "English, Japanese, S. Chinese patch v2025.11.29"
@@ -37423,6 +37423,56 @@
                     "store_status": "available"
                 }
             }
+        },
+        "ひど作 (Onichiku-ya!)": {
+            "id": "1rPjRwJ-DVBPsKOP445KCCEIaPBHRf9M6",
+            "games": {
+                "Love, Peace, and Roseleaf": {
+                    "id": "1kwBNjtGOQVjhMfLcQIY-TbSGA6VRXMex",
+                    "files": [
+                        {
+                            "name": "1112_Patch_TW(v2025.11.27).zip",
+                            "id": "1XHyPXMUSSP_ZtYRvj6cEUE1WKqqe6uyl",
+                            "size": "2344.2 MB",
+                            "type": ".zip",
+                            "path": "1112_Patch_TW(v2025.11.27).zip"
+                        },
+                        {
+                            "name": "1112_Patch_JP(v2025.11.27).zip",
+                            "id": "1axOs_jmV_DwD1aCj2NEuI_3P_LLPH2un",
+                            "size": "2341.1 MB",
+                            "type": ".zip",
+                            "path": "1112_Patch_JP(v2025.11.27).zip"
+                        },
+                        {
+                            "name": "1112_Patch_EN(v2025.11.27).zip",
+                            "id": "1VXNlL3hYWNLc1Ao0cI0QnZ9yUojwJhtL",
+                            "size": "2343.7 MB",
+                            "type": ".zip",
+                            "path": "1112_Patch_EN(v2025.11.27).zip"
+                        },
+                        {
+                            "name": "1112_Patch_KR(v2025.11.27).zip",
+                            "id": "11BXMK-UpEEQcA51610kEh88wUjhtH-Qa",
+                            "size": "2336.7 MB",
+                            "type": ".zip",
+                            "path": "1112_Patch_KR(v2025.11.27).zip"
+                        },
+                        {
+                            "name": "1124_Patch_CN(v2025.11.27).zip",
+                            "id": "1ojG8mS_vfiD5E0OjFqsdKksuGo4AOuHs",
+                            "size": "2346.6 MB",
+                            "type": ".zip",
+                            "path": "1124_Patch_CN(v2025.11.27).zip"
+                        }
+                    ],
+                    "notes": "CN, EN, JP, KR and TW patches v2025.11.27",
+                    "appid": "3991640",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3991640/4b891f532d7f96e5c67eb4a164eead3b4607d683/header.jpg?t=1764216325",
+                    "publisher": "akaeroCore",
+                    "store_status": "available"
+                }
+            }
         }
     },
     "metadata": {
@@ -37484,8 +37534,15 @@
             "Black Souls II - Added game to Eeny, meeny, miny, moe?",
             "Black Souls II - Update to BLACK SOULS II EN patch v2025.11.29.exe",
             "Black Souls II - Update to BLACK SOULS II JP patch v2025.11.29.exe",
-            "Black Souls II - Update to BLACK SOULS II CN patch v2025.11.29.exe"
+            "Black Souls II - Update to BLACK SOULS II CN patch v2025.11.29.exe",
+            "ひど作 (Onichiku-ya!) - Added developer",
+            "Love, Peace, and Roseleaf - Added game to ひど作 (Onichiku-ya!)",
+            "Love, Peace, and Roseleaf - Update to 1112_Patch_TW(v2025.11.27).zip",
+            "Love, Peace, and Roseleaf - Update to 1112_Patch_JP(v2025.11.27).zip",
+            "Love, Peace, and Roseleaf - Update to 1112_Patch_EN(v2025.11.27).zip",
+            "Love, Peace, and Roseleaf - Update to 1112_Patch_KR(v2025.11.27).zip",
+            "Love, Peace, and Roseleaf - Update to 1124_Patch_CN(v2025.11.27).zip"
         ],
-        "version": "2025-11-27 19:07:49"
+        "version": "2025-11-28 06:18:30"
     }
 }
