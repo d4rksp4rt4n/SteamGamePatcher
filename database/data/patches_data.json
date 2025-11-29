@@ -2,7 +2,7 @@
     "data": {
         "total_games": 1479,
         "unique_developers": 762,
-        "generated_at": "2025-11-28 10:21:16 UTC"
+        "generated_at": "2025-11-29 22:46:00 UTC"
     },
     "entries": [
         {
@@ -12,13 +12,43 @@
             "notes": "English, Japanese, S. Chinese patch v2025.11.29",
             "steam_url": "https://store.steampowered.com/app/3855540/",
             "patch_link": "https://drive.google.com/drive/folders/19vTJGMjqp_Q4yfWSJ7lEkK0wqdlTkCrR",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3855540/b1a169268bb89754248da4fded96ebda8f2f283a/header.jpg?t=1764305276",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3855540/b1a169268bb89754248da4fded96ebda8f2f283a/header.jpg?t=1764381281",
             "row_num": "117",
             "appid": "3855540",
             "match_status": "exact",
             "match_reason": "Exact match on full: eeny, meeny, miny, moe?|black souls ii",
-            "store_status": "unreleased",
+            "store_status": "available",
             "manual_edit": false
+        },
+        {
+            "game": "Fallen Priestess: My Sister's Demonic Bloodline",
+            "developer": "BBQ大好き",
+            "publisher": "Saikey Studios",
+            "notes": "Multilanguage patch v1.0.7 (2025.11.29)",
+            "steam_url": "https://store.steampowered.com/app/3111930/",
+            "patch_link": "https://drive.google.com/drive/folders/1lWlWAxuuX7RVFsRmimoH2m3fvrOVzP69",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3111930/768a884424f9586afcb9f180fc06e05baa5c6edb/header.jpg?t=1763737988",
+            "row_num": "329",
+            "appid": "3111930",
+            "match_status": "fuzzy",
+            "match_reason": "Fuzzy match: bbq大好き|fallen priestess: my sister's demonic bloodline -> bbq大好き|fallen priestess∶ my sister's demonic bloodline (score: 98, dev: bbq大好き, cutoff: 0.8)",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
+            "game": "NTR Idol - Promise of Dreams",
+            "developer": "Just Keep Playing",
+            "publisher": "Mango Party",
+            "notes": "Multilanguage patch v2 (2025.08.22)",
+            "steam_url": "https://www.dlsite.com/maniax/work/=/product_id/RJ01400992.html",
+            "patch_link": "https://drive.google.com/drive/folders/1h9IKVjL1TMcZDHCkAgjXy4_70_e9Q83w",
+            "header_image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2962450/header.jpg?t=1746367791",
+            "row_num": "858",
+            "appid": null,
+            "match_status": "exact",
+            "match_reason": "Exact match: just keep playing|ntr idol-promise of dreams",
+            "store_status": "available - Dlsite",
+            "manual_edit": true
         },
         {
             "game": "The Shimmering Horizon and Cursed Blacksmith",
@@ -47,21 +77,6 @@
             "appid": "3991640",
             "match_status": "exact",
             "match_reason": "Exact match on full: ひど作 (onichiku-ya!)|love, peace, and roseleaf",
-            "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "Fallen Priestess: My Sister's Demonic Bloodline",
-            "developer": "BBQ大好き",
-            "publisher": "Saikey Studios",
-            "notes": "Multilanguage patch v1.0.5 (2025.11.26)",
-            "steam_url": "https://store.steampowered.com/app/3111930/",
-            "patch_link": "https://drive.google.com/drive/folders/1lWlWAxuuX7RVFsRmimoH2m3fvrOVzP69",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3111930/768a884424f9586afcb9f180fc06e05baa5c6edb/header.jpg?t=1763737988",
-            "row_num": "328",
-            "appid": "3111930",
-            "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: bbq大好き|fallen priestess: my sister's demonic bloodline -> bbq大好き|fallen priestess∶ my sister's demonic bloodline (score: 98, dev: bbq大好き, cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false
         },
@@ -2524,21 +2539,6 @@
             "match_reason": "Exact match: wovewolf|ethereal sunder",
             "store_status": "available",
             "manual_edit": false
-        },
-        {
-            "game": "NTR Idol - Promise of Dreams",
-            "developer": "Just Keep Playing",
-            "publisher": "Mango Party",
-            "notes": "Multilanguage patch v2 (2025.08.22)",
-            "steam_url": "https://www.dlsite.com/maniax/work/=/product_id/RJ01400992.html",
-            "patch_link": "https://drive.google.com/drive/folders/1h9IKVjL1TMcZDHCkAgjXy4_70_e9Q83w",
-            "header_image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2962450/header.jpg?t=1746367791",
-            "row_num": "858",
-            "appid": null,
-            "match_status": "exact",
-            "match_reason": "Exact match: just keep playing|ntr idol-promise of dreams",
-            "store_status": "available - Dlsite",
-            "manual_edit": true
         },
         {
             "game": "Labyrinth Flowers",
