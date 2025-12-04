@@ -37558,6 +37558,52 @@
                     "store_status": "unreleased"
                 }
             }
+        },
+        "Revenge Red Eyes": {
+            "id": "1XUPxKNaQM7mVWp9hYxdAK5X61FQBinND",
+            "games": {
+                "Goddess Scroll - Brave Star": {
+                    "id": "14Mt7PGbZR8OL1EwygJfKUsBw7lrR5fAe",
+                    "files": [
+                        {
+                            "name": "Goddess Scroll - Brave Star R18 Patch.7z",
+                            "id": "1vjwS1jtcgCw9VMeVPTABN7k6KRa2hv0x",
+                            "size": "2.8 MB",
+                            "type": ".7z",
+                            "path": "Goddess Scroll - Brave Star R18 Patch.7z"
+                        },
+                        {
+                            "name": "GS_BS早期購入特典アート[FREE CGS].rar",
+                            "id": "1ec8uhVunA7CcrpPmcBfozBWhUVoCtoGd",
+                            "size": "1.2 MB",
+                            "type": ".rar",
+                            "path": "GS_BS早期購入特典アート[FREE CGS].rar"
+                        }
+                    ],
+                    "notes": "R18 Patch / Free CGs Archive",
+                    "appid": "4118920",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4118920/4e3126b4142d68ee8803088082c3aef220c25bb7/header.jpg?t=1763718704",
+                    "publisher": "Revenge Red Eyes",
+                    "store_status": "available"
+                },
+                "Goddess Scroll - The Last Starlight": {
+                    "id": "1BDsgCLo-JGanrBtQ7KzZ_nUVmYoxN9dp",
+                    "files": [
+                        {
+                            "name": "Goddess Scroll - The Last Starlight - R18 Patch.7z",
+                            "id": "1QMlv55nDsSiF3GwydnFZbt_hOW7JLiYY",
+                            "size": "1.0 MB",
+                            "type": ".7z",
+                            "path": "Goddess Scroll - The Last Starlight - R18 Patch.7z"
+                        }
+                    ],
+                    "notes": "R18 Patch",
+                    "appid": "3677520",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3677520/fec54baa09a97a6e6c385b985eaffd0b9f95031a/header.jpg?t=1763002106",
+                    "publisher": "Revenge Red Eyes",
+                    "store_status": "available"
+                }
+            }
         }
     },
     "metadata": {
@@ -37642,8 +37688,14 @@
             "Sisterly Bliss ~Don't Let Mom Find Out~ - Update to Sisterly Bliss - R18 Patch S.CHN (v2025.12.04).7z",
             "Sisterly Bliss ~Don't Let Mom Find Out~ - Update to Sisterly Bliss - R18 Patch ENG (v2025.12.04).7z",
             "Manten Kobo - Added developer",
-            "Undercity of Sin - Added game to Manten Kobo"
+            "Undercity of Sin - Added game to Manten Kobo",
+            "Revenge Red Eyes - Added developer",
+            "Goddess Scroll - Brave Star - Added game to Revenge Red Eyes",
+            "Goddess Scroll - The Last Starlight - Added game to Revenge Red Eyes",
+            "Goddess Scroll - Brave Star - Update to Goddess Scroll - Brave Star R18 Patch.7z",
+            "Goddess Scroll - Brave Star - Update to GS_BS早期購入特典アート[FREE CGS].rar",
+            "Goddess Scroll - The Last Starlight - Update to Goddess Scroll - The Last Starlight - R18 Patch.7z"
         ],
-        "version": "2025-12-04 14:26:27"
+        "version": "2025-12-04 18:39:40"
     }
 }

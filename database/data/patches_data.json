@@ -1,10 +1,40 @@
 {
     "data": {
-        "total_games": 1481,
-        "unique_developers": 764,
-        "generated_at": "2025-12-04 14:26:09 UTC"
+        "total_games": 1483,
+        "unique_developers": 765,
+        "generated_at": "2025-12-04 18:39:15 UTC"
     },
     "entries": [
+        {
+            "game": "Goddess Scroll - Brave Star",
+            "developer": "Revenge Red Eyes",
+            "publisher": "Revenge Red Eyes",
+            "notes": "R18 Patch / Free CGs Archive",
+            "steam_url": "https://store.steampowered.com/app/4118920/",
+            "patch_link": "https://drive.google.com/drive/folders/14Mt7PGbZR8OL1EwygJfKUsBw7lrR5fAe",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4118920/4e3126b4142d68ee8803088082c3aef220c25bb7/header.jpg?t=1763718704",
+            "row_num": "400",
+            "appid": "4118920",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: revenge red eyes|goddess scroll - brave star",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
+            "game": "Goddess Scroll - The Last Starlight",
+            "developer": "Revenge Red Eyes",
+            "publisher": "Revenge Red Eyes",
+            "notes": "R18 Patch",
+            "steam_url": "https://store.steampowered.com/app/3677520/",
+            "patch_link": "https://drive.google.com/drive/folders/1BDsgCLo-JGanrBtQ7KzZ_nUVmYoxN9dp",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3677520/fec54baa09a97a6e6c385b985eaffd0b9f95031a/header.jpg?t=1763002106",
+            "row_num": "401",
+            "appid": "3677520",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: revenge red eyes|goddess scroll - the last starlight",
+            "store_status": "available",
+            "manual_edit": false
+        },
         {
             "game": "Undercity of Sin",
             "developer": "Manten Kobo",
@@ -13,7 +43,7 @@
             "steam_url": "https://store.steampowered.com/app/3721940/",
             "patch_link": "https://drive.google.com/drive/folders/1WTDYCQ98Rj8z3Ic2sUxnpLqrY4nUQNev",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3721940/7e1c0f7988f6de8458283e6dd3aaf8215c1c9026/header.jpg?t=1764728885",
-            "row_num": "1339",
+            "row_num": "1341",
             "appid": "3721940",
             "match_status": "exact",
             "match_reason": "Exact match on full: manten kobo|undercity of sin",
