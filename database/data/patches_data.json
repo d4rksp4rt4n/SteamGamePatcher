@@ -1,10 +1,25 @@
 {
     "data": {
-        "total_games": 1480,
-        "unique_developers": 763,
-        "generated_at": "2025-12-04 08:38:00 UTC"
+        "total_games": 1481,
+        "unique_developers": 764,
+        "generated_at": "2025-12-04 14:26:09 UTC"
     },
     "entries": [
+        {
+            "game": "Undercity of Sin",
+            "developer": "Manten Kobo",
+            "publisher": "Kagura Games",
+            "notes": "Chinese patch v1.0x. English patch v1.0x. Japanese patch v1.0x",
+            "steam_url": "https://store.steampowered.com/app/3721940/",
+            "patch_link": "https://drive.google.com/drive/folders/1WTDYCQ98Rj8z3Ic2sUxnpLqrY4nUQNev",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3721940/7e1c0f7988f6de8458283e6dd3aaf8215c1c9026/header.jpg?t=1764728885",
+            "row_num": "1339",
+            "appid": "3721940",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: manten kobo|undercity of sin",
+            "store_status": "unreleased",
+            "manual_edit": false
+        },
         {
             "game": "Sisterly Bliss ~Don't Let Mom Find Out~",
             "developer": "eyephon",

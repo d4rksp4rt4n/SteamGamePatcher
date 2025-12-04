@@ -37544,6 +37544,20 @@
                     "notes": "Chinese and English patch v2025.12.04"
                 }
             }
+        },
+        "Manten Kobo": {
+            "id": "1_X34ndmmiXQHJ4ne0-4KpOfk3AUUqFkN",
+            "games": {
+                "Undercity of Sin": {
+                    "id": "1WTDYCQ98Rj8z3Ic2sUxnpLqrY4nUQNev",
+                    "files": [],
+                    "notes": "Chinese patch v1.0x. English patch v1.0x. Japanese patch v1.0x",
+                    "appid": "3721940",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3721940/7e1c0f7988f6de8458283e6dd3aaf8215c1c9026/header.jpg?t=1764728885",
+                    "publisher": "Kagura Games",
+                    "store_status": "unreleased"
+                }
+            }
         }
     },
     "metadata": {
@@ -37626,8 +37640,10 @@
             "eyephon - Added developer",
             "Sisterly Bliss ~Don't Let Mom Find Out~ - Added game to eyephon",
             "Sisterly Bliss ~Don't Let Mom Find Out~ - Update to Sisterly Bliss - R18 Patch S.CHN (v2025.12.04).7z",
-            "Sisterly Bliss ~Don't Let Mom Find Out~ - Update to Sisterly Bliss - R18 Patch ENG (v2025.12.04).7z"
+            "Sisterly Bliss ~Don't Let Mom Find Out~ - Update to Sisterly Bliss - R18 Patch ENG (v2025.12.04).7z",
+            "Manten Kobo - Added developer",
+            "Undercity of Sin - Added game to Manten Kobo"
         ],
-        "version": "2025-12-04 06:42:24"
+        "version": "2025-12-04 14:26:27"
     }
 }
