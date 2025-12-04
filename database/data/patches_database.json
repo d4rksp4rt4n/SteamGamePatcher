@@ -32316,6 +32316,14 @@
                     "publisher": "Paradise Project",
                     "notes": "Version 1.53, English & Japanese, version 1.02 Chinese",
                     "store_status": "retired"
+                },
+                "Dungeon of Erotic Master Reboot": {
+                    "id": "1U25Bmkg31QmS8I73Ip3vTXnlbiB41fZn",
+                    "files": [],
+                    "appid": "3779390",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/5eeb73c23efca6aa810a58b0a3124af9cfe94023/header.jpg?t=1764842409",
+                    "publisher": "Tensei Games",
+                    "store_status": "unreleased"
                 }
             }
         },
@@ -37694,8 +37702,9 @@
             "Goddess Scroll - The Last Starlight - Added game to Revenge Red Eyes",
             "Goddess Scroll - Brave Star - Update to Goddess Scroll - Brave Star R18 Patch.7z",
             "Goddess Scroll - Brave Star - Update to GS_BS早期購入特典アート[FREE CGS].rar",
-            "Goddess Scroll - The Last Starlight - Update to Goddess Scroll - The Last Starlight - R18 Patch.7z"
+            "Goddess Scroll - The Last Starlight - Update to Goddess Scroll - The Last Starlight - R18 Patch.7z",
+            "Dungeon of Erotic Master Reboot - Added game to rusimarudou"
         ],
-        "version": "2025-12-04 18:39:40"
+        "version": "2025-12-04 19:15:06"
     }
 }
