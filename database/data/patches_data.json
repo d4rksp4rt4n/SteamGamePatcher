@@ -1,8 +1,8 @@
 {
     "data": {
-        "total_games": 1484,
+        "total_games": 1485,
         "unique_developers": 765,
-        "generated_at": "2025-12-04 19:14:49 UTC"
+        "generated_at": "2025-12-04 19:36:11 UTC"
     },
     "entries": [
         {
@@ -21,6 +21,21 @@
             "manual_edit": false
         },
         {
+            "game": "How to Create a Witch",
+            "developer": "Kujirabo。",
+            "publisher": "OTAKU Plan",
+            "notes": "English, Japanese, S. Chinese patch v2025.12.06",
+            "steam_url": "https://store.steampowered.com/app/3713480/",
+            "patch_link": "https://drive.google.com/drive/folders/1lfebEwmxJNtjz5f0S34e_IPQIkCCBMAP",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3713480/1810de15108827478a51065139e0fc218249ef35/header.jpg?t=1764813560",
+            "row_num": "522",
+            "appid": "3713480",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: kujirabo。|how to create a witch",
+            "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
             "game": "Undercity of Sin",
             "developer": "Manten Kobo",
             "publisher": "Kagura Games",
@@ -28,7 +43,7 @@
             "steam_url": "https://store.steampowered.com/app/3721940/",
             "patch_link": "https://drive.google.com/drive/folders/1WTDYCQ98Rj8z3Ic2sUxnpLqrY4nUQNev",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3721940/7e1c0f7988f6de8458283e6dd3aaf8215c1c9026/header.jpg?t=1764728885",
-            "row_num": "1342",
+            "row_num": "1343",
             "appid": "3721940",
             "match_status": "exact",
             "match_reason": "Exact match on full: manten kobo|undercity of sin",

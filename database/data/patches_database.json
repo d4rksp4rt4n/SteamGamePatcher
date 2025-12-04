@@ -24037,6 +24037,15 @@
                     "publisher": "OTAKU Plan",
                     "notes": "CH patch 1.1 v2020.12.02. EN patch v2021.03.17. JP patch v2020.11.27",
                     "store_status": "available"
+                },
+                "How to Create a Witch": {
+                    "id": "1lfebEwmxJNtjz5f0S34e_IPQIkCCBMAP",
+                    "files": [],
+                    "notes": "English, Japanese, S. Chinese patch v2025.12.06",
+                    "appid": "3713480",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3713480/1810de15108827478a51065139e0fc218249ef35/header.jpg?t=1764813560",
+                    "publisher": "OTAKU Plan",
+                    "store_status": "unreleased"
                 }
             }
         },
@@ -32319,7 +32328,15 @@
                 },
                 "Dungeon of Erotic Master Reboot": {
                     "id": "1U25Bmkg31QmS8I73Ip3vTXnlbiB41fZn",
-                    "files": [],
+                    "files": [
+                        {
+                            "name": "DanEro_data.pac_ver2.03_(2025.11.10).zip",
+                            "id": "1Fekn1nnj-cfT-S6j9S2Aoi72iGN6-w8j",
+                            "size": "562.4 MB",
+                            "type": ".zip",
+                            "path": "Demo/DanEro_data.pac_ver2.03_(2025.11.10).zip"
+                        }
+                    ],
                     "appid": "3779390",
                     "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/5eeb73c23efca6aa810a58b0a3124af9cfe94023/header.jpg?t=1764842409",
                     "publisher": "Tensei Games",
@@ -37703,8 +37720,10 @@
             "Goddess Scroll - Brave Star - Update to Goddess Scroll - Brave Star R18 Patch.7z",
             "Goddess Scroll - Brave Star - Update to GS_BS早期購入特典アート[FREE CGS].rar",
             "Goddess Scroll - The Last Starlight - Update to Goddess Scroll - The Last Starlight - R18 Patch.7z",
-            "Dungeon of Erotic Master Reboot - Added game to rusimarudou"
+            "Dungeon of Erotic Master Reboot - Added game to rusimarudou",
+            "Dungeon of Erotic Master Reboot - Update to DanEro_data.pac_ver2.03_(2025.11.10).zip",
+            "How to Create a Witch - Added game to Kujirabo。"
         ],
-        "version": "2025-12-04 19:15:06"
+        "version": "2025-12-04 19:36:36"
     }
 }
