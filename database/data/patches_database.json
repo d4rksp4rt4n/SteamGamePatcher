@@ -37515,6 +37515,34 @@
                     "store_status": "available"
                 }
             }
+        },
+        "eyephon": {
+            "id": "1MlJM-Ika0Rp2scM-a4AZZB-lwijDpuVS",
+            "games": {
+                "Sisterly Bliss ~Don't Let Mom Find Out~": {
+                    "id": "1APTMR5-Pjimgq9lPAC2QqfnsWuKBr4nG",
+                    "files": [
+                        {
+                            "name": "Sisterly Bliss - R18 Patch S.CHN (v2025.12.04).7z",
+                            "id": "1whlYdYUeuXvL37wJtZHLxMY26HSV8QN8",
+                            "size": "809.2 MB",
+                            "type": ".7z",
+                            "path": "Sisterly Bliss - R18 Patch S.CHN (v2025.12.04).7z"
+                        },
+                        {
+                            "name": "Sisterly Bliss - R18 Patch ENG (v2025.12.04).7z",
+                            "id": "100Of7_-6PI0krbrhf5bAxJGQ1mZiiCsG",
+                            "size": "808.5 MB",
+                            "type": ".7z",
+                            "path": "Sisterly Bliss - R18 Patch ENG (v2025.12.04).7z"
+                        }
+                    ],
+                    "appid": "4093400",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4093400/a83e73d9f302e9b4b5c181a7e7c4818344851fe3/header.jpg?t=1764824516",
+                    "publisher": "MangaGamer",
+                    "store_status": "available"
+                }
+            }
         }
     },
     "metadata": {
@@ -37593,8 +37621,12 @@
             "Black Souls II - Update to BLACK SOULS II CN patch v2025.11.29.exe",
             "NTR Idol - Promise of Dreams - Update to NTR_IDOL_Patch_Files_v3_(2025.09.15).zip",
             "Fallen Priestess∶ My Sister's Demonic Bloodline - Update to Fallen Priestess My Sister's Demonic Bloodline Reconstruction Patch v1.0.7 (2025.11.29).zip",
-            "Fallen Priestess∶ My Sister's Demonic Bloodline - Update to Fallen Priestess My Sister's Demonic Bloodline Reconstruction Patch v1.0.8 (2025.12.02).zip"
+            "Fallen Priestess∶ My Sister's Demonic Bloodline - Update to Fallen Priestess My Sister's Demonic Bloodline Reconstruction Patch v1.0.8 (2025.12.02).zip",
+            "eyephon - Added developer",
+            "Sisterly Bliss ~Don't Let Mom Find Out~ - Added game to eyephon",
+            "Sisterly Bliss ~Don't Let Mom Find Out~ - Update to Sisterly Bliss - R18 Patch S.CHN (v2025.12.04).7z",
+            "Sisterly Bliss ~Don't Let Mom Find Out~ - Update to Sisterly Bliss - R18 Patch ENG (v2025.12.04).7z"
         ],
-        "version": "2025-12-03 01:33:27"
+        "version": "2025-12-04 06:42:24"
     }
 }
