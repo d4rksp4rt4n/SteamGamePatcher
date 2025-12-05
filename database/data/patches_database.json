@@ -24040,7 +24040,36 @@
                 },
                 "How to Create a Witch": {
                     "id": "1lfebEwmxJNtjz5f0S34e_IPQIkCCBMAP",
-                    "files": [],
+                    "files": [
+                        {
+                            "name": "How to create a witch EN Patch v2025.12.06.exe",
+                            "id": "1nkI88fzdyxcS2JVaOB_8UaSVX_pHjpzW",
+                            "size": "397.4 MB",
+                            "type": ".exe",
+                            "path": "How to create a witch EN Patch v2025.12.06.exe"
+                        },
+                        {
+                            "name": "How to create a witch JP Patch v2025.12.06.exe",
+                            "id": "1D4zvHgzEDlt2camJTGQA-QY7fV9h9Chh",
+                            "size": "393.1 MB",
+                            "type": ".exe",
+                            "path": "How to create a witch JP Patch v2025.12.06.exe"
+                        },
+                        {
+                            "name": "How to create a witch SCN patch for Traditional v2025.12.06.exe",
+                            "id": "10AYgl6fcp3DkDPRqDS5EBw4oIDOEe1B_",
+                            "size": "399.3 MB",
+                            "type": ".exe",
+                            "path": "How to create a witch SCN patch for Traditional v2025.12.06.exe"
+                        },
+                        {
+                            "name": "How to create a witch CN Patch v2025.12.06.exe",
+                            "id": "1M5tQ7gpNaQS_Uiyp8t8uGBrYWbrhEOsk",
+                            "size": "394.6 MB",
+                            "type": ".exe",
+                            "path": "How to create a witch CN Patch v2025.12.06.exe"
+                        }
+                    ],
                     "notes": "English, Japanese, S. Chinese patch v2025.12.06",
                     "appid": "3713480",
                     "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3713480/1810de15108827478a51065139e0fc218249ef35/header.jpg?t=1764813560",
@@ -28062,12 +28091,19 @@
                             "size": "586.9 MB",
                             "type": ".zip",
                             "path": "RP25116875_MULTI_1_v2025.11.28.zip"
+                        },
+                        {
+                            "name": "RP25116875_MULTI_1_v2025.12.01.zip",
+                            "id": "1dVK9oLsIo7iiKxMKp0ZnYBSyx7ISwssf",
+                            "size": "467.3 MB",
+                            "type": ".zip",
+                            "path": "RP25116875_MULTI_1_v2025.12.01.zip"
                         }
                     ],
                     "appid": "1414910",
-                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1414910/52d4e1bbe6acba418580749cb1334e8e2ce4b7fa/header.jpg?t=1764316921",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1414910/52d4e1bbe6acba418580749cb1334e8e2ce4b7fa/header.jpg?t=1764443836",
                     "publisher": "Ason",
-                    "notes": "Multilanguage patch v2025.11.28",
+                    "notes": "Multilanguage patch v2025.12.01",
                     "store_status": "available"
                 }
             }
@@ -37578,7 +37614,7 @@
                     "files": [],
                     "notes": "Chinese patch v1.0x. English patch v1.0x. Japanese patch v1.0x",
                     "appid": "3721940",
-                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3721940/7e1c0f7988f6de8458283e6dd3aaf8215c1c9026/header.jpg?t=1764728885",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3721940/7e1c0f7988f6de8458283e6dd3aaf8215c1c9026/header.jpg?t=1764939587",
                     "publisher": "Kagura Games",
                     "store_status": "unreleased"
                 }
@@ -37722,8 +37758,13 @@
             "Goddess Scroll - The Last Starlight - Update to Goddess Scroll - The Last Starlight - R18 Patch.7z",
             "Dungeon of Erotic Master Reboot - Added game to rusimarudou",
             "Dungeon of Erotic Master Reboot - Update to DanEro_data.pac_ver2.03_(2025.11.10).zip",
-            "How to Create a Witch - Added game to Kujirabo。"
+            "How to Create a Witch - Added game to Kujirabo。",
+            "How to Create a Witch - Update to How to create a witch EN Patch v2025.12.06.exe",
+            "How to Create a Witch - Update to How to create a witch JP Patch v2025.12.06.exe",
+            "How to Create a Witch - Update to How to create a witch SCN patch for Traditional v2025.12.06.exe",
+            "How to Create a Witch - Update to How to create a witch CN Patch v2025.12.06.exe",
+            "The Shimmering Horizon and Cursed Blacksmith - Update to RP25116875_MULTI_1_v2025.12.01.zip"
         ],
-        "version": "2025-12-04 19:36:36"
+        "version": "2025-12-05 18:56:47"
     }
 }
