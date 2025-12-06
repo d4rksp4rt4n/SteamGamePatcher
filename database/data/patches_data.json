@@ -2,7 +2,7 @@
     "data": {
         "total_games": 1486,
         "unique_developers": 766,
-        "generated_at": "2025-12-06 05:20:31 UTC"
+        "generated_at": "2025-12-06 11:34:45 UTC"
     },
     "entries": [
         {
@@ -24,10 +24,10 @@
             "game": "Undercity of Sin",
             "developer": "Manten Kobo",
             "publisher": "Kagura Games",
-            "notes": "Chinese patch v1.00. English patch v1.00. Japanese patch v1.00",
+            "notes": "Chinese patch v1.01. English patch v1.01. Japanese patch v1.00",
             "steam_url": "https://store.steampowered.com/app/3721940/",
             "patch_link": "https://drive.google.com/drive/folders/1WTDYCQ98Rj8z3Ic2sUxnpLqrY4nUQNev",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3721940/7e1c0f7988f6de8458283e6dd3aaf8215c1c9026/header.jpg?t=1764997216",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3721940/7e1c0f7988f6de8458283e6dd3aaf8215c1c9026/header.jpg?t=1764999107",
             "row_num": "1344",
             "appid": "3721940",
             "match_status": "exact",

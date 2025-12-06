@@ -37632,11 +37632,25 @@
                             "size": "663.6 MB",
                             "type": ".exe",
                             "path": "Undercity of Sin CN Patch v1.00.exe"
+                        },
+                        {
+                            "name": "Undercity of Sin CN Patch v1.01.exe",
+                            "id": "18w0x3Z3q0d0doU4MICouLXoq82Uxsz28",
+                            "size": "663.7 MB",
+                            "type": ".exe",
+                            "path": "Undercity of Sin CN Patch v1.01.exe"
+                        },
+                        {
+                            "name": "Undercity of Sin EN Patch v1.01.exe",
+                            "id": "1BXMHWVuyFZiABS7YyIakvDqr-y7d1z-G",
+                            "size": "537.7 MB",
+                            "type": ".exe",
+                            "path": "Undercity of Sin EN Patch v1.01.exe"
                         }
                     ],
-                    "notes": "Chinese patch v1.00. English patch v1.00. Japanese patch v1.00",
+                    "notes": "Chinese patch v1.01. English patch v1.01. Japanese patch v1.00",
                     "appid": "3721940",
-                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3721940/7e1c0f7988f6de8458283e6dd3aaf8215c1c9026/header.jpg?t=1764997216",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3721940/7e1c0f7988f6de8458283e6dd3aaf8215c1c9026/header.jpg?t=1764999107",
                     "publisher": "Kagura Games",
                     "store_status": "available"
                 }
@@ -37688,7 +37702,7 @@
                 }
             }
         },
-        " Warumiyo": {
+        "Warumiyo": {
             "id": "1p16N3O-Ktq0GRd9KTyQXNDEsYXkNh4ZA",
             "games": {
                 "The Taming Massage Parlor ~Mari's Story~": {
@@ -37813,8 +37827,11 @@
             "The Taming Massage Parlor ~Mari's Story~ - Update to The Taming Massage Parlor ~Mari's Story~ Reconstruction Patch v1.1.3.zip",
             "Undercity of Sin - Update to Undercity of Sin JP Patch v1.00.exe",
             "Undercity of Sin - Update to Undercity of Sin EN Patch v1.00.exe",
-            "Undercity of Sin - Update to Undercity of Sin CN Patch v1.00.exe"
+            "Undercity of Sin - Update to Undercity of Sin CN Patch v1.00.exe",
+            " Warumiyo - Renamed developer to Warumiyo",
+            "Undercity of Sin - Update to Undercity of Sin CN Patch v1.01.exe",
+            "Undercity of Sin - Update to Undercity of Sin EN Patch v1.01.exe"
         ],
-        "version": "2025-12-06 05:20:52"
+        "version": "2025-12-06 11:35:07"
     }
 }
