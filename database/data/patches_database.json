@@ -37646,9 +37646,16 @@
                             "size": "537.7 MB",
                             "type": ".exe",
                             "path": "Undercity of Sin EN Patch v1.01.exe"
+                        },
+                        {
+                            "name": "Undercity of Sin EN Patch v1.02.exe",
+                            "id": "11o_iEXOJqK9rGkjy2eE8XGvhxKxl2ltQ",
+                            "size": "537.7 MB",
+                            "type": ".exe",
+                            "path": "Undercity of Sin EN Patch v1.02.exe"
                         }
                     ],
-                    "notes": "Chinese patch v1.01. English patch v1.01. Japanese patch v1.00",
+                    "notes": "Chinese patch v1.01. English patch v1.02. Japanese patch v1.00",
                     "appid": "3721940",
                     "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3721940/7e1c0f7988f6de8458283e6dd3aaf8215c1c9026/header.jpg?t=1764999107",
                     "publisher": "Kagura Games",
@@ -37830,8 +37837,9 @@
             "Undercity of Sin - Update to Undercity of Sin CN Patch v1.00.exe",
             " Warumiyo - Renamed developer to Warumiyo",
             "Undercity of Sin - Update to Undercity of Sin CN Patch v1.01.exe",
-            "Undercity of Sin - Update to Undercity of Sin EN Patch v1.01.exe"
+            "Undercity of Sin - Update to Undercity of Sin EN Patch v1.01.exe",
+            "Undercity of Sin - Update to Undercity of Sin EN Patch v1.02.exe"
         ],
-        "version": "2025-12-06 11:35:07"
+        "version": "2025-12-06 14:11:19"
     }
 }
