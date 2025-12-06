@@ -1,6 +1,6 @@
 """
 Unify Databases Script
-Version: 1.0.8 — Now with patch version & last_updated support
+Version: 1.0.10 — Now with patch version & last_updated support
 Purpose: Merge metadata from patches_data.json into database/data/patches_database.json
 by fuzzy matching game names primarily (ratio >80), with developer as secondary check (>60).
 Handles mismatches where folder devs are publishers/folder names vs Steam devs.
@@ -234,105 +234,71 @@ def load_folder_db():
 def unify_databases():
     entries = load_patches_data()
     folder_db = load_folder_db()
- 
     developers = folder_db.get('developers', {})
- 
+
     if not entries:
         logger.warning("No entries in patches_data.json")
+        return
     if not developers:
         logger.warning("No developers in patches_database.json")
         return
- 
+
     entry_devs = [e.get('developer', '') for e in entries if e.get('developer')]
- 
-    # Precompute normalized games once
     norm_games = [(normalize_string(e.get('game', '')), e) for e in entries]
- 
+
     matched = 0
-    unmatched_games = []
-    low_score_fuzzy_matches = []
     updated = 0
- 
+    files_with_date_added = 0
+
     for dev_name, dev_data in developers.items():
         for game_name, game_data in dev_data.get('games', {}).items():
-            entry, match_status, reason, low_scores = get_entry_match(
+            entry, match_status, reason, _ = get_entry_match(
                 dev_name, game_name, entries, entry_devs, norm_games
             )
-            low_score_fuzzy_matches.extend(low_scores)
-         
-            if entry and match_status == "matched":
-                changes_made = False
 
-                # === NEW: PATCH VERSION ===
-                new_patch_version = entry.get('patch_version')
-                if new_patch_version and game_data.get('patch_version') != new_patch_version:
-                    game_data['patch_version'] = new_patch_version
-                    changes_made = True
-
-                # === NEW: LAST UPDATED DATE ===
-                new_last_updated = entry.get('last_updated')
-                if new_last_updated and game_data.get('last_updated') != new_last_updated:
-                    game_data['last_updated'] = new_last_updated
-                    changes_made = True
-
-                # Existing fields
-                if game_data.get('notes', '') != entry.get('notes', ''):
-                    game_data['notes'] = entry.get('notes', '')
-                    changes_made = True
-
-                if game_data.get('appid') != entry.get('appid'):
-                    game_data['appid'] = entry.get('appid')
-                    changes_made = True
-
-                if game_data.get('header_image') != entry.get('header_image'):
-                    game_data['header_image'] = entry.get('header_image')
-                    changes_made = True
-
-                if game_data.get('publisher', '') != entry.get('publisher', ''):
-                    game_data['publisher'] = entry.get('publisher', '')
-                    changes_made = True
-
-                if game_data.get('store_status', '') != entry.get('store_status', ''):
-                    game_data['store_status'] = entry.get('store_status', '')
-                    changes_made = True
-
-                if 'pending_version_check' in game_data:
-                    del game_data['pending_version_check']
-                    changes_made = True
-
-                matched += 1
-                if changes_made:
-                    updated += 1
-                    change_list = []
-                    if 'patch_version' in game_data and game_data['patch_version'] == new_patch_version:
-                        change_list.append(f"version → {new_patch_version}")
-                    if 'last_updated' in game_data and game_data['last_updated'] == new_last_updated:
-                        change_list.append(f"date → {new_last_updated}")
-                    logger.info(f"UPDATED {game_name} ({dev_name}): {', '.join(change_list) or 'minor changes'}")
-                else:
-                    logger.debug(f"No changes needed for {game_name} ({dev_name})")
-            else:
-                unmatched_games.append((dev_name, game_name))
+            if not (entry and match_status == "matched"):
                 logger.warning(f"Unmatched {game_name} in {dev_name}: {reason}")
- 
-    logger.info(f"Unified: {matched} games matched and enriched ({updated} updated).")
-    if unmatched_games:
-        logger.warning(f"Unmatched games ({len(unmatched_games)}): {unmatched_games[:5]}...")
- 
-    if low_score_fuzzy_matches:
-        logger.info(f"Low score fuzzy matches for manual review ({len(low_score_fuzzy_matches)}):")
-        for fk, mg, score, dev, cutoff in low_score_fuzzy_matches[:10]:
-            logger.info(f" - {fk} → {mg} (score: {score:.1f}, dev: {dev}, cutoff: {cutoff})")
-        if len(low_score_fuzzy_matches) > 10:
-            logger.info(f" ... and {len(low_score_fuzzy_matches) - 10} more")
- 
-    # Save unified database
+                continue
+
+            changes_made = False
+
+            # === Merge normal metadata ===
+            for key in ['appid', 'header_image', 'publisher', 'notes', 'store_status']:
+                if game_data.get(key) != entry.get(key):
+                    game_data[key] = entry.get(key) or ""
+                    changes_made = True
+
+            # === REMOVE old game-level fields (we don't use them anymore) ===
+            if 'patch_version' in game_data:
+                del game_data['patch_version']
+                changes_made = True
+            if 'last_updated' in game_data:
+                del game_data['last_updated']
+                changes_made = True
+
+            # === ADD last_updated to EVERY FILE if missing ===
+            for file_entry in game_data.get('files', []):
+                if 'last_updated' not in file_entry:
+                    file_entry['last_updated'] = ""  # Empty = not set yet (you set it when file changes)
+                    files_with_date_added += 1
+                    changes_made = True
+
+            matched += 1
+            if changes_made:
+                updated += 1
+                logger.info(f"UPDATED {game_name} ({dev_name}): cleaned old fields + added last_updated to {len(game_data['files'])} files")
+
+    logger.info(f"Unified: {matched} games matched, {updated} updated")
+    logger.info(f"Added 'last_updated' field to {files_with_date_added} patch files (ready for future tracking)")
+
+    # Save result
     output_path = Path('database/data/patches_database.json')
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(folder_db, f, indent=4, ensure_ascii=False)
-    logger.info(f"Unified database saved to {output_path}")
+    logger.info(f"Database saved → {output_path}")
 
 if __name__ == '__main__':
     unify_databases()
+
 
