@@ -24072,9 +24072,9 @@
                     ],
                     "notes": "English, Japanese, S. Chinese patch v2025.12.06",
                     "appid": "3713480",
-                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3713480/1810de15108827478a51065139e0fc218249ef35/header.jpg?t=1764813560",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3713480/1810de15108827478a51065139e0fc218249ef35/header.jpg?t=1764990010",
                     "publisher": "OTAKU Plan",
-                    "store_status": "unreleased"
+                    "store_status": "available"
                 }
             }
         },
@@ -37665,6 +37665,28 @@
                     "store_status": "available"
                 }
             }
+        },
+        " Warumiyo": {
+            "id": "1p16N3O-Ktq0GRd9KTyQXNDEsYXkNh4ZA",
+            "games": {
+                "The Taming Massage Parlor ~Mari's Story~": {
+                    "id": "1o0S2VPG7n3z-y-uQ_eS684PZS5icQue5",
+                    "files": [
+                        {
+                            "name": "The Taming Massage Parlor ~Mari's Story~ Reconstruction Patch v1.1.3.zip",
+                            "id": "1IkFZ_hPPuhJgXvHY74pRNMrQpBBGAtjB",
+                            "size": "9.5 MB",
+                            "type": ".zip",
+                            "path": "The Taming Massage Parlor ~Mari's Story~ Reconstruction Patch v1.1.3.zip"
+                        }
+                    ],
+                    "notes": "Multilanguage Reconstruction Patch v1.1.3",
+                    "appid": "3845630",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3845630/25582df2deca9c93a74130df50e2511fa8700286/header.jpg?t=1764989968",
+                    "publisher": "Saikey Studios",
+                    "store_status": "available"
+                }
+            }
         }
     },
     "metadata": {
@@ -37763,8 +37785,11 @@
             "How to Create a Witch - Update to How to create a witch JP Patch v2025.12.06.exe",
             "How to Create a Witch - Update to How to create a witch SCN patch for Traditional v2025.12.06.exe",
             "How to Create a Witch - Update to How to create a witch CN Patch v2025.12.06.exe",
-            "The Shimmering Horizon and Cursed Blacksmith - Update to RP25116875_MULTI_1_v2025.12.01.zip"
+            "The Shimmering Horizon and Cursed Blacksmith - Update to RP25116875_MULTI_1_v2025.12.01.zip",
+            " Warumiyo - Added developer",
+            "The Taming Massage Parlor ~Mari's Story~ - Added game to  Warumiyo",
+            "The Taming Massage Parlor ~Mari's Story~ - Update to The Taming Massage Parlor ~Mari's Story~ Reconstruction Patch v1.1.3.zip"
         ],
-        "version": "2025-12-05 18:56:47"
+        "version": "2025-12-06 03:57:38"
     }
 }

@@ -1,8 +1,8 @@
 {
     "data": {
-        "total_games": 1485,
-        "unique_developers": 765,
-        "generated_at": "2025-12-05 18:56:26 UTC"
+        "total_games": 1486,
+        "unique_developers": 766,
+        "generated_at": "2025-12-06 03:57:18 UTC"
     },
     "entries": [
         {
@@ -27,11 +27,41 @@
             "notes": "English, Japanese, S. Chinese patch v2025.12.06",
             "steam_url": "https://store.steampowered.com/app/3713480/",
             "patch_link": "https://drive.google.com/drive/folders/1lfebEwmxJNtjz5f0S34e_IPQIkCCBMAP",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3713480/1810de15108827478a51065139e0fc218249ef35/header.jpg?t=1764813560",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3713480/1810de15108827478a51065139e0fc218249ef35/header.jpg?t=1764990010",
             "row_num": "522",
             "appid": "3713480",
             "match_status": "exact",
             "match_reason": "Exact match on full: kujirabo。|how to create a witch",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
+            "game": "The Taming Massage Parlor ~Mari's Story~",
+            "developer": "Warumiyo",
+            "publisher": "Saikey Studios",
+            "notes": "Multilanguage Reconstruction Patch v1.1.3",
+            "steam_url": "https://store.steampowered.com/app/3845630/",
+            "patch_link": "https://drive.google.com/drive/folders/1o0S2VPG7n3z-y-uQ_eS684PZS5icQue5",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3845630/25582df2deca9c93a74130df50e2511fa8700286/header.jpg?t=1764989968",
+            "row_num": "1300",
+            "appid": "3845630",
+            "match_status": "normalized",
+            "match_reason": "Normalized match on full: warumiyo|the taming massage parlor ~mari's story~ -> warumiyo|the taming massage parlor ~mari's story~",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
+            "game": "Undercity of Sin",
+            "developer": "Manten Kobo",
+            "publisher": "Kagura Games",
+            "notes": "Chinese patch v1.0x. English patch v1.0x. Japanese patch v1.0x",
+            "steam_url": "https://store.steampowered.com/app/3721940/",
+            "patch_link": "https://drive.google.com/drive/folders/1WTDYCQ98Rj8z3Ic2sUxnpLqrY4nUQNev",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3721940/7e1c0f7988f6de8458283e6dd3aaf8215c1c9026/header.jpg?t=1764939587",
+            "row_num": "1344",
+            "appid": "3721940",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: manten kobo|undercity of sin",
             "store_status": "unreleased",
             "manual_edit": false
         },
@@ -48,21 +78,6 @@
             "match_status": "exact",
             "match_reason": "Exact match on full: ason|the shimmering horizon and cursed blacksmith",
             "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "Undercity of Sin",
-            "developer": "Manten Kobo",
-            "publisher": "Kagura Games",
-            "notes": "Chinese patch v1.0x. English patch v1.0x. Japanese patch v1.0x",
-            "steam_url": "https://store.steampowered.com/app/3721940/",
-            "patch_link": "https://drive.google.com/drive/folders/1WTDYCQ98Rj8z3Ic2sUxnpLqrY4nUQNev",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3721940/7e1c0f7988f6de8458283e6dd3aaf8215c1c9026/header.jpg?t=1764939587",
-            "row_num": "1343",
-            "appid": "3721940",
-            "match_status": "exact",
-            "match_reason": "Exact match on full: manten kobo|undercity of sin",
-            "store_status": "unreleased",
             "manual_edit": false
         },
         {
