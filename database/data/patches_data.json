@@ -2,7 +2,7 @@
     "data": {
         "total_games": 1486,
         "unique_developers": 766,
-        "generated_at": "2025-12-07 07:08:22 UTC"
+        "generated_at": "2025-12-07 19:17:12 UTC"
     },
     "entries": [
         {
@@ -18,6 +18,21 @@
             "match_status": "exact",
             "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
             "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
+            "game": "The Wilting Amaranth",
+            "developer": "Top Hat Studios Inc",
+            "publisher": "Top Hat Curios & Oddities",
+            "notes": "Uncensor Patch (R18 DLC also available on Steam)",
+            "steam_url": "https://store.steampowered.com/app/867700/",
+            "patch_link": "https://drive.google.com/drive/folders/1L3DcoyU-t6rdyzD-w3Qbk-9i7rwta7hK",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/867700/header.jpg?t=1654010491",
+            "row_num": "1304",
+            "appid": "867700",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: top hat studios inc|the wilting amaranth",
+            "store_status": "available",
             "manual_edit": false
         },
         {
@@ -20072,21 +20087,6 @@
             "appid": "972160",
             "match_status": "exact",
             "match_reason": "Exact match: qoobrand|the witch's love diary",
-            "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "The Wilting Amaranth",
-            "developer": "Top Hat Studios Inc",
-            "publisher": "Top Hat Curios & Oddities",
-            "notes": "R18 DLC also available on Steam",
-            "steam_url": "https://store.steampowered.com/app/867700/",
-            "patch_link": "https://drive.google.com/drive/folders/1L3DcoyU-t6rdyzD-w3Qbk-9i7rwta7hK",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/867700/header.jpg?t=1654010491",
-            "row_num": "1279",
-            "appid": "867700",
-            "match_status": "exact",
-            "match_reason": "Exact match: top hat studios inc|the wilting amaranth",
             "store_status": "available",
             "manual_edit": false
         },
