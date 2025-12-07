@@ -2,7 +2,7 @@
     "data": {
         "total_games": 1486,
         "unique_developers": 766,
-        "generated_at": "2025-12-06 14:10:58 UTC"
+        "generated_at": "2025-12-07 07:08:22 UTC"
     },
     "entries": [
         {
@@ -18,6 +18,21 @@
             "match_status": "exact",
             "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
             "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
+            "game": "Fallen Priestess: My Sister's Demonic Bloodline",
+            "developer": "BBQ大好き",
+            "publisher": "Saikey Studios",
+            "notes": "Multilanguage patch v1.0.9 (2025.12.07)",
+            "steam_url": "https://store.steampowered.com/app/3111930/",
+            "patch_link": "https://drive.google.com/drive/folders/1lWlWAxuuX7RVFsRmimoH2m3fvrOVzP69",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3111930/768a884424f9586afcb9f180fc06e05baa5c6edb/header.jpg?t=1763737988",
+            "row_num": "330",
+            "appid": "3111930",
+            "match_status": "fuzzy",
+            "match_reason": "Fuzzy match: bbq大好き|fallen priestess: my sister's demonic bloodline -> bbq大好き|fallen priestess∶ my sister's demonic bloodline (score: 98, dev: bbq大好き, cutoff: 0.8)",
+            "store_status": "available",
             "manual_edit": false
         },
         {
@@ -137,21 +152,6 @@
             "appid": "1166120",
             "match_status": "fuzzy",
             "match_reason": "Fuzzy match: foxnyan games|sister fight -> foxnyan games|sisterfight (score: 98, dev: foxnyan games, cutoff: 0.8)",
-            "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "Fallen Priestess: My Sister's Demonic Bloodline",
-            "developer": "BBQ大好き",
-            "publisher": "Saikey Studios",
-            "notes": "Multilanguage patch v1.0.8 (2025.12.02)",
-            "steam_url": "https://store.steampowered.com/app/3111930/",
-            "patch_link": "https://drive.google.com/drive/folders/1lWlWAxuuX7RVFsRmimoH2m3fvrOVzP69",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3111930/768a884424f9586afcb9f180fc06e05baa5c6edb/header.jpg?t=1763737988",
-            "row_num": "329",
-            "appid": "3111930",
-            "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: bbq大好き|fallen priestess: my sister's demonic bloodline -> bbq大好き|fallen priestess∶ my sister's demonic bloodline (score: 98, dev: bbq大好き, cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false
         },
