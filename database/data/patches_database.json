@@ -79,14 +79,6 @@
                     "id": "1WTDYCQ98Rj8z3Ic2sUxnpLqrY4nUQNev",
                     "files": [
                         {
-                            "name": "Undercity of Sin EN Patch v1.02.exe",
-                            "id": "11o_iEXOJqK9rGkjy2eE8XGvhxKxl2ltQ",
-                            "size": "537.7 MB",
-                            "type": ".exe",
-                            "path": "Undercity of Sin EN Patch v1.02.exe",
-                            "last_updated": ""
-                        },
-                        {
                             "name": "Undercity of Sin CN Patch v1.01.exe",
                             "id": "18w0x3Z3q0d0doU4MICouLXoq82Uxsz28",
                             "size": "663.7 MB",
@@ -101,9 +93,17 @@
                             "type": ".exe",
                             "path": "Undercity of Sin JP Patch v1.00.exe",
                             "last_updated": ""
+                        },
+                        {
+                            "name": "Undercity of Sin EN Patch v1.03.exe",
+                            "id": "1xv8iFYgKbs9Jrt9jbzvfq7HX_53Tj8Jt",
+                            "size": "537.3 MB",
+                            "type": ".exe",
+                            "path": "Undercity of Sin EN Patch v1.03.exe",
+                            "last_updated": ""
                         }
                     ],
-                    "notes": "Chinese patch v1.01. English patch v1.02. Japanese patch v1.00",
+                    "notes": "Chinese patch v1.01. English patch v1.03. Japanese patch v1.00",
                     "appid": "3721940",
                     "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3721940/7e1c0f7988f6de8458283e6dd3aaf8215c1c9026/header.jpg?t=1764999107",
                     "publisher": "Kagura Games",
@@ -40510,9 +40510,11 @@
             "Undercity of Sin - Update to Undercity of Sin EN Patch v1.02.exe",
             "Fallen Priestess∶ My Sister's Demonic Bloodline - Deleted file Fallen Priestess My Sister's Demonic Bloodline Reconstruction Patch v1.0.8 (2025.12.02).zip",
             "Fallen Priestess∶ My Sister's Demonic Bloodline - Update to Fallen Priestess My Sister's Demonic Bloodline Reconstruction Patch v1.0.9 (2025.12.07).zip",
-            "FULL DATABASE RESCAN PERFORMED."
+            "FULL DATABASE RESCAN PERFORMED.",
+            "REMOVED FILE: Manten Kobo/Undercity of Sin/Undercity of Sin EN Patch v1.02.exe",
+            "UPDATED FILE: Undercity of Sin/Undercity of Sin EN Patch v1.03.exe"
         ],
-        "version": "2025-12-07 17:29:59",
+        "version": "2025-12-08 12:00:42",
         "last_scan": "2025-12-07 17:13:48"
     }
 }
