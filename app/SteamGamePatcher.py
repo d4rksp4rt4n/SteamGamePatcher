@@ -24,7 +24,20 @@ import zipfile # Built-in for ZIP
 import gdown
 import re # for progress parsing
 
-APP_VERSION = '1.33-beta'
+# --- Imports for Enhanced DOCX Rendering ---
+try:
+    from docx import Document
+    from docx.document import Document as _Document
+    from docx.oxml.text.paragraph import CT_P
+    from docx.oxml.table import CT_Tbl
+    from docx.table import _Cell, Table
+    from docx.text.paragraph import Paragraph
+    from docx.oxml.ns import qn  # <--- CRITICAL ADDITION FOR XML PARSING
+except ImportError:
+    pass
+
+APP_VERSION = '1.34-beta'
+CONFIG_FILENAME = 'patcher_config.json'  # Per-game config file
 
 def resource_path(relative_path):
     """Get absolute path to resource, works for dev and for PyInstaller onefile"""
@@ -34,7 +47,7 @@ def resource_path(relative_path):
     except Exception:
         base_path = Path(__file__).parent.absolute()
     return Path(base_path) / relative_path
-  
+ 
 # Setup logging to file in data/
 def setup_logging():
     log_dir = Path('data')
@@ -50,25 +63,27 @@ def setup_logging():
     )
     logging.info(f"Steam Game Patcher {APP_VERSION} started. Logs in: {log_file}")
 
-def get_app_font(size=10, weight="normal"):
-    roboto_path = resource_path("Roboto-Regular.ttf")
-    if roboto_path.exists():
-        try:
-            font = tkfont.Font(family="Roboto", size=size, weight=weight)
-            logging.info(f"FONT: Using bundled Roboto")
-            return font
-        except Exception as e:
-            logging.warning(f"Failed to load bundled Roboto: {e}")
-    candidates = ["Segoe UI", "Roboto", "Calibri", "Arial", "Helvetica", "sans-serif"]
+def get_app_font(size=10, weight="normal", slant="roman"):
+    """
+    Retrieves the best available font (Roboto -> System -> Arial)
+    Supports weight (normal/bold) and slant (roman/italic).
+    """
+    candidates = ["Roboto", "Segoe UI", "Calibri", "Arial", "Helvetica", "sans-serif"]
+    
+    # Try finding an installed system font from the list
     for family in candidates:
         try:
-            font = tkfont.Font(family=family, size=size, weight=weight)
-            font.actual()
-            logging.info(f"FONT: Using system font → {family}")
-            return font
+            # Check if font exists by creating a temporary font object
+            font = tkfont.Font(family=family, size=size, weight=weight, slant=slant)
+            # .actual() checks if the system actually used the requested family
+            if font.actual()['family'].lower() == family.lower():
+                logging.info(f"FONT: Using {family} (Size: {size}, Weight: {weight}, Slant: {slant})")
+                return font
         except:
             continue
-    return tkfont.Font(family="Arial", size=size, weight=weight)
+            
+    # Fallback to generic Arial if nothing else matches specific criteria
+    return tkfont.Font(family="Arial", size=size, weight=weight, slant=slant)
 
 def ensure_7z_exe():
     """Extract 7z.exe and 7z.dll alongside the app if not present."""
@@ -268,22 +283,41 @@ class PatchSelectionDialog(tk.Toplevel):
         main_app.center_window(self, 700, 600)
         self.main_app = main_app
         self.result = None
-        self.file_entries = file_entries
+        self.file_entries = file_entries # This list is already sorted by App.patch
+        self.viewable_exts = ('.txt', '.docx', '.pdf')
+        
+        # Define colors and tracking for hover effect
+        self.color_viewable = "#4CAF50" # Green (Original color)
+        self.color_viewable_hover = "#90CAF9" # Light Blue (Simulated underline/highlight)
+        self.color_binary = "#E0E0E0"  # Light gray (default)
+        self.hovered_index = -1 # Track the index currently being hovered
+        
         tk.Label(self,
-                 text="Select patches to apply\n.txt files = instructions (double-click/right-click to view)",
+                 text="Select patches to apply\nInstructions (colored) can be viewed via single-click",
                  font=get_app_font(11, "bold")).pack(pady=12)
+        
         frame = tk.Frame(self)
         frame.pack(fill=tk.BOTH, expand=True, padx=15, pady=10)
-        self.listbox = tk.Listbox(frame, selectmode=tk.MULTIPLE, font=get_app_font(10))
+        
+        self.listbox = tk.Listbox(frame, selectmode=tk.MULTIPLE, font=get_app_font(10), bg="#222222", fg=self.color_binary, selectbackground="#424242", selectforeground="white")
         scrollbar = tk.Scrollbar(frame, orient="vertical", command=self.listbox.yview)
         self.listbox.configure(yscrollcommand=scrollbar.set)
         self.listbox.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
-        for line in display_files:
+        
+        # FIX: Use itemconfig() for coloring individual Listbox items
+        for i, line in enumerate(display_files):
+            file_name = self.file_entries[i]['name'].lower()
+            fg_color = self.color_viewable if file_name.endswith(self.viewable_exts) else self.color_binary
+            
             self.listbox.insert(tk.END, line)
+            # Apply color using itemconfig (the correct method for tk.Listbox)
+            self.listbox.itemconfig(i, {'fg': fg_color})
+            
         self.listbox.bind("<<ListboxSelect>>", self.on_selection_change)
-        self.listbox.bind('<Double-Button-1>', self.view_selected_txt)
-        self.listbox.bind('<Button-3>', self.view_selected_txt)
+        self.listbox.bind('<Button-1>', self.on_single_click) 
+        self.listbox.bind('<Motion>', self.on_motion) # Motion Binding for Hover/Cursor Change
+        
         btn_frame = tk.Frame(self)
         btn_frame.pack(pady=15)
         self.apply_btn = tk.Button(btn_frame, text="Apply Selected Patches",
@@ -293,94 +327,559 @@ class PatchSelectionDialog(tk.Toplevel):
         tk.Button(btn_frame, text="Cancel", command=self.on_closing).pack(side=tk.LEFT, padx=10)
         self.protocol("WM_DELETE_WINDOW", self.on_closing)
         self.on_selection_change()
+
     def on_selection_change(self, event=None):
         selected_indices = self.listbox.curselection()
         if not selected_indices:
-            self.apply_btn.config(state=tk.DISABLED)
+            self.apply_btn.config(state=tk.DISABLED, text="Apply Selected Patches")
             return
-        all_txt = all(
-            self.file_entries[i]['name'].lower().endswith('.txt')
+            
+        # Check if ALL selected files are instruction files
+        all_viewable = all(
+            self.file_entries[i]['name'].lower().endswith(self.viewable_exts)
             for i in selected_indices
         )
-        if all_txt:
-            self.apply_btn.config(state=tk.DISABLED, text="No patches to apply (only instructions)")
+        
+        if all_viewable:
+            self.apply_btn.config(state=tk.DISABLED, text="Instructions only (Click list to view)")
         else:
             self.apply_btn.config(state=tk.NORMAL, text="Apply Selected Patches")
-    def view_selected_txt(self, event=None):
-        sel = self.listbox.curselection()
-        if not sel:
+
+    def on_single_click(self, event=None):
+        """
+        Handle single-click event for viewing or selection.
+        Viewable files are explicitly unselected if clicked.
+        """
+        try:
+            # Determine the index clicked based on the event's y-coordinate
+            idx = self.listbox.nearest(event.y)
+        except:
             return
-        idx = sel[0]
-        if idx >= len(self.file_entries):
-            return
+
+        if idx >= len(self.file_entries): return
         f = self.file_entries[idx]
-        if f['name'].lower().endswith('.txt'):
+        name = f['name'].lower()
+        
+        # Check if the file is viewable
+        if name.endswith(self.viewable_exts):
+            
+            # --- Primary Fix: Prevent selection and clear selection ---
+            # If the item is already selected, clear it. This ensures instructions 
+            # are view-only and cannot contribute to the final patch list.
+            if idx in self.listbox.curselection():
+                self.listbox.selection_clear(idx)
+            
+            # Open the instructions dialog
             InstructionsDialog(self, f)
+            
+            # Update button state based on the final selection (which should now exclude this item)
+            self.on_selection_change()
+            
+            # Stop further processing (prevents default selection toggle)
+            return "break"
+            
         else:
-            messagebox.showinfo("Not a text file", "This is a binary patch.\nIt will be applied when you click 'Apply'.")
+            # For patch files, allow the default selection behavior to occur 
+            # (which happens automatically after this handler finishes).
+            pass
+            
+    def on_motion(self, event):
+        """Dynamically change cursor and foreground color if hovering over a viewable file (simulating underline)."""
+        try:
+            # 1. Get the index currently under the mouse
+            idx = self.listbox.nearest(event.y)
+            
+            # 2. Check if the index is valid and the file is viewable
+            is_viewable = False
+            if 0 <= idx < len(self.file_entries):
+                file_name = self.file_entries[idx]['name'].lower()
+                is_viewable = file_name.endswith(self.viewable_exts)
+
+            # 3. Check for change in hover state
+            if idx != self.hovered_index:
+                
+                # A. Reset the color of the PREVIOUSLY hovered item if it was viewable
+                if 0 <= self.hovered_index < len(self.file_entries):
+                    prev_name = self.file_entries[self.hovered_index]['name'].lower()
+                    if prev_name.endswith(self.viewable_exts):
+                        self.listbox.itemconfig(self.hovered_index, {'fg': self.color_viewable})
+                
+                # B. Apply hover color to the NEWLY hovered item if it is viewable
+                if is_viewable:
+                    self.listbox.itemconfig(idx, {'fg': self.color_viewable_hover})
+
+                # C. Update tracked index
+                self.hovered_index = idx
+            
+            # 4. Set the cursor based on whether the current item is viewable
+            if is_viewable:
+                self.listbox.config(cursor="hand2")
+            else:
+                self.listbox.config(cursor="")
+
+        except tk.TclError:
+            # Mouse moved outside the Listbox boundaries
+            if self.hovered_index != -1:
+                # Reset the color of the last hovered item before exiting
+                if 0 <= self.hovered_index < len(self.file_entries):
+                    prev_name = self.file_entries[self.hovered_index]['name'].lower()
+                    if prev_name.endswith(self.viewable_exts):
+                        self.listbox.itemconfig(self.hovered_index, {'fg': self.color_viewable})
+            self.hovered_index = -1
+            self.listbox.config(cursor="")
+
+
     def apply(self):
         indices = self.listbox.curselection()
-        self.result = list(indices) if indices else None
+        
+        # Filter out instruction files from the selection before applying
+        self.result = [
+            i for i in indices 
+            if not self.file_entries[i]['name'].lower().endswith(self.viewable_exts)
+        ]
+        
+        # Check if they only selected instruction files (which shouldn't happen 
+        # if on_selection_change works correctly, but acts as a safeguard)
+        if not self.result and indices:
+             messagebox.showinfo("Nothing to Apply", "You only selected instructions. Please select a binary file to apply a patch.")
+             self.result = None
+             return
+             
         self.destroy()
+
     def on_closing(self):
         try:
             if self.main_app and self.main_app.winfo_exists():
                 self.main_app.reset_ui()
-        except:
-            pass
+        except: pass
         self.destroy()
 
 class InstructionsDialog(tk.Toplevel):
     def __init__(self, parent, file_data):
         super().__init__(parent)
         self.title(f"Instructions: {file_data['name']}")
-        self.geometry("800x600")
-        main_app = parent.main_app if hasattr(parent, "main_app") else parent
-        main_app.center_window(self, 800, 600)
+        self.geometry("1000x800") 
+
+        # Center Window logic
+        try:
+            main_app = parent.main_app if hasattr(parent, "main_app") else parent
+            main_app.center_window(self, 1000, 800) 
+        except:
+            pass
+
         self.transient(parent)
         self.grab_set()
         self.protocol("WM_DELETE_WINDOW", self.on_close)
-        header = tk.Label(self, text=file_data.get('path', file_data['name']),
-                         font=get_app_font(12, "bold"), fg="#0066CC")
-        header.pack(pady=10)
-        text_frame = tk.Frame(self)
-        text_frame.pack(fill=tk.BOTH, expand=True, padx=15, pady=10)
-        text_widget = scrolledtext.ScrolledText(
-            text_frame,
+
+        self.temp_images = []
+        self.image_refs = []
+        self.thread_content = None # Stores content from the thread
+        self.thread_error = None   # Stores error from the thread
+        self.temp_file = None      # To be set by the thread
+        
+        # Base colors
+        BG_COLOR = "#1e1e1e"
+        FG_COLOR = "#e0e0e0"
+
+        # Header Frame
+        header_frame = tk.Frame(self, bg="#121212")
+        header_frame.pack(fill=tk.X)
+        
+        tk.Label(
+            header_frame,
+            text=file_data.get('path', file_data['name']),
+            font=get_app_font(13, "bold"),
+            fg="#4FC3F7",
+            bg="#121212",
+            pady=10
+        ).pack(fill=tk.X)
+
+        # --- UNIFIED CONTENT WIDGET (tk.Text) ---
+        frame = tk.Frame(self, bg=BG_COLOR)
+        frame.pack(fill=tk.BOTH, expand=True, padx=15, pady=10)
+
+        scrollbar = tk.Scrollbar(frame)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+
+        self.text_widget = tk.Text(
+            frame,
             wrap=tk.WORD,
+            bg=BG_COLOR,
+            fg=FG_COLOR,
             font=get_app_font(11),
-            bg="#1e1e1e",
-            fg="#d4d4d4",
-            insertbackground="white"
+            relief="flat",
+            bd=0,
+            padx=20,
+            pady=20,
+            yscrollcommand=scrollbar.set
         )
-        text_widget.pack(fill=tk.BOTH, expand=True)
-        file_id = file_data['id']
-        temp_txt = Path(tempfile.gettempdir()) / f"instruction_{uuid.uuid4().hex}.txt"
+        self.text_widget.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        scrollbar.config(command=self.text_widget.yview)
+
+        # Configure formatting tags
+        self.text_widget.tag_configure("bold", font=get_app_font(11, weight="bold"))
+        self.text_widget.tag_configure("italic", font=get_app_font(11, slant="italic"))
+        self.text_widget.tag_configure("heading", font=get_app_font(16, weight="bold"), spacing1=10, spacing3=10, foreground="#90CAF9")
+        self.text_widget.tag_configure("link", foreground="#64B5F6", underline=1)
+        self.text_widget.tag_bind("link", "<Enter>", lambda e: self.text_widget.config(cursor="hand2"))
+        self.text_widget.tag_bind("link", "<Leave>", lambda e: self.text_widget.config(cursor=""))
+
+        # --- NEW: Show Loading, Start Thread ---
+        self._show_loading()
+        self.loading_thread = threading.Thread(target=self._load_content_async, args=(file_data,))
+        self.loading_thread.start()
+        self._check_thread(file_data) # Start polling for thread completion
+        # ----------------------------------------
+
+        # Close button
+        tk.Button(
+            self,
+            text="Close",
+            command=self.destroy,
+            font=get_app_font(12, "bold"),
+            bg="#e53935",
+            fg="white",
+            relief="flat",
+            padx=30,
+            pady=10,
+            cursor="hand2"
+        ).pack(pady=20)
+
+    # --- NEW LOADING METHODS ---
+    def _show_loading(self):
+        """Displays the loading animation over the content area."""
+        BG_COLOR = "#1e1e1e"
+        self.loader_frame = tk.Frame(self, bg=BG_COLOR, width=1000, height=800)
+        self.loader_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER, relwidth=1.0, relheight=1.0)
+        
+        # Use ttk.Progressbar for a modern loading spinner
+        self.progress_bar = ttk.Progressbar(self.loader_frame, mode='indeterminate', length=200)
+        self.progress_bar.pack(pady=100, padx=20)
+        self.progress_bar.start(10)
+
+        tk.Label(
+            self.loader_frame, 
+            text="Downloading and Processing Document...", 
+            font=get_app_font(14), 
+            fg="#64B5F6", 
+            bg=BG_COLOR
+        ).pack()
+
+    def _hide_loading(self):
+        """Hides and destroys the loading animation frame."""
+        if hasattr(self, 'progress_bar') and self.progress_bar:
+            self.progress_bar.stop()
+            self.progress_bar.destroy()
+        if hasattr(self, 'loader_frame') and self.loader_frame:
+            self.loader_frame.destroy()
+
+    def _load_content_async(self, file_data):
+        """Performs blocking file I/O (download/copy/read) in a separate thread."""
+        file_id = file_data.get('id', None)
+        file_name = file_data['name'].lower()
+        self.temp_file = Path(tempfile.gettempdir()) / f"instr_{uuid.uuid4().hex}"
+        
         try:
-            import gdown
-            gdown.download(id=file_id, output=str(temp_txt), quiet=True)
-            with open(temp_txt, 'r', encoding='utf-8', errors='ignore') as f:
-                content = f.read()
-            text_widget.insert(tk.END, content)
+            if 'path' in file_data and Path(file_data['path']).exists():
+                 import shutil
+                 shutil.copy(file_data['path'], self.temp_file)
+            elif file_id:
+                import gdown
+                # Blocking download call
+                gdown.download(id=file_id, output=str(self.temp_file), quiet=True, fuzzy=True)
+
+            # Only read simple text files in the thread. 
+            # Docx/PDF content must be processed in the main thread (Finalize).
+            if not file_name.endswith('.docx') and not file_name.endswith('.pdf'):
+                with open(self.temp_file, 'r', encoding='utf-8', errors='ignore') as f:
+                    self.thread_content = f.read()
+
         except Exception as e:
-            text_widget.insert(tk.END, f"Failed to load instructions:\n\n{e}\n\nFile ID: {file_id}")
-        finally:
-            if temp_txt.exists():
-                try: temp_txt.unlink()
-                except: pass
-        text_widget.config(state=tk.DISABLED)
-        tk.Button(self, text="Close", command=self.destroy, font=get_app_font(10)).pack(pady=10)
-    def on_close(self):
+            self.thread_error = f"Failed to load content:\n\n{e}"
+            logging.error(f"Doc load error: {e}")
+        
+    def _check_thread(self, file_data):
+        """Polls the thread status and updates the GUI when complete."""
+        if self.loading_thread.is_alive():
+            self.after(100, self._check_thread, file_data)
+        else:
+            self._finalize_content_load(file_data)
+
+    def _finalize_content_load(self, file_data):
+        """Runs in the main thread to hide the loader and update the Text widget."""
+        self._hide_loading()
+        file_name = file_data['name'].lower()
+
+        self.text_widget.config(state=tk.NORMAL) 
+        
         try:
-            if self.master and self.master.winfo_exists():
-                main_app = self.master
-                while hasattr(main_app, "main_app"):
-                    main_app = main_app.main_app
-                if hasattr(main_app, "reset_ui"):
-                    main_app.reset_ui()
-        except:
-            pass
+            if self.thread_error:
+                self.text_widget.insert(tk.END, self.thread_error)
+            elif self.thread_content:
+                # Simple text file content
+                self.text_widget.insert(tk.END, self.thread_content)
+            elif self.temp_file and self.temp_file.exists():
+                # DOCX or PDF file: Rendering must happen here in the main thread!
+                if file_name.endswith('.docx'):
+                    self.render_docx_perfect(str(self.temp_file))
+                elif file_name.endswith('.pdf'):
+                    self.render_pdf_perfect(str(self.temp_file))
+            else:
+                 self.text_widget.insert(tk.END, "Failed to locate file for rendering.")
+
+        except Exception as e:
+            self.text_widget.insert(tk.END, f"Failed to render document:\n\n{e}")
+            logging.error(f"Doc render error: {e}")
+
+        self.text_widget.config(state=tk.DISABLED) 
+
+        # Final cleanup of the temporary file for successful loads
+        if self.temp_file and self.temp_file.exists():
+            try:
+                self.temp_file.unlink()
+            except:
+                pass
+    # ----------------------------------------
+    
+    def on_close(self):
+        for img_path in self.temp_images:
+            try:
+                if Path(img_path).exists():
+                    Path(img_path).unlink()
+            except:
+                pass
         self.destroy()
+
+    def _open_link(self, url):
+        webbrowser.open(url)
+
+    # --- SCROLL FIX: Focus and Event Redirection (Preserved) ---
+    def _on_scroll(self, event):
+        """
+        Forces the focus to the text widget and re-sends the event, 
+        tricking the text widget into using its native proportional scroll handler.
+        """
+        if not self.text_widget.winfo_exists(): return
+        
+        # 1. Temporarily shift focus to the text widget.
+        self.text_widget.focus_set()
+        
+        # 2. Re-generate the scroll event (Windows/Mac) on the text widget.
+        if platform.system() == "Windows" or platform.system() == "Darwin":
+            self.text_widget.event_generate("<MouseWheel>", delta=event.delta)
+
+        # 3. Handle Linux (Button-4/5) explicitly
+        elif event.num == 4: # Linux Up
+            self.text_widget.yview_scroll(-3, "units")
+        elif event.num == 5: # Linux Down
+            self.text_widget.yview_scroll(3, "units")
+                
+        return "break"
+
+    # --- DOCX RENDERER (Preserved) ---
+    def render_docx_perfect(self, docx_path):
+        try:
+            doc = Document(docx_path)
+        except Exception as e:
+            self.text_widget.insert(tk.END, f"Error opening DOCX: {e}")
+            return
+
+        def iter_block_items(parent):
+            if isinstance(parent, _Document):
+                parent_elm = parent.element.body
+            elif isinstance(parent, _Cell):
+                parent_elm = parent._tc
+            else:
+                return
+            for child in parent_elm.iterchildren():
+                if 'CT_P' in globals() and isinstance(child, CT_P):
+                    yield Paragraph(child, parent)
+                elif 'CT_Tbl' in globals() and isinstance(child, CT_Tbl):
+                    yield Table(child, parent)
+
+        for block in iter_block_items(doc):
+            if isinstance(block, Paragraph):
+                self._render_paragraph(doc, block)
+            elif isinstance(block, Table):
+                self._render_table(block)
+
+    def _render_paragraph(self, doc, paragraph):
+        try:
+            from docx.text.run import Run  
+        except ImportError:
+            return 
+
+        style_name = paragraph.style.name.lower()
+        tags = []
+        prefix = ""
+
+        if "heading" in style_name:
+            tags.append("heading")
+        if "list" in style_name:
+            prefix = " • "
+
+        if prefix:
+            self.text_widget.insert(tk.END, prefix, tuple(tags))
+
+        for element in paragraph._element.iterchildren():
+            if element.tag == qn('w:r'): 
+                run = Run(element, paragraph)
+                
+                try:
+                    drawings = element.findall('.//' + qn('w:drawing'))
+                    if drawings:
+                        for drawing in drawings:
+                            blips = drawing.findall('.//' + qn('a:blip'))
+                            for blip in blips:
+                                embed_id = blip.get(qn('r:embed'))
+                                if embed_id:
+                                    image_part = doc.part.related_parts.get(embed_id)
+                                    if image_part:
+                                        self._process_and_insert_image_blob(image_part.blob)
+                                        self.text_widget.insert(tk.END, "\n")
+                except Exception:
+                    pass
+
+                text = run.text
+                if not text: continue
+
+                run_tags = list(tags) 
+                if run.bold: run_tags.append("bold")
+                if run.italic: run_tags.append("italic")
+
+                self.text_widget.insert(tk.END, text, tuple(run_tags))
+
+            elif element.tag == qn('w:hyperlink'):
+                r_id = element.get(qn('r:id'))
+                if r_id and r_id in doc.part.rels:
+                    rel = doc.part.rels[r_id]
+                    url = rel.target_ref
+                    link_text = ""
+                    for run_element in element.findall(qn('w:r')):
+                        t_element = run_element.find(qn('w:t'))
+                        if t_element is not None and t_element.text:
+                            link_text += t_element.text
+                    
+                    if link_text:
+                        link_tag = f"link_{uuid.uuid4().hex}"
+                        self.text_widget.tag_bind(link_tag, "<Button-1>", lambda e, u=url: self._open_link(u))
+                        self.text_widget.insert(tk.END, link_text, ("link", link_tag))
+
+        self.text_widget.insert(tk.END, "\n")
+        if "heading" not in style_name:
+             self.text_widget.insert(tk.END, "\n")
+
+
+    def _render_table(self, table):
+        table_frame = tk.Frame(self.text_widget, bg="#2c2c2c", pady=10)
+        
+        # Bind scroll events to the table frame itself
+        table_frame.bind("<MouseWheel>", self._on_scroll)
+        table_frame.bind("<Button-4>", self._on_scroll)
+        table_frame.bind("<Button-5>", self._on_scroll)
+
+        for i, row in enumerate(table.rows):
+            for j, cell in enumerate(row.cells):
+                cell_text = cell.text.strip()
+                lbl = tk.Label(
+                    table_frame, 
+                    text=cell_text, 
+                    bg="#2c2c2c", 
+                    fg="#e0e0e0",
+                    font=get_app_font(10),
+                    borderwidth=1,
+                    relief="solid",
+                    padx=5, 
+                    pady=5,
+                    anchor="w",
+                    justify=tk.LEFT
+                )
+                lbl.grid(row=i, column=j, sticky="nsew")
+                
+                # Bind scroll events to every cell label
+                lbl.bind("<MouseWheel>", self._on_scroll)
+                lbl.bind("<Button-4>", self._on_scroll)
+                lbl.bind("<Button-5>", self._on_scroll)
+            
+        self.text_widget.window_create(tk.END, window=table_frame)
+        self.text_widget.insert(tk.END, "\n\n")
+
+    def _process_and_insert_image_blob(self, blob):
+        try:
+            img = Image.open(BytesIO(blob))
+            tmp_path = Path(tempfile.gettempdir()) / f"docx_img_{uuid.uuid4().hex}.png"
+            img.save(tmp_path)
+            self.temp_images.append(tmp_path)
+            self.insert_image(str(tmp_path)) 
+        except Exception as e:
+            logging.error(f"Failed to process image: {e}")
+
+    # --- PDF RENDERER (Preserved) ---
+    def render_pdf_perfect(self, pdf_path):
+        import fitz
+        try:
+            doc = fitz.open(pdf_path)
+        except Exception as e:
+            self.text_widget.insert(tk.END, f"Error opening PDF: {e}")
+            return
+
+        for page_num in range(len(doc)):
+            page = doc[page_num]
+            blocks = page.get_text("dict")["blocks"]
+            blocks.sort(key=lambda b: b["bbox"][1])
+
+            for block in blocks:
+                if block["type"] == 0:
+                    text = "\n".join(span["text"] for line in block["lines"] for span in line["spans"])
+                    if text.strip():
+                        self.text_widget.insert(tk.END, text + "\n\n")
+
+            for img in page.get_images(full=True):
+                xref = img[0]
+                pix = fitz.Pixmap(doc, xref)
+                if pix.n - pix.alpha < 4:
+                    pix = fitz.Pixmap(fitz.csRGB, pix)
+                
+                tmp = Path(tempfile.gettempdir()) / f"pdf_{page_num}_{xref}.png"
+                pix.save(str(tmp))
+                self.temp_images.append(tmp)
+                
+                self.insert_image(str(tmp)) 
+                self.text_widget.insert(tk.END, "\n")
+                
+                pix = None
+            
+            if page_num < len(doc) - 1:
+                self.text_widget.insert(tk.END, "\n\n")
+        doc.close()
+        
+    def insert_image(self, img_path):
+        try:
+            img = Image.open(img_path)
+            max_width = 900
+            
+            if img.width > max_width:
+                ratio = max_width / img.width
+                new_h = int(img.height * ratio)
+                img = img.resize((max_width, new_h), Image.Resampling.LANCZOS)
+            
+            photo = ImageTk.PhotoImage(img)
+            self.image_refs.append(photo) 
+
+            lbl = tk.Label(self.text_widget, image=photo, bg="#1e1e1e", bd=0)
+            lbl.image = photo 
+            
+            # --- Bind scroll to image ---
+            lbl.bind("<MouseWheel>", self._on_scroll)
+            lbl.bind("<Button-4>", self._on_scroll)
+            lbl.bind("<Button-5>", self._on_scroll)
+            # ---------------------------------
+            
+            self.text_widget.window_create(tk.END, window=lbl)
+            self.text_widget.insert(tk.END, "\n")
+            
+        except Exception as e:
+            logging.warning(f"Image load error: {e}")
 
 class ChangesDialog(tk.Toplevel):
     def __init__(self, parent, grouped_changes):
@@ -423,7 +922,7 @@ class App(tk.Tk):
         screen_width = self.winfo_screenwidth()
         screen_height = self.winfo_screenheight()
         width = 1000
-        height = 800
+        height = 900
         x = (screen_width - width) // 2
         y = (screen_height - height) // 2
         self.geometry(f"{width}x{height}+{x}+{y}")
@@ -446,8 +945,7 @@ class App(tk.Tk):
         self.pub_var = tk.StringVar(value="")
         self.notes_var = tk.StringVar(value="")
         self.status_var = tk.StringVar(value="")
-        self.patch_status_var = tk.StringVar(value="")  # NEW
-
+        self.patch_status_var = tk.StringVar(value="") # NEW
         # Menu bar
         menubar = tk.Menu(self)
         self.option_add('*tearOff', False)
@@ -463,7 +961,6 @@ class App(tk.Tk):
         help_menu.add_command(label="About...", command=lambda: AboutDialog(self, self.version))
         menubar.add_cascade(label="Help", menu=help_menu)
         self.config(menu=menubar)
-
         # Auto-download database
         DB_URL = "https://raw.githubusercontent.com/d4rksp4rt4n/SteamGamePatcher/refs/heads/main/database/data/patches_database.json"
         DB_PATH = Path('data/patches_database.json')
@@ -497,7 +994,6 @@ class App(tk.Tk):
             except Exception as e:
                 logging.error(f"Update failed: {e}")
                 return False
-
         if not DB_PATH.exists():
             logging.info("Database file missing → forcing download")
             updated = download_database()
@@ -509,11 +1005,9 @@ class App(tk.Tk):
             else:
                 logging.info(f"Local database is fresh ({age_seconds:.0f}s old) → checking GitHub via ETag")
                 updated = download_database()
-
         if not DB_PATH.exists():
             messagebox.showerror("No Database", "Download failed. Check internet.")
             sys.exit(1)
-
         with open(DB_PATH, 'r', encoding='utf-8') as f:
             self.folder_db = json.load(f)
     
@@ -526,16 +1020,6 @@ class App(tk.Tk):
     
         self.grouped_changes = self.group_recent_changes(recent_changes)
     
-        # LOAD LAST APPLIED DATES
-        self.last_applied = {}
-        local_path = Path("data") / "last_applied.json"
-        if local_path.exists():
-            try:
-                with open(local_path, "r", encoding="utf-8") as f:
-                    self.last_applied = json.load(f)
-            except Exception as e:
-                logging.warning(f"Failed to load last_applied.json: {e}")
-
         # Cache for downloaded archives
         app_dir = Path(sys.executable).parent if getattr(sys, 'frozen', False) else Path(__file__).parent
         self.cache_dir = app_dir / 'cache'
@@ -548,7 +1032,6 @@ class App(tk.Tk):
             sys.exit(1)
         self.installed = get_installed_games(steam)
         self.steam_path = steam
-
         # Build matches
         self.matches = []
         self.by_id = {}
@@ -566,33 +1049,104 @@ class App(tk.Tk):
                         self.matches.append(match_info)
                         self.by_id[appid] = match_info
                         logging.info(f"MATCH: {appid} -> {game_name} by {dev_name}")
-
         self.matches = sorted(self.matches, key=lambda x: x['game_name'].lower())
         logging.info(f"FOUND {len(self.matches)} matched games with patches")
 
-        self.build_gui()
+        # LOAD LAST APPLIED FROM PER-GAME CONFIGS (MOVED AFTER installed + by_id)
+        self.last_applied = self.load_per_game_configs()
+        # Backward compat: Load old global if exists, migrate to per-game
+        old_path = Path("data") / "last_applied.json"
+        if old_path.exists():
+            try:
+                with open(old_path, "r", encoding="utf-8") as f:
+                    old_data = json.load(f)
+                self.migrate_old_to_per_game(old_data)
+                old_path.unlink()  # Clean up old file
+                logging.info("Migrated old global config to per-game configs")
+            except Exception as e:
+                logging.warning(f"Failed to migrate old config: {e}")
 
+        self.build_gui()
         if self.matches:
             first = self.tree.get_children()[0]
             self.tree.selection_set(first)
             self.tree.focus(first)
             self.on_select(None)
-
         self.progress_frame = None
         self.ui_queue = queue.Queue()
         self.after(100, self.process_ui_queue)
 
-    def save_last_applied(self, appid, game_name, file_name, date):
+    def load_per_game_configs(self):
+        """Load last_applied from per-game patcher_config.json files."""
+        last_applied = {}
+        for appid, install_dir in self.installed.items():
+            config_path = install_dir / CONFIG_FILENAME
+            if config_path.exists():
+                try:
+                    with open(config_path, 'r', encoding='utf-8') as f:
+                        config = json.load(f)
+                    last_patch = config.get('last_patch', {})
+                    if last_patch:
+                        appid_str = str(appid)
+                        if appid_str not in last_applied:
+                            last_applied[appid_str] = {}
+                        # Look up game_name from by_id
+                        game_name = self.by_id.get(appid_str, {}).get('game_name', appid_str)  # Fallback to appid if no match
+                        last_applied[appid_str][game_name] = last_patch
+                        logging.debug(f"Loaded config for {appid}: {last_patch.get('file', 'N/A')}")
+                except Exception as e:
+                    logging.warning(f"Failed to load {config_path}: {e}")
+        return last_applied
+
+    def migrate_old_to_per_game(self, old_data):
+        """Migrate old global JSON to per-game configs."""
+        for appid_str, games in old_data.items():
+            for game_name, patch_data in games.items():
+                install_dir = self.installed.get(appid_str)
+                if install_dir:
+                    config_path = install_dir / CONFIG_FILENAME
+                    try:
+                        # Load existing or create new
+                        if config_path.exists():
+                            with open(config_path, 'r', encoding='utf-8') as f:
+                                config = json.load(f)
+                        else:
+                            config = {}
+                        
+                        config['last_patch'] = patch_data
+                        
+                        with open(config_path, 'w', encoding='utf-8') as f:
+                            json.dump(config, f, indent=4)
+                    except Exception as e:
+                        logging.warning(f"Failed to migrate {game_name}: {e}")
+
+    def save_per_game_config(self, appid, game_name, file_name, date, changes):
+        """Save last_patch + changes to game's patcher_config.json."""
         appid_str = str(appid)
-        if appid_str not in self.last_applied:
-            self.last_applied[appid_str] = {}
-        self.last_applied[appid_str][game_name] = {"file": file_name, "date": date}
+        install_dir = self.installed.get(appid_str)
+        if not install_dir:
+            logging.error(f"No install dir for {appid}")
+            return
+        config_path = install_dir / CONFIG_FILENAME
         try:
-            Path("data").mkdir(exist_ok=True)
-            with open(Path("data") / "last_applied.json", "w", encoding="utf-8") as f:
-                json.dump(self.last_applied, f, indent=4)
+            config = {}
+            if config_path.exists():
+                with open(config_path, 'r', encoding='utf-8') as f:
+                    config = json.load(f)
+            config['last_patch'] = {
+                'file': file_name,
+                'date': date,
+                'changes': changes  # {"overwritten": [...], "added": [...], "skipped": [...]}
+            }
+            with open(config_path, 'w', encoding='utf-8') as f:
+                json.dump(config, f, indent=4)
+            # Update in-memory for immediate UI refresh
+            if appid_str not in self.last_applied:
+                self.last_applied[appid_str] = {}
+            self.last_applied[appid_str][game_name] = config['last_patch']
+            logging.info(f"Saved config to {config_path}: {file_name} with {len(changes.get('overwritten', []))} overwrites")
         except Exception as e:
-            logging.error(f"Failed to save last_applied: {e}")
+            logging.error(f"Failed to save {config_path}: {e}")
 
     def clear_cache(self):
         if messagebox.askyesno("Clear Cache", "Delete all cached patches? (Frees space)"):
@@ -640,17 +1194,18 @@ class App(tk.Tk):
                     label.config(text=text)
                 elif msg == "reset_ui":
                     self.reset_ui()
-                elif msg == "save_last_applied":
-                    appid, game_name, file_name, date = args
-                    self.save_last_applied(appid, game_name, file_name, date)
+                elif msg == "save_per_game_config":
+                    appid, game_name, file_name, date, changes = args
+                    self.save_per_game_config(appid, game_name, file_name, date, changes)
         except queue.Empty:
             pass
         self.after(50, self.process_ui_queue)
-        
+       
     def refresh_after_patch(self):
         # Refresh treeview + re-select current game so ★ disappears instantly
         current_appid = self.current_appid
-        self.filter_games()  # Rebuilds list with new last_applied data
+        self.last_applied = self.load_per_game_configs()  # Reload from files
+        self.filter_games() # Rebuilds list with new last_applied data
         # Re-select the game that was just patched
         for item in self.tree.get_children():
             if self.tree.item(item)["tags"][0] == str(current_appid):
@@ -689,7 +1244,7 @@ class App(tk.Tk):
         no_growth_count = 0
         max_no_growth = 10
         posix_path = output_path.as_posix()
-      
+     
         thread_error = []
         def run_gdown():
             try:
@@ -721,14 +1276,13 @@ class App(tk.Tk):
         if thread_error:
             logging.error(f"gdown thread failed: {thread_error[0]}")
             raise RuntimeError(f"Download failed: {thread_error[0]}")
-        if not output_path.exists():
-            actual_size = output_path.stat().st_size
-            if actual_size > initial_size:
-                self.ui_queue.put(("update_progress", (progress_var, 100)))
-                self.ui_queue.put(("update_speed", (speed_label, "Download complete")))
-                self.ui_queue.put(("update_status", (status_label, f"Download Complete: {output_path.name}")))
-                logging.info(f"Download completed: {actual_size} bytes")
-            return actual_size
+        actual_size = output_path.stat().st_size if output_path.exists() else 0
+        if actual_size > initial_size:
+            self.ui_queue.put(("update_progress", (progress_var, 100)))
+            self.ui_queue.put(("update_speed", (speed_label, "Download complete")))
+            self.ui_queue.put(("update_status", (status_label, f"Download Complete: {output_path.name}")))
+            logging.info(f"Download completed: {actual_size} bytes")
+        return actual_size
 
     def extract_with_7z(self, archive_path, extract_dir, progress_var=None):
         script_dir = Path(sys.executable).parent if getattr(sys, 'frozen', False) else Path(__file__).parent
@@ -793,6 +1347,9 @@ class App(tk.Tk):
         for root, dirs, files in os.walk(install_dir):
             for file in files:
                 game_files[file.lower()].append(os.path.join(root, file))
+        overwritten_files = []
+        added_files = []
+        skipped_files = []
         overwritten = 0
         added = 0
         skipped = 0
@@ -806,30 +1363,37 @@ class App(tk.Tk):
                     if len(matches) == 1:
                         dst = matches[0]
                         shutil.copy2(src, dst)
+                        overwritten_files.append(str(relative))  # Track relative path
                         overwritten += 1
                         self.ui_queue.put(("update_status", (status_label, f"OVERWRITTEN: {file}")))
                     else:
+                        skipped_files.append(str(relative))
                         skipped += 1
                         logging.warning(f"MULTIPLE MATCHES for {file}: {matches} - Skipping")
                         self.ui_queue.put(("update_status", (status_label, f"SKIPPED (multi-match): {file}")))
                 else:
                     default_dst.parent.mkdir(parents=True, exist_ok=True)
                     shutil.copy2(src, default_dst)
+                    added_files.append(str(relative))
                     added += 1
                     self.ui_queue.put(("update_status", (status_label, f"ADDED: {file}")))
-        return overwritten, added, skipped
+        changes = {
+            "overwritten": overwritten_files,
+            "added": added_files,
+            "skipped": skipped_files if skipped_files else None  # Optional
+        }
+        return overwritten, added, skipped, changes
 
     def process_patch(self, files, selected_indices, install_dir, game_name, progress_var, status_label, speed_label, appid):
         today_date = time.strftime("%Y-%m-%d")
         applied_file_name = None
-
+        total_changes = None
         try:
             script_dir = Path(sys.executable).parent if getattr(sys, 'frozen', False) else Path(__file__).parent
             local_7z = script_dir / '7z.exe'
             if not local_7z.exists():
                 raise FileNotFoundError("7z.exe not found.")
             no_window_flag = 0x08000000 if sys.platform == 'win32' else 0
-
             for idx in selected_indices:
                 f = files[idx]
                 file_id = f['id']
@@ -837,11 +1401,9 @@ class App(tk.Tk):
                 file_path = f.get('path', file_name)
                 raw_size = f.get('size', 'Unknown')
                 expected_bytes = self.parse_size_bytes(raw_size)
-
-                if file_name.lower().endswith('.txt'):
+                if file_name.lower().endswith(('.txt', '.docx', '.pdf')):
                     self.ui_queue.put(("update_status", (status_label, f"Instructions viewed: {file_name}")))
                     continue
-
                 cache_file = self.cache_dir / file_name
                 cache_file.parent.mkdir(parents=True, exist_ok=True)
                 use_cache = False
@@ -857,9 +1419,7 @@ class App(tk.Tk):
                     elif tolerance_check or small_file_check:
                         use_cache = True
                         logging.info(f"Using cached: {file_name}")
-
                 output = cache_file
-
                 if not use_cache:
                     retries = 0
                     max_retries = 3
@@ -881,7 +1441,6 @@ class App(tk.Tk):
                             output.unlink()
                     else:
                         raise ValueError(f"Download failed after {max_retries} attempts.")
-
                 self.ui_queue.put(("update_status", (status_label, f"Extracting: {file_path}")))
                 temp_extract_dir = Path(tempfile.mkdtemp())
                 try:
@@ -897,21 +1456,18 @@ class App(tk.Tk):
                         self.extract_archive(output, temp_extract_dir, progress_var)
                 finally:
                     pass
-
                 self.ui_queue.put(("update_status", (status_label, f"Applying: {file_path}")))
-                overwritten, added, skipped = self.smart_apply_patch(temp_extract_dir, install_dir, status_label)
+                overwritten, added, skipped, changes = self.smart_apply_patch(temp_extract_dir, install_dir, status_label)
+                total_changes = changes  # Accumulate if multi-file, but for now per-file
                 logging.info(f"Applied: {overwritten} overwritten, {added} added, {skipped} skipped")
                 shutil.rmtree(temp_extract_dir, ignore_errors=True)
-
-                if not file_name.lower().endswith('.txt'):
+                if not file_name.lower().endswith(('.txt', '.docx', '.pdf')):
                     applied_file_name = file_name
-
             self.ui_queue.put(("update_status", (status_label, "SUCCESS")))
             if applied_file_name:
-                self.ui_queue.put(("save_last_applied", (appid, game_name, applied_file_name, today_date)))
-            self.after(100, lambda: messagebox.showinfo("SUCCESS", f"Patched:\n{game_name}\n\nApplied: {applied_file_name or 'files'}"))
+                self.ui_queue.put(("save_per_game_config", (appid, game_name, applied_file_name, today_date, total_changes or {})))
+            self.after(100, lambda: messagebox.showinfo("SUCCESS", f"Patched:\n{game_name}\n\nApplied: {applied_file_name or 'files'}\nSaved config with changes."))
             self.after(600, self.refresh_after_patch)
-
         except Exception as e:
             error_msg = str(e)
             self.ui_queue.put(("update_status", (status_label, "FAILED")))
@@ -938,8 +1494,10 @@ class App(tk.Tk):
         files = match["data"].get("files", [])
         if not files:
             messagebox.showerror("ERROR", "No patch files defined for this game.")
-            return
-
+            return            
+        # --- NEW: Sort files alphabetically by name ---
+        files.sort(key=lambda f: f['name'].lower())
+        
         display_files = [f"{f.get('path', f['name'])} ({f.get('size', 'Unknown')})" for f in files]
 
         if not messagebox.askyesno("Apply Patch", f"Apply patch to:\n\n{game_name}\n\n{install_dir}\n\nContinue?"):
@@ -949,13 +1507,13 @@ class App(tk.Tk):
         self.status.config(text="Loading patch selection...", fg="orange")
         self.update_idletasks()
 
+        # The dialog now receives the sorted list
         dialog = PatchSelectionDialog(self, display_files, files)
         self.wait_window(dialog)
         selected_indices = dialog.result
         if not selected_indices:
             self.reset_ui()
             return
-
         self.progress_frame = tk.Frame(self)
         self.progress_frame.pack(fill=tk.X, padx=15, pady=8)
         progress_var = tk.DoubleVar()
@@ -967,7 +1525,6 @@ class App(tk.Tk):
         speed_label = tk.Label(self.progress_frame, text="", font=get_app_font(9), fg="#00ff88")
         speed_label.pack(anchor="w")
         self.status.config(text="Downloading & applying patches...", fg="#3399ff")
-
         thread = threading.Thread(
             target=self.process_patch,
             args=(files, selected_indices, install_dir, game_name, progress_var, status_label, speed_label, appid),
@@ -978,17 +1535,13 @@ class App(tk.Tk):
     def build_gui(self):
         main_frame = tk.Frame(self)
         main_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=5)
-
         left_frame = tk.Frame(main_frame, width=250)
         left_frame.pack(side=tk.LEFT, fill=tk.Y, padx=(0, 10))
         left_frame.pack_propagate(False)
-
         self.img_label = tk.Label(left_frame, bg="#222", text="No Image", font=get_app_font(9))
         self.img_label.pack(pady=10)
-
         details_frame = tk.Frame(left_frame)
         details_frame.pack(fill=tk.BOTH, expand=True, pady=(0, 10))
-
         def add_row(label_text, var, value_color="#ffffff"):
             row = tk.Frame(details_frame)
             row.pack(anchor="w", padx=12, pady=2)
@@ -997,7 +1550,6 @@ class App(tk.Tk):
                              anchor="w", justify="left", wraplength=140)
             label.pack(side=tk.LEFT, fill=tk.X)
             return label
-
         add_row("Developer: ", self.dev_var, "black")
         add_row("Publisher: ", self.pub_var, "black")
         add_row("Notes: ", self.notes_var, "black")
@@ -1008,7 +1560,6 @@ class App(tk.Tk):
                                           font=get_app_font(10), fg="#4CAF50",
                                           anchor="w", justify="left", wraplength=220)
         self.patch_status_label.pack(fill=tk.X)
-
         buttons_frame = tk.Frame(left_frame)
         buttons_frame.pack(fill=tk.X, pady=(0, 8))
         self.patch_btn = tk.Button(buttons_frame, text="Patch Selected Game",
@@ -1028,7 +1579,6 @@ class App(tk.Tk):
                                     command=self.launch_game, state=tk.DISABLED,
                                     font=get_app_font(10), bg="#333333", fg="#cccccc")
         self.launch_btn.pack(fill=tk.X, padx=12, pady=(4, 8))
-
         right_frame = tk.Frame(main_frame)
         right_frame.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
         search_frame = tk.Frame(right_frame)
@@ -1038,7 +1588,6 @@ class App(tk.Tk):
         self.search_entry = tk.Entry(search_frame, textvariable=self.search_var, font=get_app_font(10))
         self.search_entry.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(0, 5))
         self.search_entry.bind('<KeyRelease>', self.filter_games)
-
         self.tree = ttk.Treeview(right_frame, columns=("Game",), show="headings", selectmode="browse")
         self.tree.heading("Game", text="Game")
         self.tree.column("Game", width=400, anchor="w")
@@ -1046,55 +1595,43 @@ class App(tk.Tk):
         style = ttk.Style()
         style.configure("Treeview", font=get_app_font(10))
         style.configure("Treeview.Heading", font=get_app_font(10, "bold"))
-
         # UPDATE PRIORITY + ★ MARKER
         games_with_update = []
         games_without_update = []
-
         for match in self.matches:
             appid_str = str(match["data"]["appid"])
             game_name = match["game_name"]
             local_data = self.last_applied.get(appid_str, {}).get(game_name, {})
             local_file = local_data.get("file")
-
             update_available = False
             if local_file:
                 file_still_exists = any(local_file == f["name"] for f in match["data"]["files"])
                 update_available = not file_still_exists
-
             if update_available:
                 games_with_update.append(match)
             else:
                 games_without_update.append(match)
-
         games_with_update = sorted(games_with_update, key=lambda m: m["game_name"].lower())
         games_without_update = sorted(games_without_update, key=lambda m: m["game_name"].lower())
         display_matches = games_with_update + games_without_update
-
         for match in display_matches:
             appid = str(match["data"]["appid"])
             game_name = match["game_name"]
             local_data = self.last_applied.get(appid, {}).get(game_name, {})
             local_file = local_data.get("file")
-
             update_available = False
             if local_file:
                 file_still_exists = any(local_file == f["name"] for f in match["data"]["files"])
                 update_available = not file_still_exists
-
             if update_available:
                 display_name = f"★ {game_name}"
                 tags = (appid, "update")
             else:
                 display_name = game_name
                 tags = (appid,)
-
             self.tree.insert("", "end", values=(display_name,), tags=tags)
-
         self.tree.tag_configure("update", foreground="#e67e22", font=get_app_font(11, "bold"))
-
         self.tree.bind("<<TreeviewSelect>>", self.on_select)
-
         bottom_frame = tk.Frame(self, bg="#1e1e1e")
         bottom_frame.pack(fill=tk.X, side=tk.BOTTOM, pady=(8, 0))
         self.status = tk.Label(bottom_frame, text=self.db_status, anchor="w",
@@ -1105,55 +1642,43 @@ class App(tk.Tk):
         search_term = self.search_var.get().lower().strip()
         for item in self.tree.get_children():
             self.tree.delete(item)
-
         filtered = [m for m in self.matches if search_term in m['game_name'].lower()]
-
         games_with_update = []
         games_without_update = []
-
         for match in filtered:
             appid_str = str(match["data"]["appid"])
             game_name = match["game_name"]
             local_data = self.last_applied.get(appid_str, {}).get(game_name, {})
             local_file = local_data.get("file")
-
             update_available = False
             if local_file:
                 file_still_exists = any(local_file == f["name"] for f in match["data"]["files"])
                 update_available = not file_still_exists
-
             if update_available:
                 games_with_update.append(match)
             else:
                 games_without_update.append(match)
-
         games_with_update = sorted(games_with_update, key=lambda m: m["game_name"].lower())
         games_without_update = sorted(games_without_update, key=lambda m: m["game_name"].lower())
         display_matches = games_with_update + games_without_update
-
         for match in display_matches:
             appid = str(match["data"]["appid"])
             game_name = match["game_name"]
             local_data = self.last_applied.get(appid, {}).get(game_name, {})
             local_file = local_data.get("file")
-
             update_available = False
             if local_file:
                 file_still_exists = any(local_file == f["name"] for f in match["data"]["files"])
                 update_available = not file_still_exists
-
             if update_available:
                 display_name = f"★ {game_name}"
                 tags = (appid, "update")
             else:
                 display_name = game_name
                 tags = (appid,)
-
             self.tree.insert("", "end", values=(display_name,), tags=tags)
-
         # THIS LINE IS REQUIRED IN FILTER_GAMES TOO!
         self.tree.tag_configure("update", foreground="#e67e22", font=get_app_font(11, "bold"))
-
         if not self.tree.get_children():
             self.clear_details()
 
@@ -1171,26 +1696,21 @@ class App(tk.Tk):
         if not match:
             self.clear_details()
             return
-
-        game_name = match["game_name"]  # ← CRITICAL: define game_name
-
+        game_name = match["game_name"] # ← CRITICAL: define game_name
         img = load_box_art(self.steam_path, appid)
         if img:
             self.img_label.configure(image=img, text="")
             self.img_label.image = img
         else:
             self.img_label.configure(image="", text="No box art")
-
         self.dev_var.set(match['dev_name'])
         self.pub_var.set(match['data'].get('publisher', 'N/A'))
         self.notes_var.set(match['data'].get('notes', 'N/A'))
-
                 # === SIMPLE & PERFECT UPDATE DETECTION ===
         local_data = self.last_applied.get(appid, {}).get(game_name, {})
         local_file = local_data.get("file")
-
+        changes = local_data.get("changes", {})
         update_available = False
-
         if local_file:
             # If the file the user applied no longer exists in the current database → it was replaced → UPDATE!
             file_exists = any(local_file == f["name"] for f in match["data"]["files"])
@@ -1198,22 +1718,25 @@ class App(tk.Tk):
         else:
             # First time seeing this game → show as available, not update
             update_available = False
-
         if update_available:
             patch_text = "UPDATE AVAILABLE\nA new patch has been released!"
             fg = "#e67e22"
         elif local_file:
-            patch_text = f"Latest applied:\n{local_file}\non {local_data.get('date', 'unknown')}"
+            ow = len(changes.get("overwritten", []))
+            ad = len(changes.get("added", []))
+            sk = len(changes.get("skipped", [])) if changes.get("skipped") else 0
+            change_summary = f"{ow} overwritten, {ad} added"
+            if sk > 0:
+                change_summary += f", {sk} skipped"
+            patch_text = f"Latest applied:\n{local_file}\non {local_data.get('date', 'unknown')}\n\n{change_summary}"
             fg = "#4CAF50"
         else:
             patch_text = "Patch available"
             fg = "#3498db"
-
         self.patch_status_var.set(patch_text)
         self.patch_status_label.config(fg=fg)
         self.patch_status_label.config(wraplength=220)
         self.status_var.set(match['data'].get('store_status', 'N/A'))
-
         self.current_appid = appid
         self.current_install_dir = self.installed[appid]
         self.open_folder_btn.config(state=tk.NORMAL)
@@ -1238,17 +1761,17 @@ class App(tk.Tk):
             os.startfile(str(self.current_install_dir))
         else:
             messagebox.showerror("Error", "Game folder not found")
-            
+           
     def open_gdrive_folder(self):
         if not self.current_appid:
             return
         match = self.by_id.get(self.current_appid)
         if not match:
             return
-        
+       
         game_data = match["data"]
-        game_id = game_data.get("id")  # This is the Google Drive folder ID for the game
-        
+        game_id = game_data.get("id") # This is the Google Drive folder ID for the game
+       
         if game_id:
             url = f"https://drive.google.com/drive/folders/{game_id}"
             webbrowser.open(url)
@@ -1306,4 +1829,15 @@ if __name__ == "__main__":
     except:
         subprocess.call([sys.executable, "-m", "pip", "install", "gdown"])
         import gdown
+    # Add support for DOCX and PDF
+    try:
+        from docx import Document
+    except:
+        subprocess.call([sys.executable, "-m", "pip", "install", "python-docx"])
+        from docx import Document
+    try:
+        import fitz  # PyMuPDF for PDF
+    except:
+        subprocess.call([sys.executable, "-m", "pip", "install", "pymupdf"])
+        import fitz
     App().mainloop()

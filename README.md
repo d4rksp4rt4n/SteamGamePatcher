@@ -17,10 +17,11 @@ Automatically detects your installed games, shows beautiful box art, downloads p
 - **Intelligent Patching** – Overwrites only changed files, adds new ones, skips duplicates
 - **Robust Extraction** – Bundled `7z.exe` supports ZIP, 7Z, RAR, and self-extracting EXEs
 - **Live Database** – Auto-updates from GitHub using **ETag caching**
-- **Real-time Progress** – Download, extraction %, clear status updates
+- **Real-time Progress** – Uses threading and a smooth progress bar to prevent freezing during patch downloads and document processing.
 - **Game Actions** – Launch via Steam or open install folder directly
 - **Recent Changes Log** – See what’s new in the latest patches (Menu → View)
 - **Cache System** – Downloaded patches are cached locally (Tools → Clear Cache to free space)
+- **Advanced Instructions Viewer** – Supports internal rendering documents (DOCX,PDF, and TXT).
 
 ## Smart Database Updates
 
@@ -38,8 +39,8 @@ The app now uses **conditional requests with ETag** to check for database update
 - **Python 3.8+** (for source) or just the standalone `.exe`
 - Internet connection (for database + patches)
 
-Dependencies auto-installed on first run:
-`requests`, `Pillow`, `gdown`, `vdf`
+Dependencies auto-installed on first run: 
+`prequests`, `Pillow`, `gdown`, `vdf`, `python-docx`, `PyMuPDF` (for PDF rendering)
 
 Bundled: `7z.exe` + `7z.dll` (LGPL-2.1)
 
@@ -104,5 +105,5 @@ Patches: Provided by community — use responsibly
 
 ---
 
-*Last updated: November 2025*
+*Last updated: December 2025*
 
