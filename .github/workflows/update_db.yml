@@ -108,7 +108,7 @@ jobs:
         run: python database/unify_db.py
 
       - name: Minify Database JSON
-        run: python minify_db.py
+        run: python database/minify_db.py
 
       - name: Commit & Push if changed  # Conditional: Only commit on diffs
         id: commit
