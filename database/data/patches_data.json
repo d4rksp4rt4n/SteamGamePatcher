@@ -2,7 +2,7 @@
     "data": {
         "total_games": 1486,
         "unique_developers": 766,
-        "generated_at": "2025-12-10 13:52:24 UTC"
+        "generated_at": "2025-12-10 20:00:00 UTC"
     },
     "entries": [
         {
@@ -18,6 +18,21 @@
             "match_status": "exact",
             "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
             "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
+            "game": "HAPPY SAIN† SHEOL",
+            "developer": "122pxsheol",
+            "publisher": "Sekai Project",
+            "notes": "Version 1.3.1 (2025.12.10)",
+            "steam_url": "https://store.steampowered.com/app/2093610/",
+            "patch_link": "https://drive.google.com/drive/folders/1H3DWx3VWhCiWs4aYNbkWCDtamaeUPbpc",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2093610/883ece4edd09784b408638120ab4b063fefba483/header_alt_assets_1.jpg?t=1765320907",
+            "row_num": "424",
+            "appid": "2093610",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: 122pxsheol|happy sain† sheol",
+            "store_status": "available",
             "manual_edit": false
         },
         {
@@ -8342,21 +8357,6 @@
             "appid": "2599880",
             "match_status": "exact",
             "match_reason": "Exact match: windmill oasis|happiness! sakura celebration!",
-            "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "HAPPY SAIN† SHEOL",
-            "developer": "122pxsheol",
-            "publisher": "Sekai Project",
-            "notes": "Version 1.01 (2024.09.19)",
-            "steam_url": "https://store.steampowered.com/app/2093610/",
-            "patch_link": "https://drive.google.com/drive/folders/1H3DWx3VWhCiWs4aYNbkWCDtamaeUPbpc",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2093610/header.jpg?t=1726766268",
-            "row_num": "412",
-            "appid": "2093610",
-            "match_status": "exact",
-            "match_reason": "Exact match: 122pxsheol|happy sain† sheol",
             "store_status": "available",
             "manual_edit": false
         },

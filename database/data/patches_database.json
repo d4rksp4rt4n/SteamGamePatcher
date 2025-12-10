@@ -16216,26 +16216,26 @@
                     "id": "1H3DWx3VWhCiWs4aYNbkWCDtamaeUPbpc",
                     "files": [
                         {
-                            "name": "HSSH-1.01 Uncut Patch (v2024.09.19).rar",
-                            "id": "1qMCUtxOeXvQeAJm7xgjt7WkfaNCRajXs",
-                            "size": "32.7 MB",
-                            "type": ".rar",
-                            "path": "HSSH-1.01 Uncut Patch (v2024.09.19).rar",
-                            "last_updated": ""
-                        },
-                        {
                             "name": "Install Note.docx",
                             "id": "1dNzSxjTnRUrWWjMTm22aGmf40fPqZXzE",
                             "size": "383.8 KB",
                             "type": ".docx",
                             "path": "Install Note.docx",
                             "last_updated": ""
+                        },
+                        {
+                            "name": "HSSH-1.3.1 Uncut Patch (v2025.12.10).rar",
+                            "id": "1mcTuD95W68leFvX8govDB-lBtXdYGIj4",
+                            "size": "17.7 MB",
+                            "type": ".rar",
+                            "path": "HSSH-1.3.1 Uncut Patch (v2025.12.10).rar",
+                            "last_updated": ""
                         }
                     ],
                     "appid": "2093610",
-                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2093610/header.jpg?t=1726766268",
+                    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2093610/883ece4edd09784b408638120ab4b063fefba483/header_alt_assets_1.jpg?t=1765320907",
                     "publisher": "Sekai Project",
-                    "notes": "Version 1.01 (2024.09.19)",
+                    "notes": "Version 1.3.1 (2025.12.10)",
                     "store_status": "available"
                 }
             }
@@ -59756,9 +59756,11 @@
             "UPDATED FILE: Gears of Dragoon∶ Fragments of a New Era/Install Note - Chinese.docx",
             "UPDATED FILE: SUKEBE BLOCKS/Install Note.docx",
             "REMOVED FILE: MOEKOUBOU/Magical Girl Opal/Magical Girl Opal EN Patch v1.02.exe",
-            "UPDATED FILE: Magical Girl Opal/Magical Girl Opal EN Patch v1.03.exe"
+            "UPDATED FILE: Magical Girl Opal/Magical Girl Opal EN Patch v1.03.exe",
+            "UPDATED FILE: HAPPY SAIN† SHEOL/HSSH-1.3.1 Uncut Patch (v2025.12.10).rar",
+            "REMOVED FILE: 122pxsheol/HAPPY SAIN† SHEOL/HSSH-1.01 Uncut Patch (v2024.09.19).rar"
         ],
-        "version": "2025-12-10 13:52:43",
+        "version": "2025-12-10 20:00:23",
         "last_scan": "2025-12-07 17:13:48"
     }
 }
