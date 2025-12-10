@@ -2,7 +2,7 @@
     "data": {
         "total_games": 1486,
         "unique_developers": 766,
-        "generated_at": "2025-12-08 12:00:19 UTC"
+        "generated_at": "2025-12-10 13:52:24 UTC"
     },
     "entries": [
         {
@@ -18,6 +18,21 @@
             "match_status": "exact",
             "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
             "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
+            "game": "Magical Girl Opal",
+            "developer": "MOEKOUBOU",
+            "publisher": "Kagura Games",
+            "notes": "Chinese patch v1.00. English patch v1.03. Japanese patch v1.00",
+            "steam_url": "https://store.steampowered.com/app/3466680/",
+            "patch_link": "https://drive.google.com/drive/folders/1qR9zT49jO1CQNamS9DR6HTFv-CYfJw1s",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3466680/header.jpg?t=1752292807",
+            "row_num": "708",
+            "appid": "3466680",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: moekoubou|magical girl opal",
+            "store_status": "available",
             "manual_edit": false
         },
         {
@@ -12107,21 +12122,6 @@
             "appid": "1607170",
             "match_status": "exact",
             "match_reason": "Exact match: no future|magical girl noble rose",
-            "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "Magical Girl Opal",
-            "developer": "MOEKOUBOU",
-            "publisher": "Kagura Games",
-            "notes": "Chinese patch v1.00. English patch v1.02. Japanese patch v1.00",
-            "steam_url": "https://store.steampowered.com/app/3466680/",
-            "patch_link": "https://drive.google.com/drive/folders/1qR9zT49jO1CQNamS9DR6HTFv-CYfJw1s",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3466680/header.jpg?t=1752292807",
-            "row_num": "689",
-            "appid": "3466680",
-            "match_status": "exact",
-            "match_reason": "Exact match: moekoubou|magical girl opal",
             "store_status": "available",
             "manual_edit": false
         },
