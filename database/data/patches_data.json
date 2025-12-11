@@ -2,9 +2,24 @@
     "data": {
         "total_games": 1487,
         "unique_developers": 767,
-        "generated_at": "2025-12-11 06:43:25 UTC"
+        "generated_at": "2025-12-11 15:38:02 UTC"
     },
     "entries": [
+        {
+            "game": "Black Souls II",
+            "developer": "Eeny, meeny, miny, moe?",
+            "publisher": "OTAKU Plan",
+            "notes": "English, Japanese, S. Chinese patch v2025.12.08",
+            "steam_url": "https://store.steampowered.com/app/3855540/",
+            "patch_link": "https://drive.google.com/drive/folders/19vTJGMjqp_Q4yfWSJ7lEkK0wqdlTkCrR",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3855540/b1a169268bb89754248da4fded96ebda8f2f283a/header.jpg?t=1764814998",
+            "row_num": "117",
+            "appid": "3855540",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: eeny, meeny, miny, moe?|black souls ii",
+            "store_status": "available",
+            "manual_edit": false
+        },
         {
             "game": "Dungeon of Erotic Master Reboot",
             "developer": "rusimarudou",
@@ -18,6 +33,21 @@
             "match_status": "exact",
             "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
             "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
+            "game": "DYSTHANASIA",
+            "developer": "Madowaku Kobo",
+            "publisher": "Eroge Japan",
+            "notes": "R-18 Patch v1.0.6.5 (2025.12.11) / Uncensor+Restoration MOD v1.0.0",
+            "steam_url": "https://store.steampowered.com/app/3211490/",
+            "patch_link": "https://drive.google.com/drive/folders/1OAHxnIIuirvDueE-oIYb1dekntlAIyxt",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3211490/83a93eb72421a1a32d0457aa0483ba1df96f884f/header.jpg?t=1763772726",
+            "row_num": "278",
+            "appid": "3211490",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: madowaku kobo|dysthanasia",
+            "store_status": "available",
             "manual_edit": false
         },
         {
@@ -216,21 +246,6 @@
             "manual_edit": false
         },
         {
-            "game": "Black Souls II",
-            "developer": "Eeny, meeny, miny, moe?",
-            "publisher": "OTAKU Plan",
-            "notes": "English, Japanese, S. Chinese patch v2025.11.29",
-            "steam_url": "https://store.steampowered.com/app/3855540/",
-            "patch_link": "https://drive.google.com/drive/folders/19vTJGMjqp_Q4yfWSJ7lEkK0wqdlTkCrR",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3855540/b1a169268bb89754248da4fded96ebda8f2f283a/header.jpg?t=1764381281",
-            "row_num": "117",
-            "appid": "3855540",
-            "match_status": "exact",
-            "match_reason": "Exact match on full: eeny, meeny, miny, moe?|black souls ii",
-            "store_status": "available",
-            "manual_edit": false
-        },
-        {
             "game": "NTR Idol - Promise of Dreams",
             "developer": "Just Keep Playing",
             "publisher": "Mango Party",
@@ -302,21 +317,6 @@
             "appid": "1461060",
             "match_status": "exact",
             "match_reason": "Exact match on full: minstrel studio|法利恩戰記2 (furion chronicles 2)",
-            "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "DYSTHANASIA",
-            "developer": "Madowaku Kobo",
-            "publisher": "Eroge Japan",
-            "notes": "R-18 Patch v1.0.5 (2025.11.24) / Uncensor+Restoration MOD v1.0.0",
-            "steam_url": "https://store.steampowered.com/app/3211490/",
-            "patch_link": "https://drive.google.com/drive/folders/1OAHxnIIuirvDueE-oIYb1dekntlAIyxt",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3211490/83a93eb72421a1a32d0457aa0483ba1df96f884f/header.jpg?t=1763772726",
-            "row_num": "276",
-            "appid": "3211490",
-            "match_status": "exact",
-            "match_reason": "Exact match on full: madowaku kobo|dysthanasia",
             "store_status": "available",
             "manual_edit": false
         },
