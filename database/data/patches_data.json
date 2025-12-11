@@ -1,25 +1,10 @@
 {
     "data": {
-        "total_games": 1487,
-        "unique_developers": 767,
-        "generated_at": "2025-12-11 15:38:02 UTC"
+        "total_games": 1488,
+        "unique_developers": 768,
+        "generated_at": "2025-12-11 22:55:11 UTC"
     },
     "entries": [
-        {
-            "game": "Black Souls II",
-            "developer": "Eeny, meeny, miny, moe?",
-            "publisher": "OTAKU Plan",
-            "notes": "English, Japanese, S. Chinese patch v2025.12.08",
-            "steam_url": "https://store.steampowered.com/app/3855540/",
-            "patch_link": "https://drive.google.com/drive/folders/19vTJGMjqp_Q4yfWSJ7lEkK0wqdlTkCrR",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3855540/b1a169268bb89754248da4fded96ebda8f2f283a/header.jpg?t=1764814998",
-            "row_num": "117",
-            "appid": "3855540",
-            "match_status": "exact",
-            "match_reason": "Exact match on full: eeny, meeny, miny, moe?|black souls ii",
-            "store_status": "available",
-            "manual_edit": false
-        },
         {
             "game": "Dungeon of Erotic Master Reboot",
             "developer": "rusimarudou",
@@ -33,6 +18,36 @@
             "match_status": "exact",
             "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
             "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
+            "game": "Sword Mistress of the Dungeon Town",
+            "developer": "ラブリープリチー超愛してる \n(Lovely Pretty Ultra Loving You)",
+            "publisher": "BOKIBOKI Games",
+            "notes": "English, S. Chinese, T. Chinese patches v2025.12.11",
+            "steam_url": "https://store.steampowered.com/app/3185540/",
+            "patch_link": "https://drive.google.com/drive/folders/1EVmBxGMU0-jXfAC3NHSowzy33KynskoG",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3185540/5b02e0c16374e194900427d629aa74aa023ea532/header.jpg?t=1765440600",
+            "row_num": "1209",
+            "appid": "3185540",
+            "match_status": "normalized",
+            "match_reason": "Normalized match on full: ラブリープリチー超愛してる \n(lovely pretty ultra loving you)|sword mistress of the dungeon town -> ラブリープリチー超愛してる lovely pretty ultra loving you",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
+            "game": "Black Souls II",
+            "developer": "Eeny, meeny, miny, moe?",
+            "publisher": "OTAKU Plan",
+            "notes": "English, Japanese, S. Chinese patch v2025.12.08",
+            "steam_url": "https://store.steampowered.com/app/3855540/",
+            "patch_link": "https://drive.google.com/drive/folders/19vTJGMjqp_Q4yfWSJ7lEkK0wqdlTkCrR",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3855540/b1a169268bb89754248da4fded96ebda8f2f283a/header.jpg?t=1764814998",
+            "row_num": "117",
+            "appid": "3855540",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: eeny, meeny, miny, moe?|black souls ii",
+            "store_status": "available",
             "manual_edit": false
         },
         {
