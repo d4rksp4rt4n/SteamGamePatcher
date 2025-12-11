@@ -13,7 +13,7 @@ Automatically detects your installed games, shows beautiful box art, downloads p
 ## Features
 
 - **Smart Auto-Detection** – Scans all Steam libraries instantly
-- **Beautiful UI** – Full box art, developer/publisher info, patch notes, search & filter
+- **Functional UI** – Full box art, developer/publisher info, patch notes, search & filter
 - **Intelligent Patching** – Overwrites only changed files, adds new ones, skips duplicates
 - **Robust Extraction** – Bundled `7z.exe` supports ZIP, 7Z, RAR, and self-extracting EXEs
 - **Live Database** – Auto-updates from GitHub using **ETag caching**
@@ -21,7 +21,7 @@ Automatically detects your installed games, shows beautiful box art, downloads p
 - **Game Actions** – Launch via Steam or open install folder directly
 - **Recent Changes Log** – See what’s new in the latest patches (Menu → View)
 - **Cache System** – Downloaded patches are cached locally (Tools → Clear Cache to free space)
-- **Advanced Instructions Viewer** – Supports internal rendering documents (DOCX,PDF, and TXT).
+- **Advanced Instructions Viewer** – Supports internal rendering documents (DOCX, PDF, and TXT).
 
 ## Smart Database Updates
 
