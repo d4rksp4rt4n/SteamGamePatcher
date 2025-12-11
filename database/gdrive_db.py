@@ -1,10 +1,11 @@
 """
 Patch folder indexing script to sync Google Drive folders with local JSON, including file lists in each game folder.
-Version: 1.6.0
+Version: 1.7.0
 Changes:
 - v1.4.0: Fixed sync issues and restored detailed logging.
 - v1.5.0: **CRITICAL FIX**: Changed logging level from INFO to DEBUG to show detailed file-by-file processing logs during scans.
 - v1.6.0: Added .pdf and .docx to supported file types for instruction viewing in the app.
+- v1.7.0: Fixed script not indexing new game folders from new developer folders.
 """
 import os
 import json
@@ -362,18 +363,32 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                                 change_count += 1
                     else:
                         # New folder
+                        # In the incremental mode, inside the folder logic, after:
                         if parent == root_folder_id:
                             logger.info(f"Added developer: {name}")
                             new_changes.append(f"ADDED DEVELOPER: {name}")
                             folder_structure['developers'][name] = {'id': id_, 'games': {}}
                             change_count += 1
-                        elif parent in dev_id_to_name:
-                            dev_name = dev_id_to_name[parent]
-                            logger.info(f"Added game: {name} to {dev_name}")
-                            new_changes.append(f"ADDED GAME: {dev_name}/{name}")
-                            folder_structure['developers'][dev_name]['games'][name] = {'id': id_, 'files': []}
-                            change_count += 1
-                        # else: ignore irrelevant folder
+
+                            # === ADD THIS BLOCK: Force-scan contents of new developer ===
+                            logger.info(f"New developer detected - scanning for game folders and files: {name}")
+                            game_folders = list_files(drive_service, id_, folders_only=True)
+                            for game_folder in game_folders:
+                                game_name = game_folder['name']
+                                game_id = game_folder['id']
+                                logger.info(f"  Adding new game from scan: {game_name}")
+                                new_changes.append(f"ADDED GAME (new dev scan): {name}/{game_name}")
+                                
+                                game_files = recursive_list_files_with_path(drive_service, game_id, '', ['Old'])
+                                folder_structure['developers'][name]['games'][game_name] = {
+                                    "id": game_id,
+                                    "files": game_files
+                                }
+                                change_count += 1
+                            # Rebuild maps after bulk add
+                            dev_id_to_name, game_id_to_path, file_id_to_game = build_id_maps(folder_structure)
+                            # =============================================
+                            # else: ignore irrelevant folder
                    
                     # Rebuild maps after structural change
                     dev_id_to_name, game_id_to_path, file_id_to_game = build_id_maps(folder_structure)
