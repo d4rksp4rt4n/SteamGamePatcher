@@ -1,25 +1,10 @@
 {
     "data": {
-        "total_games": 1490,
+        "total_games": 1491,
         "unique_developers": 770,
-        "generated_at": "2025-12-13 19:23:07 UTC"
+        "generated_at": "2025-12-15 14:17:08 UTC"
     },
     "entries": [
-        {
-            "game": "Desktop Garage Kit : Go",
-            "developer": "1UP Games",
-            "publisher": "1UP Games",
-            "notes": "Patch V4UU_2025.04.04",
-            "steam_url": "https://store.steampowered.com/app/2564140/",
-            "patch_link": "https://drive.google.com/drive/folders/1vW3KFmclLzu4ybWUon4jpRQxN6hjV3zT",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2564140/header.jpg?t=1758644334",
-            "row_num": "230",
-            "appid": "2564140",
-            "match_status": "exact",
-            "match_reason": "Exact match on full: 1up games|desktop garage kit : go",
-            "store_status": "available",
-            "manual_edit": false
-        },
         {
             "game": "Dungeon of Erotic Master Reboot",
             "developer": "rusimarudou",
@@ -33,6 +18,36 @@
             "match_status": "exact",
             "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
             "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
+            "game": "NEKO-NIN exHeart SPIN! LOVE+PLUS",
+            "developer": "Denpasoft",
+            "publisher": "Sekai Project",
+            "notes": "Patch v1.00 (2025.12.15)",
+            "steam_url": "https://store.steampowered.com/app/3971880/",
+            "patch_link": "https://drive.google.com/drive/folders/10Ibme9HveplkAjhnwfzXV6o5LKHnOwUC",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3971880/bfd4135fb3edb0d137c91731a0b6f0b9faa302fc/header.jpg?t=1765785354",
+            "row_num": "846",
+            "appid": "3971880",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: denpasoft|neko-nin exheart spin! love+plus",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
+            "game": "Desktop Garage Kit : Go",
+            "developer": "1UP Games",
+            "publisher": "1UP Games",
+            "notes": "Patch V4UU_2025.04.04",
+            "steam_url": "https://store.steampowered.com/app/2564140/",
+            "patch_link": "https://drive.google.com/drive/folders/1vW3KFmclLzu4ybWUon4jpRQxN6hjV3zT",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2564140/header.jpg?t=1758644334",
+            "row_num": "230",
+            "appid": "2564140",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: 1up games|desktop garage kit : go",
+            "store_status": "available",
             "manual_edit": false
         },
         {
