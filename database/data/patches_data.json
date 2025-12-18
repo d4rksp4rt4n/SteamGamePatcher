@@ -1,10 +1,25 @@
 {
     "data": {
-        "total_games": 1493,
+        "total_games": 1494,
         "unique_developers": 770,
-        "generated_at": "2025-12-18 06:24:26 UTC"
+        "generated_at": "2025-12-18 17:34:12 UTC"
     },
     "entries": [
+        {
+            "game": "A Maiden's Serenade",
+            "developer": "Denpasoft",
+            "publisher": "Sekai Project",
+            "notes": "Patch v1.00 (2025.12.18)",
+            "steam_url": "https://store.steampowered.com/app/3125150/",
+            "patch_link": "https://drive.google.com/drive/folders/1lkyFNGhymWTgulp3DKf5xgZx5plbOI1t",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3125150/header.jpg?t=1766070140",
+            "row_num": "20",
+            "appid": "3125150",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: denpasoft|a maiden's serenade",
+            "store_status": "available",
+            "manual_edit": false
+        },
         {
             "game": "Dungeon of Erotic Master Reboot",
             "developer": "rusimarudou",
@@ -13,7 +28,7 @@
             "steam_url": "https://store.steampowered.com/app/3779390/",
             "patch_link": "https://drive.google.com/drive/folders/1U25Bmkg31QmS8I73Ip3vTXnlbiB41fZn",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/5eeb73c23efca6aa810a58b0a3124af9cfe94023/header.jpg?t=1764842409",
-            "row_num": "274",
+            "row_num": "275",
             "appid": "3779390",
             "match_status": "exact",
             "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
