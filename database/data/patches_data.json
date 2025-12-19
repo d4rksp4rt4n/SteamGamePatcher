@@ -1,25 +1,10 @@
 {
     "data": {
-        "total_games": 1494,
-        "unique_developers": 770,
-        "generated_at": "2025-12-18 17:34:12 UTC"
+        "total_games": 1496,
+        "unique_developers": 771,
+        "generated_at": "2025-12-19 19:04:35 UTC"
     },
     "entries": [
-        {
-            "game": "A Maiden's Serenade",
-            "developer": "Denpasoft",
-            "publisher": "Sekai Project",
-            "notes": "Patch v1.00 (2025.12.18)",
-            "steam_url": "https://store.steampowered.com/app/3125150/",
-            "patch_link": "https://drive.google.com/drive/folders/1lkyFNGhymWTgulp3DKf5xgZx5plbOI1t",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3125150/header.jpg?t=1766070140",
-            "row_num": "20",
-            "appid": "3125150",
-            "match_status": "exact",
-            "match_reason": "Exact match on full: denpasoft|a maiden's serenade",
-            "store_status": "available",
-            "manual_edit": false
-        },
         {
             "game": "Dungeon of Erotic Master Reboot",
             "developer": "rusimarudou",
@@ -33,6 +18,51 @@
             "match_status": "exact",
             "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
             "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
+            "game": "LOVEPICAL-POPPY!",
+            "developer": "Smee",
+            "publisher": "Kagami Games",
+            "notes": "Multilanguage (EN, SC, TC) patch Ver1.0 (2025.12.19)",
+            "steam_url": "https://store.steampowered.com/app/4041240/",
+            "patch_link": "https://drive.google.com/drive/folders/1gZ0MAjC1YVYthybuJM8wyvC3VOnUYpGb",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4041240/fe4f6f8122e208e4db90d446b24146dbe7bb9384/header.jpg?t=1766145569",
+            "row_num": "692",
+            "appid": "4041240",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: smee|lovepical-poppy!",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
+            "game": "极乐妹土!3",
+            "developer": "MOONSTONE",
+            "publisher": "Kagami Games",
+            "notes": "Chinese Simplified and Traditional patch v1.1",
+            "steam_url": "https://store.steampowered.com/app/3838280/",
+            "patch_link": "https://drive.google.com/drive/folders/13FMrJ6I9cEIW2Jyg-nn3use-fqtC6OWL",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3838280/93ac4c9cd4a30e725983e9c4a294a00136bfd055/header.jpg?t=1761634979",
+            "row_num": "1462",
+            "appid": "3838280",
+            "match_status": "normalized",
+            "match_reason": "Normalized match on full: moonstone|极乐妹土!3 -> moonstone|极乐妹土!3",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
+            "game": "A Maiden's Serenade",
+            "developer": "Denpasoft",
+            "publisher": "Sekai Project",
+            "notes": "Patch v1.00 (2025.12.18)",
+            "steam_url": "https://store.steampowered.com/app/3125150/",
+            "patch_link": "https://drive.google.com/drive/folders/1lkyFNGhymWTgulp3DKf5xgZx5plbOI1t",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3125150/header.jpg?t=1766070140",
+            "row_num": "20",
+            "appid": "3125150",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: denpasoft|a maiden's serenade",
+            "store_status": "available",
             "manual_edit": false
         },
         {
