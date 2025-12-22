@@ -2,7 +2,7 @@
     "data": {
         "total_games": 1496,
         "unique_developers": 771,
-        "generated_at": "2025-12-19 19:04:35 UTC"
+        "generated_at": "2025-12-22 13:13:44 UTC"
     },
     "entries": [
         {
@@ -21,6 +21,21 @@
             "manual_edit": false
         },
         {
+            "game": "Scars of Summer: After",
+            "developer": "shinachiku-castella",
+            "publisher": "Kagura Games",
+            "notes": "Chinese patch v1.01. English patch v1.02. Japanese patch v1.00",
+            "steam_url": "https://store.steampowered.com/app/4041630/",
+            "patch_link": "https://drive.google.com/drive/folders/1QSRRXkX-Nu9S8ullAcDjlCdpyG9iyn6X",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4041630/8ce1657de49a917449dd42f092f45a9540c5acc1/header.jpg?t=1766196121",
+            "row_num": "1078",
+            "appid": "4041630",
+            "match_status": "fuzzy",
+            "match_reason": "Fuzzy match: shinachiku-castella|scars of summer: after -> shinachiku-castella|scars of summer∶ after (score: 98, dev: shinachiku-castella, cutoff: 0.8)",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
             "game": "LOVEPICAL-POPPY!",
             "developer": "Smee",
             "publisher": "Kagami Games",
@@ -36,7 +51,7 @@
             "manual_edit": false
         },
         {
-            "game": "极乐妹土!3",
+            "game": "极乐妹土！3",
             "developer": "MOONSTONE",
             "publisher": "Kagami Games",
             "notes": "Chinese Simplified and Traditional patch v1.1",
@@ -62,21 +77,6 @@
             "appid": "3125150",
             "match_status": "exact",
             "match_reason": "Exact match on full: denpasoft|a maiden's serenade",
-            "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "Scars of Summer: After",
-            "developer": "shinachiku-castella",
-            "publisher": "Kagura Games",
-            "notes": "Chinese patch v1.01. English patch v1.01. Japanese patch v1.00",
-            "steam_url": "https://store.steampowered.com/app/4041630/",
-            "patch_link": "https://drive.google.com/drive/folders/1QSRRXkX-Nu9S8ullAcDjlCdpyG9iyn6X",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4041630/8ce1657de49a917449dd42f092f45a9540c5acc1/header.jpg?t=1766034017",
-            "row_num": "1076",
-            "appid": "4041630",
-            "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: shinachiku-castella|scars of summer: after -> shinachiku-castella|scars of summer∶ after (score: 98, dev: shinachiku-castella, cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false
         },
