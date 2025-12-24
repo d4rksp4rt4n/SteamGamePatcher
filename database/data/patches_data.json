@@ -2,21 +2,21 @@
     "data": {
         "total_games": 1497,
         "unique_developers": 771,
-        "generated_at": "2025-12-24 18:32:17 UTC"
+        "generated_at": "2025-12-24 18:47:26 UTC"
     },
     "entries": [
         {
             "game": "Brainwashing Academy - The Cursed Person's Pot",
             "developer": "U-ROOM",
             "publisher": null,
-            "notes": "",
+            "notes": "English & Chinese patch v2025.12.25",
             "steam_url": "https://store.steampowered.com/app/3773380/",
-            "patch_link": null,
+            "patch_link": "https://drive.google.com/drive/folders/18u5HAV3udKAuJ6pUZ2gdh2GYXGusil6k",
             "header_image": null,
             "row_num": "132",
             "appid": "3773380",
-            "match_status": "unmatched",
-            "match_reason": "Unmatched: No match found",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: u-room|brainwashing academy - the cursed person's pot",
             "store_status": null,
             "manual_edit": false
         },
