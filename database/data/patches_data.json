@@ -2,22 +2,22 @@
     "data": {
         "total_games": 1498,
         "unique_developers": 772,
-        "generated_at": "2026-01-06 20:18:56 UTC"
+        "generated_at": "2026-01-07 08:24:05 UTC"
     },
     "entries": [
         {
             "game": "Cosplayer's Quest",
             "developer": "ぢゅぱり屋本舗別館 \n(dyupariyahonnpobekkan)",
             "publisher": "Shiravune",
-            "notes": "Version 2026.01.06",
+            "notes": "Version 2026.01.07",
             "steam_url": "https://store.steampowered.com/app/3591400/",
             "patch_link": "https://drive.google.com/drive/folders/1EGiAHcUeJW8d3h-toGvgTTC1V68OyUgs",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3591400/08e6a041fa34e1efc095bdc852809209703d3564/header.jpg?t=1765415755",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3591400/08e6a041fa34e1efc095bdc852809209703d3564/header.jpg?t=1767751445",
             "row_num": "177",
             "appid": "3591400",
             "match_status": "normalized",
             "match_reason": "Normalized match on full: ぢゅぱり屋本舗別館 \n(dyupariyahonnpobekkan)|cosplayer's quest -> ぢゅぱり屋本舗別館 dyupariyahonnpobekkan",
-            "store_status": "unreleased",
+            "store_status": "available",
             "manual_edit": false
         },
         {
