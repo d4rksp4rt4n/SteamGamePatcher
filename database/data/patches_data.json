@@ -2,7 +2,7 @@
     "data": {
         "total_games": 1498,
         "unique_developers": 772,
-        "generated_at": "2026-01-07 08:24:05 UTC"
+        "generated_at": "2026-01-08 00:27:51 UTC"
     },
     "entries": [
         {
@@ -23,31 +23,31 @@
         {
             "game": "Brainwashing Academy - The Cursed Person's Pot",
             "developer": "U-ROOM",
-            "publisher": null,
+            "publisher": "Hanabi Games",
             "notes": "English & Chinese patch v2025.12.25",
-            "steam_url": "https://store.steampowered.com/app/3773380/",
+            "steam_url": "https://store.steampowered.com/app/3773380",
             "patch_link": "https://drive.google.com/drive/folders/18u5HAV3udKAuJ6pUZ2gdh2GYXGusil6k",
-            "header_image": null,
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3773380/9e200d581004ba8d0c70e50485d5237671c7f986/header.jpg?t=1767424755",
             "row_num": "132",
             "appid": "3773380",
             "match_status": "exact",
             "match_reason": "Exact match on full: u-room|brainwashing academy - the cursed person's pot",
-            "store_status": null,
+            "store_status": "available",
             "manual_edit": false
         },
         {
             "game": "Dungeon of Erotic Master Reboot",
             "developer": "rusimarudou",
-            "publisher": null,
+            "publisher": "Tensei Games",
             "notes": "",
-            "steam_url": "https://store.steampowered.com/app/3779390/",
+            "steam_url": "https://store.steampowered.com/app/3779390",
             "patch_link": "https://drive.google.com/drive/folders/1U25Bmkg31QmS8I73Ip3vTXnlbiB41fZn",
-            "header_image": null,
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/5eeb73c23efca6aa810a58b0a3124af9cfe94023/header.jpg?t=1764842409",
             "row_num": "276",
             "appid": "3779390",
             "match_status": "exact",
             "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
-            "store_status": null,
+            "store_status": "unreleased",
             "manual_edit": false
         },
         {
