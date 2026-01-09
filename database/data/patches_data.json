@@ -1,10 +1,40 @@
 {
     "data": {
-        "total_games": 1498,
+        "total_games": 1499,
         "unique_developers": 772,
-        "generated_at": "2026-01-08 00:27:51 UTC"
+        "generated_at": "2026-01-09 15:56:20 UTC"
     },
     "entries": [
+        {
+            "game": "Dungeon of Erotic Master Reboot",
+            "developer": "rusimarudou",
+            "publisher": "Tensei Games",
+            "notes": "",
+            "steam_url": "https://store.steampowered.com/app/3779390/",
+            "patch_link": "https://drive.google.com/drive/folders/1U25Bmkg31QmS8I73Ip3vTXnlbiB41fZn",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/5eeb73c23efca6aa810a58b0a3124af9cfe94023/header.jpg?t=1767859018",
+            "row_num": "277",
+            "appid": "3779390",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
+            "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
+            "game": "Shino's Insatiable Pursuit of Knowledge",
+            "developer": "Ota Guchi Field",
+            "publisher": "Kagura Games",
+            "notes": "Chinese patch v1.0x. English patch v1.0x. Japanese patch v1.0x",
+            "steam_url": "https://store.steampowered.com/app/3990310/",
+            "patch_link": "https://drive.google.com/drive/folders/1zlExw-lSATfqK1iUrqx5Hq2qX0rpkx4_",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3990310/40cf6bac883c7845220ad239559af7d7cf8718a0/header.jpg?t=1767889254",
+            "row_num": "1113",
+            "appid": "3990310",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: ota guchi field|shino's insatiable pursuit of knowledge",
+            "store_status": "unreleased",
+            "manual_edit": false
+        },
         {
             "game": "Cosplayer's Quest",
             "developer": "ぢゅぱり屋本舗別館 \n(dyupariyahonnpobekkan)",
@@ -33,21 +63,6 @@
             "match_status": "exact",
             "match_reason": "Exact match on full: u-room|brainwashing academy - the cursed person's pot",
             "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "Dungeon of Erotic Master Reboot",
-            "developer": "rusimarudou",
-            "publisher": "Tensei Games",
-            "notes": "",
-            "steam_url": "https://store.steampowered.com/app/3779390",
-            "patch_link": "https://drive.google.com/drive/folders/1U25Bmkg31QmS8I73Ip3vTXnlbiB41fZn",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/5eeb73c23efca6aa810a58b0a3124af9cfe94023/header.jpg?t=1764842409",
-            "row_num": "276",
-            "appid": "3779390",
-            "match_status": "exact",
-            "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
-            "store_status": "unreleased",
             "manual_edit": false
         },
         {
