@@ -1,8 +1,8 @@
 {
     "data": {
-        "total_games": 1500,
+        "total_games": 1501,
         "unique_developers": 773,
-        "generated_at": "2026-01-15 22:29:15 UTC"
+        "generated_at": "2026-01-16 20:04:35 UTC"
     },
     "entries": [
         {
@@ -12,7 +12,7 @@
             "notes": "",
             "steam_url": "https://store.steampowered.com/app/3779390/",
             "patch_link": "https://drive.google.com/drive/folders/1U25Bmkg31QmS8I73Ip3vTXnlbiB41fZn",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/5eeb73c23efca6aa810a58b0a3124af9cfe94023/header.jpg?t=1767859018",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/d13e7c58e7dd6c2ebba497dc880b351264362e25/header.jpg?t=1768528385",
             "row_num": "277",
             "appid": "3779390",
             "match_status": "exact",
@@ -27,11 +27,26 @@
             "notes": "English, Korean, S. Chinese and T. Chinese patch v2026.01.16",
             "steam_url": "https://store.steampowered.com/app/3603530/",
             "patch_link": "https://drive.google.com/drive/folders/1lsgyGBvA3ulFX-CWuhiZnUeadWnP7kd2",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3603530/f80c9c55a7a47f11cb0369744c9df69949ec86c3/header.jpg?t=1766629487",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3603530/f80c9c55a7a47f11cb0369744c9df69949ec86c3/header.jpg?t=1768534844",
             "row_num": "279",
             "appid": "3603530",
             "match_status": "exact",
             "match_reason": "Exact match on full: tadatada stupid|dungeon with girl",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
+            "game": "The Reason My Wife Has Gotten More Beautiful",
+            "developer": "Orcsoft",
+            "publisher": "Kagura Games",
+            "notes": "Chinese patch v1.0x. English patch v1.0x. Japanese patch v1.0x",
+            "steam_url": "https://store.steampowered.com/app/3721970/",
+            "patch_link": "https://drive.google.com/drive/folders/1JJ0QQ3lNyxCXdwAesMYpeBc-_rrVuYhH",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3721970/c24472c81caa4d63bffcfdb1394c65f32ee2bfd6/header.jpg?t=1768586644",
+            "row_num": "1298",
+            "appid": "3721970",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: orcsoft|the reason my wife has gotten more beautiful",
             "store_status": "unreleased",
             "manual_edit": false
         },
