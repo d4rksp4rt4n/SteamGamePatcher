@@ -2,7 +2,7 @@
     "data": {
         "total_games": 1502,
         "unique_developers": 774,
-        "generated_at": "2026-01-16 20:44:13 UTC"
+        "generated_at": "2026-01-17 06:47:18 UTC"
     },
     "entries": [
         {
@@ -21,6 +21,36 @@
             "manual_edit": false
         },
         {
+            "game": "Mom Stolen in Space",
+            "developer": "Uno",
+            "publisher": "Saikey Studios",
+            "notes": "Multilanguage patch v1.4 (2026.01.17)",
+            "steam_url": "https://store.steampowered.com/app/3903800/",
+            "patch_link": "https://drive.google.com/drive/folders/1fMu8GwMOEOLvBNokONfwR4tE1SG2hpt3",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3903800/a1d21c498b78aee2cd24d79f4c09b2636abf72ba/header.jpg?t=1768618319",
+            "row_num": "790",
+            "appid": "3903800",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: uno|mom stolen in space",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
+            "game": "The Reason My Wife Has Gotten More Beautiful",
+            "developer": "Orcsoft",
+            "publisher": "Kagura Games",
+            "notes": "Chinese patch v1.01. English patch v1.01. Japanese patch v1.01",
+            "steam_url": "https://store.steampowered.com/app/3721970/",
+            "patch_link": "https://drive.google.com/drive/folders/1JJ0QQ3lNyxCXdwAesMYpeBc-_rrVuYhH",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3721970/c24472c81caa4d63bffcfdb1394c65f32ee2bfd6/header.jpg?t=1768626702",
+            "row_num": "1299",
+            "appid": "3721970",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: orcsoft|the reason my wife has gotten more beautiful",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
             "game": "Fallen Priestess: My Sister's Demonic Bloodline",
             "developer": "BBQ大好き",
             "publisher": "Saikey Studios",
@@ -36,21 +66,6 @@
             "manual_edit": false
         },
         {
-            "game": "Mom Stolen in Space",
-            "developer": "Uno",
-            "publisher": "Saikey Studios",
-            "notes": "",
-            "steam_url": "https://store.steampowered.com/app/3903800/",
-            "patch_link": "https://drive.google.com/drive/folders/1fMu8GwMOEOLvBNokONfwR4tE1SG2hpt3",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3903800/a1d21c498b78aee2cd24d79f4c09b2636abf72ba/header.jpg?t=1768436577",
-            "row_num": "790",
-            "appid": "3903800",
-            "match_status": "exact",
-            "match_reason": "Exact match on full: uno|mom stolen in space",
-            "store_status": "unreleased",
-            "manual_edit": false
-        },
-        {
             "game": "Shino's Insatiable Pursuit of Knowledge",
             "developer": "Ota Guchi Field",
             "publisher": "Kagura Games",
@@ -63,21 +78,6 @@
             "match_status": "exact",
             "match_reason": "Exact match on full: ota guchi field|shino's insatiable pursuit of knowledge",
             "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "The Reason My Wife Has Gotten More Beautiful",
-            "developer": "Orcsoft",
-            "publisher": "Kagura Games",
-            "notes": "Chinese patch v1.0x. English patch v1.0x. Japanese patch v1.0x",
-            "steam_url": "https://store.steampowered.com/app/3721970/",
-            "patch_link": "https://drive.google.com/drive/folders/1JJ0QQ3lNyxCXdwAesMYpeBc-_rrVuYhH",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3721970/c24472c81caa4d63bffcfdb1394c65f32ee2bfd6/header.jpg?t=1768586644",
-            "row_num": "1299",
-            "appid": "3721970",
-            "match_status": "exact",
-            "match_reason": "Exact match on full: orcsoft|the reason my wife has gotten more beautiful",
-            "store_status": "unreleased",
             "manual_edit": false
         },
         {
