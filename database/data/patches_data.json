@@ -1,8 +1,8 @@
 {
     "data": {
-        "total_games": 1502,
+        "total_games": 1503,
         "unique_developers": 774,
-        "generated_at": "2026-01-17 06:47:18 UTC"
+        "generated_at": "2026-01-22 03:50:38 UTC"
     },
     "entries": [
         {
@@ -18,6 +18,21 @@
             "match_status": "exact",
             "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
             "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
+            "game": "Tokyo Clanpool",
+            "developer": "Idea Factory",
+            "publisher": null,
+            "notes": "GOG Restoration Patch",
+            "steam_url": "https://www.gog.com/en/game/tokyo_clanpool",
+            "patch_link": "https://drive.google.com/drive/folders/1H-4SuFiTC4wFdzI8uPLo1xE6EkmWjqnR",
+            "header_image": null,
+            "row_num": "1327",
+            "appid": null,
+            "match_status": "exact",
+            "match_reason": "Exact match on full: idea factory|tokyo clanpool",
+            "store_status": "unknown",
             "manual_edit": false
         },
         {
