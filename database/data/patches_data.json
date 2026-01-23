@@ -1,8 +1,8 @@
 {
     "data": {
-        "total_games": 1503,
-        "unique_developers": 774,
-        "generated_at": "2026-01-22 03:50:38 UTC"
+        "total_games": 1504,
+        "unique_developers": 775,
+        "generated_at": "2026-01-23 12:14:41 UTC"
     },
     "entries": [
         {
@@ -21,19 +21,34 @@
             "manual_edit": false
         },
         {
+            "game": "Flirting With Girls in Fantasy World",
+            "developer": "Hitoriku Studio",
+            "publisher": "Kagura Games",
+            "notes": "Chinese patch v1.0x. English patch v1.0x. Japanese patch v1.0x",
+            "steam_url": "https://store.steampowered.com/app/3867230/",
+            "patch_link": "https://drive.google.com/drive/folders/1nGcBwsEjK3iTV5LIRiC_URGmcsT06BlM",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3867230/2364f268e734224477313e73574df8421c603ea6/header.jpg?t=1768983338",
+            "row_num": "361",
+            "appid": "3867230",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: hitoriku studio|flirting with girls in fantasy world",
+            "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
             "game": "Tokyo Clanpool",
             "developer": "Idea Factory",
-            "publisher": null,
+            "publisher": "Eastasiasoft Limited",
             "notes": "GOG Restoration Patch",
             "steam_url": "https://www.gog.com/en/game/tokyo_clanpool",
             "patch_link": "https://drive.google.com/drive/folders/1H-4SuFiTC4wFdzI8uPLo1xE6EkmWjqnR",
-            "header_image": null,
+            "header_image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2708510/header.jpg",
             "row_num": "1327",
             "appid": null,
             "match_status": "exact",
             "match_reason": "Exact match on full: idea factory|tokyo clanpool",
-            "store_status": "unknown",
-            "manual_edit": false
+            "store_status": "available - GOG",
+            "manual_edit": true
         },
         {
             "game": "Mom Stolen in Space",
@@ -7885,7 +7900,7 @@
             "developer": "Nitroplus",
             "publisher": "JAST USA",
             "notes": "GOG R18 Patch",
-            "steam_url": "gog.com/game/full_metal_daemon_muramasa",
+            "steam_url": "https://gog.com/game/full_metal_daemon_muramasa",
             "patch_link": "https://drive.google.com/drive/folders/1a8gMamAd58-X2w-Gf22R21YAbwXWwto3",
             "header_image": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1643760/header.jpg",
             "row_num": "358",
@@ -9955,7 +9970,7 @@
             "developer": "HuniePot",
             "publisher": "HuniePot",
             "notes": "Only for the GOG version (R18 DLC also available on GOG)",
-            "steam_url": "www.gog.com/game/huniepop_2_double_date",
+            "steam_url": "https://www.gog.com/game/huniepop_2_double_date",
             "patch_link": "https://drive.google.com/drive/folders/1U6N5xqZQnNv60MjQq_dbITTRr7Vn09AR",
             "header_image": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/930210/header.jpg",
             "row_num": "509",
@@ -20215,7 +20230,7 @@
             "developer": "Denpasoft",
             "publisher": "Denpasoft",
             "notes": "Version 2022.01.18",
-            "steam_url": "gog.com/en/game/the_seventh_sign_mrsister",
+            "steam_url": "https://gog.com/en/game/the_seventh_sign_mrsister",
             "patch_link": "https://drive.google.com/drive/folders/1HyvI1WaTNkL7T568rm9jwqeiwJ6Jm-FG",
             "header_image": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1250600/header.jpg?",
             "row_num": "1269",
