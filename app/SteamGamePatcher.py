@@ -36,7 +36,7 @@ try:
 except ImportError:
     pass
 
-APP_VERSION = '1.34-beta'
+APP_VERSION = '1.35-beta'
 CONFIG_FILENAME = 'patcher_config.json'  # Per-game config file
 
 def resource_path(relative_path):
@@ -1432,10 +1432,18 @@ class App(tk.Tk):
                         small_file_check = expected_bytes and expected_bytes < 2048 and actual_size > 0
                         tolerance_check = expected_bytes is None or (abs(actual_size - expected_bytes) <= expected_bytes * 0.05)
                         if tolerance_check or small_file_check:
-                            test_cmd = [str(local_7z), 't', str(output)]
-                            test_result = subprocess.run(test_cmd, capture_output=True, text=True, creationflags=no_window_flag)
-                            if test_result.returncode == 0:
-                                break
+                            # Skip 7-Zip integrity test for .exe files (they are usually Inno/NSIS installers, not 7z archives)
+                            if output.suffix.lower() != ".exe":
+                                test_cmd = [str(local_7z), 't', str(output)]
+                                test_result = subprocess.run(test_cmd, capture_output=True, text=True, creationflags=no_window_flag)
+                                if test_result.returncode != 0:
+                                    # Only treat as failed if it was a real archive
+                                    retries += 1
+                                    if output.exists():
+                                        output.unlink()
+                                    continue
+                            # For .exe or valid archive → accept it
+                            break
                         retries += 1
                         if output.exists():
                             output.unlink()
