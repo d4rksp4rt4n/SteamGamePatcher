@@ -1,8 +1,8 @@
 {
     "data": {
-        "total_games": 1505,
+        "total_games": 1506,
         "unique_developers": 776,
-        "generated_at": "2026-01-28 19:21:55 UTC"
+        "generated_at": "2026-01-29 03:24:28 UTC"
     },
     "entries": [
         {
@@ -21,6 +21,21 @@
             "manual_edit": false
         },
         {
+            "game": "Ren'ai 0 Kilometer",
+            "developer": "ASa Project",
+            "publisher": "kawaiinium",
+            "notes": "Multilanguage R18 patch v2026.01.19",
+            "steam_url": "https://store.steampowered.com/app/3588960/",
+            "patch_link": "https://drive.google.com/drive/folders/11ftVw6XGZaJI_EVvuGn1931DvYMFn4uf",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3588960/dcdcb835b69513d09c90c4d0a4855853948cc28f/header.jpg?t=1769648719",
+            "row_num": "1001",
+            "appid": "3588960",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: asa project|ren'ai 0 kilometer",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
             "game": "Spiritbound: The Goddess's Quest",
             "developer": "マッスルランスネーク (Muscle Run Snake)",
             "publisher": "Oπ",
@@ -28,7 +43,7 @@
             "steam_url": "https://store.steampowered.com/app/3421410/",
             "patch_link": "https://drive.google.com/drive/folders/1fhk2S3CVhupyBJhYWLYcTESxvUgS_STb",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3421410/header.jpg?t=1769593596",
-            "row_num": "1156",
+            "row_num": "1157",
             "appid": "3421410",
             "match_status": "fuzzy",
             "match_reason": "Fuzzy match: マッスルランスネーク (muscle run snake)|spiritbound: the goddess's quest -> マッスルランスネーク (muscle run snake)|spiritbound∶ the goddess's quest (score: 86, dev: muscle run snake, cutoff: 0.8)",
