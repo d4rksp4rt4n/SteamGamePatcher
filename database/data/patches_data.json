@@ -1,8 +1,8 @@
 {
     "data": {
-        "total_games": 1508,
+        "total_games": 1509,
         "unique_developers": 777,
-        "generated_at": "2026-01-31 08:45:15 UTC"
+        "generated_at": "2026-02-03 15:50:07 UTC"
     },
     "entries": [
         {
@@ -12,12 +12,27 @@
             "notes": "",
             "steam_url": "https://store.steampowered.com/app/3779390/",
             "patch_link": "https://drive.google.com/drive/folders/1U25Bmkg31QmS8I73Ip3vTXnlbiB41fZn",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/d13e7c58e7dd6c2ebba497dc880b351264362e25/header.jpg?t=1768528385",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/d13e7c58e7dd6c2ebba497dc880b351264362e25/header.jpg?t=1770092442",
             "row_num": "277",
             "appid": "3779390",
             "match_status": "exact",
             "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
             "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
+            "game": "Sakura Succubus 10",
+            "developer": "Winged Cloud",
+            "publisher": "Winged Cloud",
+            "notes": "",
+            "steam_url": "https://store.steampowered.com/app/3699940/",
+            "patch_link": "https://drive.google.com/drive/folders/1IsmJRKeZ2hvAdIwU16CnhFMRe5_OuAIq",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3699940/8a9f9abee447854b36cf603ca3d2f5842a5ee41d/header.jpg?t=1770055337",
+            "row_num": "1074",
+            "appid": "3699940",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: winged cloud|sakura succubus 10",
+            "store_status": "available",
             "manual_edit": false
         },
         {
