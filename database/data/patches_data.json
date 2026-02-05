@@ -1,8 +1,8 @@
 {
     "data": {
-        "total_games": 1509,
-        "unique_developers": 777,
-        "generated_at": "2026-02-03 21:48:02 UTC"
+        "total_games": 1510,
+        "unique_developers": 778,
+        "generated_at": "2026-02-05 08:52:57 UTC"
     },
     "entries": [
         {
@@ -18,6 +18,21 @@
             "match_status": "exact",
             "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
             "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
+            "game": "Mind-Control Talisman ~Strong and Beautiful Adventurers Meet Their End~",
+            "developer": "MC_TWORL",
+            "publisher": "Oπ",
+            "notes": "English, Japanese, S. Chinese & T. Chinese patch v2026.02.05",
+            "steam_url": "https://store.steampowered.com/app/3527690/",
+            "patch_link": "https://drive.google.com/drive/folders/1Kj6KIQlhRyW_chfYoD2FJsF4weOjFLNv",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3527690/15e75d455f6a8de4d04b440bc3d1a4b1e91fd07d/header.jpg?t=1770278449",
+            "row_num": "775",
+            "appid": "3527690",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: mc_tworl|mind-control talisman ~strong and beautiful adventurers meet their end~",
+            "store_status": "available",
             "manual_edit": false
         },
         {
