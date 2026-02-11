@@ -2,7 +2,7 @@
     "data": {
         "total_games": 1511,
         "unique_developers": 778,
-        "generated_at": "2026-02-07 05:21:27 UTC"
+        "generated_at": "2026-02-11 17:08:42 UTC"
     },
     "entries": [
         {
@@ -21,14 +21,29 @@
             "manual_edit": false
         },
         {
+            "game": "Flirting With Girls in Fantasy World",
+            "developer": "Hitoriku Studio",
+            "publisher": "Kagura Games",
+            "notes": "Chinese patch v1.03. English patch v1.05. Japanese patch v1.03",
+            "steam_url": "https://store.steampowered.com/app/3867230/",
+            "patch_link": "https://drive.google.com/drive/folders/1nGcBwsEjK3iTV5LIRiC_URGmcsT06BlM",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3867230/2364f268e734224477313e73574df8421c603ea6/header.jpg?t=1769376844",
+            "row_num": "361",
+            "appid": "3867230",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: hitoriku studio|flirting with girls in fantasy world",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
             "game": "Haramimura: When a Wife Becomes a Villager",
             "developer": "Soft Circle Courreges",
             "publisher": "Kagura Games",
-            "notes": "Chinese patch v1.00. English patch v1.00. Japanese patch v1.00",
+            "notes": "Chinese patch v1.00. English patch v1.01. Japanese patch v1.00",
             "steam_url": "https://store.steampowered.com/app/3654880/",
             "patch_link": "https://drive.google.com/drive/folders/1YtOSg9r24GjImL6mA6N8Lkno_YmcQ8zp",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3654880/25f52a7353850eb6e81fa148f5a1349171124db7/header.jpg?t=1770440408",
-            "row_num": "487",
+            "row_num": "431",
             "appid": "3654880",
             "match_status": "fuzzy",
             "match_reason": "Fuzzy match: soft circle courreges|haramimura: when a wife becomes a villager -> soft circle courreges|haramimura∶ when a wife becomes a villager (score: 98, dev: soft circle courreges, cutoff: 0.8)",
@@ -152,21 +167,6 @@
             "appid": "4041630",
             "match_status": "fuzzy",
             "match_reason": "Fuzzy match: shinachiku-castella|scars of summer: after -> shinachiku-castella|scars of summer∶ after (score: 98, dev: shinachiku-castella, cutoff: 0.8)",
-            "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "Flirting With Girls in Fantasy World",
-            "developer": "Hitoriku Studio",
-            "publisher": "Kagura Games",
-            "notes": "Chinese patch v1.02. English patch v1.03. Japanese patch v1.02",
-            "steam_url": "https://store.steampowered.com/app/3867230/",
-            "patch_link": "https://drive.google.com/drive/folders/1nGcBwsEjK3iTV5LIRiC_URGmcsT06BlM",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3867230/2364f268e734224477313e73574df8421c603ea6/header.jpg?t=1769231038",
-            "row_num": "361",
-            "appid": "3867230",
-            "match_status": "exact",
-            "match_reason": "Exact match on full: hitoriku studio|flirting with girls in fantasy world",
             "store_status": "available",
             "manual_edit": false
         },
