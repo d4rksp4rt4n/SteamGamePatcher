@@ -1,38 +1,53 @@
 {
     "data": {
-        "total_games": 1512,
+        "total_games": 1513,
         "unique_developers": 779,
-        "generated_at": "2026-02-11 19:05:06 UTC"
+        "generated_at": "2026-02-12 22:15:45 UTC"
     },
     "entries": [
         {
             "game": "Dungeon of Erotic Master Reboot",
             "developer": "rusimarudou",
-            "publisher": "Tensei Games",
+            "publisher": null,
             "notes": "",
             "steam_url": "https://store.steampowered.com/app/3779390/",
             "patch_link": "https://drive.google.com/drive/folders/1U25Bmkg31QmS8I73Ip3vTXnlbiB41fZn",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/d13e7c58e7dd6c2ebba497dc880b351264362e25/header.jpg?t=1770368510",
+            "header_image": null,
             "row_num": "277",
             "appid": "3779390",
             "match_status": "exact",
             "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
-            "store_status": "unreleased",
+            "store_status": null,
+            "manual_edit": false
+        },
+        {
+            "game": "SUKEBE ORB",
+            "developer": "SUKEBE NINJIN",
+            "publisher": null,
+            "notes": "Decensor MOD v1.0 (2026.02.12)",
+            "steam_url": "https://store.steampowered.com/app/4198720/",
+            "patch_link": "https://drive.google.com/drive/folders/1gFtz3gHdtvWZUAi-hSlB0FXfVEI-B_QU",
+            "header_image": null,
+            "row_num": "1203",
+            "appid": "4198720",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: sukebe ninjin|sukebe orb",
+            "store_status": null,
             "manual_edit": false
         },
         {
             "game": "The Spiriting Away of Saooni Village",
             "developer": "たまたま山脈 (tamatamasanmyaku)",
-            "publisher": "Oπ",
+            "publisher": null,
             "notes": "English, Japanese, S. Chinese & T. Chinese patch v2026.02.12",
             "steam_url": "https://store.steampowered.com/app/3779890/",
             "patch_link": "https://drive.google.com/drive/folders/11nDUlCnDei9pGWchq_dq8KNCIay191Fq",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779890/1566f1f9be37943724264350df004962da8faef5/header.jpg?t=1770805436",
-            "row_num": "1322",
+            "header_image": null,
+            "row_num": "1323",
             "appid": "3779890",
             "match_status": "exact",
             "match_reason": "Exact match on full: たまたま山脈 (tamatamasanmyaku)|the spiriting away of saooni village",
-            "store_status": "unreleased",
+            "store_status": null,
             "manual_edit": false
         },
         {
