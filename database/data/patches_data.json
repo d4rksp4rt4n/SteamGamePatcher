@@ -1,8 +1,8 @@
 {
     "data": {
-        "total_games": 1513,
+        "total_games": 1514,
         "unique_developers": 780,
-        "generated_at": "2026-02-13 21:42:49 UTC"
+        "generated_at": "2026-02-13 22:38:34 UTC"
     },
     "entries": [
         {
@@ -21,6 +21,21 @@
             "manual_edit": false
         },
         {
+            "game": "Sakura Gozen",
+            "developer": "kaniheadcrab",
+            "publisher": "OTAKU Plan",
+            "notes": "",
+            "steam_url": "https://store.steampowered.com/app/3800850/",
+            "patch_link": "https://drive.google.com/drive/folders/1bBDLyqeUA4dltWq1U9Br84FFnpwgBfgY",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3800850/027b12a0a66b9a812aaa2ae8137721a2b1e78ab2/header.jpg?t=1770963219",
+            "row_num": "1047",
+            "appid": "3800850",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: kaniheadcrab|sakura gozen",
+            "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
             "game": "The Spiriting Away of Saooni Village",
             "developer": "たまたま山脈 (tamatamasanmyaku)",
             "publisher": "Oπ",
@@ -28,7 +43,7 @@
             "steam_url": "https://store.steampowered.com/app/3779890/",
             "patch_link": "https://drive.google.com/drive/folders/11nDUlCnDei9pGWchq_dq8KNCIay191Fq",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779890/1566f1f9be37943724264350df004962da8faef5/header.jpg?t=1770883313",
-            "row_num": "1323",
+            "row_num": "1324",
             "appid": "3779890",
             "match_status": "exact",
             "match_reason": "Exact match on full: たまたま山脈 (tamatamasanmyaku)|the spiriting away of saooni village",
