@@ -1,18 +1,15 @@
 """
 Unify Databases Script
-Version: 1.0.10 — Now with patch version & last_updated support
+Version: 1.0.11 — Enhanced logging for merges
 Purpose: Merge metadata from patches_data.json into database/data/patches_database.json
 by fuzzy matching game names primarily (ratio >80), with developer as secondary check (>60).
 Handles mismatches where folder devs are publishers/folder names vs Steam devs.
-
 Now merges these fields:
 - appid, header_image, publisher, notes, store_status
-- patch_version  ← NEW (e.g. "Uncensored + Walkthrough v1.7")
-- last_updated   ← NEW (e.g. "2025-12-06")
-
+- patch_version ← NEW (e.g. "Uncensored + Walkthrough v1.7")
+- last_updated ← NEW (e.g. "2025-12-06")
 Saves unified data back to database/data/patches_database.json.
 Logs matches, unmatched games, low-score suggestions, and detailed update info.
-
 Key Features & Optimizations:
 - Precomputes normalized game names for blazing-fast matching
 - Uses difflib.get_close_matches to prune 99% of full fuzzy comparisons
@@ -20,7 +17,7 @@ Key Features & Optimizations:
 - Smart change detection with clear logging (e.g. "version → v1.7", "date → 2025-12-06")
 - Removes ★ instantly in patcher after successful update (no restart needed)
 - Fully compatible with Steam Game Patcher version tracking
-
+- NEW: Per-field change logs + summary of latest updated games
 Run this script after updating patches_data.json to push new versions/dates live.
 """
 import json
@@ -31,6 +28,7 @@ from pathlib import Path
 import logging
 import os
 import requests
+import argparse  # NEW: For --verbose flag
 
 # === USE EXISTING patches_data.json IF AVAILABLE ===
 LOCAL_PATCHES_DATA = Path("database/data/patches_data.json")
@@ -75,31 +73,36 @@ def ensure_patches_data():
         if not LOCAL_PATCHES_DATA.exists():
             exit(1)
 
-ensure_patches_data()
+# NEW: Argument parser for verbose mode
+parser = argparse.ArgumentParser(description="Unify patches databases with optional verbose logging.")
+parser.add_argument('--verbose', action='store_true', help="Enable detailed per-field change logging.")
+args = parser.parse_args()
 
-# Set up logging (default INFO, but use DEBUG for verbose no-changes)
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+# Set up logging (DEBUG if verbose, else INFO)
+logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+
+ensure_patches_data()
 
 def normalize_string(s, strip_suffixes=False):
     """Normalize a string for matching, optionally stripping suffixes."""
     if not s:
         return ""
     s = unicodedata.normalize('NFKC', s).strip()
-    s = re.sub(r'\s+', ' ', s)  # Normalize spaces
-    s = s.replace(" - ", "-").replace(" ~ ", "~").replace("～", "~")  # Normalize tildes
-    s = s.replace(":", "-").replace("∶", "-").replace("–", "-")  # Normalize dashes/colons
+    s = re.sub(r'\s+', ' ', s) # Normalize spaces
+    s = s.replace(" - ", "-").replace(" ~ ", "~").replace("～", "~") # Normalize tildes
+    s = s.replace(":", "-").replace("∶", "-").replace("–", "-") # Normalize dashes/colons
     s = s.replace(" vol.", " vol").replace("vol. ", "vol")
-  
+ 
     if strip_suffixes:
         s = re.sub(r'\s*[\u4e00-\u9fff]+$', '', s).strip()
         s = re.sub(r'\s*完全版$', '', s).strip()
-  
+ 
     if any('\u4e00' <= c <= '\u9fff' for c in s):
         match = re.search(r'\(([^)]+)\)', s)
         if match and not all('\u4e00' <= c <= '\u9fff' for c in match.group(1)):
             s = f"{s.split('(')[0].strip()} {match.group(1)}"
-  
+ 
     return s.lower()
 
 def normalize_developer(dev):
@@ -113,18 +116,18 @@ def generate_developer_variants(developer, entry_devs):
     """Generate variants of a developer name for matching."""
     normalized_dev = normalize_developer(developer)
     variants = [developer, normalized_dev]
-  
+ 
     if '(' in developer and ')' in developer:
         jap_dev = developer.split('(')[0].strip()
         eng_dev = developer.split('(')[1].replace(')', '').strip()
         variants.extend([jap_dev, eng_dev])
-  
+ 
     dev_set = set()
     for e_dev in entry_devs:
         if normalize_developer(e_dev) == normalized_dev:
             dev_set.add(e_dev)
     variants.extend(list(dev_set))
-  
+ 
     return list(set(v for v in variants if v))
 
 def fuzz_ratio(a, b):
@@ -137,13 +140,13 @@ def get_entry_match(folder_dev, folder_game, entries, entry_devs, norm_games):
     best_entry = None
     best_score = 0
     best_reason = ""
-  
+ 
     norm_folder_game = normalize_string(folder_game)
     dev_variants = generate_developer_variants(folder_dev, entry_devs)
-  
+ 
     # Get candidates with get_close_matches (efficient pruning)
     candidate_strings = difflib.get_close_matches(norm_folder_game, [ng for ng, _ in norm_games], n=len(norm_games), cutoff=0.8)
-  
+ 
     if candidate_strings:
         # Map back to entries (assuming unique games; if dups, will pick first)
         cand_entries = {}
@@ -152,21 +155,21 @@ def get_entry_match(folder_dev, folder_game, entries, entry_devs, norm_games):
                 if ng == cand_str:
                     cand_entries[cand_str] = entry
                     break
-  
+ 
         for cand_str, entry in cand_entries.items():
             e_game = entry.get('game', '').strip()
             e_dev = entry.get('developer', '').strip()
-            norm_e_game = cand_str  # Already normalized
+            norm_e_game = cand_str # Already normalized
             norm_e_dev = normalize_developer(e_dev)
-          
+         
             game_score = fuzz_ratio(norm_folder_game, norm_e_game)
-            if game_score < 80:  # Double-check
+            if game_score < 80: # Double-check
                 continue
-          
+         
             dev_score = max(fuzz_ratio(folder_dev, e_dev), *[fuzz_ratio(v, e_dev) for v in dev_variants])
             if dev_score < 60:
                 dev_score = 60
-          
+         
             total_score = game_score + dev_score
             if total_score > best_score:
                 best_score = total_score
@@ -174,7 +177,7 @@ def get_entry_match(folder_dev, folder_game, entries, entry_devs, norm_games):
                 match_type = "exact_game" if game_score >= 95 else ("fuzzy_game" if game_score >= 80 else "low_game")
                 dev_note = "dev_match" if dev_score >= 70 else "dev_mismatch"
                 best_reason = f"{match_type} (game: {game_score:.1f}, dev: {dev_score:.1f} - {dev_note})"
-  
+ 
     if not best_entry:
         # Fallback: get_close_matches with lower cutoff for closest >70
         fallback_strings = difflib.get_close_matches(norm_folder_game, [ng for ng, _ in norm_games], n=5, cutoff=0.7)
@@ -195,7 +198,7 @@ def get_entry_match(folder_dev, folder_game, entries, entry_devs, norm_games):
                 fb_scores.sort(key=lambda x: x[1], reverse=True)
                 best_entry, best_score = fb_scores[0]
                 best_reason = f"fallback_fuzzy_game (score: {best_score:.1f})"
-  
+ 
     if not best_entry:
         # Log low scores
         cutoffs = [0.9, 0.8, 0.7, 0.6]
@@ -207,7 +210,7 @@ def get_entry_match(folder_dev, folder_game, entries, entry_devs, norm_games):
                     low_score_fuzzy_matches.append((f"{folder_dev}|{folder_game}", m, score, folder_dev, cutoff))
                 break
         best_reason = f"No match (tried cutoffs {cutoffs})"
-  
+ 
     match_status = "matched" if best_entry else "unmatched"
     return best_entry, match_status, best_reason, low_score_fuzzy_matches
 
@@ -235,62 +238,81 @@ def unify_databases():
     entries = load_patches_data()
     folder_db = load_folder_db()
     developers = folder_db.get('developers', {})
-
     if not entries:
         logger.warning("No entries in patches_data.json")
         return
     if not developers:
         logger.warning("No developers in patches_database.json")
         return
-
     entry_devs = [e.get('developer', '') for e in entries if e.get('developer')]
     norm_games = [(normalize_string(e.get('game', '')), e) for e in entries]
-
     matched = 0
     updated = 0
     files_with_date_added = 0
+    updated_games = []  # NEW: Track updated games for summary
 
     for dev_name, dev_data in developers.items():
         for game_name, game_data in dev_data.get('games', {}).items():
             entry, match_status, reason, _ = get_entry_match(
                 dev_name, game_name, entries, entry_devs, norm_games
             )
-
             if not (entry and match_status == "matched"):
                 logger.warning(f"Unmatched {game_name} in {dev_name}: {reason}")
                 continue
-
             changes_made = False
+            field_changes = []  # NEW: Track per-field changes
 
             # === Merge normal metadata ===
             for key in ['appid', 'header_image', 'publisher', 'notes', 'store_status']:
-                if game_data.get(key) != entry.get(key):
-                    game_data[key] = entry.get(key) or ""
+                old_val = game_data.get(key)
+                new_val = entry.get(key) or ""
+                if old_val != new_val:
+                    game_data[key] = new_val
                     changes_made = True
+                    field_changes.append(f"{key}: old={old_val} → new={new_val}")
 
             # === REMOVE old game-level fields (we don't use them anymore) ===
             if 'patch_version' in game_data:
                 del game_data['patch_version']
                 changes_made = True
+                field_changes.append("Removed old 'patch_version'")
             if 'last_updated' in game_data:
                 del game_data['last_updated']
                 changes_made = True
+                field_changes.append("Removed old 'last_updated'")
 
             # === ADD last_updated to EVERY FILE if missing ===
+            added_dates_count = 0
             for file_entry in game_data.get('files', []):
                 if 'last_updated' not in file_entry:
                     file_entry['last_updated'] = ""  # Empty = not set yet (you set it when file changes)
-                    files_with_date_added += 1
+                    added_dates_count += 1
                     changes_made = True
+            if added_dates_count > 0:
+                field_changes.append(f"Added 'last_updated' to {added_dates_count} files")
+                files_with_date_added += added_dates_count
 
             matched += 1
             if changes_made:
                 updated += 1
-                logger.info(f"UPDATED {game_name} ({dev_name}): cleaned old fields + added last_updated to {len(game_data['files'])} files")
+                # NEW: Detailed per-game log (INFO level; verbose shows fields)
+                log_msg = f"UPDATED {game_name} ({dev_name})"
+                if args.verbose:
+                    log_msg += f": {', '.join(field_changes)}"
+                logger.info(log_msg)
+                # NEW: Track for latest summary (use entry's last_updated if available, else current time)
+                last_updated = entry.get('last_updated', datetime.datetime.now().strftime("%Y-%m-%d"))
+                updated_games.append((last_updated, game_name, dev_name, ', '.join(field_changes)))
+
+    # NEW: Summary of latest updated games (sorted by last_updated descending, top 10)
+    if updated_games:
+        updated_games.sort(key=lambda x: x[0], reverse=True)  # Sort by last_updated desc
+        logger.info("Latest updated games (top 10):")
+        for i, (date, game, dev, changes) in enumerate(updated_games[:10], 1):
+            logger.info(f"  {i}. {game} ({dev}) - Updated {date}: {changes}")
 
     logger.info(f"Unified: {matched} games matched, {updated} updated")
     logger.info(f"Added 'last_updated' field to {files_with_date_added} patch files (ready for future tracking)")
-
     # Save result
     output_path = Path('database/data/patches_database.json')
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -300,5 +322,3 @@ def unify_databases():
 
 if __name__ == '__main__':
     unify_databases()
-
-
