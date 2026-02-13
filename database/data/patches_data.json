@@ -1,10 +1,70 @@
 {
     "data": {
         "total_games": 1513,
-        "unique_developers": 779,
-        "generated_at": "2026-02-12 23:45:23 UTC"
+        "unique_developers": 780,
+        "generated_at": "2026-02-13 05:09:40 UTC"
     },
     "entries": [
+        {
+            "game": "Dungeon of Erotic Master Reboot",
+            "developer": "rusimarudou",
+            "publisher": "Tensei Games",
+            "notes": "",
+            "steam_url": "https://store.steampowered.com/app/3779390/",
+            "patch_link": "https://drive.google.com/drive/folders/1U25Bmkg31QmS8I73Ip3vTXnlbiB41fZn",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/d13e7c58e7dd6c2ebba497dc880b351264362e25/header.jpg?t=1770368510",
+            "row_num": "277",
+            "appid": "3779390",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
+            "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
+            "game": "Girls and Dungeons",
+            "developer": "Nebelsoft",
+            "publisher": null,
+            "notes": "R-18 Patch",
+            "steam_url": "https://store.steampowered.com/app/695760/",
+            "patch_link": "https://drive.google.com/drive/folders/1yjGVnaOmlpqTxq8abGMd-WxE0EUbr2JV",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/695760/header.jpg?t=1737584180",
+            "row_num": "395",
+            "appid": "695760",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: nebelsoft|girls and dungeons",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
+            "game": "Girls & Dungeons 2",
+            "developer": "Nebelsoft",
+            "publisher": null,
+            "notes": "Version 1.7.3 + Bonus Stuff",
+            "steam_url": "https://store.steampowered.com/app/1096750/",
+            "patch_link": "https://drive.google.com/drive/folders/1WiWPSEd43nuYYV6ak0wSQEYxatSsE7yu",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1096750/header.jpg?t=1737584171",
+            "row_num": "396",
+            "appid": "1096750",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: nebelsoft|girls & dungeons 2",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
+            "game": "The Spiriting Away of Saooni Village",
+            "developer": "たまたま山脈 (tamatamasanmyaku)",
+            "publisher": "Oπ",
+            "notes": "English, Japanese, S. Chinese & T. Chinese patch v2026.02.12",
+            "steam_url": "https://store.steampowered.com/app/3779890/",
+            "patch_link": "https://drive.google.com/drive/folders/11nDUlCnDei9pGWchq_dq8KNCIay191Fq",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779890/1566f1f9be37943724264350df004962da8faef5/header.jpg?t=1770883313",
+            "row_num": "1323",
+            "appid": "3779890",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: たまたま山脈 (tamatamasanmyaku)|the spiriting away of saooni village",
+            "store_status": "unreleased",
+            "manual_edit": false
+        },
         {
             "game": "SUKEBE ORB",
             "developer": "SUKEBE NINJIN",
@@ -18,36 +78,6 @@
             "match_status": "exact",
             "match_reason": "Exact match on full: sukebe ninjin|sukebe orb",
             "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "Dungeon of Erotic Master Reboot",
-            "developer": "rusimarudou",
-            "publisher": "Tensei Games",
-            "notes": "",
-            "steam_url": "https://store.steampowered.com/app/3779390",
-            "patch_link": "https://drive.google.com/drive/folders/1U25Bmkg31QmS8I73Ip3vTXnlbiB41fZn",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/d13e7c58e7dd6c2ebba497dc880b351264362e25/header.jpg?t=1770368510",
-            "row_num": "277",
-            "appid": "3779390",
-            "match_status": "exact",
-            "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
-            "store_status": "unreleased",
-            "manual_edit": false
-        },
-        {
-            "game": "The Spiriting Away of Saooni Village",
-            "developer": "たまたま山脈 (tamatamasanmyaku)",
-            "publisher": "Oπ",
-            "notes": "English, Japanese, S. Chinese & T. Chinese patch v2026.02.12",
-            "steam_url": "https://store.steampowered.com/app/3779890",
-            "patch_link": "https://drive.google.com/drive/folders/11nDUlCnDei9pGWchq_dq8KNCIay191Fq",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779890/1566f1f9be37943724264350df004962da8faef5/header.jpg?t=1770883313",
-            "row_num": "1323",
-            "appid": "3779890",
-            "match_status": "exact",
-            "match_reason": "Exact match on full: たまたま山脈 (tamatamasanmyaku)|the spiriting away of saooni village",
-            "store_status": "unreleased",
             "manual_edit": false
         },
         {
@@ -993,36 +1023,6 @@
             "match_status": "alt",
             "match_reason": "Alt match: Chiro|Drawing (Love Meeting) -> Chiro|Love Meeting (Fuzzy match: chiro|love meeting -> chiro|drawing (love meeting) (score: 78, dev: chiro, cutoff: 0.7))",
             "store_status": "retired",
-            "manual_edit": false
-        },
-        {
-            "game": "Girls and Dungeons",
-            "developer": "Top Hat Studios Inc",
-            "publisher": null,
-            "notes": "",
-            "steam_url": "https://store.steampowered.com/app/695760/",
-            "patch_link": "https://drive.google.com/drive/folders/1yjGVnaOmlpqTxq8abGMd-WxE0EUbr2JV",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/695760/header.jpg?t=1737584180",
-            "row_num": "384",
-            "appid": "695760",
-            "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: top hat studios inc|girls and dungeons -> top hat studios inc|girls & dungeons (score: 95, dev: top hat studios inc, cutoff: 0.8)",
-            "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "Girls and Dungeons 2",
-            "developer": "Top Hat Studios Inc",
-            "publisher": null,
-            "notes": "Version 1.7.3 + Bonus Stuff",
-            "steam_url": "https://store.steampowered.com/app/1096750/",
-            "patch_link": "https://drive.google.com/drive/folders/1WiWPSEd43nuYYV6ak0wSQEYxatSsE7yu",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1096750/header.jpg?t=1737584171",
-            "row_num": "385",
-            "appid": "1096750",
-            "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: top hat studios inc|girls and dungeons 2 -> top hat studios inc|girls & dungeons 2 (score: 95, dev: top hat studios inc, cutoff: 0.8)",
-            "store_status": "available",
             "manual_edit": false
         },
         {
