@@ -29,6 +29,7 @@ import logging
 import os
 import requests
 import argparse  # NEW: For --verbose flag
+import datetime
 
 # === USE EXISTING patches_data.json IF AVAILABLE ===
 LOCAL_PATCHES_DATA = Path("database/data/patches_data.json")
@@ -322,3 +323,4 @@ def unify_databases():
 
 if __name__ == '__main__':
     unify_databases()
+
