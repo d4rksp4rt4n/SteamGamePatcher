@@ -1,8 +1,8 @@
 {
     "data": {
-        "total_games": 1514,
-        "unique_developers": 780,
-        "generated_at": "2026-02-13 22:49:21 UTC"
+        "total_games": 1515,
+        "unique_developers": 781,
+        "generated_at": "2026-02-13 23:10:40 UTC"
     },
     "entries": [
         {
@@ -21,6 +21,21 @@
             "manual_edit": false
         },
         {
+            "game": "Niramare Quest: Saving a World That Loves Hating Me",
+            "developer": "Seguzecute",
+            "publisher": "Kagura Games",
+            "notes": "Chinese patch v1.0x. English patch v1.0x. Japanese patch v1.0x",
+            "steam_url": "https://store.steampowered.com/app/3841010/",
+            "patch_link": "https://drive.google.com/drive/folders/1j9T1no71k7nBGZvn7kotafSSSDXlKXqU",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3841010/d1f76104389189d59f56e59168153b69471ae64d/header.jpg?t=1771001558",
+            "row_num": "882",
+            "appid": "3841010",
+            "match_status": "fuzzy",
+            "match_reason": "Fuzzy match: seguzecute|niramare quest: saving a world that loves hating me -> seguzecute|niramare quest∶ saving a world that loves hating me (score: 98, dev: seguzecute, cutoff: 0.8)",
+            "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
             "game": "Sakura Gozen",
             "developer": "kaniheadcrab",
             "publisher": "OTAKU Plan",
@@ -28,7 +43,7 @@
             "steam_url": "https://store.steampowered.com/app/3800850/",
             "patch_link": "https://drive.google.com/drive/folders/1bBDLyqeUA4dltWq1U9Br84FFnpwgBfgY",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3800850/027b12a0a66b9a812aaa2ae8137721a2b1e78ab2/header.jpg?t=1770963219",
-            "row_num": "1047",
+            "row_num": "1048",
             "appid": "3800850",
             "match_status": "exact",
             "match_reason": "Exact match on full: kaniheadcrab|sakura gozen",
@@ -43,7 +58,7 @@
             "steam_url": "https://store.steampowered.com/app/3779890/",
             "patch_link": "https://drive.google.com/drive/folders/11nDUlCnDei9pGWchq_dq8KNCIay191Fq",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779890/1566f1f9be37943724264350df004962da8faef5/header.jpg?t=1770883313",
-            "row_num": "1324",
+            "row_num": "1325",
             "appid": "3779890",
             "match_status": "exact",
             "match_reason": "Exact match on full: たまたま山脈 (tamatamasanmyaku)|the spiriting away of saooni village",
