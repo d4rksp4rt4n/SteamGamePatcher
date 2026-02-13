@@ -319,7 +319,7 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
         try:
             changes, new_change_token = get_changes(drive_service, change_token)
             dev_id_to_name, game_id_to_path, file_id_to_game = build_id_maps(folder_structure)
-           
+          
             for change in changes:
                 file_id = change.get('fileId')
                 is_removed = change.get('removed', False)
@@ -369,7 +369,7 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                             new_changes.append(f"ADDED DEVELOPER: {name}")
                             folder_structure['developers'][name] = {'id': id_, 'games': {}}
                             change_count += 1
-                            
+                           
                             # === Force-scan contents of NEW DEVELOPER (v1.7 block) ===
                             logger.info(f"New developer detected - scanning for game folders and files: {name}")
                             game_folders = list_files(drive_service, id_, folders_only=True)
@@ -378,7 +378,7 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                                 game_id = game_folder['id']
                                 logger.info(f" Adding new game from scan: {game_name}")
                                 new_changes.append(f"ADDED GAME (new dev scan): {name}/{game_name}")
-                                
+                               
                                 game_files = recursive_list_files_with_path(drive_service, game_id, '', ['Old'])
                                 folder_structure['developers'][name]['games'][game_name] = {
                                     "id": game_id,
@@ -387,7 +387,6 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                                 change_count += 1
                             # Rebuild after bulk add
                             dev_id_to_name, game_id_to_path, file_id_to_game = build_id_maps(folder_structure)
-
                         elif parent in dev_id_to_name:
                             dev_name = dev_id_to_name[parent]
                             logger.info(f"Added game: {name} to {dev_name} (ID: {id_})")
@@ -401,27 +400,8 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                             change_count += 1
                             # Rebuild maps after single game add
                             dev_id_to_name, game_id_to_path, file_id_to_game = build_id_maps(folder_structure)
-
-                            # === ADD THIS BLOCK: Force-scan contents of new developer ===
-                            logger.info(f"New developer detected - scanning for game folders and files: {name}")
-                            game_folders = list_files(drive_service, id_, folders_only=True)
-                            for game_folder in game_folders:
-                                game_name = game_folder['name']
-                                game_id = game_folder['id']
-                                logger.info(f"  Adding new game from scan: {game_name}")
-                                new_changes.append(f"ADDED GAME (new dev scan): {name}/{game_name}")
-                                
-                                game_files = recursive_list_files_with_path(drive_service, game_id, '', ['Old'])
-                                folder_structure['developers'][name]['games'][game_name] = {
-                                    "id": game_id,
-                                    "files": game_files
-                                }
-                                change_count += 1
-                            # Rebuild maps after bulk add
-                            dev_id_to_name, game_id_to_path, file_id_to_game = build_id_maps(folder_structure)
-                            # =============================================
-                            # else: ignore irrelevant folder
-                   
+                        # else: ignore irrelevant folder
+                  
                     # Rebuild maps after structural change
                     dev_id_to_name, game_id_to_path, file_id_to_game = build_id_maps(folder_structure)
                 # File Logic
@@ -433,12 +413,12 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                         folder_structure['developers'][old_dev]['games'][old_game]['files'] = [f for f in old_files if f['id'] != id_]
                         logger.debug(f"Removed file {name} from old location {old_game} / {old_dev}")
                         change_count += 1
-                   
+                  
                     if not parents: continue
                     # 2. Add to new location
                     parent = parents[0]
                     res = find_game_and_path(drive_service, parent, game_id_to_path)
-                   
+                  
                     if res:
                         path_parts, game_parent_id = res
                         ext = Path(name).suffix.lower()
@@ -447,23 +427,23 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                         if isinstance(size_str, str) and size_str.isdigit():
                             size = int(size_str)
                             size_str = f"{size / 1024 / 1024:.1f} MB" if size > 1024 * 1024 else f"{size / 1024:.1f} KB"
-                       
+                      
                         rel_folder_path = '/'.join(path_parts)
                         file_path = f"{rel_folder_path}/{name}" if path_parts else name
-                       
+                      
                         new_file = {
                             'name': name, 'id': id_, 'size': size_str,
                             'type': ext, 'path': file_path
                         }
-                       
+                      
                         dev_name, game_name = game_id_to_path[game_parent_id]
                         files = folder_structure['developers'][dev_name]['games'][game_name]['files']
                         files.append(new_file)
-                       
+                      
                         logger.info(f"Added/updated file {name} in {game_name} / {dev_name}")
                         new_changes.append(f"UPDATED FILE: {game_name}/{name}")
                         change_count += 1
-                       
+                      
                         dev_id_to_name, game_id_to_path, file_id_to_game = build_id_maps(folder_structure)
                     else:
                         # File moved out of scope, deletion was already handled by cleanup above.
@@ -476,47 +456,47 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
             folder_structure = last_folders.copy() # Preserve base for merging later
     if not use_changes:
         logger.info("Performing FULL scan...")
-       
+      
         try:
             new_change_token = drive_service.changes().getStartPageToken().execute().get('startPageToken')
         except Exception as e:
             logger.error(f"Failed to get start page token: {e}")
             raise
-           
+          
         folder_structure['developers'] = {}
-       
+      
         # Fetch developer folders
         logger.info("Fetching developer folders...")
         dev_folders = list_files(drive_service, root_folder_id, folders_only=True)
         logger.info(f"Got {len(dev_folders)} developer folders")
-       
+      
         for i, dev_folder in enumerate(dev_folders, 1):
             dev_name = dev_folder['name']
             dev_id = dev_folder['id']
             logger.info(f"[{i}/{len(dev_folders)}] Processing developer: {dev_name} (ID: {dev_id})")
             folder_structure["developers"][dev_name] = {"id": dev_id, "games": {}}
-           
+          
             game_folders = list_files(drive_service, dev_id, folders_only=True)
             logger.info(f"Found {len(game_folders)} game folders in {dev_name}")
-           
+          
             for j, game_folder in enumerate(game_folders, 1):
                 game_name = game_folder['name']
                 game_id = game_folder['id']
                 logger.info(f" [{j}/{len(game_folders)}] Processing game: {game_name} (ID: {game_id})")
-               
+              
                 # THIS IS WHERE RECURSIVE FILE LISTING HAPPENS
                 game_files = recursive_list_files_with_path(drive_service, game_id, '', ['Old'])
                 logger.info(f" Found {len(game_files)} files in {game_name}")
-               
+              
                 files_list = game_files
                 folder_structure["developers"][dev_name]["games"][game_name] = {
                     "id": game_id,
                     "files": files_list
                 }
-               
+              
         change_count = len(folder_structure['developers'])
         new_changes.append("FULL DATABASE RESCAN PERFORMED.")
-       
+      
         # Merge extras from previous (last_folders)
         game_id_to_extra = {}
         for dev in last_folders.get('developers', {}).values():
@@ -526,7 +506,7 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                     # Preserve non-structural keys (like the old 'last_updated' you had)
                     extra = {k: v for k, v in game.items() if k not in ['id', 'files']}
                     game_id_to_extra[gid] = extra
-                   
+                  
         # Apply to new structure
         merged_count = 0
         for dev in folder_structure['developers'].values():
@@ -542,14 +522,14 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
     recent_changes.extend(new_changes)
     if len(recent_changes) > 10:
         recent_changes = recent_changes[-10:]
-       
+      
     if change_count > 0:
         metadata['version'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-       
+      
     # Summary
     game_count = sum(len(dev_data["games"]) for dev_data in folder_structure.get("developers", {}).values())
     logger.info(f"Processed {len(folder_structure.get('developers', {}))} developers, {game_count} games")
-   
+  
     return folder_structure, new_change_token, change_count
 def main():
     # Changed log message to match user's expected output
@@ -576,4 +556,5 @@ def main():
        
     logger.info(f"Sync complete. Processed {change_count} changes. All actions logged in database/data/patches_database.json metadata.") # Changed log message to match user's expected output
 if __name__ == '__main__':
+
     main()
