@@ -23,33 +23,40 @@ on:
       - 'database/unify_db.py'
       - 'database/minify_db.py'
 
+# ──────────────────────────────────────────────────────────────
+#  GLOBAL PERMISSIONS (needed for cache purge)
+# ──────────────────────────────────────────────────────────────
+permissions:
+  contents: write
+  actions: write        # ← Required for gh api cache delete
+
 jobs:
   build-and-update:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     concurrency:
       group: update-patches-db-${{ github.ref }}
       cancel-in-progress: true
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # ────── FIXED CACHE (unique key per run) ──────
       - name: Restore cache
         id: cache-restore
         uses: actions/cache/restore@v4
         with:
           path: database/data/
-          key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }}
+          key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }}-${{ github.run_id }}
           restore-keys: |
-            drive-state-v6-
+            drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }}-
 
       - name: Log cache restore
         run: |
           if [ "${{ steps.cache-restore.outputs.cache-hit }}" == 'true' ]; then
             echo "Cache restored (hit: ${{ steps.cache-restore.outputs.cache-primary-key }})"
           else
-            echo "Cache miss"
+            echo "Cache miss → will do full rebuild if no change_token.txt"
           fi
 
       - name: Force full scan if requested
@@ -144,14 +151,16 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
 
-      - name: Save cache (overwrites base key)
+      # ────── FIXED CACHE SAVE (now always succeeds) ──────
+      - name: Save cache
         if: always()
         continue-on-error: true
         uses: actions/cache/save@v4
         with:
           path: database/data/
-          key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }}
+          key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }}-${{ github.run_id }}
 
+      # ────── PURGE OLD CACHES (now has correct permission) ──────
       - name: Purge old/stale caches after run
         if: always()
         continue-on-error: true
@@ -162,7 +171,7 @@ jobs:
           gh api -H "Accept: application/vnd.github.v3+json" \
             /repos/${{ github.repository }}/actions/caches?per_page=100 | \
             jq -r '
-              .actions_caches[] | 
+              .actions_caches[] |
               select(
                 (.created_at < "'$(date -d "7 days ago" -Iseconds)'") or
                 (.key | startswith("drive-state-v6-") | not)
@@ -171,19 +180,24 @@ jobs:
             xargs -r -I {} gh api --method DELETE /repos/${{ github.repository }}/actions/caches/{}
           echo "Purge complete (only latest cache kept)"
 
+  # ──────────────────────────────────────────────────────────────
+  #  MANUAL PURGE JOB (when user checks the box)
+  # ──────────────────────────────────────────────────────────────
   purge-caches:
     runs-on: ubuntu-latest
     if: ${{ inputs.purge_old == true }}
+    permissions:
+      actions: write
     steps:
       - name: Manual purge all old caches
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "Manual purging caches older than 7 days (or any non-current base key)..."
+          echo "Manual purging caches older than 7 days..."
           gh api -H "Accept: application/vnd.github.v3+json" \
             /repos/${{ github.repository }}/actions/caches?per_page=100 | \
             jq -r '
-              .actions_caches[] | 
+              .actions_caches[] |
               select(
                 (.created_at < "'$(date -d "7 days ago" -Iseconds)'") or
                 (.key | startswith("drive-state-v6-") | not)
