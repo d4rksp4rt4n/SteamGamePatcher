@@ -2,7 +2,7 @@
     "data": {
         "total_games": 1515,
         "unique_developers": 781,
-        "generated_at": "2026-02-13 23:10:40 UTC"
+        "generated_at": "2026-02-14 02:03:15 UTC"
     },
     "entries": [
         {
@@ -51,6 +51,21 @@
             "manual_edit": false
         },
         {
+            "game": "SUKEBE ORB",
+            "developer": "SUKEBE NINJIN",
+            "publisher": "SUKEBE NINJIN",
+            "notes": "Decensor Mod v1.2 (2026.02.13)",
+            "steam_url": "https://store.steampowered.com/app/4198720/",
+            "patch_link": "https://drive.google.com/drive/folders/1gFtz3gHdtvWZUAi-hSlB0FXfVEI-B_QU",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4198720/02079595e156def2d0e7e1889b5a478d2322dc0c/header.jpg?t=1770919224",
+            "row_num": "1205",
+            "appid": "4198720",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: sukebe ninjin|sukebe orb",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
             "game": "The Spiriting Away of Saooni Village",
             "developer": "たまたま山脈 (tamatamasanmyaku)",
             "publisher": "Oπ",
@@ -77,21 +92,6 @@
             "appid": "3943440",
             "match_status": "exact",
             "match_reason": "Exact match on full: denpasoft|wagamama high spec oc",
-            "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "SUKEBE ORB",
-            "developer": "SUKEBE NINJIN",
-            "publisher": "SUKEBE NINJIN",
-            "notes": "Decensor Mod v1.1 (2026.02.13)",
-            "steam_url": "https://store.steampowered.com/app/4198720/",
-            "patch_link": "https://drive.google.com/drive/folders/1gFtz3gHdtvWZUAi-hSlB0FXfVEI-B_QU",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4198720/02079595e156def2d0e7e1889b5a478d2322dc0c/header.jpg?t=1770919224",
-            "row_num": "1203",
-            "appid": "4198720",
-            "match_status": "exact",
-            "match_reason": "Exact match on full: sukebe ninjin|sukebe orb",
             "store_status": "available",
             "manual_edit": false
         },
