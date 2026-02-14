@@ -2,7 +2,7 @@
     "data": {
         "total_games": 1515,
         "unique_developers": 781,
-        "generated_at": "2026-02-14 05:41:54 UTC"
+        "generated_at": "2026-02-14 06:03:27 UTC"
     },
     "entries": [
         {
@@ -17,6 +17,36 @@
             "appid": "3779390",
             "match_status": "exact",
             "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
+            "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
+            "game": "Ecchi Sketch Draw Cute Girls Every Day!",
+            "developer": "NewWestGames",
+            "publisher": "NewWestGames",
+            "notes": "Ecchi Patch Bonus",
+            "steam_url": "https://store.steampowered.com/app/606690/",
+            "patch_link": "https://drive.google.com/drive/folders/1q8OmUId7dGVLEzx2fActOZMUHwO6FYZa",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/606690/header.jpg?t=1580429117",
+            "row_num": "284",
+            "appid": "606690",
+            "match_status": "fuzzy",
+            "match_reason": "Fuzzy match: newwestgames|ecchi sketch draw cute girls every day! -> newwestgames|ecchi sketch: draw cute girls every day! (score: 99, dev: newwestgames, cutoff: 0.8)",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
+            "game": "The Spiriting Away of Saooni Village",
+            "developer": "たまたま山脈 (tamatamasanmyaku)",
+            "publisher": "Oπ",
+            "notes": "English, Japanese, S. Chinese & T. Chinese patch v2026.02.12",
+            "steam_url": "https://store.steampowered.com/app/3779890/",
+            "patch_link": "https://drive.google.com/drive/folders/11nDUlCnDei9pGWchq_dq8KNCIay191Fq",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779890/1566f1f9be37943724264350df004962da8faef5/header.jpg?t=1770883313",
+            "row_num": "1325",
+            "appid": "3779890",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: たまたま山脈 (tamatamasanmyaku)|the spiriting away of saooni village",
             "store_status": "unreleased",
             "manual_edit": false
         },
@@ -48,21 +78,6 @@
             "match_status": "exact",
             "match_reason": "Exact match on full: kaniheadcrab|sakura gozen",
             "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "The Spiriting Away of Saooni Village",
-            "developer": "たまたま山脈 (tamatamasanmyaku)",
-            "publisher": "Oπ",
-            "notes": "English, Japanese, S. Chinese & T. Chinese patch v2026.02.12",
-            "steam_url": "https://store.steampowered.com/app/3779890/",
-            "patch_link": "https://drive.google.com/drive/folders/11nDUlCnDei9pGWchq_dq8KNCIay191Fq",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779890/1566f1f9be37943724264350df004962da8faef5/header.jpg?t=1770883313",
-            "row_num": "1325",
-            "appid": "3779890",
-            "match_status": "exact",
-            "match_reason": "Exact match on full: たまたま山脈 (tamatamasanmyaku)|the spiriting away of saooni village",
-            "store_status": "unreleased",
             "manual_edit": false
         },
         {
@@ -6872,21 +6887,6 @@
             "appid": "1974520",
             "match_status": "exact",
             "match_reason": "Exact match: yellowduckworks|dusk pub",
-            "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "Ecchi Sketch Draw Cute Girls Every Day!",
-            "developer": "NewWestGames",
-            "publisher": "NewWestGames",
-            "notes": "",
-            "steam_url": "https://store.steampowered.com/app/606690/",
-            "patch_link": "https://drive.google.com/drive/folders/1q8OmUId7dGVLEzx2fActOZMUHwO6FYZa",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/606690/header.jpg?t=1580429117",
-            "row_num": "271",
-            "appid": "606690",
-            "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: Ecchi Sketch Draw Cute Girls Every Day! ≈ ecchi sketch: draw cute girls every day! (score: 800)",
             "store_status": "available",
             "manual_edit": false
         },
