@@ -1,10 +1,25 @@
 {
     "data": {
-        "total_games": 1515,
+        "total_games": 1516,
         "unique_developers": 781,
-        "generated_at": "2026-02-14 06:03:27 UTC"
+        "generated_at": "2026-02-17 11:38:04 UTC"
     },
     "entries": [
+        {
+            "game": "Ai no Uta",
+            "developer": "MagicHouse",
+            "publisher": null,
+            "notes": "English translation patch for the DLSite version",
+            "steam_url": "https://www.dlsite.com/girls/work/=/product_id/RJ132070.html",
+            "patch_link": "https://drive.google.com/drive/folders/14AFhzsAxNseQBzvHa2LoLiK1h1jpWeyj",
+            "header_image": null,
+            "row_num": "38",
+            "appid": null,
+            "match_status": "exact",
+            "match_reason": "Exact match on full: magichouse|ai no uta",
+            "store_status": "unknown",
+            "manual_edit": false
+        },
         {
             "game": "Dungeon of Erotic Master Reboot",
             "developer": "rusimarudou",
@@ -12,12 +27,27 @@
             "notes": "",
             "steam_url": "https://store.steampowered.com/app/3779390/",
             "patch_link": "https://drive.google.com/drive/folders/1U25Bmkg31QmS8I73Ip3vTXnlbiB41fZn",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/d13e7c58e7dd6c2ebba497dc880b351264362e25/header.jpg?t=1770368510",
-            "row_num": "277",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/d13e7c58e7dd6c2ebba497dc880b351264362e25/header.jpg?t=1771310228",
+            "row_num": "278",
             "appid": "3779390",
             "match_status": "exact",
             "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
             "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
+            "game": "The Spiriting Away of Saooni Village",
+            "developer": "たまたま山脈 (tamatamasanmyaku)",
+            "publisher": "Oπ",
+            "notes": "English, Japanese, S. Chinese & T. Chinese patch v2026.02.12",
+            "steam_url": "https://store.steampowered.com/app/3779890/",
+            "patch_link": "https://drive.google.com/drive/folders/11nDUlCnDei9pGWchq_dq8KNCIay191Fq",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779890/1566f1f9be37943724264350df004962da8faef5/header.jpg?t=1771085741",
+            "row_num": "1326",
+            "appid": "3779890",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: たまたま山脈 (tamatamasanmyaku)|the spiriting away of saooni village",
+            "store_status": "available",
             "manual_edit": false
         },
         {
@@ -33,21 +63,6 @@
             "match_status": "fuzzy",
             "match_reason": "Fuzzy match: newwestgames|ecchi sketch draw cute girls every day! -> newwestgames|ecchi sketch: draw cute girls every day! (score: 99, dev: newwestgames, cutoff: 0.8)",
             "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "The Spiriting Away of Saooni Village",
-            "developer": "たまたま山脈 (tamatamasanmyaku)",
-            "publisher": "Oπ",
-            "notes": "English, Japanese, S. Chinese & T. Chinese patch v2026.02.12",
-            "steam_url": "https://store.steampowered.com/app/3779890/",
-            "patch_link": "https://drive.google.com/drive/folders/11nDUlCnDei9pGWchq_dq8KNCIay191Fq",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779890/1566f1f9be37943724264350df004962da8faef5/header.jpg?t=1770883313",
-            "row_num": "1325",
-            "appid": "3779890",
-            "match_status": "exact",
-            "match_reason": "Exact match on full: たまたま山脈 (tamatamasanmyaku)|the spiriting away of saooni village",
-            "store_status": "unreleased",
             "manual_edit": false
         },
         {
