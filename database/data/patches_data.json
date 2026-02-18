@@ -1,10 +1,40 @@
 {
     "data": {
-        "total_games": 1516,
-        "unique_developers": 781,
-        "generated_at": "2026-02-17 11:38:04 UTC"
+        "total_games": 1517,
+        "unique_developers": 782,
+        "generated_at": "2026-02-18 18:05:15 UTC"
     },
     "entries": [
+        {
+            "game": "Dungeon of Erotic Master Reboot",
+            "developer": "rusimarudou",
+            "publisher": "Tensei Games",
+            "notes": "",
+            "steam_url": "https://store.steampowered.com/app/3779390/",
+            "patch_link": "https://drive.google.com/drive/folders/1U25Bmkg31QmS8I73Ip3vTXnlbiB41fZn",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/d13e7c58e7dd6c2ebba497dc880b351264362e25/header.jpg?t=1771372622",
+            "row_num": "278",
+            "appid": "3779390",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
+            "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
+            "game": "Wayblazer Dämmerung",
+            "developer": "Eushully",
+            "publisher": "Shiravune",
+            "notes": "",
+            "steam_url": "https://store.steampowered.com/app/3196500/",
+            "patch_link": "https://drive.google.com/drive/folders/1G_QTTZlnCpFkTnwCixcebnKwB6ToMb0J",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3196500/4568a92f49847e2b7b260784046056e4ff216554/header.jpg?t=1770080431",
+            "row_num": "1402",
+            "appid": "3196500",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: eushully|wayblazer dämmerung",
+            "store_status": "unreleased",
+            "manual_edit": false
+        },
         {
             "game": "Ai no Uta",
             "developer": "MagicHouse",
@@ -18,21 +48,6 @@
             "match_status": "exact",
             "match_reason": "Exact match on full: magichouse|ai no uta",
             "store_status": "unknown",
-            "manual_edit": false
-        },
-        {
-            "game": "Dungeon of Erotic Master Reboot",
-            "developer": "rusimarudou",
-            "publisher": "Tensei Games",
-            "notes": "",
-            "steam_url": "https://store.steampowered.com/app/3779390/",
-            "patch_link": "https://drive.google.com/drive/folders/1U25Bmkg31QmS8I73Ip3vTXnlbiB41fZn",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/d13e7c58e7dd6c2ebba497dc880b351264362e25/header.jpg?t=1771310228",
-            "row_num": "278",
-            "appid": "3779390",
-            "match_status": "exact",
-            "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
-            "store_status": "unreleased",
             "manual_edit": false
         },
         {
