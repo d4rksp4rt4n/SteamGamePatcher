@@ -2,7 +2,7 @@
     "data": {
         "total_games": 1518,
         "unique_developers": 782,
-        "generated_at": "2026-02-21 06:05:23 UTC"
+        "generated_at": "2026-02-23 00:41:04 UTC"
     },
     "entries": [
         {
@@ -24,7 +24,7 @@
             "game": "Rei and the Floating City",
             "developer": "Circle Gyu",
             "publisher": "Kagura Games",
-            "notes": "Chinese patch v1.01. English patch v1.02",
+            "notes": "Chinese patch v1.01. English patch v1.03",
             "steam_url": "https://store.steampowered.com/app/3721960/",
             "patch_link": "https://drive.google.com/drive/folders/11025V49PYxvA_fvIosWQ-IiMp5V5cj9L",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3721960/3a9176651be04905e8bdeca62117f1a6e99c948e/header.jpg?t=1771650008",
@@ -68,17 +68,17 @@
         {
             "game": "Ai no Uta",
             "developer": "MagicHouse",
-            "publisher": null,
+            "publisher": "MagicHouse",
             "notes": "English translation patch for the DLSite version",
             "steam_url": "https://www.dlsite.com/girls/work/=/product_id/RJ132070.html",
             "patch_link": "https://drive.google.com/drive/folders/14AFhzsAxNseQBzvHa2LoLiK1h1jpWeyj",
-            "header_image": null,
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1212780/header.jpg",
             "row_num": "38",
             "appid": null,
             "match_status": "exact",
             "match_reason": "Exact match on full: magichouse|ai no uta",
-            "store_status": "unknown",
-            "manual_edit": false
+            "store_status": "available - Dlsite",
+            "manual_edit": true
         },
         {
             "game": "The Spiriting Away of Saooni Village",
