@@ -338,7 +338,7 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                 mime = file['mimeType']
                 parents = file.get('parents', [])
                 parent = parents[0] if parents else None
-                # Folder Logic
+                # Folder 
                 if mime == 'application/vnd.google-apps.folder':
                     if id_ in dev_id_to_name:
                         old_name = dev_id_to_name[id_]
@@ -350,7 +350,7 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                              new_changes.append(f"RENAMED DEVELOPER: {old_name} -> {name}")
                              change_count += 1
                     elif id_ in game_id_to_path:
-                        # Game folder move/rename logic (similar to previous versions)
+                        # Game folder move/rename  (similar to previous versions)
                         old_dev, old_name = game_id_to_path[id_]
                         if parent is None or parent not in dev_id_to_name:
                             handle_deletion(id_, folder_structure, dev_id_to_name, game_id_to_path, file_id_to_game, new_changes)
@@ -406,47 +406,72 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                     dev_id_to_name, game_id_to_path, file_id_to_game = build_id_maps(folder_structure)
                 # File Logic
                 else:
-                    # 1. Clean up old entry if it existed (handles rename, move, update)
+                    # Skip if not a supported file type
+                    ext = Path(name).suffix.lower()
+                    if ext not in ['.zip', '.7z', '.rar', '.exe', '.txt', '.pdf', '.docx']: 
+                        continue
+                
                     if id_ in file_id_to_game:
                         old_dev, old_game = file_id_to_game[id_]
                         old_files = folder_structure['developers'][old_dev]['games'][old_game]['files']
-                        folder_structure['developers'][old_dev]['games'][old_game]['files'] = [f for f in old_files if f['id'] != id_]
-                        logger.debug(f"Removed file {name} from old location {old_game} / {old_dev}")
-                        change_count += 1
-                  
-                    if not parents: continue
-                    # 2. Add to new location
-                    parent = parents[0]
-                    res = find_game_and_path(drive_service, parent, game_id_to_path)
-                  
+                        # Find the existing file entry
+                        existing_file = next((f for f in old_files if f['id'] == id_), None)
+                        if existing_file:
+                            # Compute potential new details
+                            size_str = file.get('size', 'Unknown')
+                            if isinstance(size_str, str) and size_str.isdigit():
+                                size = int(size_str)
+                                size_str = f"{size / 1024 / 1024:.1f} MB" if size > 1024 * 1024 else f"{size / 1024:.1f} KB"
+                
+                            # Check if name, size, or parent actually changed
+                            parent_changed = parents and parents[0] != folder_structure['developers'][old_dev]['games'][old_game]['id']  # Compare to old game ID (assuming game ID is the parent)
+                            name_changed = name != existing_file['name']
+                            size_changed = size_str != existing_file['size']
+                
+                            if not (name_changed or size_changed or parent_changed):
+                                logger.debug(f"No meaningful change for file {name} in {old_game} / {old_dev} - skipping update")
+                                continue  # No action needed for trivial changes
+                
+                            # If we reach here, something changed - proceed with removal
+                            logger.debug(f"Detected change (name: {name_changed}, size: {size_changed}, parent: {parent_changed}) for file {name} - updating")
+                            old_files[:] = [f for f in old_files if f['id'] != id_]  # Remove old entry
+                            change_count += 1
+                
+                    if not parents: 
+                        continue
+                
+                    # Proceed to find new location and add (only if removed or new)
+                    res = find_game_and_path(drive_service, parents[0], game_id_to_path)
                     if res:
                         path_parts, game_parent_id = res
-                        ext = Path(name).suffix.lower()
-                        if ext not in ['.zip', '.7z', '.rar', '.exe', '.txt', '.pdf', '.docx']: continue
-                        size_str = file.get('size', 'Unknown')
-                        if isinstance(size_str, str) and size_str.isdigit():
-                            size = int(size_str)
-                            size_str = f"{size / 1024 / 1024:.1f} MB" if size > 1024 * 1024 else f"{size / 1024:.1f} KB"
-                      
+                
+                        # Reuse size_str computation if not already done
+                        if 'size_str' not in locals():
+                            size_str = file.get('size', 'Unknown')
+                            if isinstance(size_str, str) and size_str.isdigit():
+                                size = int(size_str)
+                                size_str = f"{size / 1024 / 1024:.1f} MB" if size > 1024 * 1024 else f"{size / 1024:.1f} KB"
+                
                         rel_folder_path = '/'.join(path_parts)
                         file_path = f"{rel_folder_path}/{name}" if path_parts else name
-                      
+                
                         new_file = {
                             'name': name, 'id': id_, 'size': size_str,
                             'type': ext, 'path': file_path
                         }
-                      
+                
                         dev_name, game_name = game_id_to_path[game_parent_id]
                         files = folder_structure['developers'][dev_name]['games'][game_name]['files']
                         files.append(new_file)
-                      
+                
                         logger.info(f"Added/updated file {name} in {game_name} / {dev_name}")
                         new_changes.append(f"UPDATED FILE: {game_name}/{name}")
                         change_count += 1
-                      
+                
+                        # Rebuild maps only if a real change occurred
                         dev_id_to_name, game_id_to_path, file_id_to_game = build_id_maps(folder_structure)
                     else:
-                        # File moved out of scope, deletion was already handled by cleanup above.
+                        # File moved out of scope - deletion was handled by removal above if applicable
                         pass
         except Exception as e:
             logger.error(f"Incremental mode failed: {e}. Falling back to full scan.")
@@ -558,3 +583,4 @@ def main():
 if __name__ == '__main__':
 
     main()
+
