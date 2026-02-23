@@ -1,12 +1,13 @@
 """
 Patch folder indexing script to sync Google Drive folders with local JSON, including file lists in each game folder.
-Version: 1.7.1
+Version: 1.7.2
 Changes:
 - v1.4.0: Fixed sync issues and restored detailed logging.
 - v1.5.0: **CRITICAL FIX**: Changed logging level from INFO to DEBUG to show detailed file-by-file processing logs during scans.
 - v1.6.0: Added .pdf and .docx to supported file types for instruction viewing in the app.
 - v1.7.0: Fixed script not indexing new game folders from new developer folders.
 - v1.7.1: Fixed script not indexing new game folders from existing developer folders.
+- v1.7.2: Early skip for trivial changes
 """
 import os
 import json
@@ -583,4 +584,5 @@ def main():
 if __name__ == '__main__':
 
     main()
+
 
