@@ -1,13 +1,19 @@
 """
 Patch folder indexing script to sync Google Drive folders with local JSON, including file lists in each game folder.
-Version: 1.7.2
+Version: 1.8.0
 Changes:
 - v1.4.0: Fixed sync issues and restored detailed logging.
 - v1.5.0: **CRITICAL FIX**: Changed logging level from INFO to DEBUG to show detailed file-by-file processing logs during scans.
 - v1.6.0: Added .pdf and .docx to supported file types for instruction viewing in the app.
 - v1.7.0: Fixed script not indexing new game folders from new developer folders.
 - v1.7.1: Fixed script not indexing new game folders from existing developer folders.
-- v1.7.2: Early skip for trivial changes
+- v1.7.2: Fixed early skip for trivial changes.
+- v1.8.0: **MAJOR METADATA IMPROVEMENT**: 
+  * recent_changes now excludes all readme files (.pdf, .docx, .txt)
+  * Only real patch files (.zip, .7z, .rar, .exe) are logged as "📦 UPDATED PATCH"
+  * Keeps exactly the last 10 changes (newest on top)
+  * Added clean emojis and consistent formatting for all events (➕ DEVELOPER, ➕ GAME, 🗑 REMOVED, ✏ RENAMED, 🔄 FULL RESCAN)
+  * Improved file change detection to eliminate "fake" update logs
 """
 import os
 import json
@@ -33,6 +39,7 @@ MAX_RETRIES = 3
 RETRY_DELAY_BASE = 1
 BATCH_SIZE = 100
 RATE_LIMIT_DELAY = 1
+IMPORTANT_PATCH_EXTS = {'.zip', '.7z', '.rar', '.exe'}
 # Set up logging - CHANGED LEVEL TO DEBUG
 logging.basicConfig(
     level=logging.DEBUG, # <-- THIS WAS CHANGED TO DEBUG
@@ -225,7 +232,7 @@ def load_change_token():
     except Exception as e:
         logger.error(f"Loading {CHANGE_TOKEN_FILE} failed: {e}")
         return None
-      
+     
 def save_change_token(token):
     try:
         os.makedirs(os.path.dirname(CHANGE_TOKEN_FILE), exist_ok=True)
@@ -248,7 +255,7 @@ def load_last_folders():
     except Exception as e:
         logger.error(f"Loading {OUTPUT_JSON} failed: {e}")
         return {"developers": {}, "metadata": {}}
-      
+     
 def save_database(folder_structure):
     try:
         os.makedirs(os.path.dirname(OUTPUT_JSON), exist_ok=True)
@@ -259,7 +266,7 @@ def save_database(folder_structure):
             return
         with open(temp_file, 'w', encoding='utf-8') as f:
             json.dump(folder_structure, f, indent=4, ensure_ascii=False)
-       
+      
         # Atomically replace old file
         if os.path.exists(OUTPUT_JSON):
             os.remove(OUTPUT_JSON)
@@ -287,26 +294,26 @@ def handle_deletion(id_, folder_structure, dev_id_to_name, game_id_to_path, file
     if id_ in dev_id_to_name:
         name = dev_id_to_name[id_]
         logger.info(f"Removing developer: {name} (ID: {id_})")
-        new_changes.append(f"REMOVED DEVELOPER: {name}")
+        new_changes.append(f"🗑 REMOVED DEVELOPER: {name}")
         del folder_structure['developers'][name]
         return True
     elif id_ in game_id_to_path:
         dev, name = game_id_to_path[id_]
         logger.info(f"Removing game: {name} from {dev} (ID: {id_})")
-        new_changes.append(f"REMOVED GAME: {dev}/{name}")
+        new_changes.append(f"🗑 REMOVED GAME: {dev}/{name}")
         del folder_structure['developers'][dev]['games'][name]
         return True
     elif id_ in file_id_to_game:
         dev, name = file_id_to_game[id_]
         files = folder_structure['developers'][dev]['games'][name]['files']
         removed_file_names = [f['name'] for f in files if f['id'] == id_]
-       
+      
         folder_structure['developers'][dev]['games'][name]['files'] = [f for f in files if f['id'] != id_]
-       
+      
         for removed_name in removed_file_names:
             logger.info(f"Removing file: {removed_name} from {name} (ID: {id_})")
-            new_changes.append(f"REMOVED FILE: {dev}/{name}/{removed_name}")
-           
+            new_changes.append(f"🗑 REMOVED FILE: {dev}/{name}/{removed_name}")
+          
         return True
     return False
 def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=False, change_token=None):
@@ -320,7 +327,7 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
         try:
             changes, new_change_token = get_changes(drive_service, change_token)
             dev_id_to_name, game_id_to_path, file_id_to_game = build_id_maps(folder_structure)
-          
+         
             for change in changes:
                 file_id = change.get('fileId')
                 is_removed = change.get('removed', False)
@@ -339,7 +346,7 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                 mime = file['mimeType']
                 parents = file.get('parents', [])
                 parent = parents[0] if parents else None
-                # Folder 
+                # Folder Logic
                 if mime == 'application/vnd.google-apps.folder':
                     if id_ in dev_id_to_name:
                         old_name = dev_id_to_name[id_]
@@ -348,10 +355,10 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                         elif old_name != name: # Renamed
                              folder_structure['developers'][name] = folder_structure['developers'].pop(old_name)
                              folder_structure['developers'][name]['id'] = id_
-                             new_changes.append(f"RENAMED DEVELOPER: {old_name} -> {name}")
+                             new_changes.append(f"✏ RENAMED DEVELOPER: {old_name} -> {name}")
                              change_count += 1
                     elif id_ in game_id_to_path:
-                        # Game folder move/rename  (similar to previous versions)
+                        # Game folder move/rename logic (similar to previous versions)
                         old_dev, old_name = game_id_to_path[id_]
                         if parent is None or parent not in dev_id_to_name:
                             handle_deletion(id_, folder_structure, dev_id_to_name, game_id_to_path, file_id_to_game, new_changes)
@@ -361,16 +368,16 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                                 game_data = folder_structure['developers'][old_dev]['games'].pop(old_name)
                                 folder_structure['developers'][new_dev]['games'][name] = game_data
                                 game_data['id'] = id_
-                                new_changes.append(f"MOVED/RENAMED GAME: {old_dev}/{old_name} -> {new_dev}/{name}")
+                                new_changes.append(f"✏ MOVED/RENAMED GAME: {old_dev}/{old_name} -> {new_dev}/{name}")
                                 change_count += 1
                     else:
                         # New folder
                         if parent == root_folder_id:
                             logger.info(f"Added developer: {name}")
-                            new_changes.append(f"ADDED DEVELOPER: {name}")
+                            new_changes.append(f"➕ DEVELOPER: {name}")
                             folder_structure['developers'][name] = {'id': id_, 'games': {}}
                             change_count += 1
-                           
+                          
                             # === Force-scan contents of NEW DEVELOPER (v1.7 block) ===
                             logger.info(f"New developer detected - scanning for game folders and files: {name}")
                             game_folders = list_files(drive_service, id_, folders_only=True)
@@ -378,8 +385,8 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                                 game_name = game_folder['name']
                                 game_id = game_folder['id']
                                 logger.info(f" Adding new game from scan: {game_name}")
-                                new_changes.append(f"ADDED GAME (new dev scan): {name}/{game_name}")
-                               
+                                new_changes.append(f"➕ GAME (new dev): {name}/{game_name}")
+                              
                                 game_files = recursive_list_files_with_path(drive_service, game_id, '', ['Old'])
                                 folder_structure['developers'][name]['games'][game_name] = {
                                     "id": game_id,
@@ -391,7 +398,7 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                         elif parent in dev_id_to_name:
                             dev_name = dev_id_to_name[parent]
                             logger.info(f"Added game: {name} to {dev_name} (ID: {id_})")
-                            new_changes.append(f"ADDED GAME: {dev_name}/{name}")
+                            new_changes.append(f"➕ GAME: {dev_name}/{name}")
                             logger.info(f"New game detected - scanning for files: {name}")
                             game_files = recursive_list_files_with_path(drive_service, id_, '', ['Old'])
                             folder_structure['developers'][dev_name]['games'][name] = {
@@ -402,77 +409,73 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                             # Rebuild maps after single game add
                             dev_id_to_name, game_id_to_path, file_id_to_game = build_id_maps(folder_structure)
                         # else: ignore irrelevant folder
-                  
+                 
                     # Rebuild maps after structural change
                     dev_id_to_name, game_id_to_path, file_id_to_game = build_id_maps(folder_structure)
                 # File Logic
                 else:
-                    # Skip if not a supported file type
                     ext = Path(name).suffix.lower()
-                    if ext not in ['.zip', '.7z', '.rar', '.exe', '.txt', '.pdf', '.docx']: 
+                    if ext not in ['.zip', '.7z', '.rar', '.exe', '.txt', '.pdf', '.docx']:
                         continue
-                
+
                     if id_ in file_id_to_game:
                         old_dev, old_game = file_id_to_game[id_]
                         old_files = folder_structure['developers'][old_dev]['games'][old_game]['files']
-                        # Find the existing file entry
                         existing_file = next((f for f in old_files if f['id'] == id_), None)
                         if existing_file:
-                            # Compute potential new details
+                            # Compute new size string
                             size_str = file.get('size', 'Unknown')
                             if isinstance(size_str, str) and size_str.isdigit():
                                 size = int(size_str)
                                 size_str = f"{size / 1024 / 1024:.1f} MB" if size > 1024 * 1024 else f"{size / 1024:.1f} KB"
-                
-                            # Check if name, size, or parent actually changed
-                            parent_changed = parents and parents[0] != folder_structure['developers'][old_dev]['games'][old_game]['id']  # Compare to old game ID (assuming game ID is the parent)
+
+                            parent_changed = bool(parents) and parents[0] != folder_structure['developers'][old_dev]['games'][old_game]['id']
                             name_changed = name != existing_file['name']
                             size_changed = size_str != existing_file['size']
-                
+
                             if not (name_changed or size_changed or parent_changed):
-                                logger.debug(f"No meaningful change for file {name} in {old_game} / {old_dev} - skipping update")
-                                continue  # No action needed for trivial changes
-                
-                            # If we reach here, something changed - proceed with removal
-                            logger.debug(f"Detected change (name: {name_changed}, size: {size_changed}, parent: {parent_changed}) for file {name} - updating")
-                            old_files[:] = [f for f in old_files if f['id'] != id_]  # Remove old entry
+                                logger.debug(f"No meaningful change for file {name} - skipping")
+                                continue
+
+                            # Real change detected
+                            logger.debug(f"Real change detected for {name}")
+                            old_files[:] = [f for f in old_files if f['id'] != id_]
                             change_count += 1
-                
-                    if not parents: 
+
+                    if not parents:
                         continue
-                
-                    # Proceed to find new location and add (only if removed or new)
+
                     res = find_game_and_path(drive_service, parents[0], game_id_to_path)
                     if res:
                         path_parts, game_parent_id = res
-                
-                        # Reuse size_str computation if not already done
-                        if 'size_str' not in locals():
-                            size_str = file.get('size', 'Unknown')
-                            if isinstance(size_str, str) and size_str.isdigit():
-                                size = int(size_str)
-                                size_str = f"{size / 1024 / 1024:.1f} MB" if size > 1024 * 1024 else f"{size / 1024:.1f} KB"
-                
+
+                        size_str = file.get('size', 'Unknown')
+                        if isinstance(size_str, str) and size_str.isdigit():
+                            size = int(size_str)
+                            size_str = f"{size / 1024 / 1024:.1f} MB" if size > 1024 * 1024 else f"{size / 1024:.1f} KB"
+
                         rel_folder_path = '/'.join(path_parts)
                         file_path = f"{rel_folder_path}/{name}" if path_parts else name
-                
+
                         new_file = {
                             'name': name, 'id': id_, 'size': size_str,
                             'type': ext, 'path': file_path
                         }
-                
+
                         dev_name, game_name = game_id_to_path[game_parent_id]
                         files = folder_structure['developers'][dev_name]['games'][game_name]['files']
                         files.append(new_file)
-                
+
                         logger.info(f"Added/updated file {name} in {game_name} / {dev_name}")
-                        new_changes.append(f"UPDATED FILE: {game_name}/{name}")
-                        change_count += 1
-                
-                        # Rebuild maps only if a real change occurred
+
+                        # === ONLY log important patch files in recent_changes ===
+                        if ext in IMPORTANT_PATCH_EXTS:
+                            new_changes.append(f"📦 UPDATED PATCH: {game_name}/{name}")
+                            change_count += 1   # still count it as a processed change
+
+                        # Rebuild maps only on real changes
                         dev_id_to_name, game_id_to_path, file_id_to_game = build_id_maps(folder_structure)
                     else:
-                        # File moved out of scope - deletion was handled by removal above if applicable
                         pass
         except Exception as e:
             logger.error(f"Incremental mode failed: {e}. Falling back to full scan.")
@@ -482,47 +485,47 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
             folder_structure = last_folders.copy() # Preserve base for merging later
     if not use_changes:
         logger.info("Performing FULL scan...")
-      
+     
         try:
             new_change_token = drive_service.changes().getStartPageToken().execute().get('startPageToken')
         except Exception as e:
             logger.error(f"Failed to get start page token: {e}")
             raise
-          
+         
         folder_structure['developers'] = {}
-      
+     
         # Fetch developer folders
         logger.info("Fetching developer folders...")
         dev_folders = list_files(drive_service, root_folder_id, folders_only=True)
         logger.info(f"Got {len(dev_folders)} developer folders")
-      
+     
         for i, dev_folder in enumerate(dev_folders, 1):
             dev_name = dev_folder['name']
             dev_id = dev_folder['id']
             logger.info(f"[{i}/{len(dev_folders)}] Processing developer: {dev_name} (ID: {dev_id})")
             folder_structure["developers"][dev_name] = {"id": dev_id, "games": {}}
-          
+         
             game_folders = list_files(drive_service, dev_id, folders_only=True)
             logger.info(f"Found {len(game_folders)} game folders in {dev_name}")
-          
+         
             for j, game_folder in enumerate(game_folders, 1):
                 game_name = game_folder['name']
                 game_id = game_folder['id']
                 logger.info(f" [{j}/{len(game_folders)}] Processing game: {game_name} (ID: {game_id})")
-              
+             
                 # THIS IS WHERE RECURSIVE FILE LISTING HAPPENS
                 game_files = recursive_list_files_with_path(drive_service, game_id, '', ['Old'])
                 logger.info(f" Found {len(game_files)} files in {game_name}")
-              
+             
                 files_list = game_files
                 folder_structure["developers"][dev_name]["games"][game_name] = {
                     "id": game_id,
                     "files": files_list
                 }
-              
+             
         change_count = len(folder_structure['developers'])
-        new_changes.append("FULL DATABASE RESCAN PERFORMED.")
-      
+        new_changes.append("🔄 FULL DATABASE RESCAN PERFORMED.")
+     
         # Merge extras from previous (last_folders)
         game_id_to_extra = {}
         for dev in last_folders.get('developers', {}).values():
@@ -532,7 +535,7 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                     # Preserve non-structural keys (like the old 'last_updated' you had)
                     extra = {k: v for k, v in game.items() if k not in ['id', 'files']}
                     game_id_to_extra[gid] = extra
-                  
+                 
         # Apply to new structure
         merged_count = 0
         for dev in folder_structure['developers'].values():
@@ -542,20 +545,27 @@ def index_game_folders(root_folder_id, drive_service, last_folders, use_changes=
                     game.update(game_id_to_extra[gid])
                     merged_count += 1
         logger.info(f"Merged extras for {merged_count} games during full scan")
-    # Update metadata
+    # Update metadata - NEW cleaner version
     metadata = folder_structure.setdefault('metadata', {})
     recent_changes = metadata.setdefault('recent_changes', [])
-    recent_changes.extend(new_changes)
+
+    # Add new changes with newest on top + emojis
+    for msg in reversed(new_changes):          # reversed so newest appears first
+        recent_changes.insert(0, msg)
+
+    # Keep only the last 10
     if len(recent_changes) > 10:
-        recent_changes = recent_changes[-10:]
-      
+        recent_changes = recent_changes[:10]
+
+    metadata['recent_changes'] = recent_changes
+
     if change_count > 0:
         metadata['version'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-      
+     
     # Summary
     game_count = sum(len(dev_data["games"]) for dev_data in folder_structure.get("developers", {}).values())
     logger.info(f"Processed {len(folder_structure.get('developers', {}))} developers, {game_count} games")
-  
+ 
     return folder_structure, new_change_token, change_count
 def main():
     # Changed log message to match user's expected output
@@ -565,24 +575,21 @@ def main():
     change_token = load_change_token()
     # Determine if we can safely use incremental updates
     use_changes = bool(change_token and last_folders.get("developers"))
-   
+  
     logger.info(f"Incremental mode: {use_changes} (token: {bool(change_token)}, devs: {len(last_folders.get('developers', {}))} )")
-   
+  
     # Force full scan if token is not present or database is empty
     if not use_changes:
         logger.info("Forcing full scan due to missing token or empty database.")
     folder_structure, new_change_token, change_count = index_game_folders(
         ROOT_FOLDER_ID, drive_service, last_folders, use_changes, change_token)
-   
+  
     save_database(folder_structure)
-   
+  
     # Only save the token if we successfully got a new one
     if new_change_token:
         save_change_token(new_change_token)
-       
+      
     logger.info(f"Sync complete. Processed {change_count} changes. All actions logged in database/data/patches_database.json metadata.") # Changed log message to match user's expected output
 if __name__ == '__main__':
-
     main()
-
-
