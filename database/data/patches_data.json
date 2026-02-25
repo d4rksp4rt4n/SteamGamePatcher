@@ -1,10 +1,25 @@
 {
     "data": {
-        "total_games": 1521,
+        "total_games": 1523,
         "unique_developers": 783,
-        "generated_at": "2026-02-25 20:11:16 UTC"
+        "generated_at": "2026-02-25 20:19:21 UTC"
     },
     "entries": [
+        {
+            "game": "Cuckold My Brother’s Wife",
+            "developer": "POISON MOTION",
+            "publisher": "PRODUCTION PENCIL",
+            "notes": "Multilanguage patch v2026.02.25",
+            "steam_url": "https://store.steampowered.com/app/4320860/",
+            "patch_link": "https://drive.google.com/drive/folders/10o2VrFEzExnOpo-IKh2XiRgGQu79a9li",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4320860/072575de35cdd1a1f16c167ec2b6f4a8862b1b1f/header.jpg?t=1771230027",
+            "row_num": "190",
+            "appid": "4320860",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: poison motion|cuckold my brother’s wife",
+            "store_status": "unreleased",
+            "manual_edit": false
+        },
         {
             "game": "Days with the Ogre Girl",
             "developer": "POISON MOTION",
@@ -13,7 +28,7 @@
             "steam_url": "https://store.steampowered.com/app/3941710/",
             "patch_link": "https://drive.google.com/drive/folders/1U57bVQWWTVmYynwH3L2AmYv4wrOOtOxY",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3941710/3a22f01faadf6891f6d671e90eff0a75c7844442/header.jpg?t=1770786975",
-            "row_num": "217",
+            "row_num": "218",
             "appid": "3941710",
             "match_status": "exact",
             "match_reason": "Exact match on full: poison motion|days with the ogre girl",
@@ -28,7 +43,7 @@
             "steam_url": "https://store.steampowered.com/app/3779390/",
             "patch_link": "https://drive.google.com/drive/folders/1U25Bmkg31QmS8I73Ip3vTXnlbiB41fZn",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/d13e7c58e7dd6c2ebba497dc880b351264362e25/header.jpg?t=1771372622",
-            "row_num": "279",
+            "row_num": "280",
             "appid": "3779390",
             "match_status": "exact",
             "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
@@ -43,10 +58,25 @@
             "steam_url": "https://store.steampowered.com/app/4013280/",
             "patch_link": "https://drive.google.com/drive/folders/17vXzPv9otUfYKeTCUfga_yxwo5f9JIl2",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4013280/8a7d6d5d69b3d27c812482d5529760aff193a11a/header.jpg?t=1771413477",
-            "row_num": "964",
+            "row_num": "965",
             "appid": "4013280",
             "match_status": "exact",
             "match_reason": "Exact match on full: poison motion|princess of liberline",
+            "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
+            "game": "Scream - Steam Edition -",
+            "developer": "POISON MOTION",
+            "publisher": "PRODUCTION PENCIL",
+            "notes": "Multilanguage patch v2026.02.25",
+            "steam_url": "https://store.steampowered.com/app/4358030/",
+            "patch_link": "https://drive.google.com/drive/folders/1rrA1XEE9-VDk1CwkAO-ZGY297GYVH3BM",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4358030/c3f11f5909e20bc73b71b180e0d1267dc73ea9b6/header.jpg?t=1771413445",
+            "row_num": "1097",
+            "appid": "4358030",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: poison motion|scream - steam edition -",
             "store_status": "unreleased",
             "manual_edit": false
         },
@@ -58,7 +88,7 @@
             "steam_url": "https://store.steampowered.com/app/4134510/",
             "patch_link": "https://drive.google.com/drive/folders/1zYAz5jx2jzh3rtHuuc3suxnWkk6YV_H1",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4134510/535b101eb5e64907f22b6d86699831839eeda40e/header.jpg?t=1770786692",
-            "row_num": "1096",
+            "row_num": "1098",
             "appid": "4134510",
             "match_status": "fuzzy",
             "match_reason": "Fuzzy match: poison motion|scream ~after~ short story -> poison motion|scream -after- short story (score: 95, dev: poison motion, cutoff: 0.8)",
