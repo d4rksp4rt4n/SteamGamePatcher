@@ -1,10 +1,40 @@
 {
     "data": {
-        "total_games": 1525,
+        "total_games": 1526,
         "unique_developers": 784,
-        "generated_at": "2026-02-27 07:47:38 UTC"
+        "generated_at": "2026-02-27 11:01:05 UTC"
     },
     "entries": [
+        {
+            "game": "DRACU-RIOT!",
+            "developer": "Yuzusoft",
+            "publisher": "NekoNyan Ltd.",
+            "notes": "Multilanguage patch v2026.02.27",
+            "steam_url": "https://store.steampowered.com/app/1340140/",
+            "patch_link": "https://drive.google.com/drive/folders/1Brbid8whvBgY4G5CAiq1mnJpeK4rJCIM",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1340140/75ba2e2981d612e3afd7f358c0c1801b41efa16d/header.jpg?t=1772188047",
+            "row_num": "256",
+            "appid": "1340140",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: yuzusoft|dracu-riot!",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
+            "game": "Dungeon of Erotic Master Reboot",
+            "developer": "rusimarudou",
+            "publisher": "Tensei Games",
+            "notes": "",
+            "steam_url": "https://store.steampowered.com/app/3779390/",
+            "patch_link": "https://drive.google.com/drive/folders/1U25Bmkg31QmS8I73Ip3vTXnlbiB41fZn",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/d13e7c58e7dd6c2ebba497dc880b351264362e25/header.jpg?t=1772173828",
+            "row_num": "282",
+            "appid": "3779390",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
+            "store_status": "unreleased",
+            "manual_edit": false
+        },
         {
             "game": "Cuckold My Brother’s Wife",
             "developer": "POISON MOTION",
@@ -33,21 +63,6 @@
             "match_status": "exact",
             "match_reason": "Exact match on full: poison motion|days with the ogre girl",
             "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "Dungeon of Erotic Master Reboot",
-            "developer": "rusimarudou",
-            "publisher": "Tensei Games",
-            "notes": "",
-            "steam_url": "https://store.steampowered.com/app/3779390/",
-            "patch_link": "https://drive.google.com/drive/folders/1U25Bmkg31QmS8I73Ip3vTXnlbiB41fZn",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/d13e7c58e7dd6c2ebba497dc880b351264362e25/header.jpg?t=1772173828",
-            "row_num": "281",
-            "appid": "3779390",
-            "match_status": "exact",
-            "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
-            "store_status": "unreleased",
             "manual_edit": false
         },
         {
