@@ -1,25 +1,10 @@
 {
     "data": {
-        "total_games": 1526,
-        "unique_developers": 784,
-        "generated_at": "2026-02-27 11:01:05 UTC"
+        "total_games": 1527,
+        "unique_developers": 785,
+        "generated_at": "2026-02-28 05:28:52 UTC"
     },
     "entries": [
-        {
-            "game": "DRACU-RIOT!",
-            "developer": "Yuzusoft",
-            "publisher": "NekoNyan Ltd.",
-            "notes": "Multilanguage patch v2026.02.27",
-            "steam_url": "https://store.steampowered.com/app/1340140/",
-            "patch_link": "https://drive.google.com/drive/folders/1Brbid8whvBgY4G5CAiq1mnJpeK4rJCIM",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1340140/75ba2e2981d612e3afd7f358c0c1801b41efa16d/header.jpg?t=1772188047",
-            "row_num": "256",
-            "appid": "1340140",
-            "match_status": "exact",
-            "match_reason": "Exact match on full: yuzusoft|dracu-riot!",
-            "store_status": "available",
-            "manual_edit": false
-        },
         {
             "game": "Dungeon of Erotic Master Reboot",
             "developer": "rusimarudou",
@@ -33,6 +18,36 @@
             "match_status": "exact",
             "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
             "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
+            "game": "Little Witch Inuko",
+            "developer": "Flamme Soft",
+            "publisher": "Saikey Studios",
+            "notes": "Multilanguage Reconstruction Patch v2.04 (2026.02.28)",
+            "steam_url": "https://store.steampowered.com/app/3706400/",
+            "patch_link": "https://drive.google.com/drive/folders/1d-mxA4mM8mmhKwpMbxFF3yX5mMmpsEme",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3706400/b9cc13ae06927c616efbb3ba5020d46b93c5d0f7/header.jpg?t=1772245536",
+            "row_num": "679",
+            "appid": "3706400",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: flamme soft|little witch inuko",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
+            "game": "DRACU-RIOT!",
+            "developer": "Yuzusoft",
+            "publisher": "NekoNyan Ltd.",
+            "notes": "Multilanguage patch v2026.02.27",
+            "steam_url": "https://store.steampowered.com/app/1340140/",
+            "patch_link": "https://drive.google.com/drive/folders/1Brbid8whvBgY4G5CAiq1mnJpeK4rJCIM",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1340140/75ba2e2981d612e3afd7f358c0c1801b41efa16d/header.jpg?t=1772188047",
+            "row_num": "256",
+            "appid": "1340140",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: yuzusoft|dracu-riot!",
+            "store_status": "available",
             "manual_edit": false
         },
         {
