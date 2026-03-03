@@ -1,8 +1,8 @@
 {
     "data": {
-        "total_games": 1527,
-        "unique_developers": 785,
-        "generated_at": "2026-02-28 05:28:52 UTC"
+        "total_games": 1528,
+        "unique_developers": 786,
+        "generated_at": "2026-03-03 05:51:23 UTC"
     },
     "entries": [
         {
@@ -18,6 +18,21 @@
             "match_status": "exact",
             "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
             "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
+            "game": "Encode Encore!",
+            "developer": "GoldenPot",
+            "publisher": "Shiravune",
+            "notes": "English, Simplified Chinese & Traditional Chinese patches v2026.03.03",
+            "steam_url": "https://store.steampowered.com/app/3143540/",
+            "patch_link": "https://drive.google.com/drive/folders/1CGYVhA_qfZi7w2sgtpsNLoWsPhsY5tBj",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3143540/header.jpg?t=1772499359",
+            "row_num": "306",
+            "appid": "3143540",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: goldenpot|encode encore!",
+            "store_status": "available",
             "manual_edit": false
         },
         {
