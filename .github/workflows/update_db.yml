@@ -47,7 +47,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: database/data/
-          key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }}-${{ github.run_id }}
+          key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py', 'database/data/change_token.txt') }}-${{ github.sha }}
           restore-keys: |
             drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }}-
 
