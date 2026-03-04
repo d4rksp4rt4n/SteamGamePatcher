@@ -2,7 +2,7 @@
     "data": {
         "total_games": 1528,
         "unique_developers": 786,
-        "generated_at": "2026-03-03 05:51:23 UTC"
+        "generated_at": "2026-03-04 08:30:31 UTC"
     },
     "entries": [
         {
@@ -18,6 +18,36 @@
             "match_status": "exact",
             "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
             "store_status": "unreleased",
+            "manual_edit": false
+        },
+        {
+            "game": "Mikoto and the Succubus Island",
+            "developer": "STARDUST",
+            "publisher": "Kagura Games",
+            "notes": "Chinese patch v1.02. English patch v1.03. Japanese Patch v1.00",
+            "steam_url": "https://store.steampowered.com/app/3466690/",
+            "patch_link": "https://drive.google.com/drive/folders/1pEi_5CqtoROz1ytUwdhMACv2PHPgMUe3",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3466690/c593d292e48a8826f8676e2b5617ce076d07c656/header.jpg?t=1752897607",
+            "row_num": "774",
+            "appid": "3466690",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: stardust|mikoto and the succubus island",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
+            "game": "Niramare Quest: Saving a World That Loves Hating Me",
+            "developer": "Seguzecute",
+            "publisher": "Kagura Games",
+            "notes": "Chinese patch v1.01. English patch v1.02. Japanese patch v1.00",
+            "steam_url": "https://store.steampowered.com/app/3841010/",
+            "patch_link": "https://drive.google.com/drive/folders/1j9T1no71k7nBGZvn7kotafSSSDXlKXqU",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3841010/d1f76104389189d59f56e59168153b69471ae64d/header.jpg?t=1771045207",
+            "row_num": "890",
+            "appid": "3841010",
+            "match_status": "fuzzy",
+            "match_reason": "Fuzzy match: seguzecute|niramare quest: saving a world that loves hating me -> seguzecute|niramare quest∶ saving a world that loves hating me (score: 98, dev: seguzecute, cutoff: 0.8)",
+            "store_status": "available",
             "manual_edit": false
         },
         {
@@ -257,21 +287,6 @@
             "appid": "606690",
             "match_status": "fuzzy",
             "match_reason": "Fuzzy match: newwestgames|ecchi sketch draw cute girls every day! -> newwestgames|ecchi sketch: draw cute girls every day! (score: 99, dev: newwestgames, cutoff: 0.8)",
-            "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "Niramare Quest: Saving a World That Loves Hating Me",
-            "developer": "Seguzecute",
-            "publisher": "Kagura Games",
-            "notes": "Chinese patch v1.01. English patch v1.01. Japanese patch v1.00",
-            "steam_url": "https://store.steampowered.com/app/3841010/",
-            "patch_link": "https://drive.google.com/drive/folders/1j9T1no71k7nBGZvn7kotafSSSDXlKXqU",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3841010/d1f76104389189d59f56e59168153b69471ae64d/header.jpg?t=1771045207",
-            "row_num": "882",
-            "appid": "3841010",
-            "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: seguzecute|niramare quest: saving a world that loves hating me -> seguzecute|niramare quest∶ saving a world that loves hating me (score: 98, dev: seguzecute, cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false
         },
@@ -13427,21 +13442,6 @@
             "appid": "1931440",
             "match_status": "exact",
             "match_reason": "Exact match: denpasoft|miko no kanata: curious tales from oguni shrine -cycles-",
-            "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "Mikoto and the Succubus Island",
-            "developer": "STARDUST",
-            "publisher": "Kagura Games",
-            "notes": "Chinese patch v1.02. English patch v1.02. Japanese Patch v1.00",
-            "steam_url": "https://store.steampowered.com/app/3466690/",
-            "patch_link": "https://drive.google.com/drive/folders/1pEi_5CqtoROz1ytUwdhMACv2PHPgMUe3",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3466690/c593d292e48a8826f8676e2b5617ce076d07c656/header.jpg?t=1752897607",
-            "row_num": "737",
-            "appid": "3466690",
-            "match_status": "exact",
-            "match_reason": "Exact match: stardust|mikoto and the succubus island",
             "store_status": "available",
             "manual_edit": false
         },
