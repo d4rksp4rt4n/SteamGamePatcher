@@ -1,10 +1,25 @@
 {
     "data": {
-        "total_games": 1529,
-        "unique_developers": 786,
-        "generated_at": "2026-03-04 19:32:43 UTC"
+        "total_games": 1530,
+        "unique_developers": 787,
+        "generated_at": "2026-03-05 02:47:17 UTC"
     },
     "entries": [
+        {
+            "game": "Double Date Dilemma",
+            "developer": "ANIM",
+            "publisher": "Shiravune",
+            "notes": "English, Simplified Chinese & Traditional Chinese patches v2026.03.05",
+            "steam_url": "https://store.steampowered.com/app/3224670/",
+            "patch_link": "https://drive.google.com/drive/folders/13IfQzCR4fx7MzvcbAOXRHprmCJ1TBU_k",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3224670/header.jpg?t=1772672369",
+            "row_num": "255",
+            "appid": "3224670",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: anim|double date dilemma",
+            "store_status": "available",
+            "manual_edit": false
+        },
         {
             "game": "Dungeon of Erotic Master Reboot",
             "developer": "rusimarudou",
@@ -13,7 +28,7 @@
             "steam_url": "https://store.steampowered.com/app/3779390/",
             "patch_link": "https://drive.google.com/drive/folders/1U25Bmkg31QmS8I73Ip3vTXnlbiB41fZn",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/d13e7c58e7dd6c2ebba497dc880b351264362e25/header.jpg?t=1772173828",
-            "row_num": "282",
+            "row_num": "283",
             "appid": "3779390",
             "match_status": "exact",
             "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
@@ -28,10 +43,10 @@
             "steam_url": "https://store.steampowered.com/app/3801270/",
             "patch_link": "https://drive.google.com/drive/folders/10negnZhp0FAJFuiHym-5tJZ4CegD1oys",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3801270/5b523a2a0c1a49da20e57cb9b19f37bead117d49/header.jpg?t=1772619597",
-            "row_num": "912",
+            "row_num": "913",
             "appid": "3801270",
             "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 98, dev: アイオライト (iolite), cutoff: 0.8)",
+            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 87, dev: iolite, cutoff: 0.8)",
             "store_status": "unreleased",
             "manual_edit": false
         },
