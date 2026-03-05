@@ -311,9 +311,18 @@ def main():
 
     db = {}
     if os.path.exists(OUTPUT_JSON):
-        with open(OUTPUT_JSON, encoding='utf-8') as f:
-            db = json.load(f)
-        logger.info(f"Loaded {len(db.get('developers',{}))} developers")
+        try:
+            with open(OUTPUT_JSON, encoding='utf-8') as f:
+                content = f.read().strip()
+                if content:
+                    db = json.loads(content)
+                    logger.info(f"Loaded {len(db.get('developers',{}))} developers")
+                else:
+                    logger.warning(f"{OUTPUT_JSON} is empty. Starting with empty db.")
+        except json.JSONDecodeError as e:
+            logger.error(f"Failed to load {OUTPUT_JSON}: {e}. Starting with empty db.")
+        except Exception as e:
+            logger.error(f"Unexpected error loading {OUTPUT_JSON}: {e}. Starting with empty db.")
 
     token = None
     if os.path.exists(CHANGE_TOKEN_FILE):
