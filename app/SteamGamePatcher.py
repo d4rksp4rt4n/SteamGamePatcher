@@ -36,7 +36,7 @@ try:
 except ImportError:
     pass
 
-APP_VERSION = '1.35-beta'
+APP_VERSION = '1.36-beta'
 CONFIG_FILENAME = 'patcher_config.json'  # Per-game config file
 
 def resource_path(relative_path):
