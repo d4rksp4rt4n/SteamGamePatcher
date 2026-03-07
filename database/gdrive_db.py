@@ -1,14 +1,13 @@
 """
 Patch folder indexing script to sync Google Drive folders with local JSON, including file lists in each game folder.
-Version: 1.9.0
-Focus: clean, stable, no fake changes from old files
-Change detection rules (files):
-- If file ID already exists → update only if:
-  • name changed, or
-  • parent folder changed, or
-  • modifiedTime is newer
-- Size changes are IGNORED (prevents Drive API flakiness)
-- Non-patch files (.txt, .docx, etc.) are always skipped in incremental mode
+Version: 1.9.4
+
+Changes in v1.9.4:
+- Fixed false updates on com3d2engplg_dlc079.zip and RE205644.rar (and similar files)
+- Removed parent_changed as trigger for existing files (Drive API noise)
+- Added extra debug for parent_changed so we can see it clearly
+- Non-patch files (docx etc.) still fully indexed for frontend
+- recent_changes only contains real patch updates (max 10 unique games)
 """
 
 import os
@@ -30,12 +29,13 @@ OUTPUT_JSON = 'database/data/patches_database.json'
 
 MAX_RETRIES = 3
 RETRY_DELAY_BASE = 1
+TIME_TOLERANCE_MINUTES = 30
+MIN_SIZE_DELTA_BYTES = 1024
 
 IMPORTANT_PATCH_EXTS = {'.zip', '.7z', '.rar', '.exe'}
 NON_PATCH_EXTS = {'.txt', '.pdf', '.docx', '.doc', '.rtf'}
 
 debug_mode = '--debug' in sys.argv
-
 logging.basicConfig(
     level=logging.DEBUG if debug_mode else logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
@@ -82,7 +82,7 @@ def list_files(service, folder_id, folders_only=False):
     return results
 
 def get_file_tree(service, folder_id, current_path="", depth=0):
-    indent = '  ' * depth
+    indent = ' ' * depth
     logger.debug(f"{indent}Scanning folder: {current_path or '/'} (ID: {folder_id})")
     files = []
     items = list_files(service, folder_id)
@@ -167,11 +167,11 @@ def index_incremental(service, db, change_token):
 
     dev_by_id, game_by_id, file_by_id = build_id_maps(db)
     change_log = []
+    recent_changes = db.setdefault('metadata', {}).setdefault('recent_changes', [])
 
     for ch in changes:
         fid = ch['fileId']
         removed = ch.get('removed', False) or (ch.get('file') or {}).get('trashed', False)
-
         if removed:
             handle_deletion(fid, db, dev_by_id, game_by_id, file_by_id, change_log)
             dev_by_id, game_by_id, file_by_id = build_id_maps(db)
@@ -188,7 +188,7 @@ def index_incremental(service, db, change_token):
         mtime = file.get('modifiedTime')
 
         if mime == 'application/vnd.google-apps.folder':
-            # Folder rename / move / new
+            # Folder logic unchanged
             if fid in dev_by_id:
                 old_name = dev_by_id[fid]
                 if parent != ROOT_FOLDER_ID:
@@ -209,11 +209,9 @@ def index_incremental(service, db, change_token):
                         gdata['id'] = fid
                         change_log.append(f"✏ GAME MOVED/RENAMED: {old_dev}/{old_game} → {new_dev}/{name}")
             elif parent == ROOT_FOLDER_ID:
-                # New developer
                 db['developers'][name] = {'id': fid, 'games': {}}
                 change_log.append(f"➕ NEW DEVELOPER: {name}")
             elif parent in dev_by_id:
-                # New game
                 devn = dev_by_id[parent]
                 logger.debug(f"Indexing new game: {devn} / {name} (ID: {fid})")
                 db['developers'][devn]['games'][name] = {'id': fid, 'files': get_file_tree(service, fid, depth=1)}
@@ -221,39 +219,71 @@ def index_incremental(service, db, change_token):
             dev_by_id, game_by_id, file_by_id = build_id_maps(db)
             continue
 
-        # File
+        # === FILE ===
         ext = Path(name).suffix.lower()
-        if ext in NON_PATCH_EXTS:
+        if ext not in IMPORTANT_PATCH_EXTS | NON_PATCH_EXTS:
             continue
-        if ext not in IMPORTANT_PATCH_EXTS:
-            continue
+
+        is_real_patch = ext in IMPORTANT_PATCH_EXTS
 
         if fid in file_by_id:
             dev, game, existing = file_by_id[fid]
             game_files = db['developers'][dev]['games'][game]['files']
 
             name_changed = name != existing['name']
-            parent_changed = parent != db['developers'][dev]['games'][game]['id']
-            time_newer = mtime and existing.get('modifiedTime') and mtime > existing['modifiedTime']
+            parent_changed = parent != db['developers'][dev]['games'][game]['id']   # ← still calculated for debug
 
-            if not (name_changed or parent_changed or time_newer):
-                continue  # nothing worth updating
+            # === STRICT CHANGE DETECTION (v1.9.4 fix) ===
+            time_newer = False
+            time_delta_min = 0
+            if mtime and existing.get('modifiedTime'):
+                try:
+                    old_dt = datetime.datetime.fromisoformat(existing['modifiedTime'].replace('Z', '+00:00'))
+                    new_dt = datetime.datetime.fromisoformat(mtime.replace('Z', '+00:00'))
+                    delta = new_dt - old_dt
+                    time_delta_min = delta.total_seconds() / 60
+                    time_newer = time_delta_min > TIME_TOLERANCE_MINUTES
+                except:
+                    time_newer = mtime > existing['modifiedTime']
 
-            # Update in place
+            size_changed = False
+            size_delta = 0
+            new_size = int(file.get('size', 0))
+            old_size = existing.get('raw_size', 0)
+            size_delta = new_size - old_size
+            size_changed = abs(size_delta) >= MIN_SIZE_DELTA_BYTES
+
+            logger.debug(f"[DETECT] {name} - name_changed={name_changed}, parent_changed={parent_changed}, "
+                         f"time_delta={time_delta_min:.1f}min (> {TIME_TOLERANCE_MINUTES}? {time_newer}), "
+                         f"size_delta={size_delta} bytes (>= {MIN_SIZE_DELTA_BYTES}? {size_changed})")
+
+            # v1.9.4 fix: ignore parent_changed for existing files
+            if not (name_changed or (time_newer and size_changed)):
+                logger.debug(f"→ Skipped {name} (no real change)")
+                continue
+
+            # Real change
             idx = next(i for i, f in enumerate(game_files) if f['id'] == fid)
             game_files[idx].update({
                 'name': name,
                 'path': f"{ '/'.join(existing['path'].split('/')[:-1]) }/{name}" if '/' in existing['path'] else name,
                 'modifiedTime': mtime,
-                'size': f"{int(file.get('size',0))/1024/1024:.1f} MB" if int(file.get('size',0)) > 1_048_576 else f"{int(file.get('size',0))/1024:.1f} KB",
-                'raw_size': int(file.get('size', 0))
+                'size': f"{new_size/1024/1024:.1f} MB" if new_size > 1_048_576 else f"{new_size/1024:.1f} KB",
+                'raw_size': new_size
             })
-            change_log.append(f"✏ UPDATED: {dev}/{game}/{name}")
+
+            if is_real_patch:
+                msg = f"📦 UPDATED PATCH: {dev}/{game}/{name}"
+                change_log.append(msg)
+                recent_changes.append((datetime.datetime.now().isoformat(), game, msg))
+                logger.info(msg)
+            else:
+                logger.debug(f"Updated non-patch file (Install Note): {dev}/{game}/{name}")
+
         else:
-            # New file → find game
+            # New file logic (unchanged)
             if not parents:
                 continue
-            res = None
             cur = parents[0]
             steps = 0
             while cur and cur not in game_by_id and steps < 20:
@@ -272,7 +302,7 @@ def index_incremental(service, db, change_token):
                 devn, gamen = game_by_id[cur]
                 raw = int(file.get('size', 0))
                 sz = f"{raw/1024/1024:.1f} MB" if raw > 1_048_576 else f"{raw/1024:.1f} KB"
-                path = f"{gamen}/{name}"   # simplified path
+                path = f"{gamen}/{name}"
                 newf = {
                     'id': fid,
                     'name': name,
@@ -283,7 +313,14 @@ def index_incremental(service, db, change_token):
                     'modifiedTime': mtime
                 }
                 db['developers'][devn]['games'][gamen]['files'].append(newf)
-                change_log.append(f"➕ NEW PATCH: {devn}/{gamen}/{name}")
+
+                if is_real_patch:
+                    msg = f"➕ NEW PATCH: {devn}/{gamen}/{name}"
+                    change_log.append(msg)
+                    recent_changes.append((datetime.datetime.now().isoformat(), gamen, msg))
+                    logger.info(msg)
+                else:
+                    logger.debug(f"Added new non-patch file (Install Note): {devn}/{gamen}/{name}")
 
     return db, new_token, change_log
 
@@ -298,7 +335,7 @@ def index_full(service, db):
         games = list_files(service, devf['id'], folders_only=True)
         for g in games:
             gname = g['name']
-            logger.debug(f"  Indexing game: {dname}/{gname} (ID: {g['id']})")
+            logger.debug(f" Indexing game: {dname}/{gname} (ID: {g['id']})")
             db['developers'][dname]['games'][gname] = {
                 'id': g['id'],
                 'files': get_file_tree(service, g['id'], depth=2)
@@ -319,10 +356,8 @@ def main():
                     logger.info(f"Loaded {len(db.get('developers',{}))} developers")
                 else:
                     logger.warning(f"{OUTPUT_JSON} is empty. Starting with empty db.")
-        except json.JSONDecodeError as e:
-            logger.error(f"Failed to load {OUTPUT_JSON}: {e}. Starting with empty db.")
         except Exception as e:
-            logger.error(f"Unexpected error loading {OUTPUT_JSON}: {e}. Starting with empty db.")
+            logger.error(f"Failed to load {OUTPUT_JSON}: {e}. Starting with empty db.")
 
     token = None
     if os.path.exists(CHANGE_TOKEN_FILE):
@@ -330,20 +365,35 @@ def main():
             token = f.read().strip()
 
     use_incremental = bool(token and db.get('developers'))
-
     change_log = []
 
     if use_incremental:
         db, new_token, change_log = index_incremental(service, db, token)
     else:
         db = index_full(service, db)
-        new_token = execute_with_retries(
-            service.changes().getStartPageToken(),
-            "get new start token"
-        )['startPageToken']
-        change_log = ["Full rebuild completed"]
+        new_token = execute_with_retries(service.changes().getStartPageToken(), "get new start token")['startPageToken']
+        change_log = ["🔄 FULL DATABASE RESCAN PERFORMED"]
 
-    # Save
+    # Clean recent_changes (only real patches, max 10 unique games)
+    metadata = db.setdefault('metadata', {})
+    all_recent = []
+    seen = set()
+    for item in metadata.get('recent_changes', []):
+        if isinstance(item, (list, tuple)) and len(item) == 3:
+            ts, game, msg = item
+            if game not in seen:
+                all_recent.append((ts, game, msg))
+                seen.add(game)
+    for item in change_log:
+        if isinstance(item, tuple) and len(item) == 3:
+            ts, game, msg = item
+            if game not in seen:
+                all_recent.append((ts, game, msg))
+                seen.add(game)
+    all_recent.sort(reverse=True)
+    metadata['recent_changes'] = all_recent[:10]
+    metadata['last_sync'] = datetime.datetime.now().isoformat()
+
     os.makedirs(os.path.dirname(OUTPUT_JSON), exist_ok=True)
     with open(OUTPUT_JSON, 'w', encoding='utf-8') as f:
         json.dump(db, f, ensure_ascii=False, indent=2)
@@ -353,10 +403,10 @@ def main():
             f.write(new_token)
 
     logger.info(f"Sync done. {len(change_log)} changes.")
-    if change_log:
-        logger.info("Recent changes:")
-        for line in change_log[-10:]:
-            logger.info(f"  {line}")
+    if metadata.get('recent_changes'):
+        logger.info("Recent changes (for frontend - last 10 unique games):")
+        for _, game, msg in metadata['recent_changes']:
+            logger.info(f"  {msg}")
 
 if __name__ == '__main__':
     main()

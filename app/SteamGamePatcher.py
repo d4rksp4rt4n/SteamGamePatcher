@@ -1160,15 +1160,24 @@ class App(tk.Tk):
                 messagebox.showerror("Error", f"Failed to clear cache: {e}")
 
     def group_recent_changes(self, changes):
+        """Support BOTH old string format and new tuple format from gdrive_db.py v1.9.4+"""
         grouped = defaultdict(list)
-        for change in changes:
-            parts = change.split(" - ", 1)
-            if len(parts) >= 2:
-                game = parts[0]
-                details = parts[1]
-                grouped[game].append(details)
+        for item in changes:
+            if isinstance(item, (list, tuple)) and len(item) == 3:
+                # New format from backend: (timestamp, game_name, full_message)
+                ts, game, msg = item
+                grouped[game].append(msg)
+            elif isinstance(item, str):
+                # Old format: "Game Name - message"
+                parts = item.split(" - ", 1)
+                if len(parts) >= 2:
+                    game = parts[0].strip()
+                    details = parts[1].strip()
+                    grouped[game].append(details)
+                else:
+                    grouped["Miscellaneous"].append(item)
             else:
-                grouped["Miscellaneous"].append(change)
+                grouped["Miscellaneous"].append(str(item))
         return dict(grouped)
 
     def process_ui_queue(self):
