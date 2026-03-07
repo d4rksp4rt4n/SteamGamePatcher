@@ -1,10 +1,25 @@
 {
     "data": {
-        "total_games": 1532,
-        "unique_developers": 788,
-        "generated_at": "2026-03-06 08:17:31 UTC"
+        "total_games": 1533,
+        "unique_developers": 789,
+        "generated_at": "2026-03-07 08:19:46 UTC"
     },
     "entries": [
+        {
+            "game": "Hustle Battle: Card Gamers",
+            "developer": "Mousou no Mayu",
+            "publisher": "Kagura Games",
+            "notes": "Chinese patch v1.00. English patch v1.00 a. Japanese patch v1.00",
+            "steam_url": "https://store.steampowered.com/app/4233940/",
+            "patch_link": "https://drive.google.com/drive/folders/1876ATZpoNdjfMnrVX8B37WUsRQFpQRNi",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4233940/9682d4866dd98f555dc5ea113842977122c3a803/header.jpg?t=1772859612",
+            "row_num": "542",
+            "appid": "4233940",
+            "match_status": "fuzzy",
+            "match_reason": "Fuzzy match: mousou no mayu|hustle battle: card gamers -> mousou no mayu|hustle battle∶ card gamers (score: 98, dev: mousou no mayu, cutoff: 0.8)",
+            "store_status": "available",
+            "manual_edit": false
+        },
         {
             "game": "Dungeon of Erotic Master Reboot",
             "developer": "rusimarudou",
@@ -12,12 +27,27 @@
             "notes": "Multilanguage patch v2026.03.06",
             "steam_url": "https://store.steampowered.com/app/3779390/",
             "patch_link": "https://drive.google.com/drive/folders/1U25Bmkg31QmS8I73Ip3vTXnlbiB41fZn",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/d13e7c58e7dd6c2ebba497dc880b351264362e25/header.jpg?t=1772173828",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3779390/d13e7c58e7dd6c2ebba497dc880b351264362e25/header.jpg?t=1772784409",
             "row_num": "283",
             "appid": "3779390",
             "match_status": "exact",
             "match_reason": "Exact match on full: rusimarudou|dungeon of erotic master reboot",
-            "store_status": "unreleased",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
+            "game": "Obscurite Magie 3: The Divine Stones",
+            "developer": "Syun-kan Flowlighter",
+            "publisher": "Kagura Games",
+            "notes": "Chinese patch v1.01. English patch v1.03. Japanese patch v1.01",
+            "steam_url": "https://store.steampowered.com/app/3531980/",
+            "patch_link": "https://drive.google.com/drive/folders/1QaphBadpMrt1vTqkJoNi1m8-wXCU2uQ-",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3531980/60bee3da5de908f2dad176ff8730e8e712937540/header.jpg?t=1757131206",
+            "row_num": "910",
+            "appid": "3531980",
+            "match_status": "fuzzy",
+            "match_reason": "Fuzzy match: syun-kan flowlighter|obscurite magie 3: the divine stones -> syun-kan flowlighter|obscurite magie 3 - the divine stones (score: 97, dev: syun-kan flowlighter, cutoff: 0.8)",
+            "store_status": "available",
             "manual_edit": false
         },
         {
@@ -3242,21 +3272,6 @@
             "appid": "3556730",
             "match_status": "exact",
             "match_reason": "Exact match: happypink|hypnosis knight-princess",
-            "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "Obscurite Magie 3: The Divine Stones",
-            "developer": "Syun-kan Flowlighter",
-            "publisher": "Kagura Games",
-            "notes": "Chinese patch v1.01. English patch v1.02. Japanese patch v1.00",
-            "steam_url": "https://store.steampowered.com/app/3531980/",
-            "patch_link": "https://drive.google.com/drive/folders/1QaphBadpMrt1vTqkJoNi1m8-wXCU2uQ-",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3531980/60bee3da5de908f2dad176ff8730e8e712937540/header.jpg?t=1757131206",
-            "row_num": "866",
-            "appid": "3531980",
-            "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: Obscurite Magie 3: The Divine Stones ≈ obscurite magie 3-the divine stones (score: 700)",
             "store_status": "available",
             "manual_edit": false
         },
