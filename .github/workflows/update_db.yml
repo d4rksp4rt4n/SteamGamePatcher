@@ -121,7 +121,7 @@ jobs:
           jq empty database/data/patches_data.json && echo "JSON is valid" || echo "JSON invalid"
 
       - name: Run GDrive DB Builder
-        run: python database/gdrive_db.py
+        run: python database/gdrive_db.py --debug
 
       - name: Run Unify Databases
         run: python database/unify_db.py
