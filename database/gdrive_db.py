@@ -1,13 +1,11 @@
 """
 Patch folder indexing script to sync Google Drive folders with local JSON, including file lists in each game folder.
-Version: 1.9.4
+Version: 1.9.5
 
-Changes in v1.9.4:
-- Fixed false updates on com3d2engplg_dlc079.zip and RE205644.rar (and similar files)
-- Removed parent_changed as trigger for existing files (Drive API noise)
-- Added extra debug for parent_changed so we can see it clearly
-- Non-patch files (docx etc.) still fully indexed for frontend
-- recent_changes only contains real patch updates (max 10 unique games)
+Changes in v1.9.5:
+- When you move an old patch to the "Old" subfolder, the old entry is now REMOVED from the main files list
+- This makes the frontend correctly detect the new version as an update
+- All previous fixes kept (non-patch files indexed, recent_changes clean, no fake updates)
 """
 
 import os
@@ -231,9 +229,31 @@ def index_incremental(service, db, change_token):
             game_files = db['developers'][dev]['games'][game]['files']
 
             name_changed = name != existing['name']
-            parent_changed = parent != db['developers'][dev]['games'][game]['id']   # ← still calculated for debug
+            parent_changed = parent != db['developers'][dev]['games'][game]['id']
 
-            # === STRICT CHANGE DETECTION (v1.9.4 fix) ===
+            # === SPECIAL "OLD" FOLDER HANDLING ===
+            moved_to_old = False
+            if parent_changed and parent:
+                try:
+                    parent_info = execute_with_retries(
+                        service.files().get(fileId=parent, fields='name'), 
+                        "get parent name"
+                    )
+                    if "Old" in parent_info.get('name', ''):
+                        moved_to_old = True
+                except:
+                    pass
+
+            if moved_to_old:
+                # Remove old file entry (this is what makes the frontend detect an update)
+                files = db['developers'][dev]['games'][game]['files']
+                files[:] = [f for f in files if f['id'] != fid]
+                change_log.append(f"🗑 OLD PATCH ARCHIVED: {dev}/{game}/{name}")
+                logger.debug(f"→ Removed old patch moved to Old folder: {name}")
+                dev_by_id, game_by_id, file_by_id = build_id_maps(db)
+                continue
+
+            # === STRICT CHANGE DETECTION (normal cases) ===
             time_newer = False
             time_delta_min = 0
             if mtime and existing.get('modifiedTime'):
@@ -257,7 +277,6 @@ def index_incremental(service, db, change_token):
                          f"time_delta={time_delta_min:.1f}min (> {TIME_TOLERANCE_MINUTES}? {time_newer}), "
                          f"size_delta={size_delta} bytes (>= {MIN_SIZE_DELTA_BYTES}? {size_changed})")
 
-            # v1.9.4 fix: ignore parent_changed for existing files
             if not (name_changed or (time_newer and size_changed)):
                 logger.debug(f"→ Skipped {name} (no real change)")
                 continue
@@ -281,7 +300,7 @@ def index_incremental(service, db, change_token):
                 logger.debug(f"Updated non-patch file (Install Note): {dev}/{game}/{name}")
 
         else:
-            # New file logic (unchanged)
+            # New file (unchanged)
             if not parents:
                 continue
             cur = parents[0]
@@ -374,7 +393,7 @@ def main():
         new_token = execute_with_retries(service.changes().getStartPageToken(), "get new start token")['startPageToken']
         change_log = ["🔄 FULL DATABASE RESCAN PERFORMED"]
 
-    # Clean recent_changes (only real patches, max 10 unique games)
+    # Clean recent_changes
     metadata = db.setdefault('metadata', {})
     all_recent = []
     seen = set()
