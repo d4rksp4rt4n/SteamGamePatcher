@@ -23,12 +23,9 @@ on:
       - 'database/unify_db.py'
       - 'database/minify_db.py'
 
-# ──────────────────────────────────────────────────────────────
-#  GLOBAL PERMISSIONS (needed for cache purge)
-# ──────────────────────────────────────────────────────────────
 permissions:
   contents: write
-  actions: write        # ← Required for gh api cache delete
+  actions: write
 
 jobs:
   build-and-update:
@@ -39,12 +36,11 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
-      # ────── FIXED CACHE (unique key per run) ──────
       - name: Restore cache
         id: cache-restore
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: database/data/
           key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py', 'database/data/change_token.txt') }}-${{ github.sha }}
@@ -69,7 +65,7 @@ jobs:
         run: mkdir -p database/data
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.13'
           cache: 'pip'
@@ -100,8 +96,8 @@ jobs:
               continue
             fi
             if curl -L -H "Authorization: token $TOKEN" \
-                 "$DOWNLOAD_URL" \
-                 -o database/data/patches_data.json; then
+              "$DOWNLOAD_URL" \
+              -o database/data/patches_data.json; then
               echo "Downloaded successfully on attempt $attempt"
               break
             fi
@@ -146,21 +142,16 @@ jobs:
 
       - name: Push changes
         if: steps.commit.outputs.changes == 'true'
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
+        run: git push
 
-      # ────── FIXED CACHE SAVE (now always succeeds) ──────
       - name: Save cache
         if: always()
         continue-on-error: true
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v5
         with:
           path: database/data/
           key: drive-state-v6-${{ hashFiles('database/gdrive_db.py', 'database/unify_db.py') }}-${{ github.run_id }}
 
-      # ────── PURGE OLD CACHES (now has correct permission) ──────
       - name: Purge old/stale caches after run
         if: always()
         continue-on-error: true
@@ -170,19 +161,10 @@ jobs:
           echo "Purging caches older than 7 days (or any non-current base key)..."
           gh api -H "Accept: application/vnd.github.v3+json" \
             /repos/${{ github.repository }}/actions/caches?per_page=100 | \
-            jq -r '
-              .actions_caches[] |
-              select(
-                (.created_at < "'$(date -d "7 days ago" -Iseconds)'") or
-                (.key | startswith("drive-state-v6-") | not)
-              ) | .id
-            ' | \
+            jq -r ' .actions_caches[] | select( (.created_at < "'$(date -d "7 days ago" -Iseconds)'") or (.key | startswith("drive-state-v6-") | not) ) | .id ' | \
             xargs -r -I {} gh api --method DELETE /repos/${{ github.repository }}/actions/caches/{}
           echo "Purge complete (only latest cache kept)"
 
-  # ──────────────────────────────────────────────────────────────
-  #  MANUAL PURGE JOB (when user checks the box)
-  # ──────────────────────────────────────────────────────────────
   purge-caches:
     runs-on: ubuntu-latest
     if: ${{ inputs.purge_old == true }}
@@ -196,12 +178,6 @@ jobs:
           echo "Manual purging caches older than 7 days..."
           gh api -H "Accept: application/vnd.github.v3+json" \
             /repos/${{ github.repository }}/actions/caches?per_page=100 | \
-            jq -r '
-              .actions_caches[] |
-              select(
-                (.created_at < "'$(date -d "7 days ago" -Iseconds)'") or
-                (.key | startswith("drive-state-v6-") | not)
-              ) | .id
-            ' | \
+            jq -r ' .actions_caches[] | select( (.created_at < "'$(date -d "7 days ago" -Iseconds)'") or (.key | startswith("drive-state-v6-") | not) ) | .id ' | \
             xargs -r -I {} gh api --method DELETE /repos/${{ github.repository }}/actions/caches/{}
           echo "Manual purge complete"
