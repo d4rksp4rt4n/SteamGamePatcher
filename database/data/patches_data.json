@@ -1,10 +1,40 @@
 {
     "data": {
-        "total_games": 1534,
-        "unique_developers": 790,
-        "generated_at": "2026-03-11 06:28:44 UTC"
+        "total_games": 1536,
+        "unique_developers": 791,
+        "generated_at": "2026-03-13 10:14:59 UTC"
     },
     "entries": [
+        {
+            "game": "Flash Knight Nymphelia",
+            "developer": "Midnight Pleasure",
+            "publisher": "Dieselmine",
+            "notes": "English and Chinese patch v2026.03.13",
+            "steam_url": "https://store.steampowered.com/app/4147930/",
+            "patch_link": "https://drive.google.com/drive/folders/12lxcE8GXRgMOsHaDe3sdBmVA_xojj8j5",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4147930/8ea15833ad0cb40d9a338c585dd70f9df8f717a1/header.jpg?t=1773394827",
+            "row_num": "368",
+            "appid": "4147930",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: midnight pleasure|flash knight nymphelia",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
+            "game": "Curse upon the Defeated Sow Knight!",
+            "developer": "天之彼 (Other side of the sky)",
+            "publisher": "BokiBoki Games",
+            "notes": "Multilanguage patch v2026.03.12",
+            "steam_url": "https://store.steampowered.com/app/4001600/",
+            "patch_link": "https://drive.google.com/drive/folders/1r00yjeEZzmFCaUW44zcuBwOQF5ovorJI",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4001600/c1332a8a0dd92be31cc876aa40b3fa11ef1d392f/header.jpg?t=1773307261",
+            "row_num": "194",
+            "appid": "4001600",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: 天之彼 (other side of the sky)|curse upon the defeated sow knight!",
+            "store_status": "available",
+            "manual_edit": false
+        },
         {
             "game": "SUKEBE ORB",
             "developer": "SUKEBE NINJIN",
