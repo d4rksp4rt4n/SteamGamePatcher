@@ -1,7 +1,8 @@
 """
 Patch folder indexing script to sync Google Drive folders with local JSON, including file lists in each game folder.
-Version: 1.9.5
-
+Version: 1.9.6
+Changes in v1.9.6:
+- Updated patch folder indexing script, enhancing the sync process for Google Drive folders with local JSON.
 Changes in v1.9.5:
 - When you move an old patch to the "Old" subfolder, the old entry is now REMOVED from the main files list
 - This makes the frontend correctly detect the new version as an update
@@ -212,10 +213,27 @@ def index_incremental(service, db, change_token):
             elif parent in dev_by_id:
                 devn = dev_by_id[parent]
                 logger.debug(f"Indexing new game: {devn} / {name} (ID: {fid})")
-                db['developers'][devn]['games'][name] = {'id': fid, 'files': get_file_tree(service, fid, depth=1)}
-                change_log.append(f"➕ NEW GAME: {devn} / {name}")
-            dev_by_id, game_by_id, file_by_id = build_id_maps(db)
-            continue
+                
+                game_files = get_file_tree(service, fid, depth=1)
+                db['developers'][devn]['games'][name] = {'id': fid, 'files': game_files}
+                
+                # === CRITICAL FIX: Mark patches in brand new games as NEW PATCH ===
+                for f in game_files:
+                    if f.get('type') in IMPORTANT_PATCH_EXTS:
+                        msg = f"➕ NEW PATCH: {devn}/{name}/{f['name']}"
+                        change_log.append(msg)
+                        recent_changes.append((datetime.datetime.now().isoformat(), name, msg))
+                        logger.info(msg)
+                    else:
+                        logger.debug(f"Added install note for new game: {devn}/{name}/{f['name']}")
+                
+                msg_game = f"➕ NEW GAME: {devn} / {name}"
+                change_log.append(msg_game)
+                recent_changes.append((datetime.datetime.now().isoformat(), name, msg_game))
+                logger.info(msg_game)
+                
+                dev_by_id, game_by_id, file_by_id = build_id_maps(db)
+                continue
 
         # === FILE ===
         ext = Path(name).suffix.lower()
