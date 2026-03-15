@@ -1,10 +1,25 @@
 {
     "data": {
-        "total_games": 1536,
-        "unique_developers": 791,
-        "generated_at": "2026-03-13 10:14:59 UTC"
+        "total_games": 1537,
+        "unique_developers": 792,
+        "generated_at": "2026-03-15 15:36:32 UTC"
     },
     "entries": [
+        {
+            "game": "Ririka von Lustveil",
+            "developer": "hexecho",
+            "publisher": "hexecho",
+            "notes": "Multilanguage patch v1.2.0 (2026.03.15)",
+            "steam_url": "https://store.steampowered.com/app/4262750/",
+            "patch_link": "https://drive.google.com/drive/folders/1NCnZ5GBJcWE6WF6zDdTlDc-t_LDeRUHK",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4262750/6e97c77835cd8050280d56baeb827d3b5251aa3a/header.jpg?t=1773587213",
+            "row_num": "1034",
+            "appid": "4262750",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: hexecho|ririka von lustveil",
+            "store_status": "available",
+            "manual_edit": false
+        },
         {
             "game": "Flash Knight Nymphelia",
             "developer": "Midnight Pleasure",
