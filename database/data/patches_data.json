@@ -1,10 +1,25 @@
 {
     "data": {
-        "total_games": 1537,
+        "total_games": 1538,
         "unique_developers": 792,
-        "generated_at": "2026-03-15 15:36:32 UTC"
+        "generated_at": "2026-03-18 02:28:28 UTC"
     },
     "entries": [
+        {
+            "game": "Valkyrie Destruction",
+            "developer": "Circle Poison",
+            "publisher": "Shiravune",
+            "notes": "English, Simplified and Traditional Chinese patches v2026.03.18",
+            "steam_url": "https://store.steampowered.com/app/3260080/",
+            "patch_link": "https://drive.google.com/drive/folders/1uozrakYU4awhzhac8WAA6GGzt2BZurtI",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3260080/header.jpg?t=1773795645",
+            "row_num": "1400",
+            "appid": "3260080",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: circle poison|valkyrie destruction",
+            "store_status": "available",
+            "manual_edit": false
+        },
         {
             "game": "Ririka von Lustveil",
             "developer": "hexecho",
