@@ -2,22 +2,22 @@
     "data": {
         "total_games": 1539,
         "unique_developers": 792,
-        "generated_at": "2026-03-18 16:00:14 UTC"
+        "generated_at": "2026-03-21 05:34:18 UTC"
     },
     "entries": [
         {
             "game": "Legend of the Master Baiter Origins: Gills Gone Wild",
             "developer": "BigWednesday",
             "publisher": "Kagura Games",
-            "notes": "Chinese patch v1.0x. English patch v1.0x. Japanese patch v1.0x",
+            "notes": "Chinese patch v1.01. English patch v1.01. Japanese patch v1.00",
             "steam_url": "https://store.steampowered.com/app/4353580/",
             "patch_link": "https://drive.google.com/drive/folders/1euOwEYyPaxmNPSnffbBGmL3gAGElu9hk",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4353580/5852dbfa6e46205169d8790d05c190bf506410f0/header.jpg?t=1773594081",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4353580/5852dbfa6e46205169d8790d05c190bf506410f0/header.jpg?t=1774068621",
             "row_num": "657",
             "appid": "4353580",
             "match_status": "fuzzy",
             "match_reason": "Fuzzy match: bigwednesday|legend of the master baiter origins: gills gone wild -> bigwednesday|legend of the master baiter origins∶ gills gone wild (score: 98, dev: bigwednesday, cutoff: 0.8)",
-            "store_status": "unreleased",
+            "store_status": "available",
             "manual_edit": false
         },
         {
