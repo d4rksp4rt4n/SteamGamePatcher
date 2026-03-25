@@ -2,9 +2,24 @@
     "data": {
         "total_games": 1541,
         "unique_developers": 793,
-        "generated_at": "2026-03-23 19:33:41 UTC"
+        "generated_at": "2026-03-25 06:48:16 UTC"
     },
     "entries": [
+        {
+            "game": "A Nerd who has sex with girls in \"Another world\" has become a HERO",
+            "developer": "Nikuyaki Inn",
+            "publisher": "Nikuyaki Inn",
+            "notes": "Uncensored Patch V3 (2026.03.25)",
+            "steam_url": "https://store.steampowered.com/app/1581250/",
+            "patch_link": "https://drive.google.com/drive/folders/1Xj7WI3m3l39_hc1cgG9yr4s3JEe7n4iO",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1581250/header.jpg?t=1769680188",
+            "row_num": "21",
+            "appid": "1581250",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: nikuyaki inn|a nerd who has sex with girls in \"another world\" has become a hero",
+            "store_status": "available",
+            "manual_edit": false
+        },
         {
             "game": "Mizuki: Demon-Slaying Housewife",
             "developer": "tarobaumu",
@@ -12,12 +27,12 @@
             "notes": "English, Japanese, S. Chinese patch v2026.03.24",
             "steam_url": "https://store.steampowered.com/app/3941770/",
             "patch_link": "https://drive.google.com/drive/folders/1PXF8hVFtsE_sFl_U_kgbssPsVQBA8qOQ",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3941770/9cbec827002719156fd832eaf0aad3397f733f09/header.jpg?t=1774255613",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3941770/9cbec827002719156fd832eaf0aad3397f733f09/header.jpg?t=1774321212",
             "row_num": "799",
             "appid": "3941770",
             "match_status": "fuzzy",
             "match_reason": "Fuzzy match: tarobaumu|mizuki: demon-slaying housewife -> tarobaumu|mizuki∶ demon-slaying housewife (score: 98, dev: tarobaumu, cutoff: 0.8)",
-            "store_status": "unreleased",
+            "store_status": "available",
             "manual_edit": false
         },
         {
@@ -3857,21 +3872,6 @@
             "appid": "2162950",
             "match_status": "exact",
             "match_reason": "Exact match: rosetta|a maiden astrologer divines the future",
-            "store_status": "available",
-            "manual_edit": false
-        },
-        {
-            "game": "A Nerd who has sex with girls in \"Another world\" has become a HERO",
-            "developer": "Nikuyaki Inn",
-            "publisher": "Nikuyaki Inn",
-            "notes": "Mosaics Fix Patch v2 (2021.06.23)",
-            "steam_url": "https://store.steampowered.com/app/1581250/",
-            "patch_link": "https://drive.google.com/drive/folders/1Xj7WI3m3l39_hc1cgG9yr4s3JEe7n4iO",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1581250/header.jpg?t=1618818267",
-            "row_num": "18",
-            "appid": "1581250",
-            "match_status": "exact",
-            "match_reason": "Exact match: nikuyaki inn|a nerd who has sex with girls in \"another world\" has become a hero",
             "store_status": "available",
             "manual_edit": false
         },
