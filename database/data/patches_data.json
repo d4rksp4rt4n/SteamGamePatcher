@@ -1,10 +1,40 @@
 {
     "data": {
-        "total_games": 1541,
-        "unique_developers": 793,
-        "generated_at": "2026-03-25 06:48:16 UTC"
+        "total_games": 1543,
+        "unique_developers": 794,
+        "generated_at": "2026-03-26 18:44:07 UTC"
     },
     "entries": [
+        {
+            "game": "Karigurashi Ren'ai: Living on Borrowed Love",
+            "developer": "ASa Project",
+            "publisher": "Kagami Games",
+            "notes": "Multilanguage Patch v1.0 (2026.03.26)",
+            "steam_url": "https://store.steampowered.com/app/4204940/",
+            "patch_link": "https://drive.google.com/drive/folders/1FCIFlsKEHCOHfTmNq76CwTkAYc8e8M9u",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4204940/108bd7496cb083187f71b180ad06a074de350e6b/header.jpg?t=1774526411",
+            "row_num": "600",
+            "appid": "4204940",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: asa project|karigurashi ren'ai: living on borrowed love",
+            "store_status": "available",
+            "manual_edit": false
+        },
+        {
+            "game": "Restore",
+            "developer": "Momimomi Studio",
+            "publisher": "Saikey Studios",
+            "notes": "Multilanguage Reconstruction Patch v1.01 (2026.03.27)",
+            "steam_url": "https://store.steampowered.com/app/3670820/",
+            "patch_link": "https://drive.google.com/drive/folders/1KhgFeq2eIqX8_w4xZYbsBGK3bRqhXfbr",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3670820/83e45cba768510bd678f876c4b79f0e7d9fb2246/header.jpg?t=1773957919",
+            "row_num": "1031",
+            "appid": "3670820",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: momimomi studio|restore",
+            "store_status": "unreleased",
+            "manual_edit": false
+        },
         {
             "game": "A Nerd who has sex with girls in \"Another world\" has become a HERO",
             "developer": "Nikuyaki Inn",
