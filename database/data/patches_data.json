@@ -2,7 +2,22 @@
     "data": {
         "total_games": 1545,
         "unique_developers": 796,
-        "generated_at": "2026-04-06 21:58:44 UTC"
+        "generated_at": "2026-04-06 23:25:15 UTC"
+    },
+    "last_folders_metadata": {
+        "recent_changes": [
+            [
+                "2026-04-06T11:41:53.031709",
+                "Stay! Stay! Democratic People's Republic of Korea!",
+                "➕ NEW FILE: DEVGRU-P/Stay! Stay! Democratic People's Republic of Korea!/Install Note.rtf"
+            ],
+            [
+                "2026-04-06T11:41:52.747346",
+                "Panzermadels - Tank Dating Simulator",
+                "➕ NEW PATCH: DEVGRU-P/Panzermadels - Tank Dating Simulator/Panzermadels - R-18 Patch.rar"
+            ]
+        ],
+        "last_sync": "2026-04-06T23:25:04.348226"
     },
     "entries": [
         {
@@ -33273,7 +33288,7 @@
             "row_num": "922",
             "appid": "3801270",
             "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 98, dev: アイオライト (iolite), cutoff: 0.8)",
+            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 87, dev: iolite, cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false,
             "contents": {
@@ -43762,7 +43777,7 @@
             "row_num": "1189",
             "appid": "3421410",
             "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: マッスルランスネーク (muscle run snake)|spiritbound: the goddess's quest -> マッスルランスネーク (muscle run snake)|spiritbound∶ the goddess's quest (score: 98, dev: マッスルランスネーク (muscle run snake), cutoff: 0.8)",
+            "match_reason": "Fuzzy match: マッスルランスネーク (muscle run snake)|spiritbound: the goddess's quest -> マッスルランスネーク (muscle run snake)|spiritbound∶ the goddess's quest (score: 80, dev: マッスルランスネーク, cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false,
             "contents": {
