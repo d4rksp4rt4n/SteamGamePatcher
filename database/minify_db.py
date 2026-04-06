@@ -3,54 +3,51 @@ import os
 from pathlib import Path
 
 # --- Configuration ---
-# Assuming the JSON file is located at 'database/data/patches_database.json'
-# relative to where you run this script.
-DATABASE_PATH = Path('database') / 'data' / 'patches_database.json'
+INPUT_PATH = Path('database') / 'data' / 'patches_data.json'
+OUTPUT_PATH = Path('database') / 'data' / 'patches_database.json'
 # ---------------------
 
-def minify_json_database(file_path: Path):
+def minify_json_database(input_path: Path, output_path: Path):
     """
-    Loads a JSON file, strips all unnecessary whitespace, and saves it.
+    Loads patches_data.json, minifies it, and saves it as patches_database.json
     """
-    if not file_path.exists():
-        print(f"Error: Database file not found at '{file_path}'")
+    if not input_path.exists():
+        print(f"❌ Error: Input file not found at '{input_path}'")
+        print("   Make sure the fetch step completed successfully.")
         return
 
-    print(f"Attempting to read file: {file_path}")
-    
+    print(f"📥 Reading: {input_path}")
+
     # 1. Load the JSON data
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
+        with open(input_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
         
-        original_size = os.path.getsize(file_path)
-        print(f"Original size: {original_size} bytes")
-
-    except json.JSONDecodeError:
-        print("Error: Failed to parse JSON. Check file format.")
+        original_size = os.path.getsize(input_path)
+        print(f"   Original size: {original_size:,} bytes")
+    except json.JSONDecodeError as e:
+        print(f"❌ Error: Failed to parse JSON: {e}")
         return
     except Exception as e:
-        print(f"An unexpected error occurred during read: {e}")
+        print(f"❌ Unexpected error reading file: {e}")
         return
 
-    # 2. Write the JSON data back, minified
-    # The key to minification is using separators=(',', ':')
+    # 2. Minify and save to patches_database.json
     try:
-        with open(file_path, 'w', encoding='utf-8') as f:
-            json.dump(data, f, separators=(',', ':'))
-
-        minified_size = os.path.getsize(file_path)
+        with open(output_path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, separators=(',', ':'), ensure_ascii=False)
+        
+        minified_size = os.path.getsize(output_path)
         reduction = original_size - minified_size
         percentage = (reduction / original_size) * 100 if original_size else 0
         
-        print("\n--- Minification Successful ---")
-        print(f"Minified size: {minified_size} bytes")
-        print(f"Size Reduction: {reduction} bytes ({percentage:.2f}%)")
-        print(f"File overwritten at: {file_path}")
+        print("\n✅ Minification Successful")
+        print(f"   Minified size : {minified_size:,} bytes")
+        print(f"   Size reduction: {reduction:,} bytes ({percentage:.2f}%)")
+        print(f"   Saved as      : {output_path}")
         
     except Exception as e:
-        print(f"An unexpected error occurred during write: {e}")
-
+        print(f"❌ Error writing minified file: {e}")
 
 if __name__ == "__main__":
-    minify_json_database(DATABASE_PATH)
+    minify_json_database(INPUT_PATH, OUTPUT_PATH)
