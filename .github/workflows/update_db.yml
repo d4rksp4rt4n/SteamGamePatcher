@@ -1,4 +1,5 @@
 name: Update Patches Database
+
 on:
   workflow_dispatch:
     inputs:
@@ -14,15 +15,18 @@ on:
     paths:
       - '.github/workflows/update-db.yml'
       - 'database/minify_db.py'
+
 permissions:
   contents: write
   actions: write
+
 jobs:
   build-and-update:
     runs-on: ubuntu-latest
     concurrency:
       group: update-patches-db-${{ github.ref }}
       cancel-in-progress: true
+
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -51,8 +55,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.13'
-          cache: 'pip'
-          cache-dependency-path: 'requirements.txt'
+          # Removed pip cache - no longer needed (no pip install step)
 
       - name: Fetch patches_data.json from PRIVATE nukige-site
         env:
