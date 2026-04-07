@@ -39,6 +39,54 @@ except ImportError:
 APP_VERSION = '1.36-beta'
 CONFIG_FILENAME = 'patcher_config.json'  # Per-game config file
 
+def flatten_game_contents(contents):
+    """Flatten the new nested 'contents' into the old 'files' format.
+    Supports BOTH dict format (old) and list format (new backend 2026)."""
+    flat_files = []
+    
+    def recurse(items, current_path=""):
+        if isinstance(items, dict):
+            # Old format: {"filename.ext": {"type": "file", "id": "..."}, ...}
+            for item_name, item_data in items.items():
+                if not isinstance(item_data, dict):
+                    continue
+                if item_data.get("type") == "file":
+                    display_path = f"{current_path}/{item_name}" if current_path else item_name
+                    flat_files.append({
+                        "name": item_name,
+                        "path": display_path,
+                        "id": item_data.get("id"),
+                        "mimeType": item_data.get("mimeType"),
+                        "size": item_data.get("size", "Unknown")
+                    })
+                elif item_data.get("type") == "folder" and "children" in item_data:
+                    new_path = f"{current_path}/{item_name}" if current_path else item_name
+                    recurse(item_data.get("children", {}), new_path)
+
+        elif isinstance(items, list):
+            # New format (current live DB): list of objects
+            for item_data in items:
+                if not isinstance(item_data, dict):
+                    continue
+                item_name = item_data.get("name") or item_data.get("filename")
+                if not item_name:
+                    continue
+                if item_data.get("type") == "file":
+                    display_path = f"{current_path}/{item_name}" if current_path else item_name
+                    flat_files.append({
+                        "name": item_name,
+                        "path": display_path,
+                        "id": item_data.get("id"),
+                        "mimeType": item_data.get("mimeType"),
+                        "size": item_data.get("size", "Unknown")
+                    })
+                elif item_data.get("type") == "folder":
+                    new_path = f"{current_path}/{item_name}" if current_path else item_name
+                    recurse(item_data.get("children", []), new_path)   # children is also list in new format
+
+    recurse(contents)
+    return flat_files
+
 def resource_path(relative_path):
     """Get absolute path to resource, works for dev and for PyInstaller onefile"""
     try:
@@ -1010,14 +1058,33 @@ class App(tk.Tk):
             sys.exit(1)
         with open(DB_PATH, 'r', encoding='utf-8') as f:
             self.folder_db = json.load(f)
-    
-        metadata = self.folder_db.get('metadata', {})
-        self.version = metadata.get('version', 'Unknown')
-        recent_changes = metadata.get('recent_changes', [])
-    
-        db_status = "Updated" if updated else "Up to date"
-        self.db_status = f"Database Version: {self.version} | Status: {db_status}"
-    
+
+        # === NEW REFACTORED DATABASE SUPPORT ===
+        if "entries" in self.folder_db:
+            # Pre-process every entry to add "files" list (backward compatible)
+            for entry in self.folder_db.get("entries", []):
+                contents = entry.get("contents")
+                if isinstance(contents, (dict, list)):
+                    entry["files"] = flatten_game_contents(contents)
+                else:
+                    entry["files"] = []
+
+            metadata = self.folder_db.get("data", {})
+            self.version = metadata.get("generated_at", "Unknown")
+
+            # ←←← NEW: Read recent_changes from the correct location
+            recent_changes = self.folder_db.get("last_folders_metadata", {}) \
+                              .get("recent_changes", [])
+
+            db_status = "Updated" if updated else "Up to date"
+            self.db_status = f"Database Version: {self.version} | Status: {db_status}"
+        else:
+            # Old structure fallback (still works)
+            metadata = self.folder_db.get('metadata', {})
+            self.version = metadata.get('version', 'Unknown')
+            recent_changes = metadata.get('recent_changes', [])
+            self.db_status = f"Database Version: {self.version} | Status: {db_status}"
+
         self.grouped_changes = self.group_recent_changes(recent_changes)
     
         # Cache for downloaded archives
@@ -1033,22 +1100,42 @@ class App(tk.Tk):
         self.installed = get_installed_games(steam)
         self.steam_path = steam
         # Build matches
+                # === BUILD MATCHES - SUPPORT NEW FLAT "entries" STRUCTURE ===
         self.matches = []
         self.by_id = {}
-        for dev_name, dev_data in self.folder_db.get('developers', {}).items():
-            for game_name, game_data in dev_data.get("games", {}).items():
-                appid_raw = game_data.get("appid")
+
+        entries = self.folder_db.get('entries', []) if "entries" in self.folder_db else None
+
+        if entries:  # NEW format
+            for entry in entries:
+                appid_raw = entry.get("appid")
                 if appid_raw:
                     appid = str(appid_raw).strip()
                     if appid in self.installed:
                         match_info = {
-                            "dev_name": dev_name,
-                            "game_name": game_name,
-                            "data": game_data
+                            "dev_name": entry.get("developer", "Unknown"),
+                            "game_name": entry.get("game", "Unknown"),
+                            "data": entry
                         }
                         self.matches.append(match_info)
                         self.by_id[appid] = match_info
-                        logging.info(f"MATCH: {appid} -> {game_name} by {dev_name}")
+                        logging.info(f"MATCH: {appid} -> {match_info['game_name']} by {match_info['dev_name']}")
+        else:  # old nested format fallback
+            for dev_name, dev_data in self.folder_db.get('developers', {}).items():
+                for game_name, game_data in dev_data.get("games", {}).items():
+                    appid_raw = game_data.get("appid")
+                    if appid_raw:
+                        appid = str(appid_raw).strip()
+                        if appid in self.installed:
+                            match_info = {
+                                "dev_name": dev_name,
+                                "game_name": game_name,
+                                "data": game_data
+                            }
+                            self.matches.append(match_info)
+                            self.by_id[appid] = match_info
+                            logging.info(f"MATCH: {appid} -> {game_name} by {dev_name}")
+
         self.matches = sorted(self.matches, key=lambda x: x['game_name'].lower())
         logging.info(f"FOUND {len(self.matches)} matched games with patches")
 
@@ -1787,13 +1874,18 @@ class App(tk.Tk):
             return
        
         game_data = match["data"]
-        game_id = game_data.get("id") # This is the Google Drive folder ID for the game
-       
-        if game_id:
-            url = f"https://drive.google.com/drive/folders/{game_id}"
-            webbrowser.open(url)
+        patch_link = game_data.get("patch_link")
+        
+        if patch_link:
+            webbrowser.open(patch_link)
         else:
-            messagebox.showwarning("No Link", "Google Drive folder ID not found for this game.")
+            # old fallback
+            game_id = game_data.get("id")
+            if game_id:
+                url = f"https://drive.google.com/drive/folders/{game_id}"
+                webbrowser.open(url)
+            else:
+                messagebox.showwarning("No Link", "Google Drive folder link not found for this game.")
 
     def launch_game(self):
         if self.current_appid:

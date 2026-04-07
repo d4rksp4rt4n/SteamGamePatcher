@@ -162,6 +162,53 @@ def font(size=12, weight="normal"):
 # ═══════════════════════════════════════════════════════════════
 # Utility functions
 # ═══════════════════════════════════════════════════════════════
+def flatten_game_contents(contents):
+    """Flatten 'contents' — supports BOTH dict (old) and list (new 2026) formats."""
+    flat_files = []
+
+    def recurse(items, current_path=""):
+        if isinstance(items, dict):
+            # Old/current dict format
+            for name, data in items.items():
+                if not isinstance(data, dict):
+                    continue
+                if data.get("type") == "file":
+                    display = f"{current_path}/{name}" if current_path else name
+                    flat_files.append({
+                        "name": name,
+                        "path": display,
+                        "id": data.get("id"),
+                        "mimeType": data.get("mimeType"),
+                        "size": data.get("size", "Unknown")
+                    })
+                elif data.get("type") == "folder" and "children" in data:
+                    new_path = f"{current_path}/{name}" if current_path else name
+                    recurse(data["children"], new_path)
+
+        elif isinstance(items, list):
+            # New list format used in the live database
+            for item in items:
+                if not isinstance(item, dict):
+                    continue
+                name = item.get("name") or item.get("filename")
+                if not name:
+                    continue
+                if item.get("type") == "file":
+                    display = f"{current_path}/{name}" if current_path else name
+                    flat_files.append({
+                        "name": name,
+                        "path": display,
+                        "id": item.get("id"),
+                        "mimeType": item.get("mimeType"),
+                        "size": item.get("size", "Unknown")
+                    })
+                elif item.get("type") == "folder":
+                    new_path = f"{current_path}/{name}" if current_path else name
+                    recurse(item.get("children", []), new_path)
+
+    recurse(contents)
+    return flat_files
+    
 def resource_path(relative_path):
     """Get absolute path to resource (dev + PyInstaller compatible)."""
     try:
@@ -596,7 +643,6 @@ class InstructionsDialog(ctk.CTkToplevel):
         self.geometry("1050x820")
         self.configure(fg_color=C.BG_DARKEST)
 
-        # Safety flags
         self._closed = False
         self._poll_after_id = None
 
@@ -635,10 +681,7 @@ class InstructionsDialog(ctk.CTkToplevel):
             insertbackground=C.TEXT, selectbackground=C.BG_CARD,
             highlightthickness=0, cursor="arrow",
         )
-        scroll_style = ttk.Style()
-        scroll_style.configure("Dark.Vertical.TScrollbar",
-            background=C.BG_CARD, troughcolor=C.BG_DARKEST,
-            arrowcolor=C.TEXT_DIM, borderwidth=0)
+
         scrollbar = ttk.Scrollbar(content_frame, orient="vertical",
                                   command=self.text_widget.yview, style="Dark.Vertical.TScrollbar")
         self.text_widget.configure(yscrollcommand=scrollbar.set)
@@ -646,27 +689,23 @@ class InstructionsDialog(ctk.CTkToplevel):
         self.text_widget.pack(side="left", fill="both", expand=True)
 
         # Tags
-        self.text_widget.tag_configure("heading1", font=font(20, "bold"),
-                                       spacing1=18, spacing3=12, foreground=C.ACCENT)
-        self.text_widget.tag_configure("heading2", font=font(16, "bold"),
-                                       spacing1=14, spacing3=8, foreground=C.ACCENT)
-        self.text_widget.tag_configure("heading", font=font(16, "bold"),
-                                       spacing1=12, spacing3=8, foreground=C.ACCENT)
+        self.text_widget.tag_configure("heading1", font=font(20, "bold"), spacing1=18, spacing3=12, foreground=C.ACCENT)
+        self.text_widget.tag_configure("heading2", font=font(16, "bold"), spacing1=14, spacing3=8, foreground=C.ACCENT)
+        self.text_widget.tag_configure("heading", font=font(16, "bold"), spacing1=12, spacing3=8, foreground=C.ACCENT)
         self.text_widget.tag_configure("bold", font=font(12, "bold"))
         self.text_widget.tag_configure("italic", font=(_FONT_FAMILY, 12, "italic"))
         self.text_widget.tag_configure("bold_italic", font=(_FONT_FAMILY, 12, "bold italic"))
         self.text_widget.tag_configure("link", foreground=C.LINK, underline=True)
         self.text_widget.tag_configure("list_item", lmargin1=20, lmargin2=35)
-        self.text_widget.tag_bind("link", "<Enter>",
-                                  lambda e: self.text_widget.config(cursor="hand2"))
-        self.text_widget.tag_bind("link", "<Leave>",
-                                  lambda e: self.text_widget.config(cursor="arrow"))
 
-        # Scroll binds
-        self._bind_scroll(self.text_widget)
-        content_frame.bind("<MouseWheel>", self._on_scroll, add="+")
-        content_frame.bind("<Button-4>", self._on_scroll, add="+")
-        content_frame.bind("<Button-5>", self._on_scroll, add="+")
+        self.text_widget.tag_bind("link", "<Enter>", lambda e: self.text_widget.config(cursor="hand2"))
+        self.text_widget.tag_bind("link", "<Leave>", lambda e: self.text_widget.config(cursor="arrow"))
+
+        # Safe scroll binding
+        self._bind_scroll_safe(self.text_widget)
+        content_frame.bind("<MouseWheel>", self._on_scroll_safe, add="+")
+        content_frame.bind("<Button-4>", self._on_scroll_safe, add="+")
+        content_frame.bind("<Button-5>", self._on_scroll_safe, add="+")
 
         # Close button
         btn_bar = ctk.CTkFrame(self, fg_color=C.BG_DARK, corner_radius=0, height=60)
@@ -683,6 +722,28 @@ class InstructionsDialog(ctk.CTkToplevel):
         self._load_thread = threading.Thread(target=self._load_async, args=(file_data,), daemon=True)
         self._load_thread.start()
         self._start_poll(file_data)
+
+    def _bind_scroll_safe(self, widget):
+        """Bind scroll safely to any widget (text, table, image)."""
+        widget.bind("<MouseWheel>", self._on_scroll_safe, add="+")
+        widget.bind("<Button-4>", self._on_scroll_safe, add="+")
+        widget.bind("<Button-5>", self._on_scroll_safe, add="+")
+
+    def _on_scroll_safe(self, event):
+        """Safe scroll handler — no recursion possible."""
+        if self._closed or not hasattr(self, 'text_widget') or not self.text_widget.winfo_exists():
+            return "break"
+        try:
+            self.text_widget.focus_set()
+            if platform.system() in ("Windows", "Darwin"):
+                self.text_widget.event_generate("<MouseWheel>", delta=event.delta)
+            elif event.num == 4:
+                self.text_widget.yview_scroll(-3, "units")
+            elif event.num == 5:
+                self.text_widget.yview_scroll(3, "units")
+        except Exception:
+            pass
+        return "break"
 
     def _start_poll(self, file_data):
         if self._closed:
@@ -762,27 +823,6 @@ class InstructionsDialog(ctk.CTkToplevel):
                 self.temp_file.unlink(missing_ok=True)
             except Exception:
                 pass
-
-    def _bind_scroll(self, widget):
-        widget.bind("<MouseWheel>", self._on_scroll, add="+")
-        widget.bind("<Button-4>", self._on_scroll, add="+")
-        widget.bind("<Button-5>", self._on_scroll, add="+")
-
-    def _on_scroll(self, event):
-        """Super-safe scroll handler — survives widget destruction."""
-        if self._closed or not self.text_widget or not self.text_widget.winfo_exists():
-            return "break"
-        try:
-            self.text_widget.focus_set()
-            if platform.system() in ("Windows", "Darwin"):
-                self.text_widget.event_generate("<MouseWheel>", delta=event.delta)
-            elif event.num == 4:
-                self.text_widget.yview_scroll(-3, "units")
-            elif event.num == 5:
-                self.text_widget.yview_scroll(3, "units")
-        except Exception:
-            pass
-        return "break"
 
     def _open_link(self, url):
         webbrowser.open(url)
@@ -1275,39 +1315,77 @@ class App(ctk.CTk):
         with open(DB_PATH, "r", encoding="utf-8") as f:
             self.folder_db = json.load(f)
 
-        metadata = self.folder_db.get("metadata", {})
-        self.version = metadata.get("version", "Unknown")
-        recent_changes = metadata.get("recent_changes", [])
+        # === NEW REFACTORED DATABASE SUPPORT (2026 format) ===
+        if "entries" in self.folder_db:
+            # Flatten contents for every game
+            for entry in self.folder_db.get("entries", []):
+                contents = entry.get("contents")
+                if isinstance(contents, (dict, list)):
+                    entry["files"] = flatten_game_contents(contents)
+                else:
+                    entry["files"] = []
+
+            metadata = self.folder_db.get("data", {})
+            self.version = metadata.get("generated_at", "Unknown")
+
+            # Recent changes from the new location
+            recent_changes = self.folder_db.get("last_folders_metadata", {}) \
+                              .get("recent_changes", [])
+        else:
+            # Old fallback (still works)
+            metadata = self.folder_db.get("metadata", {})
+            self.version = metadata.get("version", "Unknown")
+            recent_changes = metadata.get("recent_changes", [])
+
         db_status = "Updated" if updated else "Up to date"
         self.db_status_text = f"Database v{self.version}  |  {db_status}  |  Steam Game Patcher {APP_VERSION}"
         self.grouped_changes = self._group_changes(recent_changes)
 
-        app_dir = Path(sys.executable).parent if getattr(sys, "frozen", False) else Path(__file__).parent
-        self.cache_dir = app_dir / "cache"
-        self.cache_dir.mkdir(exist_ok=True)
+        # === BUILD MATCHES (new flat "entries" structure) ===
+                # === BUILD MATCHES + DEEP DEBUG (fixed order) ===
+        self.matches = []
+        self.by_id = {}
 
+        # First make sure installed games are loaded
         steam = get_steam_path()
         if not steam:
-            messagebox.showerror("Steam Not Found",
-                "Could not locate your Steam installation.\n"
-                "Make sure Steam is installed on this computer.")
+            messagebox.showerror("Error", "Steam not found")
             sys.exit(1)
         self.steam_path = steam
         self.installed = get_installed_games(steam)
 
-        self.matches = []
-        self.by_id = {}
-        for dev_name, dev_data in self.folder_db.get("developers", {}).items():
-            for game_name, game_data in dev_data.get("games", {}).items():
-                appid_raw = game_data.get("appid")
+        entries = self.folder_db.get("entries", [])
+        logging.info(f"Database contains {len(entries)} entries (should be ~1545)")
+
+        installed_appids = set(self.installed.keys())
+        logging.info(f"Your installed appids count: {len(installed_appids)}")
+        logging.info(f"Sample installed appids: {list(installed_appids)[:30]}")   # first 30 only
+
+        if entries:
+            match_count = 0
+            for entry in entries:
+                appid_raw = entry.get("appid")
                 if appid_raw:
                     appid = str(appid_raw).strip()
-                    if appid in self.installed:
-                        info = {"dev_name": dev_name, "game_name": game_name, "data": game_data}
-                        self.matches.append(info)
-                        self.by_id[appid] = info
+                    game_name = entry.get("game", "Unknown")
 
-        logging.info(f"Matched {len(self.matches)} games with available patches")
+                    if appid in installed_appids:
+                        match_info = {
+                            "dev_name": entry.get("developer", "Unknown"),
+                            "game_name": game_name,
+                            "data": entry
+                        }
+                        self.matches.append(match_info)
+                        self.by_id[appid] = match_info
+                        logging.info(f"✅ MATCH FOUND: {appid} -> {game_name}")
+                        match_count += 1
+
+            logging.info(f"Total matches found: {match_count}")
+        else:
+            logging.warning("No 'entries' key in database!")
+
+        self.matches = sorted(self.matches, key=lambda x: x['game_name'].lower())
+        logging.info(f"FINAL MATCH COUNT: {len(self.matches)} games with patches")
 
         self.last_applied = self._load_configs()
         self._migrate_old_config()
@@ -2271,12 +2349,22 @@ class App(ctk.CTk):
         if not self.current_appid:
             return
         match = self.by_id.get(self.current_appid)
-        if match:
-            gid = match["data"].get("id")
-            if gid:
-                webbrowser.open(f"https://drive.google.com/drive/folders/{gid}")
-            else:
-                messagebox.showwarning("No Link", "Google Drive folder ID not found.")
+        if not match:
+            return
+
+        game_data = match["data"]
+        # New field (preferred)
+        patch_link = game_data.get("patch_link")
+        if patch_link:
+            webbrowser.open(patch_link)
+            return
+
+        # Old fallback
+        gid = game_data.get("id")
+        if gid:
+            webbrowser.open(f"https://drive.google.com/drive/folders/{gid}")
+        else:
+            messagebox.showwarning("No Link", "Google Drive folder link not found.")
 
     def launch_game(self):
         if self.current_appid:
