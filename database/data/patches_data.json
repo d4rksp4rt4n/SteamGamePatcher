@@ -2,10 +2,15 @@
     "data": {
         "total_games": 1551,
         "unique_developers": 800,
-        "generated_at": "2026-04-11 06:01:31 UTC"
+        "generated_at": "2026-04-12 06:54:16 UTC"
     },
     "last_folders_metadata": {
         "recent_changes": [
+            [
+                "2026-04-12T06:54:04.095467",
+                "Making*Lovers: First Blush",
+                "➕ NEW FILE: Smee/Making*Lovers: First Blush/Install Note - English.docx"
+            ],
             [
                 "2026-04-11T06:01:19.265817",
                 "Agent Sirius",
@@ -37,7 +42,7 @@
                 "➕ NEW PATCH: DEVGRU-P/Panzermadels - Tank Dating Simulator/Panzermadels - R-18 Patch.rar"
             ]
         ],
-        "last_sync": "2026-04-11T06:01:19.266273"
+        "last_sync": "2026-04-12T06:54:04.095824"
     },
     "entries": [
         {
@@ -27678,7 +27683,68 @@
             "match_reason": "Exact match on full: smee|making*lovers: first blush",
             "store_status": "available",
             "manual_edit": false,
-            "contents": []
+            "contents": [
+                {
+                    "id": "18Uzd7xeymF0amgxx8mBRYqDVaBgiww34",
+                    "name": "Install Note - Chinese.docx",
+                    "size": "697.8 KB",
+                    "raw_size": 714559,
+                    "type": ".docx",
+                    "path": "Install Note - Chinese.docx",
+                    "modifiedTime": "2026-04-11T06:06:20.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "14RZ419Di0feEU_dYJdd_hTBS-JnOQNk5",
+                    "name": "Making Lovers First Blush CN Patch v3.00.zip",
+                    "size": "6070.1 MB",
+                    "raw_size": 6364915108,
+                    "type": ".zip",
+                    "path": "Making Lovers First Blush CN Patch v3.00.zip",
+                    "modifiedTime": "2026-04-11T06:02:23.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1TvubwjYtYokSvgzoCDoGTfE0RoTu0ZiM",
+                    "name": "Making Lovers First Blush EN Patch v1.00.zip",
+                    "size": "7887.3 MB",
+                    "raw_size": 8270419453,
+                    "type": ".zip",
+                    "path": "Making Lovers First Blush EN Patch v1.00.zip",
+                    "modifiedTime": "2026-04-11T06:00:58.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1ogXpzeLUe_3oRco5DATgy5Z1WmMy3o4f",
+                    "name": "Making Lovers First Blush JP Patch v1.00.zip",
+                    "size": "7818.5 MB",
+                    "raw_size": 8198274626,
+                    "type": ".zip",
+                    "path": "Making Lovers First Blush JP Patch v1.00.zip",
+                    "modifiedTime": "2026-04-11T05:58:05.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "17wN35rEk8lsRTrJDxowTtUFtVbYRHVPo",
+                    "name": "Install Note - Japanese.docx",
+                    "size": "290.8 KB",
+                    "raw_size": 297769,
+                    "type": ".docx",
+                    "path": "Install Note - Japanese.docx",
+                    "modifiedTime": "2022-10-06T17:41:06.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1vTdJ3bB_Eus5cVuvDu3Jr4tgYwBYwGVa",
+                    "name": "Install Note - English.docx",
+                    "size": "913.5 KB",
+                    "raw_size": 935386,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2022-10-06T17:41:06.000Z",
+                    "last_updated": ""
+                }
+            ]
         },
         {
             "game": "Man of the House",
@@ -33653,7 +33719,7 @@
             "row_num": "925",
             "appid": "3801270",
             "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 87, dev: アイオライト, cutoff: 0.8)",
+            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 98, dev: アイオライト (iolite), cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false,
             "contents": {
