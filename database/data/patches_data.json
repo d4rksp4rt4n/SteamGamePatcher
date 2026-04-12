@@ -2,7 +2,7 @@
     "data": {
         "total_games": 1551,
         "unique_developers": 800,
-        "generated_at": "2026-04-12 06:54:16 UTC"
+        "generated_at": "2026-04-12 20:03:09 UTC"
     },
     "last_folders_metadata": {
         "recent_changes": [
@@ -42,7 +42,7 @@
                 "➕ NEW PATCH: DEVGRU-P/Panzermadels - Tank Dating Simulator/Panzermadels - R-18 Patch.rar"
             ]
         ],
-        "last_sync": "2026-04-12T06:54:04.095824"
+        "last_sync": "2026-04-12T20:02:56.902815"
     },
     "entries": [
         {
@@ -33719,7 +33719,7 @@
             "row_num": "925",
             "appid": "3801270",
             "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 98, dev: アイオライト (iolite), cutoff: 0.8)",
+            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 87, dev: iolite, cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false,
             "contents": {
@@ -44208,7 +44208,7 @@
             "row_num": "1192",
             "appid": "3421410",
             "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: マッスルランスネーク (muscle run snake)|spiritbound: the goddess's quest -> マッスルランスネーク (muscle run snake)|spiritbound∶ the goddess's quest (score: 98, dev: マッスルランスネーク (muscle run snake), cutoff: 0.8)",
+            "match_reason": "Fuzzy match: マッスルランスネーク (muscle run snake)|spiritbound: the goddess's quest -> マッスルランスネーク (muscle run snake)|spiritbound∶ the goddess's quest (score: 86, dev: muscle run snake, cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false,
             "contents": {
