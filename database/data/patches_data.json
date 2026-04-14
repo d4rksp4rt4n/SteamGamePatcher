@@ -2,10 +2,20 @@
     "data": {
         "total_games": 1552,
         "unique_developers": 800,
-        "generated_at": "2026-04-14 20:22:16 UTC"
+        "generated_at": "2026-04-14 20:36:19 UTC"
     },
     "last_folders_metadata": {
         "recent_changes": [
+            [
+                "2026-04-14T17:12:59.880169",
+                "The Succubus Trap Island",
+                "➕ NEW FILE: Tsukinomizu Project/The Succubus Trap Island/Install Note - English.docx"
+            ],
+            [
+                "2026-04-14T17:07:21.870046",
+                "AMANATSU+",
+                "➕ NEW PATCH: AZARASHI SOFTWARE/AMANATSU+/Amanatsu_Plus_patch_2026.04.14.7z"
+            ],
             [
                 "2026-04-12T06:54:04.095467",
                 "Making*Lovers: First Blush",
@@ -42,7 +52,7 @@
                 "➕ NEW PATCH: DEVGRU-P/Panzermadels - Tank Dating Simulator/Panzermadels - R-18 Patch.rar"
             ]
         ],
-        "last_sync": "2026-04-14T20:22:04.429560"
+        "last_sync": "2026-04-14T20:36:07.142991"
     },
     "entries": [
         {
@@ -1340,18 +1350,28 @@
             "match_reason": "Exact match on full: azarashi software|aikagi",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Install Note.docx": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1Befa7xi99oeJPil_P1vqB4z96RhZyIKQ",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note.docx",
+                    "size": "506.7 KB",
+                    "raw_size": 518906,
+                    "type": ".docx",
+                    "path": "Install Note.docx",
+                    "modifiedTime": "2021-11-18T09:44:29.000Z",
+                    "last_updated": ""
                 },
-                "20211118_aikagi_steamextrapatch.zip": {
-                    "type": "file",
+                {
                     "id": "1_3GE_fWz_GBVyJ18EgXyCQkqH8Jq6FW8",
-                    "mimeType": "application/zip"
+                    "name": "20211118_aikagi_steamextrapatch.zip",
+                    "size": "620.7 MB",
+                    "raw_size": 650891164,
+                    "type": ".zip",
+                    "path": "20211118_aikagi_steamextrapatch.zip",
+                    "modifiedTime": "2021-11-18T09:43:01.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "AIKAGI After Days",
@@ -1367,18 +1387,28 @@
             "match_reason": "Exact match on full: azarashi software|aikagi after days",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Install Note.docx": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1BJtzWn0W7-Ndvl4N82Wwej7a-ZKoRr2g",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note.docx",
+                    "size": "113.7 KB",
+                    "raw_size": 116404,
+                    "type": ".docx",
+                    "path": "Install Note.docx",
+                    "modifiedTime": "2023-08-25T03:32:06.721Z",
+                    "last_updated": ""
                 },
-                "AikagiAfterDaysR18Patch (v2023.08.25).zip": {
-                    "type": "file",
+                {
                     "id": "1y1eUnYqJWszN-8ukU__RrmzwulMexQjl",
-                    "mimeType": "application/x-zip-compressed"
+                    "name": "AikagiAfterDaysR18Patch (v2023.08.25).zip",
+                    "size": "512.9 MB",
+                    "raw_size": 537782480,
+                    "type": ".zip",
+                    "path": "AikagiAfterDaysR18Patch (v2023.08.25).zip",
+                    "modifiedTime": "2023-08-25T03:27:28.998Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Akari and the Abyss",
@@ -2101,39 +2131,48 @@
             "match_reason": "Exact match on full: azarashi software|amanatsu ~perfect edition~",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "AMANATSU_patch_2024.06.13.zip": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1M_T-j_bHKic9Id31ObC5-eUWKtoHeiT1",
-                    "mimeType": "application/x-zip-compressed"
+                    "name": "AMANATSU_patch_2024.06.13.zip",
+                    "size": "1794.6 MB",
+                    "raw_size": 1881737919,
+                    "type": ".zip",
+                    "path": "AMANATSU_patch_2024.06.13.zip",
+                    "modifiedTime": "2024-06-26T03:53:46.964Z",
+                    "last_updated": ""
                 },
-                "Old": {
-                    "type": "folder",
-                    "id": "1JM6C49B7t73HdBbcZ2eshRg0Lb4W3gEH",
-                    "children": {
-                        "amanatsu-dlc-en-zh_v2024.05.17.zip": {
-                            "type": "file",
-                            "id": "1aNnk3y2zOAGYJOuBiOHPgLq0yHTCPFzs",
-                            "mimeType": "application/x-zip-compressed"
-                        }
-                    }
-                },
-                "Install Note - English.docx": {
-                    "type": "file",
+                {
                     "id": "1fVNoMlsdu2mtO2uOtbSudeO-yADm9P1M",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - English.docx",
+                    "size": "113.7 KB",
+                    "raw_size": 116398,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2024-05-17T02:31:57.242Z",
+                    "last_updated": ""
                 },
-                "Install Note - Traditional Chinese.docx": {
-                    "type": "file",
+                {
                     "id": "1N_mGJXfIefInIoBoSKs4OjhpxoKZR0Y9",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Traditional Chinese.docx",
+                    "size": "115.3 KB",
+                    "raw_size": 118038,
+                    "type": ".docx",
+                    "path": "Install Note - Traditional Chinese.docx",
+                    "modifiedTime": "2024-05-17T02:31:36.457Z",
+                    "last_updated": ""
                 },
-                "Install Note - Simplified Chinese.docx": {
-                    "type": "file",
+                {
                     "id": "1-iLbOCRvhW1-G5BRTGGNSjcuuFzLaqc-",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Simplified Chinese.docx",
+                    "size": "115.3 KB",
+                    "raw_size": 118021,
+                    "type": ".docx",
+                    "path": "Install Note - Simplified Chinese.docx",
+                    "modifiedTime": "2024-05-17T02:31:31.388Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "AMANATSU+",
@@ -2141,26 +2180,56 @@
             "publisher": "Shiravune",
             "notes": "Multilanguage Patch v2026.04.14",
             "steam_url": "https://store.steampowered.com/app/3830560/",
-            "patch_link": "https://drive.google.com/drive/folders/1ga3qkpy1LB_2DDC6Q8u2XT2dScht13iL",
+            "patch_link": "https://drive.google.com/drive/folders/19wgBoNhmsbYErLkANuDemX0IJ-twes0D",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3830560/2594710d0589f7bba179113da2e443fd416ff92c/header.jpg?t=1776129241",
             "row_num": "60",
             "appid": "3830560",
-            "match_status": "dlc_base_fuzzy",
-            "match_reason": "DLC fuzzy matched to base game: azarashi software|amanatsu+ -> azarashi software|aikagi (score: 80, dev: azarashi software, cutoff: 0.8)",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: azarashi software|amanatsu+",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Install Note.docx": {
-                    "type": "file",
-                    "id": "1Befa7xi99oeJPil_P1vqB4z96RhZyIKQ",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            "contents": [
+                {
+                    "id": "1W7rKr-mQwgOal2baVh6TooMUOUIZqcSn",
+                    "name": "Install Note - English.docx",
+                    "size": "1.6 MB",
+                    "raw_size": 1636581,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2026-04-14T06:08:18.000Z",
+                    "last_updated": ""
                 },
-                "20211118_aikagi_steamextrapatch.zip": {
-                    "type": "file",
-                    "id": "1_3GE_fWz_GBVyJ18EgXyCQkqH8Jq6FW8",
-                    "mimeType": "application/zip"
+                {
+                    "id": "1AR4yZK3m7fzBzJ4pH6mAl0ywSMaPenYd",
+                    "name": "Install Note - Simplified Chinese.docx",
+                    "size": "1.6 MB",
+                    "raw_size": 1633090,
+                    "type": ".docx",
+                    "path": "Install Note - Simplified Chinese.docx",
+                    "modifiedTime": "2026-04-14T06:05:32.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "16sne-sDaxrjrbvv61Zbp3d2r7I-ecMh7",
+                    "name": "Install Note - Traditional Chinese.docx",
+                    "size": "1.6 MB",
+                    "raw_size": 1633070,
+                    "type": ".docx",
+                    "path": "Install Note - Traditional Chinese.docx",
+                    "modifiedTime": "2026-04-14T06:01:21.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "16QMim9kkuN4LSwvtmyGl22nlW29_tbhK",
+                    "name": "Amanatsu_Plus_patch_2026.04.14.7z",
+                    "size": "1555.8 MB",
+                    "raw_size": 1631343944,
+                    "type": ".7z",
+                    "path": "Amanatsu_Plus_patch_2026.04.14.7z",
+                    "modifiedTime": "2026-04-14T05:57:22.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Amatarasu Riddle Star",
@@ -20574,38 +20643,68 @@
             "match_reason": "Exact match on full: tsukinomizu project|into the nightmare",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Into the Nightmare EN Patch v1.05.exe": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "11eDAeD1uufIaYD4PGxKI_8o5tv7PoxGG",
-                    "mimeType": "application/x-msdownload"
+                    "name": "Into the Nightmare EN Patch v1.05.exe",
+                    "size": "682.5 MB",
+                    "raw_size": 715624784,
+                    "type": ".exe",
+                    "path": "Into the Nightmare EN Patch v1.05.exe",
+                    "modifiedTime": "2022-12-22T06:15:23.000Z",
+                    "last_updated": ""
                 },
-                "Into the Nightmare CN Patch v1.03.exe": {
-                    "type": "file",
+                {
                     "id": "1iD0TCR4aVau9Y0e5eDK3EI-z-MiVzyEQ",
-                    "mimeType": "application/x-msdownload"
+                    "name": "Into the Nightmare CN Patch v1.03.exe",
+                    "size": "696.8 MB",
+                    "raw_size": 730611168,
+                    "type": ".exe",
+                    "path": "Into the Nightmare CN Patch v1.03.exe",
+                    "modifiedTime": "2022-12-15T08:35:05.000Z",
+                    "last_updated": ""
                 },
-                "Install Note - Chinese.docx": {
-                    "type": "file",
+                {
                     "id": "1GbPwmK5wCeiZdm3Rl54ikevfYibSEm0m",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Chinese.docx",
+                    "size": "452.0 KB",
+                    "raw_size": 462839,
+                    "type": ".docx",
+                    "path": "Install Note - Chinese.docx",
+                    "modifiedTime": "2022-12-03T05:12:34.000Z",
+                    "last_updated": ""
                 },
-                "Into the Nightmare JP Patch v1.00.exe": {
-                    "type": "file",
+                {
                     "id": "17MUCSZUlJUuvraYOGMC7W0ze_3FCjH7B",
-                    "mimeType": "application/x-msdownload"
+                    "name": "Into the Nightmare JP Patch v1.00.exe",
+                    "size": "684.4 MB",
+                    "raw_size": 717696008,
+                    "type": ".exe",
+                    "path": "Into the Nightmare JP Patch v1.00.exe",
+                    "modifiedTime": "2022-12-02T16:57:06.000Z",
+                    "last_updated": ""
                 },
-                "Install Note - English.docx": {
-                    "type": "file",
+                {
                     "id": "1OqfKUEnGiX5DsYr00NYQ6zOVRdOEhEfw",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - English.docx",
+                    "size": "913.5 KB",
+                    "raw_size": 935386,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2022-10-06T17:41:06.000Z",
+                    "last_updated": ""
                 },
-                "Install Note - Japanese.docx": {
-                    "type": "file",
+                {
                     "id": "11zLo53QJ6dJzi9ddtm4tM3mZWW8xBZHN",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Japanese.docx",
+                    "size": "290.8 KB",
+                    "raw_size": 297769,
+                    "type": ".docx",
+                    "path": "Install Note - Japanese.docx",
+                    "modifiedTime": "2022-10-06T17:41:06.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Intrusion of Alice",
@@ -27408,18 +27507,28 @@
             "match_reason": "Exact match on full: azarashi software|maid for loving you",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Maid for Loving You - R-18 Patch v1.0.0H (2022.11.16).7z": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1TlcvA_vFQ54_lU4q4OzVZY47qYJpMrlV",
-                    "mimeType": "application/x-7z-compressed"
+                    "name": "Maid for Loving You - R-18 Patch v1.0.0H (2022.11.16).7z",
+                    "size": "418.6 MB",
+                    "raw_size": 438898595,
+                    "type": ".7z",
+                    "path": "Maid for Loving You - R-18 Patch v1.0.0H (2022.11.16).7z",
+                    "modifiedTime": "2022-11-25T16:49:20.578Z",
+                    "last_updated": ""
                 },
-                "Install Note.pdf": {
-                    "type": "file",
+                {
                     "id": "13SmYnrYXIjjeHc6V6XtP5oCTy4TYDE-a",
-                    "mimeType": "application/pdf"
+                    "name": "Install Note.pdf",
+                    "size": "175.0 KB",
+                    "raw_size": 179234,
+                    "type": ".pdf",
+                    "path": "Install Note.pdf",
+                    "modifiedTime": "2022-11-25T16:42:26.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Maid Knight Alicia",
@@ -33746,7 +33855,7 @@
             "row_num": "926",
             "appid": "3801270",
             "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 87, dev: アイオライト, cutoff: 0.8)",
+            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 87, dev: iolite, cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false,
             "contents": {
@@ -44235,7 +44344,7 @@
             "row_num": "1193",
             "appid": "3421410",
             "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: マッスルランスネーク (muscle run snake)|spiritbound: the goddess's quest -> マッスルランスネーク (muscle run snake)|spiritbound∶ the goddess's quest (score: 86, dev: muscle run snake, cutoff: 0.8)",
+            "match_reason": "Fuzzy match: マッスルランスネーク (muscle run snake)|spiritbound: the goddess's quest -> マッスルランスネーク (muscle run snake)|spiritbound∶ the goddess's quest (score: 98, dev: マッスルランスネーク (muscle run snake), cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false,
             "contents": {
@@ -50980,12 +51089,12 @@
             "publisher": "OTAKU Plan",
             "notes": "English, Japanese, S. Chinese patch v2026.04.11",
             "steam_url": "https://store.steampowered.com/app/3956070/",
-            "patch_link": null,
+            "patch_link": "https://drive.google.com/drive/folders/1TjM_CUEKJ00013bDwfbxERLnghcuSc4D",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3956070/f7b3b2414b54250d4c16c22020e6a6fe297e7993/header.jpg?t=1775876423",
             "row_num": "1357",
             "appid": "3956070",
-            "match_status": "unmatched",
-            "match_reason": "Unmatched: No match found",
+            "match_status": "exact",
+            "match_reason": "Exact match on full: tsukinomizu project|the succubus trap island",
             "store_status": "available",
             "manual_edit": false,
             "contents": [
