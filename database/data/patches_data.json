@@ -2,7 +2,7 @@
     "data": {
         "total_games": 1552,
         "unique_developers": 800,
-        "generated_at": "2026-04-14 06:01:00 UTC"
+        "generated_at": "2026-04-14 20:22:16 UTC"
     },
     "last_folders_metadata": {
         "recent_changes": [
@@ -42,7 +42,7 @@
                 "➕ NEW PATCH: DEVGRU-P/Panzermadels - Tank Dating Simulator/Panzermadels - R-18 Patch.rar"
             ]
         ],
-        "last_sync": "2026-04-14T06:00:47.847262"
+        "last_sync": "2026-04-14T20:22:04.429560"
     },
     "entries": [
         {
@@ -44235,7 +44235,7 @@
             "row_num": "1193",
             "appid": "3421410",
             "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: マッスルランスネーク (muscle run snake)|spiritbound: the goddess's quest -> マッスルランスネーク (muscle run snake)|spiritbound∶ the goddess's quest (score: 98, dev: マッスルランスネーク (muscle run snake), cutoff: 0.8)",
+            "match_reason": "Fuzzy match: マッスルランスネーク (muscle run snake)|spiritbound: the goddess's quest -> マッスルランスネーク (muscle run snake)|spiritbound∶ the goddess's quest (score: 86, dev: muscle run snake, cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false,
             "contents": {
@@ -50981,14 +50981,85 @@
             "notes": "English, Japanese, S. Chinese patch v2026.04.11",
             "steam_url": "https://store.steampowered.com/app/3956070/",
             "patch_link": null,
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3956070/f7b3b2414b54250d4c16c22020e6a6fe297e7993/header.jpg?t=1775717473",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3956070/f7b3b2414b54250d4c16c22020e6a6fe297e7993/header.jpg?t=1775876423",
             "row_num": "1357",
             "appid": "3956070",
             "match_status": "unmatched",
             "match_reason": "Unmatched: No match found",
-            "store_status": "unreleased",
+            "store_status": "available",
             "manual_edit": false,
-            "contents": {}
+            "contents": [
+                {
+                    "id": "1T6VFibcB-GnodRIWgbsC70t2Y8wxuV5k",
+                    "name": "The Succubus Trap Island JP patch v2026.04.11.exe",
+                    "size": "1115.8 MB",
+                    "raw_size": 1169970712,
+                    "type": ".exe",
+                    "path": "The Succubus Trap Island JP patch v2026.04.11.exe",
+                    "modifiedTime": "2026-04-10T19:16:43.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1d0lnsiRDopzIxYUceEhSBhbKEKr5CXuS",
+                    "name": "The Succubus Trap Island CN patch v2026.04.11.exe",
+                    "size": "1127.5 MB",
+                    "raw_size": 1182316376,
+                    "type": ".exe",
+                    "path": "The Succubus Trap Island CN patch v2026.04.11.exe",
+                    "modifiedTime": "2026-04-10T19:15:58.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1xUhiz_lbkDOEYCONzcTkOZ7hl16dSumY",
+                    "name": "Install Note - Japanese.docx",
+                    "size": "2.6 MB",
+                    "raw_size": 2715463,
+                    "type": ".docx",
+                    "path": "Install Note - Japanese.docx",
+                    "modifiedTime": "2026-04-10T19:14:40.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1qq0uoJYhn8PwjfFVM51DoU-VuIAkedy4",
+                    "name": "The Succubus Trap Island EN patch v2026.04.11.exe",
+                    "size": "1127.8 MB",
+                    "raw_size": 1182618797,
+                    "type": ".exe",
+                    "path": "The Succubus Trap Island EN patch v2026.04.11.exe",
+                    "modifiedTime": "2026-04-10T19:13:56.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1iofp9hWE-OyHHG_IJgKENS-LXXOv0g7J",
+                    "name": "The Succubus Trap Island SCN patch for Traditional v2026.04.11.exe",
+                    "size": "1136.7 MB",
+                    "raw_size": 1191944011,
+                    "type": ".exe",
+                    "path": "The Succubus Trap Island SCN patch for Traditional v2026.04.11.exe",
+                    "modifiedTime": "2026-04-10T19:13:52.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1VVfbBC61al1WFA5scN_aM2JzzwqYSfQF",
+                    "name": "Install Note - Chinese.docx",
+                    "size": "3.1 MB",
+                    "raw_size": 3242968,
+                    "type": ".docx",
+                    "path": "Install Note - Chinese.docx",
+                    "modifiedTime": "2026-04-10T19:13:47.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1aDTvayhUiNt54EEtuXxU01Oo3gmYbvAN",
+                    "name": "Install Note - English.docx",
+                    "size": "2.5 MB",
+                    "raw_size": 2644519,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2026-04-10T19:12:40.000Z",
+                    "last_updated": ""
+                }
+            ]
         },
         {
             "game": "The Taming Massage Parlor ~Mari's Story~",
