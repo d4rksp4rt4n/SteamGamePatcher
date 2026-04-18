@@ -2,10 +2,15 @@
     "data": {
         "total_games": 1557,
         "unique_developers": 803,
-        "generated_at": "2026-04-17 19:40:55 UTC"
+        "generated_at": "2026-04-18 06:46:50 UTC"
     },
     "last_folders_metadata": {
         "recent_changes": [
+            [
+                "2026-04-18T06:46:39.003792",
+                "Radiance of Annihilation -Disorder Eclipse-",
+                "➕ NEW FILE: Courreges Accel/Radiance of Annihilation -Disorder Eclipse-/Install Note - English.docx"
+            ],
             [
                 "2026-04-17T19:40:40.286570",
                 "Do As I Say - Obedience to the Priest",
@@ -50,14 +55,9 @@
                 "2026-04-10T08:12:13.240644",
                 "That Summer - Hannah's Summer Vacation",
                 "➕ NEW PATCH: 七十七 (Seventy Seven)/That Summer - Hannah's Summer Vacation/Summer_Patch_v2026.04.10.exe"
-            ],
-            [
-                "2026-04-07T18:34:01.385498",
-                "Machine Child",
-                "➕ NEW FILE: SYOJO KISHIDAN/Machine Child/Install Note - Japanese.pdf"
             ]
         ],
-        "last_sync": "2026-04-17T19:40:41.393957"
+        "last_sync": "2026-04-18T06:46:39.004278"
     },
     "entries": [
         {
@@ -34241,7 +34241,7 @@
             "row_num": "930",
             "appid": "3801270",
             "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 98, dev: アイオライト (iolite), cutoff: 0.8)",
+            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 87, dev: iolite, cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false,
             "contents": {
@@ -37263,17 +37263,58 @@
             "game": "Radiance of Annihilation -Disorder Eclipse-",
             "developer": "Courreges Accel",
             "publisher": "Kagura Games",
-            "notes": "Chinese patch v1.0x. English patch v1.0x",
+            "notes": "Chinese patch v1.00. English patch v1.00",
             "steam_url": "https://store.steampowered.com/app/4353600/",
             "patch_link": "https://drive.google.com/drive/folders/10qlq-Ry-jsZMO-FnI4iTPVtYvmY6rr_e",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4353600/859d57e4bd691383f139b8e97bf0cb54751afee2/header.jpg?t=1776274782",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4353600/859d57e4bd691383f139b8e97bf0cb54751afee2/header.jpg?t=1776485720",
             "row_num": "1011",
             "appid": "4353600",
             "match_status": "exact",
             "match_reason": "Exact match on full: courreges accel|radiance of annihilation -disorder eclipse-",
-            "store_status": "unreleased",
+            "store_status": "available",
             "manual_edit": false,
-            "contents": []
+            "contents": [
+                {
+                    "id": "1ddoh3sVUJzH92DFVEurBXEpHnu2xM9j9",
+                    "name": "Install Note - Chinese.docx",
+                    "size": "692.2 KB",
+                    "raw_size": 708820,
+                    "type": ".docx",
+                    "path": "Install Note - Chinese.docx",
+                    "modifiedTime": "2026-04-18T06:44:13.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1JD27honF-NqYyNTNv2PNRgUZmIXieyN7",
+                    "name": "Radiance of Annihilation -Disorder Eclipse- EN Patch v1.00.exe",
+                    "size": "2183.6 MB",
+                    "raw_size": 2289634752,
+                    "type": ".exe",
+                    "path": "Radiance of Annihilation -Disorder Eclipse- EN Patch v1.00.exe",
+                    "modifiedTime": "2026-04-18T06:40:43.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1Tzbd9ykO47SqlNB5vzvCK1Dwng_N7lET",
+                    "name": "Radiance of Annihilation -Disorder Eclipse- CN Patch v1.00.exe",
+                    "size": "2188.4 MB",
+                    "raw_size": 2294669520,
+                    "type": ".exe",
+                    "path": "Radiance of Annihilation -Disorder Eclipse- CN Patch v1.00.exe",
+                    "modifiedTime": "2026-04-18T06:39:23.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1nd2bRoUli-Jefh_1wnot1TZzTlSwBcqN",
+                    "name": "Install Note - English.docx",
+                    "size": "913.5 KB",
+                    "raw_size": 935386,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2022-10-06T17:41:06.000Z",
+                    "last_updated": ""
+                }
+            ]
         },
         {
             "game": "Radiant Princess - Poni Ceres",
