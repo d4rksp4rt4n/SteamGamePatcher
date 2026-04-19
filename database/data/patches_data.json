@@ -2,15 +2,10 @@
     "data": {
         "total_games": 1557,
         "unique_developers": 803,
-        "generated_at": "2026-04-18 06:46:50 UTC"
+        "generated_at": "2026-04-19 00:14:17 UTC"
     },
     "last_folders_metadata": {
         "recent_changes": [
-            [
-                "2026-04-18T06:46:39.003792",
-                "Radiance of Annihilation -Disorder Eclipse-",
-                "➕ NEW FILE: Courreges Accel/Radiance of Annihilation -Disorder Eclipse-/Install Note - English.docx"
-            ],
             [
                 "2026-04-17T19:40:40.286570",
                 "Do As I Say - Obedience to the Priest",
@@ -27,24 +22,9 @@
                 "➕ NEW PATCH: ILLGAMES/AICOMI/Aicomi Steam Extra Patch v2026.04.17.7z"
             ],
             [
-                "2026-04-15T19:00:49.202276",
-                "Demon's GunPlay 2",
-                "➕ NEW FILE: 夢中迷走 (CrazyStray)/Demon's GunPlay 2/Install Note - English.docx"
-            ],
-            [
-                "2026-04-14T17:12:59.880169",
-                "The Succubus Trap Island",
-                "➕ NEW FILE: Tsukinomizu Project/The Succubus Trap Island/Install Note - English.docx"
-            ],
-            [
                 "2026-04-14T17:07:21.870046",
                 "AMANATSU+",
                 "➕ NEW PATCH: AZARASHI SOFTWARE/AMANATSU+/Amanatsu_Plus_patch_2026.04.14.7z"
-            ],
-            [
-                "2026-04-12T06:54:04.095467",
-                "Making*Lovers: First Blush",
-                "➕ NEW FILE: Smee/Making*Lovers: First Blush/Install Note - English.docx"
             ],
             [
                 "2026-04-11T06:01:19.265817",
@@ -57,7 +37,7 @@
                 "➕ NEW PATCH: 七十七 (Seventy Seven)/That Summer - Hannah's Summer Vacation/Summer_Patch_v2026.04.10.exe"
             ]
         ],
-        "last_sync": "2026-04-18T06:46:39.004278"
+        "last_sync": "2026-04-19T00:14:05.707047"
     },
     "entries": [
         {
@@ -5696,18 +5676,28 @@
             "match_reason": "Exact match on full: yuzusoft|café stella and the reaper's butterflies",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Install Note.docx": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1kp6Xq8BjaqcsObdkQ-mAmt6H89C4wLEl",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note.docx",
+                    "size": "487.2 KB",
+                    "raw_size": 498914,
+                    "type": ".docx",
+                    "path": "Install Note.docx",
+                    "modifiedTime": "2022-03-25T11:22:52.000Z",
+                    "last_updated": ""
                 },
-                "stella_R18_patch_v2022.03.24.7z": {
-                    "type": "file",
+                {
                     "id": "1AWHI9ZsByGeofLHC7LBvs_Vnl3Ozk2ib",
-                    "mimeType": "application/x-7z-compressed"
+                    "name": "stella_R18_patch_v2022.03.24.7z",
+                    "size": "834.8 MB",
+                    "raw_size": 875300533,
+                    "type": ".7z",
+                    "path": "stella_R18_patch_v2022.03.24.7z",
+                    "modifiedTime": "2022-03-25T11:14:09.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Cage of the Succubi",
@@ -9276,12 +9266,12 @@
             "notes": "English, Japanese, T. Chinese patch v2026.04.17",
             "steam_url": "https://store.steampowered.com/app/2614100/",
             "patch_link": "https://drive.google.com/drive/folders/1XUBHtvKazKzf0S41TMPbFgzE825qA_7p",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2614100/header.jpg?t=1776069170",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2614100/header.jpg?t=1776413164",
             "row_num": "237",
             "appid": "2614100",
             "match_status": "exact",
             "match_reason": "Exact match on full: 夢中迷走 (crazystray)|demon's gunplay 2",
-            "store_status": "unreleased",
+            "store_status": "available",
             "manual_edit": false,
             "contents": [
                 {
@@ -10275,18 +10265,28 @@
             "match_reason": "Exact match on full: yuzusoft|dracu-riot!",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Install Note.docx": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1ECMOg2C8IlXz2qtXAdjD815_SQqFC6Uo",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note.docx",
+                    "size": "470.1 KB",
+                    "raw_size": 481380,
+                    "type": ".docx",
+                    "path": "Install Note.docx",
+                    "modifiedTime": "2026-02-27T10:53:15.000Z",
+                    "last_updated": ""
                 },
-                "dracuriot_r18_patch_0227.zip": {
-                    "type": "file",
+                {
                     "id": "1LsxPHKA8fW1g4wQ-RDmy-PrAKKf90A_x",
-                    "mimeType": "application/x-zip-compressed"
+                    "name": "dracuriot_r18_patch_0227.zip",
+                    "size": "3010.7 MB",
+                    "raw_size": 3156906762,
+                    "type": ".zip",
+                    "path": "dracuriot_r18_patch_0227.zip",
+                    "modifiedTime": "2026-02-27T10:51:16.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Dragon Conqueror",
@@ -34241,7 +34241,7 @@
             "row_num": "930",
             "appid": "3801270",
             "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 87, dev: iolite, cutoff: 0.8)",
+            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 98, dev: アイオライト (iolite), cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false,
             "contents": {
@@ -38587,18 +38587,28 @@
             "match_reason": "Exact match on full: yuzusoft|riddle joker",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Riddle_Joker_R18_DLC_v2020.12.18.rar": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1EHbFFruOx2UZjezKOk-YFDaeeN3NcRpK",
-                    "mimeType": "application/rar"
+                    "name": "Riddle_Joker_R18_DLC_v2020.12.18.rar",
+                    "size": "992.1 MB",
+                    "raw_size": 1040266679,
+                    "type": ".rar",
+                    "path": "Riddle_Joker_R18_DLC_v2020.12.18.rar",
+                    "modifiedTime": "2020-12-18T11:40:13.367Z",
+                    "last_updated": ""
                 },
-                "Install Note.docx": {
-                    "type": "file",
+                {
                     "id": "1eZ3J4OF_0GpoJqdBceI3rtdDYcExrvs8",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note.docx",
+                    "size": "607.6 KB",
+                    "raw_size": 622168,
+                    "type": ".docx",
+                    "path": "Install Note.docx",
+                    "modifiedTime": "2020-12-18T11:01:52.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Riding to Bounce City",
@@ -38893,18 +38903,28 @@
             "match_reason": "Exact match on full: yuzusoft|sabbat of the witch",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Install Note.docx": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1xbM8_mC8584Uo26L2F2Mntbe5C5raUMe",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note.docx",
+                    "size": "579.3 KB",
+                    "raw_size": 593155,
+                    "type": ".docx",
+                    "path": "Install Note.docx",
+                    "modifiedTime": "2023-08-20T16:54:25.050Z",
+                    "last_updated": ""
                 },
-                "SabbatOfTheWitch_Steam_R18DLC.rar": {
-                    "type": "file",
+                {
                     "id": "1ACWTPdJiXH0kianjgqrev35xlzsvMmx3",
-                    "mimeType": "application/rar"
+                    "name": "SabbatOfTheWitch_Steam_R18DLC.rar",
+                    "size": "881.0 MB",
+                    "raw_size": 923793186,
+                    "type": ".rar",
+                    "path": "SabbatOfTheWitch_Steam_R18DLC.rar",
+                    "modifiedTime": "2023-08-20T16:53:28.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Sacrament",
@@ -41743,18 +41763,28 @@
             "match_reason": "Normalized match on full: yuzusoft|senren*banka -> yuzusoft|senren*banka",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "SenrenBanka_R-18_Patch_v2020.02.13.rar": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1sG22q98_ezOqCO0fGibuTxt8cKiXz07g",
-                    "mimeType": "application/rar"
+                    "name": "SenrenBanka_R-18_Patch_v2020.02.13.rar",
+                    "size": "1081.9 MB",
+                    "raw_size": 1134444646,
+                    "type": ".rar",
+                    "path": "SenrenBanka_R-18_Patch_v2020.02.13.rar",
+                    "modifiedTime": "2020-02-14T10:11:56.188Z",
+                    "last_updated": ""
                 },
-                "Install Note.docx": {
-                    "type": "file",
+                {
                     "id": "1_oqJ39QYmVLk5x8uq2wjpoeiH_HyxkY6",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note.docx",
+                    "size": "612.7 KB",
+                    "raw_size": 627398,
+                    "type": ".docx",
+                    "path": "Install Note.docx",
+                    "modifiedTime": "2020-02-14T10:10:29.302Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "SENRAN KAGURA Bon Appétit! - Full Course",
@@ -44801,7 +44831,7 @@
             "row_num": "1198",
             "appid": "3421410",
             "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: マッスルランスネーク (muscle run snake)|spiritbound: the goddess's quest -> マッスルランスネーク (muscle run snake)|spiritbound∶ the goddess's quest (score: 86, dev: muscle run snake, cutoff: 0.8)",
+            "match_reason": "Fuzzy match: マッスルランスネーク (muscle run snake)|spiritbound: the goddess's quest -> マッスルランスネーク (muscle run snake)|spiritbound∶ the goddess's quest (score: 80, dev: マッスルランスネーク, cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false,
             "contents": {
@@ -58358,18 +58388,28 @@
             "match_reason": "Exact match on full: yuzusoft|魔女的夜宴",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Install Note.docx": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1MOrckmh0yDZORcTl2WrzdSllF_uP0ZsW",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note.docx",
+                    "size": "135.4 KB",
+                    "raw_size": 138655,
+                    "type": ".docx",
+                    "path": "Install Note.docx",
+                    "modifiedTime": "2023-07-22T05:32:44.085Z",
+                    "last_updated": ""
                 },
-                "sothewitch_steam_patch v2023.07.21.7z": {
-                    "type": "file",
+                {
                     "id": "1SFLfV3zGYVaWQL3gbrzV-ZlDbQnmzf1S",
-                    "mimeType": "application/x-7z-compressed"
+                    "name": "sothewitch_steam_patch v2023.07.21.7z",
+                    "size": "3697.8 MB",
+                    "raw_size": 3877473211,
+                    "type": ".7z",
+                    "path": "sothewitch_steam_patch v2023.07.21.7z",
+                    "modifiedTime": "2023-07-22T05:23:54.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "黄毛漂流记 (Hooligan Crusoe)",
