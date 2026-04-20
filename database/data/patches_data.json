@@ -2,7 +2,7 @@
     "data": {
         "total_games": 1557,
         "unique_developers": 803,
-        "generated_at": "2026-04-19 00:14:17 UTC"
+        "generated_at": "2026-04-20 15:39:30 UTC"
     },
     "last_folders_metadata": {
         "recent_changes": [
@@ -37,7 +37,7 @@
                 "➕ NEW PATCH: 七十七 (Seventy Seven)/That Summer - Hannah's Summer Vacation/Summer_Patch_v2026.04.10.exe"
             ]
         ],
-        "last_sync": "2026-04-19T00:14:05.707047"
+        "last_sync": "2026-04-20T15:39:18.293531"
     },
     "entries": [
         {
@@ -612,18 +612,28 @@
             "match_reason": "Exact match on full: nikuyaki inn|a nerd who has sex with girls in \"another world\" has become a hero",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Install Note.docx": {
-                    "type": "file",
-                    "id": "1g1FYpaODi2sOv_EOlHYZ7WM-jMInOXZH",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                },
-                "Uncensored Patch V3.7z": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "18Ac1oEvBbKuiadn1ogLoK9suHTPY4PGA",
-                    "mimeType": "application/x-7z-compressed"
+                    "name": "Uncensored Patch v3.7z",
+                    "size": "191.5 MB",
+                    "raw_size": 200772419,
+                    "type": ".7z",
+                    "path": "Uncensored Patch v3.7z",
+                    "modifiedTime": "2026-04-20T15:35:11.148Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1g1FYpaODi2sOv_EOlHYZ7WM-jMInOXZH",
+                    "name": "Install Note.docx",
+                    "size": "543.8 KB",
+                    "raw_size": 556864,
+                    "type": ".docx",
+                    "path": "Install Note.docx",
+                    "modifiedTime": "2026-03-25T06:42:48.101Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "A Night Filled With the Sound of Rain",
@@ -15449,7 +15459,7 @@
             }
         },
         {
-            "game": "Girls and Dungeons",
+            "game": "Girls & Dungeons",
             "developer": "Nebelsoft",
             "publisher": null,
             "notes": "R-18 Patch",
@@ -15459,21 +15469,31 @@
             "row_num": "410",
             "appid": "695760",
             "match_status": "exact",
-            "match_reason": "Exact match on full: nebelsoft|girls and dungeons",
+            "match_reason": "Exact match on full: nebelsoft|girls & dungeons",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Install Notes.docx": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1W01ZJPJCC0qm8iTdc_4STw3OFL1D0KaW",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Notes.docx",
+                    "size": "601.0 KB",
+                    "raw_size": 615473,
+                    "type": ".docx",
+                    "path": "Install Notes.docx",
+                    "modifiedTime": "2026-02-13T05:00:09.580Z",
+                    "last_updated": ""
                 },
-                "Girls_and_Dungeons_Uncensor_Patch.rar": {
-                    "type": "file",
+                {
                     "id": "1F1G--TEO8r02cWvtC5IaFnNVpZyqXcZ5",
-                    "mimeType": "application/rar"
+                    "name": "Girls_and_Dungeons_Uncensor_Patch.rar",
+                    "size": "10.4 MB",
+                    "raw_size": 10857619,
+                    "type": ".rar",
+                    "path": "Girls_and_Dungeons_Uncensor_Patch.rar",
+                    "modifiedTime": "2025-06-23T20:45:53.380Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Girls & Dungeons 2",
@@ -15489,60 +15509,58 @@
             "match_reason": "Exact match on full: nebelsoft|girls & dungeons 2",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Install Note.docx": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1dqiHu4jAW1BORTco_onIte4FMGatn1Sp",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note.docx",
+                    "size": "67.5 KB",
+                    "raw_size": 69110,
+                    "type": ".docx",
+                    "path": "Install Note.docx",
+                    "modifiedTime": "2022-07-31T00:20:56.531Z",
+                    "last_updated": ""
                 },
-                "Old": {
-                    "type": "folder",
-                    "id": "1cxzMAAznPxWs-05NoCH-Fu9WHIlXgDXe",
-                    "children": {
-                        "GD2_PATCHER_v1.5.5.exe": {
-                            "type": "file",
-                            "id": "1_P4tDstM8zeif3ERPFLJFBwee32nIbBq",
-                            "mimeType": "application/x-dosexec"
-                        },
-                        "Readme.docx": {
-                            "type": "file",
-                            "id": "13VQn9FGsCBWqsYL5b7VmB3_0KfW5Vfoo",
-                            "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                        },
-                        "Install Note v2.docx": {
-                            "type": "file",
-                            "id": "1k1SLeXo2JeOxPtD73RPcI6mdG2fzQBy5",
-                            "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                        }
-                    }
-                },
-                "Girls & Dungeons v1.7.3 R-18 Patch.7z": {
-                    "type": "file",
+                {
                     "id": "1L1dPg2BaH8qW-2U1CfOLrMCg0RoYYPZG",
-                    "mimeType": "application/x-7z-compressed"
+                    "name": "Girls & Dungeons v1.7.3 R-18 Patch.7z",
+                    "size": "6.8 MB",
+                    "raw_size": 7163307,
+                    "type": ".7z",
+                    "path": "Girls & Dungeons v1.7.3 R-18 Patch.7z",
+                    "modifiedTime": "2022-07-30T22:55:57.000Z",
+                    "last_updated": ""
                 },
-                "Bonus Stuff": {
-                    "type": "folder",
-                    "id": "1gFCsff8AfzXNuhf6C6v3S-s-PiT6Um-T",
-                    "children": {
-                        "Girls & Dungeons 2 - Bonus Stuff (Spoilers) v1.5.3.7z": {
-                            "type": "file",
-                            "id": "15RpsOgA32j3EMhLOkQcalcI8HPfxwDF0",
-                            "mimeType": "application/x-7z-compressed"
-                        },
-                        "Girls & Dungeons 2 - Bonus Stuff (Wallpapers) v1.7.3.7z": {
-                            "type": "file",
-                            "id": "1bfnNb8YJLfvFNUoU-tGs-ytoW1kIhwAL",
-                            "mimeType": "application/x-7z-compressed"
-                        },
-                        "Girls & Dungeons 2 - Bonus Stuff (Spoilers) v1.5.5.7z": {
-                            "type": "file",
-                            "id": "1Jk6zT6-YbqyDnvyFc8gWD-rV-jTxRM-l",
-                            "mimeType": "application/x-7z-compressed"
-                        }
-                    }
+                {
+                    "id": "15RpsOgA32j3EMhLOkQcalcI8HPfxwDF0",
+                    "name": "Girls & Dungeons 2 - Bonus Stuff (Spoilers) v1.5.3.7z",
+                    "size": "16.0 MB",
+                    "raw_size": 16783130,
+                    "type": ".7z",
+                    "path": "Bonus Stuff/Girls & Dungeons 2 - Bonus Stuff (Spoilers) v1.5.3.7z",
+                    "modifiedTime": "2022-07-31T08:41:42.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1bfnNb8YJLfvFNUoU-tGs-ytoW1kIhwAL",
+                    "name": "Girls & Dungeons 2 - Bonus Stuff (Wallpapers) v1.7.3.7z",
+                    "size": "11.0 MB",
+                    "raw_size": 11505847,
+                    "type": ".7z",
+                    "path": "Bonus Stuff/Girls & Dungeons 2 - Bonus Stuff (Wallpapers) v1.7.3.7z",
+                    "modifiedTime": "2022-07-31T08:32:42.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1Jk6zT6-YbqyDnvyFc8gWD-rV-jTxRM-l",
+                    "name": "Girls & Dungeons 2 - Bonus Stuff (Spoilers) v1.5.5.7z",
+                    "size": "21.6 MB",
+                    "raw_size": 22685550,
+                    "type": ".7z",
+                    "path": "Bonus Stuff/Girls & Dungeons 2 - Bonus Stuff (Spoilers) v1.5.5.7z",
+                    "modifiedTime": "2022-07-31T08:32:37.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Girls Cairo Papyrus",
@@ -25189,30 +25207,40 @@
         },
         {
             "game": "Lilium - Kiss Me Everyday (每日亲亲洛丽塔)",
-            "developer": "Nighttime Sheep (夜羊社)",
+            "developer": "夜羊社 (Nighttime Sheep)",
             "publisher": "HentaiAid",
             "notes": "Chinese patch v2026.03.10",
             "steam_url": "https://store.steampowered.com/app/3780110/",
             "patch_link": "https://drive.google.com/drive/folders/1rB6ZaXNV14Wj4W8ldwqSiGqMyM2txm3B",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3780110/00758a8b1b10f2e5fc80033752ca3e48f0c95ed2/header.jpg?t=1773108130",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3780110/00758a8b1b10f2e5fc80033752ca3e48f0c95ed2/header.jpg?t=1775296123",
             "row_num": "684",
             "appid": "3780110",
             "match_status": "exact",
-            "match_reason": "Exact match on full: nighttime sheep (夜羊社)|lilium - kiss me everyday (每日亲亲洛丽塔)",
+            "match_reason": "Exact match on full: 夜羊社 (nighttime sheep)|lilium - kiss me everyday (每日亲亲洛丽塔)",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Install Notes - Chinese.docx": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "19CynYrbiWTaNMJVeCWMwgSev-_dLFKl9",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Notes - Chinese.docx",
+                    "size": "605.1 KB",
+                    "raw_size": 619605,
+                    "type": ".docx",
+                    "path": "Install Notes - Chinese.docx",
+                    "modifiedTime": "2026-03-10T03:40:58.997Z",
+                    "last_updated": ""
                 },
-                "CN-patch-steam-79-v2026.03.10.rar": {
-                    "type": "file",
+                {
                     "id": "1ATzt_mtN-ZQk4sS9G5iABgufSkXmwe2i",
-                    "mimeType": "application/x-rar"
+                    "name": "CN-patch-steam-79-v2026.03.10.rar",
+                    "size": "1413.4 MB",
+                    "raw_size": 1482075635,
+                    "type": ".rar",
+                    "path": "CN-patch-steam-79-v2026.03.10.rar",
+                    "modifiedTime": "2026-03-10T03:26:23.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Liminal Border Part I",
@@ -34241,7 +34269,7 @@
             "row_num": "930",
             "appid": "3801270",
             "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 98, dev: アイオライト (iolite), cutoff: 0.8)",
+            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 87, dev: アイオライト, cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false,
             "contents": {
@@ -44831,7 +44859,7 @@
             "row_num": "1198",
             "appid": "3421410",
             "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: マッスルランスネーク (muscle run snake)|spiritbound: the goddess's quest -> マッスルランスネーク (muscle run snake)|spiritbound∶ the goddess's quest (score: 80, dev: マッスルランスネーク, cutoff: 0.8)",
+            "match_reason": "Fuzzy match: マッスルランスネーク (muscle run snake)|spiritbound: the goddess's quest -> マッスルランスネーク (muscle run snake)|spiritbound∶ the goddess's quest (score: 98, dev: マッスルランスネーク (muscle run snake), cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false,
             "contents": {
