@@ -2,10 +2,15 @@
     "data": {
         "total_games": 1562,
         "unique_developers": 804,
-        "generated_at": "2026-04-23 18:51:22 UTC"
+        "generated_at": "2026-04-24 07:35:34 UTC"
     },
     "last_folders_metadata": {
         "recent_changes": [
+            [
+                "2026-04-24T07:35:21.114442",
+                "Welcome to Cafe Lumière! ~A Dragon Girl Concept Cafe~",
+                "➕ NEW PATCH: Cuteuphoria/Welcome to Cafe Lumière! ~A Dragon Girl Concept Cafe~/Welcome to Cafe Lumiere R18 DLC v1.00 (2026.04.23).rar"
+            ],
             [
                 "2026-04-23T08:05:42.801017",
                 "Liz and Rose's Alchemy Factory",
@@ -32,7 +37,7 @@
                 "➕ NEW PATCH: ILLGAMES/AICOMI/Aicomi Steam Extra Patch v2026.04.17.7z"
             ]
         ],
-        "last_sync": "2026-04-23T18:51:09.669638"
+        "last_sync": "2026-04-24T07:35:23.310115"
     },
     "entries": [
         {
@@ -2685,38 +2690,68 @@
             "match_reason": "Exact match on full: circle poison|and the hero was never seen again",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "And the Hero Was Never Seen Again EN Patch v1.05.exe": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1w1k2V7NhEHsaiMELVHz2pioV_OJSCxe-",
-                    "mimeType": "application/x-msdownload"
+                    "name": "And the Hero Was Never Seen Again EN Patch v1.05.exe",
+                    "size": "2904.2 MB",
+                    "raw_size": 3045256064,
+                    "type": ".exe",
+                    "path": "And the Hero Was Never Seen Again EN Patch v1.05.exe",
+                    "modifiedTime": "2024-03-12T04:45:46.000Z",
+                    "last_updated": ""
                 },
-                "Install Note - Chinese.docx": {
-                    "type": "file",
+                {
                     "id": "1mrvFj_bzt79uiYheEMfHykDFnEJ4FIls",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Chinese.docx",
+                    "size": "456.3 KB",
+                    "raw_size": 467280,
+                    "type": ".docx",
+                    "path": "Install Note - Chinese.docx",
+                    "modifiedTime": "2024-02-10T05:07:07.000Z",
+                    "last_updated": ""
                 },
-                "And the Hero Was Never Seen Again JP Patch v1.00.exe": {
-                    "type": "file",
+                {
                     "id": "10aKrTTGbVONIUDnWyt4WVokDKiqv1yIH",
-                    "mimeType": "application/x-msdownload"
+                    "name": "And the Hero Was Never Seen Again JP Patch v1.00.exe",
+                    "size": "2816.3 MB",
+                    "raw_size": 2953140720,
+                    "type": ".exe",
+                    "path": "And the Hero Was Never Seen Again JP Patch v1.00.exe",
+                    "modifiedTime": "2024-02-09T07:39:14.000Z",
+                    "last_updated": ""
                 },
-                "And the Hero Was Never Seen Again CN Patch v1.00.exe": {
-                    "type": "file",
+                {
                     "id": "1Y44nSW90cJc0JYxMu1d6nX-cFKNxu_33",
-                    "mimeType": "application/x-msdownload"
+                    "name": "And the Hero Was Never Seen Again CN Patch v1.00.exe",
+                    "size": "2841.7 MB",
+                    "raw_size": 2979779248,
+                    "type": ".exe",
+                    "path": "And the Hero Was Never Seen Again CN Patch v1.00.exe",
+                    "modifiedTime": "2024-02-09T07:37:19.000Z",
+                    "last_updated": ""
                 },
-                "Install Note - English.docx": {
-                    "type": "file",
+                {
                     "id": "1kfwdwC6jYPF_2nl8y21zVixY16kLAyO9",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - English.docx",
+                    "size": "913.5 KB",
+                    "raw_size": 935386,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2022-10-06T17:41:06.000Z",
+                    "last_updated": ""
                 },
-                "Install Note - Japanese.docx": {
-                    "type": "file",
+                {
                     "id": "1Pz2MQiAfJx1zg7Y1j3d9CugPsFoqisHR",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Japanese.docx",
+                    "size": "290.8 KB",
+                    "raw_size": 297769,
+                    "type": ".docx",
+                    "path": "Install Note - Japanese.docx",
+                    "modifiedTime": "2022-10-06T17:41:06.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Angel Tear: Goddess Betrayed",
@@ -10087,28 +10122,48 @@
             "match_reason": "Exact match on full: circle poison|divine miko koyori",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Divine-Miko-Koyori-CN-Patch-v3.exe": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1zSipjOHUxGM4xsEoHRTgCYwmbB9s8rLH",
-                    "mimeType": "application/x-msdownload"
+                    "name": "Divine-Miko-Koyori-CN-Patch-v3.exe",
+                    "size": "341.1 MB",
+                    "raw_size": 357701308,
+                    "type": ".exe",
+                    "path": "Divine-Miko-Koyori-CN-Patch-v3.exe",
+                    "modifiedTime": "2020-02-02T02:12:18.171Z",
+                    "last_updated": ""
                 },
-                "Divine-Miko-Koyori-EN-Patch-v2.exe": {
-                    "type": "file",
+                {
                     "id": "1xB2AsRUnAskGTEyMAycjClBBa7caNVEc",
-                    "mimeType": "application/x-msdownload"
+                    "name": "Divine-Miko-Koyori-EN-Patch-v2.exe",
+                    "size": "356.6 MB",
+                    "raw_size": 373887811,
+                    "type": ".exe",
+                    "path": "Divine-Miko-Koyori-EN-Patch-v2.exe",
+                    "modifiedTime": "2020-02-01T01:15:02.179Z",
+                    "last_updated": ""
                 },
-                "Install Note - English.docx": {
-                    "type": "file",
+                {
                     "id": "1t4P-rEMI0tTiIb58gF0zyZCfeD3Mi1nY",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - English.docx",
+                    "size": "494.3 KB",
+                    "raw_size": 506145,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2020-01-31T04:31:42.701Z",
+                    "last_updated": ""
                 },
-                "Install Note - Chinese.docx": {
-                    "type": "file",
+                {
                     "id": "1n-GEuVox90x8WqPfQOQHX_61oWNUGyMn",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Chinese.docx",
+                    "size": "383.2 KB",
+                    "raw_size": 392367,
+                    "type": ".docx",
+                    "path": "Install Note - Chinese.docx",
+                    "modifiedTime": "2020-01-31T04:31:41.178Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Divine Slice of Life",
@@ -24467,38 +24522,68 @@
             "match_reason": "Exact match on full: bigwednesday|legend of the master baiter",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Install Note - Chinese.docx": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1e60-3FVcAmn8_K3PJ99MJ7rQXQ1x1lLa",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Chinese.docx",
+                    "size": "271.3 KB",
+                    "raw_size": 277849,
+                    "type": ".docx",
+                    "path": "Install Note - Chinese.docx",
+                    "modifiedTime": "2024-06-22T05:26:27.000Z",
+                    "last_updated": ""
                 },
-                "Legend of the Master Baiter JP Patch v1.00.exe": {
-                    "type": "file",
+                {
                     "id": "17Vsr0Z7uChdIWiO3YstbzdxiWIUNbvPG",
-                    "mimeType": "application/x-msdownload"
+                    "name": "Legend of the Master Baiter JP Patch v1.00.exe",
+                    "size": "804.8 MB",
+                    "raw_size": 843861104,
+                    "type": ".exe",
+                    "path": "Legend of the Master Baiter JP Patch v1.00.exe",
+                    "modifiedTime": "2024-06-20T16:16:32.000Z",
+                    "last_updated": ""
                 },
-                "Legend of the Master Baiter CN Patch v1.02.exe": {
-                    "type": "file",
+                {
                     "id": "1zvzWYh0hrKHlwcicqsK2rqBSYq1eQPBd",
-                    "mimeType": "application/x-msdownload"
+                    "name": "Legend of the Master Baiter CN Patch v1.02.exe",
+                    "size": "820.3 MB",
+                    "raw_size": 860161344,
+                    "type": ".exe",
+                    "path": "Legend of the Master Baiter CN Patch v1.02.exe",
+                    "modifiedTime": "2024-06-19T18:06:40.000Z",
+                    "last_updated": ""
                 },
-                "Legend of the Master Baiter EN Patch v1.05.exe": {
-                    "type": "file",
+                {
                     "id": "1w9GuJIT5rVt53nt9dkBShaWf00N6Pf_F",
-                    "mimeType": "application/x-msdownload"
+                    "name": "Legend of the Master Baiter EN Patch v1.05.exe",
+                    "size": "816.4 MB",
+                    "raw_size": 856059600,
+                    "type": ".exe",
+                    "path": "Legend of the Master Baiter EN Patch v1.05.exe",
+                    "modifiedTime": "2024-06-17T20:26:29.000Z",
+                    "last_updated": ""
                 },
-                "Install Note - Japanese.docx": {
-                    "type": "file",
+                {
                     "id": "1kSqiCQjJ7sinUG7su5nNVafxSFT3m4Rb",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Japanese.docx",
+                    "size": "290.8 KB",
+                    "raw_size": 297769,
+                    "type": ".docx",
+                    "path": "Install Note - Japanese.docx",
+                    "modifiedTime": "2022-10-06T17:41:06.000Z",
+                    "last_updated": ""
                 },
-                "Install Note - English.docx": {
-                    "type": "file",
+                {
                     "id": "1goLKb0gOr1T23yxUu12Q1MmNAjknU0A7",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - English.docx",
+                    "size": "913.5 KB",
+                    "raw_size": 935386,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2022-10-06T17:41:06.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Legend of the Master Baiter Origins: Gills Gone Wild",
@@ -24514,38 +24599,68 @@
             "match_reason": "Fuzzy match: bigwednesday|legend of the master baiter origins: gills gone wild -> bigwednesday|legend of the master baiter origins∶ gills gone wild (score: 98, dev: bigwednesday, cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Install Note - Chinese.docx": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1GDTyRZr4GmQkD-BVKNF4q5XV6kEsyrha",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Chinese.docx",
+                    "size": "709.3 KB",
+                    "raw_size": 726292,
+                    "type": ".docx",
+                    "path": "Install Note - Chinese.docx",
+                    "modifiedTime": "2026-03-21T05:42:35.410Z",
+                    "last_updated": ""
                 },
-                "Install Note - Japanese.docx": {
-                    "type": "file",
+                {
                     "id": "17mDYLgIsZDt4D-tMU8ialReM2RO3TPb_",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Japanese.docx",
+                    "size": "290.8 KB",
+                    "raw_size": 297769,
+                    "type": ".docx",
+                    "path": "Install Note - Japanese.docx",
+                    "modifiedTime": "2026-03-21T05:24:24.905Z",
+                    "last_updated": ""
                 },
-                "Install Note - English.docx": {
-                    "type": "file",
+                {
                     "id": "1pgUCZqfNui552mkBHq7izUnRUWtLpT1R",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - English.docx",
+                    "size": "913.5 KB",
+                    "raw_size": 935386,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2026-03-21T05:24:21.346Z",
+                    "last_updated": ""
                 },
-                "Legend of the Master Baiter Origins EN Patch v1.01.exe": {
-                    "type": "file",
+                {
                     "id": "1GLO5enlOcVKcXaZNpI0VkwWsYvbjUxeH",
-                    "mimeType": "application/x-msdownload"
+                    "name": "Legend of the Master Baiter Origins EN Patch v1.01.exe",
+                    "size": "190.0 MB",
+                    "raw_size": 199190488,
+                    "type": ".exe",
+                    "path": "Legend of the Master Baiter Origins EN Patch v1.01.exe",
+                    "modifiedTime": "2026-03-21T05:22:57.000Z",
+                    "last_updated": ""
                 },
-                "Legend of the Master Baiter Origins CN Patch v1.01.exe": {
-                    "type": "file",
+                {
                     "id": "1Lm2PlpUefutbWkbOxSYC6MOvr_JqnAy7",
-                    "mimeType": "application/x-msdownload"
+                    "name": "Legend of the Master Baiter Origins CN Patch v1.01.exe",
+                    "size": "194.3 MB",
+                    "raw_size": 203713040,
+                    "type": ".exe",
+                    "path": "Legend of the Master Baiter Origins CN Patch v1.01.exe",
+                    "modifiedTime": "2026-03-21T05:22:51.000Z",
+                    "last_updated": ""
                 },
-                "Legend of the Master Baiter Origins JP Patch v1.00.exe": {
-                    "type": "file",
+                {
                     "id": "15wvvkSR7dCmSeh-tTdA6TUFdLuGAn8mG",
-                    "mimeType": "application/x-msdownload"
+                    "name": "Legend of the Master Baiter Origins JP Patch v1.00.exe",
+                    "size": "184.5 MB",
+                    "raw_size": 193437544,
+                    "type": ".exe",
+                    "path": "Legend of the Master Baiter Origins JP Patch v1.00.exe",
+                    "modifiedTime": "2026-03-21T05:22:46.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Lelie Navigation!",
@@ -34670,7 +34785,7 @@
             "row_num": "933",
             "appid": "3801270",
             "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 87, dev: iolite, cutoff: 0.8)",
+            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 87, dev: アイオライト, cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false,
             "contents": {
@@ -44550,48 +44665,88 @@
             "match_reason": "Exact match on full: circle poison|slave's sword",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Slave's Sword - Chinese Uncensor Patch v2.exe": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1WyMt1MxsIFqOn1sxsI5XJDPv6Py03foE",
-                    "mimeType": "application/x-msdownload"
+                    "name": "Slave's Sword - Chinese Uncensor Patch v2.exe",
+                    "size": "729.1 MB",
+                    "raw_size": 764559416,
+                    "type": ".exe",
+                    "path": "Slave's Sword - Chinese Uncensor Patch v2.exe",
+                    "modifiedTime": "2021-08-03T16:08:10.000Z",
+                    "last_updated": ""
                 },
-                "Install Note - Japanese.docx": {
-                    "type": "file",
+                {
                     "id": "1uAiDgklz6I4ezja5x330lcJe7jpgL88x",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Japanese.docx",
+                    "size": "532.3 KB",
+                    "raw_size": 545052,
+                    "type": ".docx",
+                    "path": "Install Note - Japanese.docx",
+                    "modifiedTime": "2020-08-08T22:44:19.000Z",
+                    "last_updated": ""
                 },
-                "Slave's Sword - Japanese Uncensor Patch v1.exe": {
-                    "type": "file",
+                {
                     "id": "1cRuQ5fD2SpCsIQKSe5ZxwbwX_s5AgxqS",
-                    "mimeType": "application/x-msdownload"
+                    "name": "Slave's Sword - Japanese Uncensor Patch v1.exe",
+                    "size": "253.3 MB",
+                    "raw_size": 265605000,
+                    "type": ".exe",
+                    "path": "Slave's Sword - Japanese Uncensor Patch v1.exe",
+                    "modifiedTime": "2020-08-08T22:35:55.000Z",
+                    "last_updated": ""
                 },
-                "Install Note - Chinese.docx": {
-                    "type": "file",
+                {
                     "id": "1Q6zAyc0pcgED5gYVlxpWlm3lYB2LuOVL",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Chinese.docx",
+                    "size": "499.1 KB",
+                    "raw_size": 511092,
+                    "type": ".docx",
+                    "path": "Install Note - Chinese.docx",
+                    "modifiedTime": "2019-02-22T03:43:31.020Z",
+                    "last_updated": ""
                 },
-                "Slave's Sword - English Uncensor Patch v4.exe": {
-                    "type": "file",
+                {
                     "id": "1Fn_pMVS7F4VJWZXrzMOcYHpJke1RgR_M",
-                    "mimeType": "application/x-msdownload"
+                    "name": "Slave's Sword - English Uncensor Patch v4.exe",
+                    "size": "585.1 MB",
+                    "raw_size": 613486912,
+                    "type": ".exe",
+                    "path": "Slave's Sword - English Uncensor Patch v4.exe",
+                    "modifiedTime": "2018-12-23T02:36:38.261Z",
+                    "last_updated": ""
                 },
-                "Troubleshooting Guide - Chinese.docx": {
-                    "type": "file",
+                {
                     "id": "1NsxYdRTSpb8wFBKeUKuJSN4kDUNBR9wf",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Troubleshooting Guide - Chinese.docx",
+                    "size": "23.7 KB",
+                    "raw_size": 24263,
+                    "type": ".docx",
+                    "path": "Troubleshooting Guide - Chinese.docx",
+                    "modifiedTime": "2018-12-14T04:35:49.458Z",
+                    "last_updated": ""
                 },
-                "Install Note - English.docx": {
-                    "type": "file",
+                {
                     "id": "1ZBng5nV_0mq9M36HKXLbfGHrNwL6Nbrv",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - English.docx",
+                    "size": "516.8 KB",
+                    "raw_size": 529183,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2018-12-14T04:31:59.561Z",
+                    "last_updated": ""
                 },
-                "Troubleshooting Guide - English.docx": {
-                    "type": "file",
+                {
                     "id": "1tk-zUTWZtcGqyacEnopMWafaxWnZLSny",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Troubleshooting Guide - English.docx",
+                    "size": "22.5 KB",
+                    "raw_size": 23055,
+                    "type": ".docx",
+                    "path": "Troubleshooting Guide - English.docx",
+                    "modifiedTime": "2018-12-14T04:20:17.100Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Slave's Sword 2",
@@ -44607,38 +44762,68 @@
             "match_reason": "Exact match on full: circle poison|slave's sword 2",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Slave's Sword 2 - Japanese Uncensor Patch v1.exe": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1c67gvYlXqaN7MzjzPTt6mgYYlUgmQH1k",
-                    "mimeType": "application/x-msdownload"
+                    "name": "Slave's Sword 2 - Japanese Uncensor Patch v1.exe",
+                    "size": "297.4 MB",
+                    "raw_size": 311795008,
+                    "type": ".exe",
+                    "path": "Slave's Sword 2 - Japanese Uncensor Patch v1.exe",
+                    "modifiedTime": "2020-08-22T03:37:42.000Z",
+                    "last_updated": ""
                 },
-                "Install Note - Japanese.docx": {
-                    "type": "file",
+                {
                     "id": "1UxazbRmbgrTpJ_d46_r4me77_1-p4Uc2",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Japanese.docx",
+                    "size": "533.4 KB",
+                    "raw_size": 546173,
+                    "type": ".docx",
+                    "path": "Install Note - Japanese.docx",
+                    "modifiedTime": "2020-08-22T03:31:16.000Z",
+                    "last_updated": ""
                 },
-                "Slave's Sword 2 - English Uncensor Patch v3.exe": {
-                    "type": "file",
+                {
                     "id": "1rgcm7e8nSDlopILLs1HjT-E3W1HvaL74",
-                    "mimeType": "application/x-msdownload"
+                    "name": "Slave's Sword 2 - English Uncensor Patch v3.exe",
+                    "size": "283.9 MB",
+                    "raw_size": 297726628,
+                    "type": ".exe",
+                    "path": "Slave's Sword 2 - English Uncensor Patch v3.exe",
+                    "modifiedTime": "2019-02-28T13:18:36.176Z",
+                    "last_updated": ""
                 },
-                "Slave's Sword 2 - Chinese Uncensor Patch v4.exe": {
-                    "type": "file",
+                {
                     "id": "1v59hu6PPZqmP0kCXbrePNaXMJksEWCs8",
-                    "mimeType": "application/x-msdownload"
+                    "name": "Slave's Sword 2 - Chinese Uncensor Patch v4.exe",
+                    "size": "283.3 MB",
+                    "raw_size": 297009968,
+                    "type": ".exe",
+                    "path": "Slave's Sword 2 - Chinese Uncensor Patch v4.exe",
+                    "modifiedTime": "2019-02-28T13:10:20.247Z",
+                    "last_updated": ""
                 },
-                "Install Note - English.docx": {
-                    "type": "file",
+                {
                     "id": "1YJNJiQSLof8glvty9Ck57m16UAojBhJ6",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - English.docx",
+                    "size": "470.4 KB",
+                    "raw_size": 481717,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2019-02-22T04:54:35.051Z",
+                    "last_updated": ""
                 },
-                "Install Note - Chinese.docx": {
-                    "type": "file",
+                {
                     "id": "1EJ2GbZUfDUxagdeRmEBtDFlbMa9roCu7",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Chinese.docx",
+                    "size": "477.0 KB",
+                    "raw_size": 488484,
+                    "type": ".docx",
+                    "path": "Install Note - Chinese.docx",
+                    "modifiedTime": "2019-02-22T04:54:33.924Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Slaves",
@@ -50672,38 +50857,68 @@
             "match_reason": "Exact match on full: bigwednesday|the heart of darkness",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "The Heart of Darkness CN Patch v1.02.exe": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1vJpnNkxkC4R13Cf6ruTTjtevU2QvYBZx",
-                    "mimeType": "application/x-msdownload"
+                    "name": "The Heart of Darkness CN Patch v1.02.exe",
+                    "size": "284.9 MB",
+                    "raw_size": 298706760,
+                    "type": ".exe",
+                    "path": "The Heart of Darkness CN Patch v1.02.exe",
+                    "modifiedTime": "2022-04-27T07:47:32.000Z",
+                    "last_updated": ""
                 },
-                "The Heart of Darkness EN Patch v1.01.exe": {
-                    "type": "file",
+                {
                     "id": "1HbxvyF_OEdLAl4BXm3rdkdkvZqswcMPg",
-                    "mimeType": "application/x-msdownload"
+                    "name": "The Heart of Darkness EN Patch v1.01.exe",
+                    "size": "270.3 MB",
+                    "raw_size": 283397560,
+                    "type": ".exe",
+                    "path": "The Heart of Darkness EN Patch v1.01.exe",
+                    "modifiedTime": "2022-04-16T06:03:31.000Z",
+                    "last_updated": ""
                 },
-                "Install Note - Chinese.docx": {
-                    "type": "file",
+                {
                     "id": "1iq6Xcnm40UpRE5cGYuPHtn_BAYYtZ4Wx",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Chinese.docx",
+                    "size": "412.2 KB",
+                    "raw_size": 422100,
+                    "type": ".docx",
+                    "path": "Install Note - Chinese.docx",
+                    "modifiedTime": "2022-04-15T19:33:33.000Z",
+                    "last_updated": ""
                 },
-                "The Heart of Darkness JP Patch v1.00.exe": {
-                    "type": "file",
+                {
                     "id": "1-q-fZpZGVI4l_39bJ36frKQgV2Jzec1G",
-                    "mimeType": "application/x-msdownload"
+                    "name": "The Heart of Darkness JP Patch v1.00.exe",
+                    "size": "256.6 MB",
+                    "raw_size": 269115200,
+                    "type": ".exe",
+                    "path": "The Heart of Darkness JP Patch v1.00.exe",
+                    "modifiedTime": "2022-04-15T15:37:47.000Z",
+                    "last_updated": ""
                 },
-                "Install Note - Japanese.docx": {
-                    "type": "file",
+                {
                     "id": "12pq5ab2_SFddXdqTOocmf54bzER3AO5b",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Japanese.docx",
+                    "size": "290.8 KB",
+                    "raw_size": 297769,
+                    "type": ".docx",
+                    "path": "Install Note - Japanese.docx",
+                    "modifiedTime": "2021-02-03T16:08:04.000Z",
+                    "last_updated": ""
                 },
-                "Install Note - English.docx": {
-                    "type": "file",
+                {
                     "id": "1k1Ig52Of2hY38ynXJYoCsstTAYIR45Tz",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - English.docx",
+                    "size": "913.5 KB",
+                    "raw_size": 935386,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2021-02-03T16:04:47.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "The Heiress",
@@ -54199,38 +54414,68 @@
             "match_reason": "Exact match on full: circle poison|valkyrie destruction",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Install Note - English.docx": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1bW9PG-INMUb6fHOJwH630cjA4LBcN12p",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - English.docx",
+                    "size": "292.0 KB",
+                    "raw_size": 298977,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2026-03-18T02:19:31.151Z",
+                    "last_updated": ""
                 },
-                "Install Note - Traditional Chinese.docx": {
-                    "type": "file",
+                {
                     "id": "1NiSyHF-5DeCHxcmVHMjmppKbyoKDJG_G",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Traditional Chinese.docx",
+                    "size": "292.1 KB",
+                    "raw_size": 299143,
+                    "type": ".docx",
+                    "path": "Install Note - Traditional Chinese.docx",
+                    "modifiedTime": "2026-03-18T02:19:26.460Z",
+                    "last_updated": ""
                 },
-                "Install Note - Simplified Chinese.docx": {
-                    "type": "file",
+                {
                     "id": "123ot4wFBbEeXRKQBVqbKjp3c76sCLGuV",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Simplified Chinese.docx",
+                    "size": "292.1 KB",
+                    "raw_size": 299105,
+                    "type": ".docx",
+                    "path": "Install Note - Simplified Chinese.docx",
+                    "modifiedTime": "2026-03-18T02:19:20.700Z",
+                    "last_updated": ""
                 },
-                "Valkyrie_Desturction_Patch_ZHCN_v2026.03.18.zip": {
-                    "type": "file",
+                {
                     "id": "13qwTKRff5cJcKGE2XfFFaI_tIza6bN3s",
-                    "mimeType": "application/x-zip-compressed"
+                    "name": "Valkyrie_Desturction_Patch_ZHCN_v2026.03.18.zip",
+                    "size": "244.5 MB",
+                    "raw_size": 256395795,
+                    "type": ".zip",
+                    "path": "Valkyrie_Desturction_Patch_ZHCN_v2026.03.18.zip",
+                    "modifiedTime": "2026-03-18T02:14:05.000Z",
+                    "last_updated": ""
                 },
-                "Valkyrie_Desturction_Patch_ZHTW_v2026.03.18.zip": {
-                    "type": "file",
+                {
                     "id": "1PdWvghj1edZWv2Ac0lYM7xSGYUo13KSC",
-                    "mimeType": "application/x-zip-compressed"
+                    "name": "Valkyrie_Desturction_Patch_ZHTW_v2026.03.18.zip",
+                    "size": "244.5 MB",
+                    "raw_size": 256376955,
+                    "type": ".zip",
+                    "path": "Valkyrie_Desturction_Patch_ZHTW_v2026.03.18.zip",
+                    "modifiedTime": "2026-03-18T02:14:02.000Z",
+                    "last_updated": ""
                 },
-                "Valkyrie_Desturction_Patch_EN_v2026.03.18.zip": {
-                    "type": "file",
+                {
                     "id": "1FZ9oxtg3hiT5-udkdKtOJ3CfwEpAaMew",
-                    "mimeType": "application/x-zip-compressed"
+                    "name": "Valkyrie_Desturction_Patch_EN_v2026.03.18.zip",
+                    "size": "245.5 MB",
+                    "raw_size": 257426880,
+                    "type": ".zip",
+                    "path": "Valkyrie_Desturction_Patch_EN_v2026.03.18.zip",
+                    "modifiedTime": "2026-03-18T02:13:50.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "VALKYRIE DRIVE -BHIKKHUNI-",
@@ -55203,17 +55448,38 @@
             "game": "Welcome to Cafe Lumière! ~A Dragon Girl Concept Cafe~",
             "developer": "Cuteuphoria",
             "publisher": "Sekai Project",
-            "notes": "",
+            "notes": "Multilanguage patch v1.0 (2026.04.23)",
             "steam_url": "https://store.steampowered.com/app/3419820/",
             "patch_link": "https://drive.google.com/drive/folders/18yCtgxq1HcDrdbtZAJuBRvM95bwY4LU9",
-            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3419820/7066ceb5bcc958ff4542df51ced9bc104de17a29/header.jpg?t=1776889141",
+            "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3419820/7066ceb5bcc958ff4542df51ced9bc104de17a29/header.jpg?t=1776994235",
             "row_num": "1447",
             "appid": "3419820",
             "match_status": "exact",
             "match_reason": "Exact match on full: cuteuphoria|welcome to cafe lumière! ~a dragon girl concept cafe~",
-            "store_status": "unreleased",
+            "store_status": "available",
             "manual_edit": false,
-            "contents": []
+            "contents": [
+                {
+                    "id": "1lbUN3j-kULmgDrCtJFht40kSywHWzAOD",
+                    "name": "Install Note.docx",
+                    "size": "1.7 MB",
+                    "raw_size": 1766291,
+                    "type": ".docx",
+                    "path": "Install Note.docx",
+                    "modifiedTime": "2026-04-24T07:26:23.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1tkpvHIjIe2FRvDKM7Rf3bx_4LYhtgwjX",
+                    "name": "Welcome to Cafe Lumiere R18 DLC v1.00 (2026.04.23).rar",
+                    "size": "954.1 MB",
+                    "raw_size": 1000457884,
+                    "type": ".rar",
+                    "path": "Welcome to Cafe Lumiere R18 DLC v1.00 (2026.04.23).rar",
+                    "modifiedTime": "2026-04-24T07:16:10.000Z",
+                    "last_updated": ""
+                }
+            ]
         },
         {
             "game": "Welcome to Maison Chichigami",
