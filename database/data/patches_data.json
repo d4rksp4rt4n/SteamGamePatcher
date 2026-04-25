@@ -2,10 +2,15 @@
     "data": {
         "total_games": 1563,
         "unique_developers": 804,
-        "generated_at": "2026-04-25 04:38:45 UTC"
+        "generated_at": "2026-04-25 19:49:45 UTC"
     },
     "last_folders_metadata": {
         "recent_changes": [
+            [
+                "2026-04-25T19:49:30.833947",
+                "Elise and the Spellbinding Marionette",
+                "🗑 ARCHIVED: wagasi biyori (和菓子日和 )/Elise and the Spellbinding Marionette/Elise and the Spellbinding Marionette EN Patch v1.00.exe"
+            ],
             [
                 "2026-04-24T07:35:21.114442",
                 "Welcome to Cafe Lumière! ~A Dragon Girl Concept Cafe~",
@@ -32,7 +37,7 @@
                 "➕ NEW PATCH: dorgel/MELFIAS －Azure and Crimson Verge－/MELFIAS_SteamPatch_TC_v2026.04.17.7z"
             ]
         ],
-        "last_sync": "2026-04-25T04:38:33.466704"
+        "last_sync": "2026-04-25T19:49:33.783923"
     },
     "entries": [
         {
@@ -12113,7 +12118,7 @@
             "game": "Elise and the Spellbinding Marionette",
             "developer": "wagasi biyori (和菓子日和 )",
             "publisher": "Kagura Games",
-            "notes": "Chinese patch v1.00. English patch v1.00. Japanese patch v1.00",
+            "notes": "Chinese patch v1.00. English patch v1.01. Japanese patch v1.00",
             "steam_url": "https://store.steampowered.com/app/4237200/",
             "patch_link": "https://drive.google.com/drive/folders/1Px282F8JMoo3NG4x-ncZwNY52pyJ99Iu",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4237200/41e9eb58b13586c9a93295c86f43339213e285b9/header.jpg?t=1777089607",
@@ -12125,13 +12130,13 @@
             "manual_edit": false,
             "contents": [
                 {
-                    "id": "12uLiquFv0gZeN-Bun4YsY_r2i8dNNXqS",
-                    "name": "Elise and the Spellbinding Marionette EN Patch v1.00.exe",
+                    "id": "1QbRircMRJ2epY5r8w-duX5g-ziU9xfjZ",
+                    "name": "Elise and the Spellbinding Marionette EN Patch v1.01.exe",
                     "size": "222.3 MB",
-                    "raw_size": 233113512,
+                    "raw_size": 233113488,
                     "type": ".exe",
-                    "path": "Elise and the Spellbinding Marionette EN Patch v1.00.exe",
-                    "modifiedTime": "2026-04-25T04:32:08.000Z",
+                    "path": "Elise and the Spellbinding Marionette EN Patch v1.01.exe",
+                    "modifiedTime": "2026-04-25T19:42:28.000Z",
                     "last_updated": ""
                 },
                 {
@@ -45603,7 +45608,7 @@
             "row_num": "1202",
             "appid": "3421410",
             "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: マッスルランスネーク (muscle run snake)|spiritbound: the goddess's quest -> マッスルランスネーク (muscle run snake)|spiritbound∶ the goddess's quest (score: 86, dev: muscle run snake, cutoff: 0.8)",
+            "match_reason": "Fuzzy match: マッスルランスネーク (muscle run snake)|spiritbound: the goddess's quest -> マッスルランスネーク (muscle run snake)|spiritbound∶ the goddess's quest (score: 80, dev: マッスルランスネーク, cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false,
             "contents": {
