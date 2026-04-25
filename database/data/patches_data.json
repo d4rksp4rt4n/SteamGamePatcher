@@ -2,7 +2,7 @@
     "data": {
         "total_games": 1563,
         "unique_developers": 804,
-        "generated_at": "2026-04-25 04:32:00 UTC"
+        "generated_at": "2026-04-25 04:38:45 UTC"
     },
     "last_folders_metadata": {
         "recent_changes": [
@@ -30,14 +30,9 @@
                 "2026-04-17T06:53:29.509203",
                 "MELFIAS －Azure and Crimson Verge－",
                 "➕ NEW PATCH: dorgel/MELFIAS －Azure and Crimson Verge－/MELFIAS_SteamPatch_TC_v2026.04.17.7z"
-            ],
-            [
-                "2026-04-17T06:27:13.288337",
-                "AICOMI",
-                "➕ NEW PATCH: ILLGAMES/AICOMI/Aicomi Steam Extra Patch v2026.04.17.7z"
             ]
         ],
-        "last_sync": "2026-04-25T04:31:47.898281"
+        "last_sync": "2026-04-25T04:38:33.466704"
     },
     "entries": [
         {
@@ -12118,7 +12113,7 @@
             "game": "Elise and the Spellbinding Marionette",
             "developer": "wagasi biyori (和菓子日和 )",
             "publisher": "Kagura Games",
-            "notes": "Chinese patch v1.0x. English patch v1.0x. Japanese patch v1.0x",
+            "notes": "Chinese patch v1.00. English patch v1.00. Japanese patch v1.00",
             "steam_url": "https://store.steampowered.com/app/4237200/",
             "patch_link": "https://drive.google.com/drive/folders/1Px282F8JMoo3NG4x-ncZwNY52pyJ99Iu",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4237200/41e9eb58b13586c9a93295c86f43339213e285b9/header.jpg?t=1777089607",
@@ -12128,7 +12123,68 @@
             "match_reason": "Exact match on full: wagasi biyori (和菓子日和 )|elise and the spellbinding marionette",
             "store_status": "available",
             "manual_edit": false,
-            "contents": []
+            "contents": [
+                {
+                    "id": "12uLiquFv0gZeN-Bun4YsY_r2i8dNNXqS",
+                    "name": "Elise and the Spellbinding Marionette EN Patch v1.00.exe",
+                    "size": "222.3 MB",
+                    "raw_size": 233113512,
+                    "type": ".exe",
+                    "path": "Elise and the Spellbinding Marionette EN Patch v1.00.exe",
+                    "modifiedTime": "2026-04-25T04:32:08.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "14UQFbcRw-UAHyigQSMTPKzb5GKfvVOXM",
+                    "name": "Elise and the Spellbinding Marionette JP Patch v1.00.exe",
+                    "size": "491.7 MB",
+                    "raw_size": 515587904,
+                    "type": ".exe",
+                    "path": "Elise and the Spellbinding Marionette JP Patch v1.00.exe",
+                    "modifiedTime": "2026-04-25T04:31:32.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1D6PV25c6jRg5tGKSrvpHOsikHDifCivd",
+                    "name": "Elise and the Spellbinding Marionette CN Patch v1.00.exe",
+                    "size": "225.5 MB",
+                    "raw_size": 236478888,
+                    "type": ".exe",
+                    "path": "Elise and the Spellbinding Marionette CN Patch v1.00.exe",
+                    "modifiedTime": "2026-04-25T04:30:31.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1J6yPsNGgKJlq6AxuX46MWl6NrW5WTv6s",
+                    "name": "Install Note - Chinese.docx",
+                    "size": "711.0 KB",
+                    "raw_size": 728075,
+                    "type": ".docx",
+                    "path": "Install Note - Chinese.docx",
+                    "modifiedTime": "2026-04-25T04:28:29.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1VwriG3A2t7Snnit1zUPvedmh4TwI7yTQ",
+                    "name": "Install Note - English.docx",
+                    "size": "913.5 KB",
+                    "raw_size": 935386,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2022-10-06T17:41:06.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1tdEwqJlEepYhdaH8vNPbquOrOTkm9-lW",
+                    "name": "Install Note - Japanese.docx",
+                    "size": "290.8 KB",
+                    "raw_size": 297769,
+                    "type": ".docx",
+                    "path": "Install Note - Japanese.docx",
+                    "modifiedTime": "2022-10-06T17:41:06.000Z",
+                    "last_updated": ""
+                }
+            ]
         },
         {
             "game": "Elise the Devil",
@@ -34857,7 +34913,7 @@
             "row_num": "934",
             "appid": "3801270",
             "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 87, dev: アイオライト, cutoff: 0.8)",
+            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 87, dev: iolite, cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false,
             "contents": {
