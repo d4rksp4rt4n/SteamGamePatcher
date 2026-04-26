@@ -1,5 +1,5 @@
 """
-SteamGamePatcher.py (v1.4-modern)
+SteamGamePatcher.py (v1.4.1-modern)
 A modern, professional Steam Game Patcher central hub.
 Complete rewrite with customtkinter for a clean, Steam-inspired dark UI.
 
@@ -163,50 +163,60 @@ def font(size=12, weight="normal"):
 # Utility functions
 # ═══════════════════════════════════════════════════════════════
 def flatten_game_contents(contents):
-    """Flatten 'contents' — supports BOTH dict (old) and list (new 2026) formats."""
+    """Flatten contents from last_folders.json into the flat 'files' list the app expects.
+    Supports old dict format and new flat list format from the indexer.
+    """
     flat_files = []
-
+    
     def recurse(items, current_path=""):
         if isinstance(items, dict):
-            # Old/current dict format
-            for name, data in items.items():
-                if not isinstance(data, dict):
+            # Old nested dict format (legacy)
+            for item_name, item_data in items.items():
+                if not isinstance(item_data, dict):
                     continue
-                if data.get("type") == "file":
-                    display = f"{current_path}/{name}" if current_path else name
+                if item_data.get("type") == "file":
+                    display_path = f"{current_path}/{item_name}" if current_path else item_name
                     flat_files.append({
-                        "name": name,
-                        "path": display,
-                        "id": data.get("id"),
-                        "mimeType": data.get("mimeType"),
-                        "size": data.get("size", "Unknown")
+                        "name": item_name,
+                        "path": display_path,
+                        "id": item_data.get("id"),
+                        "mimeType": item_data.get("mimeType"),
+                        "size": item_data.get("size", "Unknown")
                     })
-                elif data.get("type") == "folder" and "children" in data:
-                    new_path = f"{current_path}/{name}" if current_path else name
-                    recurse(data["children"], new_path)
+                elif item_data.get("type") == "folder" and "children" in item_data:
+                    new_path = f"{current_path}/{item_name}" if current_path else item_name
+                    recurse(item_data.get("children", {}), new_path)
 
         elif isinstance(items, list):
-            # New list format used in the live database
-            for item in items:
-                if not isinstance(item, dict):
+            # New flat list format (current)
+            for item_data in items:
+                if not isinstance(item_data, dict):
                     continue
-                name = item.get("name") or item.get("filename")
-                if not name:
+                
+                item_name = item_data.get("name") or item_data.get("filename")
+                if not item_name or not item_data.get("id"):
                     continue
-                if item.get("type") == "file":
-                    display = f"{current_path}/{name}" if current_path else name
-                    flat_files.append({
-                        "name": name,
-                        "path": display,
-                        "id": item.get("id"),
-                        "mimeType": item.get("mimeType"),
-                        "size": item.get("size", "Unknown")
-                    })
-                elif item.get("type") == "folder":
-                    new_path = f"{current_path}/{name}" if current_path else name
-                    recurse(item.get("children", []), new_path)
+                
+                # Accept ANY item that has an "id" — type can be ".exe", ".zip", "file", None, etc.
+                display_path = f"{current_path}/{item_name}" if current_path else item_name
+                flat_files.append({
+                    "name": item_name,
+                    "path": display_path,
+                    "id": item_data.get("id"),
+                    "mimeType": item_data.get("mimeType"),
+                    "size": item_data.get("size", item_data.get("raw_size", "Unknown"))
+                })
 
-    recurse(contents)
+                # If there are ever real subfolders with "children", handle them too
+                if item_data.get("type") == "folder" and "children" in item_data:
+                    new_path = f"{current_path}/{item_name}" if current_path else item_name
+                    recurse(item_data.get("children", []), new_path)
+
+    if contents:
+        recurse(contents)
+    
+    # Sort for consistent UI order
+    flat_files.sort(key=lambda f: f['name'].lower())
     return flat_files
     
 def resource_path(relative_path):
