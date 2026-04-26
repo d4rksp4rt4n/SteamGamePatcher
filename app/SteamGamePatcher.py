@@ -32,21 +32,22 @@ try:
     from docx.oxml.table import CT_Tbl
     from docx.table import _Cell, Table
     from docx.text.paragraph import Paragraph
-    from docx.oxml.ns import qn  # <--- CRITICAL ADDITION FOR XML PARSING
+    from docx.oxml.ns import qn 
 except ImportError:
     pass
 
-APP_VERSION = '1.36-beta'
+APP_VERSION = '1.38-beta'
 CONFIG_FILENAME = 'patcher_config.json'  # Per-game config file
 
 def flatten_game_contents(contents):
-    """Flatten the new nested 'contents' into the old 'files' format.
-    Supports BOTH dict format (old) and list format (new backend 2026)."""
+    """Flatten contents from last_folders.json into the flat 'files' list the app expects.
+    Supports old dict format and new flat list format from the indexer.
+    """
     flat_files = []
     
     def recurse(items, current_path=""):
         if isinstance(items, dict):
-            # Old format: {"filename.ext": {"type": "file", "id": "..."}, ...}
+            # Old nested dict format (legacy)
             for item_name, item_data in items.items():
                 if not isinstance(item_data, dict):
                     continue
@@ -64,27 +65,35 @@ def flatten_game_contents(contents):
                     recurse(item_data.get("children", {}), new_path)
 
         elif isinstance(items, list):
-            # New format (current live DB): list of objects
+            # New flat list format (current)
             for item_data in items:
                 if not isinstance(item_data, dict):
                     continue
+                
                 item_name = item_data.get("name") or item_data.get("filename")
-                if not item_name:
+                if not item_name or not item_data.get("id"):
                     continue
-                if item_data.get("type") == "file":
-                    display_path = f"{current_path}/{item_name}" if current_path else item_name
-                    flat_files.append({
-                        "name": item_name,
-                        "path": display_path,
-                        "id": item_data.get("id"),
-                        "mimeType": item_data.get("mimeType"),
-                        "size": item_data.get("size", "Unknown")
-                    })
-                elif item_data.get("type") == "folder":
-                    new_path = f"{current_path}/{item_name}" if current_path else item_name
-                    recurse(item_data.get("children", []), new_path)   # children is also list in new format
+                
+                # Accept ANY item that has an "id" — type can be ".exe", ".zip", "file", None, etc.
+                display_path = f"{current_path}/{item_name}" if current_path else item_name
+                flat_files.append({
+                    "name": item_name,
+                    "path": display_path,
+                    "id": item_data.get("id"),
+                    "mimeType": item_data.get("mimeType"),
+                    "size": item_data.get("size", item_data.get("raw_size", "Unknown"))
+                })
 
-    recurse(contents)
+                # If there are ever real subfolders with "children", handle them too
+                if item_data.get("type") == "folder" and "children" in item_data:
+                    new_path = f"{current_path}/{item_name}" if current_path else item_name
+                    recurse(item_data.get("children", []), new_path)
+
+    if contents:
+        recurse(contents)
+    
+    # Sort for consistent UI order
+    flat_files.sort(key=lambda f: f['name'].lower())
     return flat_files
 
 def resource_path(relative_path):
@@ -1597,7 +1606,7 @@ class App(tk.Tk):
             return
         files = match["data"].get("files", [])
         if not files:
-            messagebox.showerror("ERROR", "No patch files defined for this game.")
+            logging.warning(f"No files after flattening for {game_name} (appid {appid}). Raw contents type: {type(match['data'].get('contents'))}, len: {len(match['data'].get('contents', []))}")
             return            
         # --- NEW: Sort files alphabetically by name ---
         files.sort(key=lambda f: f['name'].lower())
