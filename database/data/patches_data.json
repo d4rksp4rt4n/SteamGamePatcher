@@ -2,7 +2,7 @@
     "data": {
         "total_games": 1563,
         "unique_developers": 804,
-        "generated_at": "2026-04-25 19:49:45 UTC"
+        "generated_at": "2026-04-27 00:44:16 UTC"
     },
     "last_folders_metadata": {
         "recent_changes": [
@@ -37,7 +37,7 @@
                 "➕ NEW PATCH: dorgel/MELFIAS －Azure and Crimson Verge－/MELFIAS_SteamPatch_TC_v2026.04.17.7z"
             ]
         ],
-        "last_sync": "2026-04-25T19:49:33.783923"
+        "last_sync": "2026-04-27T00:44:04.247454"
     },
     "entries": [
         {
@@ -9956,64 +9956,78 @@
             "match_reason": "Exact match on full: bbq大好き|devil's 5 days mischief game",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Install Note - English.docx": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1DMnSuzQChXV_bd_Fs-SjDpnrslRSCjTf",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - English.docx",
+                    "size": "459.6 KB",
+                    "raw_size": 470639,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2024-07-12T14:38:07.453Z",
+                    "last_updated": ""
                 },
-                "Install Note - Japanese.docx": {
-                    "type": "file",
+                {
                     "id": "1cr2B6Pq7k16pz6ohsvSnsZWiI3_Gzlr1",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Japanese.docx",
+                    "size": "459.9 KB",
+                    "raw_size": 470911,
+                    "type": ".docx",
+                    "path": "Install Note - Japanese.docx",
+                    "modifiedTime": "2024-07-12T14:37:59.254Z",
+                    "last_updated": ""
                 },
-                "Install Note - Chinese.docx": {
-                    "type": "file",
+                {
                     "id": "1Q54ihKah3cjUYic2Eb6vOWfZBHw8_tXp",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Chinese.docx",
+                    "size": "459.9 KB",
+                    "raw_size": 470947,
+                    "type": ".docx",
+                    "path": "Install Note - Chinese.docx",
+                    "modifiedTime": "2024-07-12T14:37:57.027Z",
+                    "last_updated": ""
                 },
-                "5Days-EN-Patch 20240707.zip": {
-                    "type": "file",
+                {
                     "id": "1JVOqHzl6M0tUCSOFGkqJ_PNTf1EFLFpX",
-                    "mimeType": "application/x-zip-compressed"
+                    "name": "5Days-EN-Patch 20240707.zip",
+                    "size": "1647.3 MB",
+                    "raw_size": 1727285039,
+                    "type": ".zip",
+                    "path": "5Days-EN-Patch 20240707.zip",
+                    "modifiedTime": "2024-07-12T14:26:41.000Z",
+                    "last_updated": ""
                 },
-                "5Days-SCN-Patch 20240707.zip": {
-                    "type": "file",
+                {
                     "id": "1lCJxNrUdfVb_tb5N8beKP_UdHRSF55Dx",
-                    "mimeType": "application/x-zip-compressed"
+                    "name": "5Days-SCN-Patch 20240707.zip",
+                    "size": "1647.5 MB",
+                    "raw_size": 1727565278,
+                    "type": ".zip",
+                    "path": "5Days-SCN-Patch 20240707.zip",
+                    "modifiedTime": "2024-07-12T14:26:40.000Z",
+                    "last_updated": ""
                 },
-                "5Days-JP-Patch 20240707.zip": {
-                    "type": "file",
+                {
                     "id": "1iFUSYnB68QE3AlcFtj7siW16nSkSOYuG",
-                    "mimeType": "application/x-zip-compressed"
+                    "name": "5Days-JP-Patch 20240707.zip",
+                    "size": "1647.5 MB",
+                    "raw_size": 1727499813,
+                    "type": ".zip",
+                    "path": "5Days-JP-Patch 20240707.zip",
+                    "modifiedTime": "2024-07-12T14:26:35.000Z",
+                    "last_updated": ""
                 },
-                "5Days-TCN-Patch 20240707.zip": {
-                    "type": "file",
+                {
                     "id": "1pIMZLREXuEIgTw9LrI8CYA2TgGWr7I3N",
-                    "mimeType": "application/x-zip-compressed"
-                },
-                "Old": {
-                    "type": "folder",
-                    "id": "1teSY4pzmEqjVPyaVV1MKKkIL82N9w8e9",
-                    "children": {
-                        "Devil's 5 Days Mischief Game Patch CN v1.10.7z": {
-                            "type": "file",
-                            "id": "12y1d_Vh_hz9EJaWdfl9jwnvm1v_y5btQ",
-                            "mimeType": "application/x-7z-compressed"
-                        },
-                        "Install Note.docx": {
-                            "type": "file",
-                            "id": "16uKHY3KHvCx7YPbguOMaKD5te2gQcCqL",
-                            "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                        },
-                        "Devil's 5 Days Mischief Game Patch EN v1.10.7z": {
-                            "type": "file",
-                            "id": "1iOKwcZWmsm5zrv9fI2SdhmBCXbH7B9qZ",
-                            "mimeType": "application/x-7z-compressed"
-                        }
-                    }
+                    "name": "5Days-TCN-Patch 20240707.zip",
+                    "size": "1647.5 MB",
+                    "raw_size": 1727566781,
+                    "type": ".zip",
+                    "path": "5Days-TCN-Patch 20240707.zip",
+                    "modifiedTime": "2024-07-12T14:26:28.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Devilish Blind Date",
@@ -11134,43 +11148,78 @@
             "match_reason": "Fuzzy match: bbq大好き|dropped into the modern world: surviving the red-light district -> bbq大好き|dropped into the modern world∶ surviving the red-light district (score: 99, dev: bbq大好き, cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Install Note - Japanese.docx": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1eeTJGVtpnDkeMXOOIR-gRnzaOrROBysd",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Japanese.docx",
+                    "size": "1.1 MB",
+                    "raw_size": 1138163,
+                    "type": ".docx",
+                    "path": "Install Note - Japanese.docx",
+                    "modifiedTime": "2024-08-16T09:20:17.000Z",
+                    "last_updated": ""
                 },
-                "Install Note - Chinese.docx": {
-                    "type": "file",
+                {
                     "id": "1gSFiE-zabn1v5qGB7mGjrHY3Ma-dFj6m",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Chinese.docx",
+                    "size": "1.1 MB",
+                    "raw_size": 1128748,
+                    "type": ".docx",
+                    "path": "Install Note - Chinese.docx",
+                    "modifiedTime": "2024-08-16T09:18:56.000Z",
+                    "last_updated": ""
                 },
-                "Install Note - English.docx": {
-                    "type": "file",
+                {
                     "id": "1wZR7UeVMFNfzpinMyYh7rxwM1y4a_e9h",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - English.docx",
+                    "size": "1.1 MB",
+                    "raw_size": 1136224,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2024-08-16T09:16:50.000Z",
+                    "last_updated": ""
                 },
-                "異世界出身の私が歌舞伎町で闇バイト始めました 日本語R18パッチ v1.06.zip": {
-                    "type": "file",
+                {
                     "id": "15u1oPoxZeTcedpPQ9gpYPshoLwEX3OBG",
-                    "mimeType": "application/zip"
+                    "name": "異世界出身の私が歌舞伎町で闇バイト始めました 日本語R18パッチ v1.06.zip",
+                    "size": "746.6 MB",
+                    "raw_size": 782903954,
+                    "type": ".zip",
+                    "path": "異世界出身の私が歌舞伎町で闇バイト始めました 日本語R18パッチ v1.06.zip",
+                    "modifiedTime": "2024-08-16T09:13:58.000Z",
+                    "last_updated": ""
                 },
-                "异世界出身的我在歌舞伎町打黑工 中文R18补丁 v1.06.zip": {
-                    "type": "file",
+                {
                     "id": "1L9w9r-JdGQ9zPQwdxdFxuD4OeEnbAdrD",
-                    "mimeType": "application/zip"
+                    "name": "异世界出身的我在歌舞伎町打黑工 中文R18补丁 v1.06.zip",
+                    "size": "758.3 MB",
+                    "raw_size": 795162831,
+                    "type": ".zip",
+                    "path": "异世界出身的我在歌舞伎町打黑工 中文R18补丁 v1.06.zip",
+                    "modifiedTime": "2024-08-16T09:13:40.000Z",
+                    "last_updated": ""
                 },
-                "Dropped into the Modern World English R18 Patch v1.06.zip": {
-                    "type": "file",
+                {
                     "id": "1w-qxtsNwQ096RmeVM9b4g4WQVrep3PCS",
-                    "mimeType": "application/zip"
+                    "name": "Dropped into the Modern World English R18 Patch v1.06.zip",
+                    "size": "743.5 MB",
+                    "raw_size": 779566527,
+                    "type": ".zip",
+                    "path": "Dropped into the Modern World English R18 Patch v1.06.zip",
+                    "modifiedTime": "2024-08-16T09:13:26.000Z",
+                    "last_updated": ""
                 },
-                "異世界出身的我在歌舞伎町打黑工 繁中R18補丁 v1.06.zip": {
-                    "type": "file",
+                {
                     "id": "1Xp4cEnmu1WA5GHYtaUYoA1p2qMr-ppqc",
-                    "mimeType": "application/zip"
+                    "name": "異世界出身的我在歌舞伎町打黑工 繁中R18補丁 v1.06.zip",
+                    "size": "758.3 MB",
+                    "raw_size": 795185641,
+                    "type": ".zip",
+                    "path": "異世界出身的我在歌舞伎町打黑工 繁中R18補丁 v1.06.zip",
+                    "modifiedTime": "2024-08-16T09:12:30.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Drumpf: Rise Up, Libertonia!",
@@ -13732,7 +13781,7 @@
             "game": "Fallen Priestess: My Sister's Demonic Bloodline",
             "developer": "BBQ大好き",
             "publisher": "Saikey Studios",
-            "notes": "Multilanguage patch v1.1.3 (2025.12.30)",
+            "notes": "Multilanguage patch v1.3.2 (DLC Included) (2026.04.26)",
             "steam_url": "https://store.steampowered.com/app/3111930/",
             "patch_link": "https://drive.google.com/drive/folders/1lWlWAxuuX7RVFsRmimoH2m3fvrOVzP69",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3111930/768a884424f9586afcb9f180fc06e05baa5c6edb/header.jpg?t=1763737988",
@@ -13742,33 +13791,58 @@
             "match_reason": "Fuzzy match: bbq大好き|fallen priestess: my sister's demonic bloodline -> bbq大好き|fallen priestess∶ my sister's demonic bloodline (score: 98, dev: bbq大好き, cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Fallen Priestess My Sister's Demonic Bloodline Reconstruction Patch v1.1.3 (2025.12.30).zip": {
-                    "type": "file",
-                    "id": "1kEIsxFw-FtqoTjmm_XpMT-2M4oUfaWCn",
-                    "mimeType": "application/x-zip-compressed"
+            "contents": [
+                {
+                    "id": "1LnTbk7oewNzxnvHJvUNCe36r21OWF2Um",
+                    "name": "Fallen Priestess My Sister's Demonic Bloodline Reconstruction Patch v1.3.2 (DLC Included)(2026.04.26).zip",
+                    "size": "2082.2 MB",
+                    "raw_size": 2183359068,
+                    "type": ".zip",
+                    "path": "Fallen Priestess My Sister's Demonic Bloodline Reconstruction Patch v1.3.2 (DLC Included)(2026.04.26).zip",
+                    "modifiedTime": "2026-04-27T00:36:55.972Z",
+                    "last_updated": ""
                 },
-                "Install Note - Korean.docx": {
-                    "type": "file",
+                {
                     "id": "1ej1kpCPdY7LF0ueLt1JNfKuBOBdXKfyK",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Korean.docx",
+                    "size": "1.9 MB",
+                    "raw_size": 1954979,
+                    "type": ".docx",
+                    "path": "Install Note - Korean.docx",
+                    "modifiedTime": "2025-11-21T13:16:16.000Z",
+                    "last_updated": ""
                 },
-                "Install Note - Japanese.docx": {
-                    "type": "file",
+                {
                     "id": "1-OVFB1iHN6jwd9mDTI7WqtWLGDY2fVcW",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Japanese.docx",
+                    "size": "1.9 MB",
+                    "raw_size": 1991839,
+                    "type": ".docx",
+                    "path": "Install Note - Japanese.docx",
+                    "modifiedTime": "2025-11-21T13:14:14.000Z",
+                    "last_updated": ""
                 },
-                "Install Note - English.docx": {
-                    "type": "file",
+                {
                     "id": "1vPHTa_dZzSYSkjigtjRPr2ykfyF-x8GA",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - English.docx",
+                    "size": "1.9 MB",
+                    "raw_size": 1989800,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2025-11-21T13:13:53.000Z",
+                    "last_updated": ""
                 },
-                "Install Note - Chinese.docx": {
-                    "type": "file",
+                {
                     "id": "1jP5TObJGs69tV892ojvTsrHtfUWC78-S",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Chinese.docx",
+                    "size": "1.9 MB",
+                    "raw_size": 2003248,
+                    "type": ".docx",
+                    "path": "Install Note - Chinese.docx",
+                    "modifiedTime": "2025-11-21T13:13:28.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Fallen Princess Knight",
@@ -32708,99 +32782,78 @@
             "match_reason": "Exact match on full: bbq大好き|nebel geisterjäger ~ the first lamb",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Install Note - Japanese.docx": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1eulmWdN20YrbB-N3HQqxnogenMhHlmiB",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Japanese.docx",
+                    "size": "472.3 KB",
+                    "raw_size": 483593,
+                    "type": ".docx",
+                    "path": "Install Note - Japanese.docx",
+                    "modifiedTime": "2024-07-12T14:34:32.553Z",
+                    "last_updated": ""
                 },
-                "Install Note - Chinese.docx": {
-                    "type": "file",
+                {
                     "id": "1YC_KmK2JieiXpqQAyoFX_haAE3e-gJR8",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Chinese.docx",
+                    "size": "472.3 KB",
+                    "raw_size": 483658,
+                    "type": ".docx",
+                    "path": "Install Note - Chinese.docx",
+                    "modifiedTime": "2024-07-12T14:34:29.865Z",
+                    "last_updated": ""
                 },
-                "Install Note - English.docx": {
-                    "type": "file",
+                {
                     "id": "1FQb0YIlMaZiY5thvpma89P3pJnEZxsaC",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - English.docx",
+                    "size": "472.0 KB",
+                    "raw_size": 483319,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2024-07-12T14:34:05.108Z",
+                    "last_updated": ""
                 },
-                "Nebel-SCN-Patch 20240630.zip": {
-                    "type": "file",
+                {
                     "id": "1dM-76Ts52OHhjtrzLLEycyoZu1gQ_x42",
-                    "mimeType": "application/x-zip-compressed"
+                    "name": "Nebel-SCN-Patch 20240630.zip",
+                    "size": "1657.9 MB",
+                    "raw_size": 1738402324,
+                    "type": ".zip",
+                    "path": "Nebel-SCN-Patch 20240630.zip",
+                    "modifiedTime": "2024-07-12T14:18:59.000Z",
+                    "last_updated": ""
                 },
-                "Nebel-TCN-Patch 20240704.zip": {
-                    "type": "file",
+                {
                     "id": "1gNY64O4iCoY5M55yCeiLOpMu7yXEpTwd",
-                    "mimeType": "application/x-zip-compressed"
+                    "name": "Nebel-TCN-Patch 20240704.zip",
+                    "size": "1657.9 MB",
+                    "raw_size": 1738383707,
+                    "type": ".zip",
+                    "path": "Nebel-TCN-Patch 20240704.zip",
+                    "modifiedTime": "2024-07-12T14:18:56.000Z",
+                    "last_updated": ""
                 },
-                "Nebel-JP-Patch 20240630.zip": {
-                    "type": "file",
+                {
                     "id": "1QO2UMeMTQWLTc38_kpjIYGuYfFl3ZH8M",
-                    "mimeType": "application/x-zip-compressed"
+                    "name": "Nebel-JP-Patch 20240630.zip",
+                    "size": "1654.2 MB",
+                    "raw_size": 1734521767,
+                    "type": ".zip",
+                    "path": "Nebel-JP-Patch 20240630.zip",
+                    "modifiedTime": "2024-07-12T14:18:03.000Z",
+                    "last_updated": ""
                 },
-                "Nebel-EN-Patch 20240630.zip": {
-                    "type": "file",
+                {
                     "id": "1T9AfEcrfriqTEAyg8PsjmL0Xg8xzGSUi",
-                    "mimeType": "application/x-zip-compressed"
-                },
-                "Old": {
-                    "type": "folder",
-                    "id": "15pMYctvY02jKYZ0sHxionMjsViDY92yp",
-                    "children": {
-                        "Nebel-FullVer-EN 20240115.zip": {
-                            "type": "file",
-                            "id": "1MuzSk_kn5skGNrc1RKiHEiNExnuDULyI",
-                            "mimeType": "application/x-zip-compressed"
-                        },
-                        "Nebel-FullVer-JP 20240115.zip": {
-                            "type": "file",
-                            "id": "1j-x5zmAcfOsrWDRArNdVHaQAm7P0OMgL",
-                            "mimeType": "application/x-zip-compressed"
-                        },
-                        "Nebel-FullVer-CN 20240115.zip": {
-                            "type": "file",
-                            "id": "1y3PHrbSZHWAXQJQ1dw8_qgNYaZxrfSz_",
-                            "mimeType": "application/x-zip-compressed"
-                        },
-                        "Nebel-FullVer-EN 231223.zip": {
-                            "type": "file",
-                            "id": "1OhjuFyNxG8gFs-RfWLhVXOUTxtEs5zYO",
-                            "mimeType": "application/x-zip-compressed"
-                        },
-                        "Install Note - Japanese.docx": {
-                            "type": "file",
-                            "id": "1Qk-ZzVuxeCUMZSUBXebOZzG0ObuH6pHl",
-                            "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                        },
-                        "Install Note - Chinese.docx": {
-                            "type": "file",
-                            "id": "1bUKA301UeE7wODbFgD2E1lnODdsksrPx",
-                            "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                        },
-                        "Install Note - English.docx": {
-                            "type": "file",
-                            "id": "1WVpWpv5KNWcgCehoNixMwsIo8V-PlklH",
-                            "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                        },
-                        "Nebel-FullVer-Steam-JP-v2023.12.21.zip": {
-                            "type": "file",
-                            "id": "1w1A-EZLyKnY1buV0mOeFIwklL7XG4-9k",
-                            "mimeType": "application/zip"
-                        },
-                        "Nebel-FullVer-Steam-CN-v2023.12.21.zip": {
-                            "type": "file",
-                            "id": "1qZ2rkV9QH6qUSmXS0XMY4zzhsZAAc300",
-                            "mimeType": "application/zip"
-                        },
-                        "Nebel-FullVer-Steam-EN-v2023.12.21.zip": {
-                            "type": "file",
-                            "id": "1HmOhW057t0chXaOyOqyXesydXfXRGQE6",
-                            "mimeType": "application/zip"
-                        }
-                    }
+                    "name": "Nebel-EN-Patch 20240630.zip",
+                    "size": "1656.0 MB",
+                    "raw_size": 1736484759,
+                    "type": ".zip",
+                    "path": "Nebel-EN-Patch 20240630.zip",
+                    "modifiedTime": "2024-07-12T14:17:50.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "~Necromancy~ Emily's Escape",
@@ -34918,7 +34971,7 @@
             "row_num": "934",
             "appid": "3801270",
             "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 87, dev: iolite, cutoff: 0.8)",
+            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 98, dev: アイオライト (iolite), cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false,
             "contents": {
@@ -59201,79 +59254,78 @@
             "match_reason": "Exact match on full: bbq大好き|触尾少女 shokuo shoujo",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Install Note - English.docx": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1ZiW-VVEz0Axi6SVLM4kXv8JeTd6zIVxa",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - English.docx",
+                    "size": "451.7 KB",
+                    "raw_size": 462575,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2024-07-12T14:36:29.856Z",
+                    "last_updated": ""
                 },
-                "Install Note - Chinese.docx": {
-                    "type": "file",
+                {
                     "id": "1Z8dazC7BOFbgWYMe_-eCRYnWnyXfR9Kr",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Chinese.docx",
+                    "size": "452.0 KB",
+                    "raw_size": 462884,
+                    "type": ".docx",
+                    "path": "Install Note - Chinese.docx",
+                    "modifiedTime": "2024-07-12T14:36:17.301Z",
+                    "last_updated": ""
                 },
-                "Install Note - Japanese.docx": {
-                    "type": "file",
+                {
                     "id": "1i9hH0Vb-QIHM_qiXUuwEnzDP3luRPW0r",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Japanese.docx",
+                    "size": "452.0 KB",
+                    "raw_size": 462844,
+                    "type": ".docx",
+                    "path": "Install Note - Japanese.docx",
+                    "modifiedTime": "2024-07-12T14:36:10.518Z",
+                    "last_updated": ""
                 },
-                "Shokuo Shoujo-TCN-Patch.exe": {
-                    "type": "file",
+                {
                     "id": "1d5bSf1VQsysRQe1L4FI5USOXlCTXo5K_",
-                    "mimeType": "application/x-msdownload"
+                    "name": "Shokuo Shoujo-TCN-Patch.exe",
+                    "size": "418.4 MB",
+                    "raw_size": 438673920,
+                    "type": ".exe",
+                    "path": "Shokuo Shoujo-TCN-Patch.exe",
+                    "modifiedTime": "2024-07-12T14:33:23.000Z",
+                    "last_updated": ""
                 },
-                "Shokuo Shoujo-EN-Patch.exe": {
-                    "type": "file",
+                {
                     "id": "1h4aMpCgIaPFMOBsQTQpQPjdKWD77bnai",
-                    "mimeType": "application/x-msdownload"
+                    "name": "Shokuo Shoujo-EN-Patch.exe",
+                    "size": "415.0 MB",
+                    "raw_size": 435124224,
+                    "type": ".exe",
+                    "path": "Shokuo Shoujo-EN-Patch.exe",
+                    "modifiedTime": "2024-07-12T14:32:59.000Z",
+                    "last_updated": ""
                 },
-                "Shokuo Shoujo-SCN-Patch.exe": {
-                    "type": "file",
+                {
                     "id": "1llUzl_ullAdfyI7We_9CD4knNOgrfXvE",
-                    "mimeType": "application/x-msdownload"
+                    "name": "Shokuo Shoujo-SCN-Patch.exe",
+                    "size": "415.4 MB",
+                    "raw_size": 435591680,
+                    "type": ".exe",
+                    "path": "Shokuo Shoujo-SCN-Patch.exe",
+                    "modifiedTime": "2024-07-12T14:32:56.000Z",
+                    "last_updated": ""
                 },
-                "Shokuo Shoujo-JP-Patch.exe": {
-                    "type": "file",
+                {
                     "id": "1XQawZ_Tnh6osjJENRLlOXsC7IivtiTRR",
-                    "mimeType": "application/x-msdownload"
-                },
-                "Old": {
-                    "type": "folder",
-                    "id": "1zUp4SYyMpgvKPe1wtFp_maruANjMCQfJ",
-                    "children": {
-                        "Shoko_Steam_EN_patch_v2023.11.22.zip": {
-                            "type": "file",
-                            "id": "1PSW9bhvUeshqFOcYUWwYtoTggFTEjTFh",
-                            "mimeType": "application/x-zip-compressed"
-                        },
-                        "Shoko_Steam_CN_patch_v2023.11.22.zip": {
-                            "type": "file",
-                            "id": "1ldK9TqJiD_TEW9B2GG3k2fGLJ4ePBwZL",
-                            "mimeType": "application/x-zip-compressed"
-                        },
-                        "Install Note - Chinese .docx": {
-                            "type": "file",
-                            "id": "1JstO0hc_URYaNAQhK0ioCcfFWxXcJOpy",
-                            "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                        },
-                        "Install Note - English.docx": {
-                            "type": "file",
-                            "id": "1SOYKlDBeDAZMPWN8QRfdV_GgxBOW6iL7",
-                            "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                        },
-                        "Install Note.docx": {
-                            "type": "file",
-                            "id": "1ekyv36VTkj3Sy0epoCAopzANutnr16Y1",
-                            "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                        },
-                        "触尾少女 R-18 Patch v2021.01.08.rar": {
-                            "type": "file",
-                            "id": "18ahJYXwwh9pXuMz5Aqntys9TLwWdm2XX",
-                            "mimeType": "application/rar"
-                        }
-                    }
+                    "name": "Shokuo Shoujo-JP-Patch.exe",
+                    "size": "411.2 MB",
+                    "raw_size": 431161344,
+                    "type": ".exe",
+                    "path": "Shokuo Shoujo-JP-Patch.exe",
+                    "modifiedTime": "2024-07-12T14:32:49.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "追忆夏色年华 Natsu no Iro no Nostalgia",
