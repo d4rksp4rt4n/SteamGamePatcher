@@ -2,7 +2,7 @@
     "data": {
         "total_games": 1564,
         "unique_developers": 804,
-        "generated_at": "2026-05-06 02:45:52 UTC"
+        "generated_at": "2026-05-07 14:22:00 UTC"
     },
     "last_folders_metadata": {
         "recent_changes": [
@@ -37,7 +37,7 @@
                 "➕ NEW PATCH: Girl's Software/Do As I Say - Obedience to the Priest/Do As I Say - Obedience to the Priest Uncensor DLC v2026.04.17.rar"
             ]
         ],
-        "last_sync": "2026-05-06T02:45:38.430010"
+        "last_sync": "2026-05-07T14:21:48.728978"
     },
     "entries": [
         {
@@ -7607,18 +7607,28 @@
             "match_reason": "Exact match on full: poison motion|cuckold my brother’s wife",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "aniyome_extra_data_v2026.02.25.zip": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1g43E9XM_1ZrwXUQFX-5DtW4f1rhZs0xg",
-                    "mimeType": "application/x-zip-compressed"
+                    "name": "aniyome_extra_data_v2026.02.25.zip",
+                    "size": "2592.4 MB",
+                    "raw_size": 2718359785,
+                    "type": ".zip",
+                    "path": "aniyome_extra_data_v2026.02.25.zip",
+                    "modifiedTime": "2026-02-25T20:16:13.000Z",
+                    "last_updated": ""
                 },
-                "Install Note.docx": {
-                    "type": "file",
+                {
                     "id": "1qF6xxZoLPv3yaE0vqOOhoX2QTUlrddWm",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note.docx",
+                    "size": "330.6 KB",
+                    "raw_size": 338580,
+                    "type": ".docx",
+                    "path": "Install Note.docx",
+                    "modifiedTime": "2026-02-25T20:14:21.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Cult Of The Serpent: Cuck Or Be Cucked",
@@ -9260,18 +9270,28 @@
             "match_reason": "Exact match on full: poison motion|days with the ogre girl",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "ogre_girl_extra_data_v2026.02.25.zip": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1pOzsEo2TYJyQHtHNueaQfjdYJbIyM1Gb",
-                    "mimeType": "application/x-zip-compressed"
+                    "name": "ogre_girl_extra_data_v2026.02.25.zip",
+                    "size": "1512.6 MB",
+                    "raw_size": 1586024979,
+                    "type": ".zip",
+                    "path": "ogre_girl_extra_data_v2026.02.25.zip",
+                    "modifiedTime": "2026-02-25T20:07:01.000Z",
+                    "last_updated": ""
                 },
-                "Install Note.docx": {
-                    "type": "file",
+                {
                     "id": "14wjsIX-JMZvvlH-v0fhcR1T9NMotS0kN",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note.docx",
+                    "size": "372.2 KB",
+                    "raw_size": 381088,
+                    "type": ".docx",
+                    "path": "Install Note.docx",
+                    "modifiedTime": "2026-02-25T20:05:30.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "D.C. Re:tune",
@@ -11206,38 +11226,68 @@
             "match_reason": "Exact match on full: るび様崇める会 (rubi-sama wo agameru kai)|dreamlike love with seira",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Install Note - Traditional Chinese.docx": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1U9dRAaqAQESwgW7wjOejBtYZk5PdmPJI",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Traditional Chinese.docx",
+                    "size": "563.4 KB",
+                    "raw_size": 576937,
+                    "type": ".docx",
+                    "path": "Install Note - Traditional Chinese.docx",
+                    "modifiedTime": "2024-08-24T20:18:40.000Z",
+                    "last_updated": ""
                 },
-                "Install Note - Simplified Chinese.docx": {
-                    "type": "file",
+                {
                     "id": "16smGs3MWuGWzddejuJMHwzqN8ttAT5Za",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Simplified Chinese.docx",
+                    "size": "564.4 KB",
+                    "raw_size": 577980,
+                    "type": ".docx",
+                    "path": "Install Note - Simplified Chinese.docx",
+                    "modifiedTime": "2024-08-24T20:16:05.000Z",
+                    "last_updated": ""
                 },
-                "Install Note - English.docx": {
-                    "type": "file",
+                {
                     "id": "1FLjouRpv82-1xeYHNoc0Qd6HSoKnxMel",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - English.docx",
+                    "size": "559.5 KB",
+                    "raw_size": 572938,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2024-08-24T20:12:45.000Z",
+                    "last_updated": ""
                 },
-                "Seira_patch_v1.0_CHT_(2024.08.23).zip": {
-                    "type": "file",
+                {
                     "id": "1Qk3khPuECa1k9Q28tEO1nNH1_ETiIuWO",
-                    "mimeType": "application/zip"
+                    "name": "Seira_patch_v1.0_CHT_(2024.08.23).zip",
+                    "size": "1585.8 MB",
+                    "raw_size": 1662856506,
+                    "type": ".zip",
+                    "path": "Seira_patch_v1.0_CHT_(2024.08.23).zip",
+                    "modifiedTime": "2024-08-24T20:04:30.000Z",
+                    "last_updated": ""
                 },
-                "Seira_patch_v1.0_CHS_(2024.08.23).zip": {
-                    "type": "file",
+                {
                     "id": "1GPk4E7_UmZHVYkJQxdKW2K_p5BY2rn69",
-                    "mimeType": "application/zip"
+                    "name": "Seira_patch_v1.0_CHS_(2024.08.23).zip",
+                    "size": "1585.3 MB",
+                    "raw_size": 1662341408,
+                    "type": ".zip",
+                    "path": "Seira_patch_v1.0_CHS_(2024.08.23).zip",
+                    "modifiedTime": "2024-08-24T20:03:39.000Z",
+                    "last_updated": ""
                 },
-                "Seira_patch_v1.0_ENG_(2024.08.23).zip": {
-                    "type": "file",
+                {
                     "id": "1aAB1EaMXyhMEOUew9qo4l2E9cxrmvbhk",
-                    "mimeType": "application/zip"
+                    "name": "Seira_patch_v1.0_ENG_(2024.08.23).zip",
+                    "size": "1583.8 MB",
+                    "raw_size": 1660712634,
+                    "type": ".zip",
+                    "path": "Seira_patch_v1.0_ENG_(2024.08.23).zip",
+                    "modifiedTime": "2024-08-24T20:02:51.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Dreams of an Exile",
@@ -12971,18 +13021,28 @@
             "match_reason": "Exact match on full: poison motion|enjoyable family trip",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "family_extra_data_v2026.03.05.zip": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1U_Pcc3TcgyvGJnpd_wKJl1ExKd7V-GN5",
-                    "mimeType": "application/x-zip-compressed"
+                    "name": "family_extra_data_v2026.03.05.zip",
+                    "size": "4260.9 MB",
+                    "raw_size": 4467901591,
+                    "type": ".zip",
+                    "path": "family_extra_data_v2026.03.05.zip",
+                    "modifiedTime": "2026-03-05T15:30:48.000Z",
+                    "last_updated": ""
                 },
-                "Install Note.docx": {
-                    "type": "file",
+                {
                     "id": "1vj5C1yFxbp4t83D0JjAEk-Z8ljSrPn7-",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note.docx",
+                    "size": "520.8 KB",
+                    "raw_size": 533282,
+                    "type": ".docx",
+                    "path": "Install Note.docx",
+                    "modifiedTime": "2026-03-05T15:26:01.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Epido",
@@ -36247,7 +36307,7 @@
             "row_num": "935",
             "appid": "3801270",
             "match_status": "fuzzy",
-            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 87, dev: アイオライト, cutoff: 0.8)",
+            "match_reason": "Fuzzy match: アイオライト (iolite)|oni-no-kuni: miozuki's descent -> アイオライト (iolite)|oni-no-kuni∶ miozuki's descent (score: 87, dev: iolite, cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false,
             "contents": {
@@ -38416,18 +38476,28 @@
             "match_reason": "Exact match on full: poison motion|princess of liberline",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "princess_extra_data_v2026.02.25.zip": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1qSG-xJdPwyg38RBaEAfuVDgPACuIHQxR",
-                    "mimeType": "application/x-zip-compressed"
+                    "name": "princess_extra_data_v2026.02.25.zip",
+                    "size": "7419.3 MB",
+                    "raw_size": 7779701548,
+                    "type": ".zip",
+                    "path": "princess_extra_data_v2026.02.25.zip",
+                    "modifiedTime": "2026-02-25T19:54:36.000Z",
+                    "last_updated": ""
                 },
-                "Install Note.docx": {
-                    "type": "file",
+                {
                     "id": "1f8advni83yfQRsqNYw8SLEG9plzUAjL-",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note.docx",
+                    "size": "474.3 KB",
+                    "raw_size": 485670,
+                    "type": ".docx",
+                    "path": "Install Note.docx",
+                    "modifiedTime": "2026-02-25T19:43:09.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Princess Project",
@@ -43166,18 +43236,28 @@
             "match_reason": "Exact match on full: poison motion|scream - steam edition -",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "himei_se_extra_data_v2026.02.25.zip": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "11sJfxb_cyOgTs-3nKvHPscqlEY9wrjRQ",
-                    "mimeType": "application/x-zip-compressed"
+                    "name": "himei_se_extra_data_v2026.02.25.zip",
+                    "size": "4656.8 MB",
+                    "raw_size": 4883018559,
+                    "type": ".zip",
+                    "path": "himei_se_extra_data_v2026.02.25.zip",
+                    "modifiedTime": "2026-02-25T20:29:06.000Z",
+                    "last_updated": ""
                 },
-                "Install Note.docx": {
-                    "type": "file",
+                {
                     "id": "17rCSRkeujnx6pHFH3hUN5WpazViRE021",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note.docx",
+                    "size": "368.1 KB",
+                    "raw_size": 376889,
+                    "type": ".docx",
+                    "path": "Install Note.docx",
+                    "modifiedTime": "2026-02-25T20:20:48.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Scream ~After~ Short Story",
@@ -43193,18 +43273,28 @@
             "match_reason": "Fuzzy match: poison motion|scream ~after~ short story -> poison motion|scream -after- short story (score: 95, dev: poison motion, cutoff: 0.8)",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Install Note.docx": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1Qbhx-QPWhkFNFMJeDFvcWYu_cYIKb2YV",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note.docx",
+                    "size": "344.3 KB",
+                    "raw_size": 352548,
+                    "type": ".docx",
+                    "path": "Install Note.docx",
+                    "modifiedTime": "2026-02-25T19:40:58.000Z",
+                    "last_updated": ""
                 },
-                "himei_ss_extra_data_v2026.02.25.zip": {
-                    "type": "file",
+                {
                     "id": "1wcpFR83m9J3a_aFwdPOlVa2z3VOny6Xu",
-                    "mimeType": "application/x-zip-compressed"
+                    "name": "himei_ss_extra_data_v2026.02.25.zip",
+                    "size": "89.0 MB",
+                    "raw_size": 93275876,
+                    "type": ".zip",
+                    "path": "himei_ss_extra_data_v2026.02.25.zip",
+                    "modifiedTime": "2026-02-25T19:35:07.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "Secret Agent",
@@ -54410,38 +54500,68 @@
             "match_reason": "Exact match on full: bloom flash|the witch's disciples",
             "store_status": "available",
             "manual_edit": false,
-            "contents": {
-                "Install Note - Chinese.docx": {
-                    "type": "file",
+            "contents": [
+                {
                     "id": "1-MP_9ahQrE-roNA_Ho2rrk6LNWVSfAYn",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Chinese.docx",
+                    "size": "712.1 KB",
+                    "raw_size": 729198,
+                    "type": ".docx",
+                    "path": "Install Note - Chinese.docx",
+                    "modifiedTime": "2026-04-04T06:31:07.586Z",
+                    "last_updated": ""
                 },
-                "Install Note - Japanese.docx": {
-                    "type": "file",
+                {
                     "id": "1c1U4DzYHELJbuUm5uylETPVR6PgK2oNd",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - Japanese.docx",
+                    "size": "110.3 KB",
+                    "raw_size": 112920,
+                    "type": ".docx",
+                    "path": "Install Note - Japanese.docx",
+                    "modifiedTime": "2026-04-04T03:33:40.597Z",
+                    "last_updated": ""
                 },
-                "Install Note - English.docx": {
-                    "type": "file",
+                {
                     "id": "1jOd-NzJV5AW4-FpkBQkwhefVhS4tlQKN",
-                    "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                    "name": "Install Note - English.docx",
+                    "size": "913.5 KB",
+                    "raw_size": 935386,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2026-04-04T03:33:32.972Z",
+                    "last_updated": ""
                 },
-                "The Witch's Disciples EN Patch v1.00.exe": {
-                    "type": "file",
+                {
                     "id": "1Kcv2ch7vUlbQQ6acyBmd6UKj8xk871b7",
-                    "mimeType": "application/x-msdownload"
+                    "name": "The Witch's Disciples EN Patch v1.00.exe",
+                    "size": "430.0 MB",
+                    "raw_size": 450925792,
+                    "type": ".exe",
+                    "path": "The Witch's Disciples EN Patch v1.00.exe",
+                    "modifiedTime": "2026-04-04T03:32:18.000Z",
+                    "last_updated": ""
                 },
-                "The Witch's Disciples CN Patch v1.00.exe": {
-                    "type": "file",
+                {
                     "id": "11x3y59iM7kxNIhu03dY_dv5yLsYTQ7sl",
-                    "mimeType": "application/x-msdownload"
+                    "name": "The Witch's Disciples CN Patch v1.00.exe",
+                    "size": "445.6 MB",
+                    "raw_size": 467230856,
+                    "type": ".exe",
+                    "path": "The Witch's Disciples CN Patch v1.00.exe",
+                    "modifiedTime": "2026-04-04T03:32:07.000Z",
+                    "last_updated": ""
                 },
-                "The Witch's Disciples JP Patch v1.00.exe": {
-                    "type": "file",
+                {
                     "id": "1ji_9EkRl_348cr4sx7wyxv_YgBb2njl0",
-                    "mimeType": "application/x-msdownload"
+                    "name": "The Witch's Disciples JP Patch v1.00.exe",
+                    "size": "558.1 MB",
+                    "raw_size": 585192504,
+                    "type": ".exe",
+                    "path": "The Witch's Disciples JP Patch v1.00.exe",
+                    "modifiedTime": "2026-04-04T03:31:36.000Z",
+                    "last_updated": ""
                 }
-            }
+            ]
         },
         {
             "game": "The Witch's Love Diary",
