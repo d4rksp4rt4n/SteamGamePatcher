@@ -2,7 +2,7 @@
     "data": {
         "total_games": 1565,
         "unique_developers": 804,
-        "generated_at": "2026-05-07 17:52:27 UTC"
+        "generated_at": "2026-05-07 17:59:26 UTC"
     },
     "last_folders_metadata": {
         "recent_changes": [
@@ -30,14 +30,9 @@
                 "2026-04-21T06:26:48.644085",
                 "A Tragedy in Elvish",
                 "➕ NEW PATCH: ONEONE1/A Tragedy in Elvish/A_Tragedy_in_Elvish_EN_Patch_v2026.04.21.zip"
-            ],
-            [
-                "2026-04-17T19:40:40.286570",
-                "Do As I Say - Obedience to the Priest",
-                "➕ NEW PATCH: Girl's Software/Do As I Say - Obedience to the Priest/Do As I Say - Obedience to the Priest Uncensor DLC v2026.04.17.rar"
             ]
         ],
-        "last_sync": "2026-05-07T17:52:15.222264"
+        "last_sync": "2026-05-07T17:59:14.103630"
     },
     "entries": [
         {
@@ -791,7 +786,7 @@
             "game": "A Summer in Oneeshota Town",
             "developer": "アイオライト (IOLITE)",
             "publisher": "072 Project",
-            "notes": "",
+            "notes": "English, S. Chinese & T. Chinese patch v2026.05.08",
             "steam_url": "https://store.steampowered.com/app/3804180/",
             "patch_link": "https://drive.google.com/drive/folders/1ilzrdoGy9rhwRLzJE_R38IVxKNmAljo_",
             "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3804180/5a0030302e2ae6261ff1a7176b53412081600633/header.jpg?t=1778118848",
@@ -801,7 +796,88 @@
             "match_reason": "Exact match on full: アイオライト (iolite)|a summer in oneeshota town",
             "store_status": "unreleased",
             "manual_edit": false,
-            "contents": []
+            "contents": [
+                {
+                    "id": "1v2U2trwoGK-6eLkpnP8vNo9UEKl8EdkX",
+                    "name": "RP26054647w_TC_1_v2026.05.08.7z",
+                    "size": "577.0 MB",
+                    "raw_size": 605030214,
+                    "type": ".7z",
+                    "path": "RP26054647w_TC_1_v2026.05.08.7z",
+                    "modifiedTime": "2026-05-07T17:56:50.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1C7sq_adhfDiWdU2ojlBqsRuBWrHZT415",
+                    "name": "RP26054647w_SC_1_v2026.05.08.7z",
+                    "size": "577.0 MB",
+                    "raw_size": 605023209,
+                    "type": ".7z",
+                    "path": "RP26054647w_SC_1_v2026.05.08.7z",
+                    "modifiedTime": "2026-05-07T17:56:17.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1uxSs7wMPRkoEcYl_LC9U6Ry1qdEkYRJy",
+                    "name": "RP26054647w_JP_1_v2026.05.08.7z",
+                    "size": "577.3 MB",
+                    "raw_size": 605302163,
+                    "type": ".7z",
+                    "path": "RP26054647w_JP_1_v2026.05.08.7z",
+                    "modifiedTime": "2026-05-07T17:55:45.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1KWi2Z7ZxxYQySWEbCTkMYwseIpitlvPb",
+                    "name": "RP26054647w_EN_1_v2026.05.08.7z",
+                    "size": "576.9 MB",
+                    "raw_size": 604888142,
+                    "type": ".7z",
+                    "path": "RP26054647w_EN_1_v2026.05.08.7z",
+                    "modifiedTime": "2026-05-07T17:55:09.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1lr-jyeViXrl63bMsBj_V0mC2BTcrj2AQ",
+                    "name": "Install Note - Simplified Chinese.docx",
+                    "size": "2.5 MB",
+                    "raw_size": 2617785,
+                    "type": ".docx",
+                    "path": "Install Note - Simplified Chinese.docx",
+                    "modifiedTime": "2026-05-07T17:51:53.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1d_zJmcii2TTAgDa45sIJlaZqe_DG1xOc",
+                    "name": "Install Note - Traditional Chinese.docx",
+                    "size": "2.5 MB",
+                    "raw_size": 2617478,
+                    "type": ".docx",
+                    "path": "Install Note - Traditional Chinese.docx",
+                    "modifiedTime": "2026-05-07T17:51:10.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1CxXvHRMaysrgWRzyIKu-u1mAffQhTmbj",
+                    "name": "Install Note - Japanese.docx",
+                    "size": "2.4 MB",
+                    "raw_size": 2568004,
+                    "type": ".docx",
+                    "path": "Install Note - Japanese.docx",
+                    "modifiedTime": "2026-05-07T17:50:32.000Z",
+                    "last_updated": ""
+                },
+                {
+                    "id": "1_Ba-m8fBvy8-1cv-y1TuigIODLOqfbc8",
+                    "name": "Install Note - English.docx",
+                    "size": "2.4 MB",
+                    "raw_size": 2473118,
+                    "type": ".docx",
+                    "path": "Install Note - English.docx",
+                    "modifiedTime": "2026-05-07T17:49:40.000Z",
+                    "last_updated": ""
+                }
+            ]
         },
         {
             "game": "A Tragedy in Elvish",
