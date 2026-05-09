@@ -2,10 +2,15 @@
     "data": {
         "total_games": 1569,
         "unique_developers": 805,
-        "generated_at": "2026-05-09 05:17:50 UTC"
+        "generated_at": "2026-05-09 07:00:42 UTC"
     },
     "last_folders_metadata": {
         "recent_changes": [
+            [
+                "2026-05-09T07:00:31.040434",
+                "Princess Colosseum",
+                "📦 UPDATED: Flamme Soft/Princess Colosseum/Princess Colosseum R18 Patch v1.0 (2026.05.09).zip"
+            ],
             [
                 "2026-05-09T05:17:36.860745",
                 "Little Witch Inuko",
@@ -27,16 +32,6 @@
                 "➕ NEW PATCH: Yamato Soft/My Summer Vacation/My Summer Vacation Reconstruction Patch v1.2 (2026.03.10).zip"
             ],
             [
-                "2026-05-09T04:53:58.150168",
-                "Princess Colosseum",
-                "📦 UPDATED: Flamme Soft/Princess Colosseum/SS43_princess-colosseum-r18-patch-v1.0(2026.05.09).zip"
-            ],
-            [
-                "2026-05-09T04:46:54.137634",
-                "UBAI Again",
-                "➕ NEW PATCH: Studio Ubai/UBAI Again/UBAI Again EN Patch v1.00.exe"
-            ],
-            [
                 "2026-05-06T02:45:36.953470",
                 "Cult Of The Serpent: Cuck Or Be Cucked",
                 "➕ NEW PATCH: Orcsoft/Cult Of The Serpent: Cuck Or Be Cucked/Kagachi Sama [steam][patch] (2026.03.11).zip"
@@ -47,7 +42,7 @@
                 "🗑 ARCHIVED: wagasi biyori (和菓子日和 )/Elise and the Spellbinding Marionette/Elise and the Spellbinding Marionette EN Patch v1.00.exe"
             ]
         ],
-        "last_sync": "2026-05-09T05:17:37.102604"
+        "last_sync": "2026-05-09T07:00:31.497825"
     },
     "entries": [
         {
@@ -38611,12 +38606,12 @@
             "contents": [
                 {
                     "id": "1RLLRCSEAREODyHrM905ymNnCPQN8tXb-",
-                    "name": "SS43_princess-colosseum-r18-patch-v1.0(2026.05.09).zip",
+                    "name": "Princess Colosseum R18 Patch v1.0 (2026.05.09).zip",
                     "size": "33.0 MB",
                     "raw_size": 34631243,
                     "type": ".zip",
-                    "path": "SS43_princess-colosseum-r18-patch-v1.0(2026.05.09).zip",
-                    "modifiedTime": "2026-05-09T04:49:11.205Z",
+                    "path": "Princess Colosseum R18 Patch v1.0 (2026.05.09).zip",
+                    "modifiedTime": "2026-05-09T05:44:29.770Z",
                     "last_updated": ""
                 },
                 {
@@ -56320,11 +56315,11 @@
                 {
                     "id": "1f_uO0ktgGun80I-NpaIga-EIlw3Mwqr5",
                     "name": "Install Note - Chinese.docx",
-                    "size": "110.1 KB",
-                    "raw_size": 112745,
+                    "size": "704.8 KB",
+                    "raw_size": 721736,
                     "type": ".docx",
                     "path": "Install Note - Chinese.docx",
-                    "modifiedTime": "2026-05-09T04:35:36.093Z",
+                    "modifiedTime": "2026-05-09T05:38:50.465Z",
                     "last_updated": ""
                 },
                 {
