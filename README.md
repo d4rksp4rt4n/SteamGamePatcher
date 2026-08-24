@@ -4,6 +4,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
 
+**Development moved to [Umbra](https://github.com/d4rksp4rt4n/Umbra)**
+
 A **fast, smart, and user-friendly** desktop tool for applying R18/adult patches to Steam games.
 
 Automatically detects your installed games, shows beautiful box art, downloads patches from our Google Drive, extracts them safely, and applies them intelligently (not all patches might work with auto-apply function yet).
